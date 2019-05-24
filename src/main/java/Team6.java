@@ -22,7 +22,7 @@ public class Team6 {
                 "ondrag","ondragend","ondrop","onscroll","ondragstart",
                 "onload","alert");
 
-        //Load document from file
+        //Load document from file (change this to your own path)
         File input = new File("/Users/bunverdenz/Documents/KAIST/6th semester/Automated testing/Team6/src/main/resources/test1.html");
         Document docFile = Jsoup.parse(input, "UTF-8", "http://example.com/");
 
@@ -76,7 +76,7 @@ public class Team6 {
         System.out.println("-------------------------------");
 
 
-        // Load document from URL (not from file)
+        // 2. Load document from URL (not from file)
         Document doc = Jsoup.connect("http://example.com/").get();
 
         String title = doc.title();
