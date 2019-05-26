@@ -27,7 +27,7 @@ public class htmlUnitTester {
     	
     	java.util.logging.Logger.getLogger("com.gargoylesoftware.htmlunit").setLevel(Level.OFF);
     	
-    	/*
+    	
     	final WebClient webClient = new WebClient();
     	HtmlPage page3;
     	page3 = webClient.getPage("https://melodize.github.io/");
@@ -40,12 +40,13 @@ public class htmlUnitTester {
     	pass.setValueAttribute("Actual Password");
     	HtmlPage page2;
     	page2 = b.click();
-    	*/
     	
+    	
+    	/*
     	final WebClient webClient = new WebClient(BrowserVersion.CHROME);
     	final HtmlPage page = webClient.getPage("http://htmlunit.sourceforge.net");
     	System.out.println("HtmlUnit - Welcome to HtmlUnit".contentEquals(page.getTitleText()));
-
+    	*/
     }
 }
 
