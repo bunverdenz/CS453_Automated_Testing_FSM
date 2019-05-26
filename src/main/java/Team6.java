@@ -7,14 +7,32 @@ import org.jsoup.select.Elements;
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
+import java.util.logging.Level;
+
+import com.gargoylesoftware.htmlunit.BrowserVersion;
+import com.gargoylesoftware.htmlunit.WebClient;
+import com.gargoylesoftware.htmlunit.WebConsole.Logger;
+import com.gargoylesoftware.htmlunit.html.HtmlElement;
+import com.gargoylesoftware.htmlunit.html.HtmlForm;
+import com.gargoylesoftware.htmlunit.html.HtmlOption;
+import com.gargoylesoftware.htmlunit.html.HtmlPage;
+import com.gargoylesoftware.htmlunit.html.HtmlPasswordInput;
+import com.gargoylesoftware.htmlunit.html.HtmlSelect;
+import com.gargoylesoftware.htmlunit.html.HtmlSubmitInput;
+import com.gargoylesoftware.htmlunit.html.HtmlTextInput;
 
 // TODO: create new file/class for each function to organize the whole project
 public class Team6 {
-
+	
     public static void main(String[] args) throws IOException {
-
+    	
+    	java.util.logging.Logger.getLogger("com.gargoylesoftware.htmlunit").setLevel(Level.OFF);
+    	
         // Reference for events: https://www.w3schools.com/tags/ref_eventattributes.asp
-
+    	
+    	
+    	
+    	/*
         final Collection<String> EVENTS = Arrays.asList(
                 "onchange","onfocus","onselect","onsubmit",
                 "onclick", "onmouseover", "ondbclick", "onwheel",
@@ -23,7 +41,7 @@ public class Team6 {
                 "onload","alert");
 
         //Load document from file (change this to your own path)
-        File input = new File("/Users/bunverdenz/Documents/KAIST/6th semester/Automated testing/Team6/src/main/resources/test1.html");
+        File input = new File("C:/Users/aerol/OneDrive/Desktop/CS453_Automated_Testing_FSM/src/main/resources/test1.html");
         Document docFile = Jsoup.parse(input, "UTF-8", "http://example.com/");
 
         // 1. Find all attributes and tags AND events found
@@ -58,11 +76,11 @@ public class Team6 {
         System.out.println("Distinct Attributes = "+ new HashSet<String>(attrs));
         System.out.println("-------------------------------");
 
-        /*
-          TODO: Perform the event with Value such as
-                onclick = "alert("HEY")"
-                We also need value, alert, to do next event (use attrVal line 44)
-        */
+        
+        //  TODO: Perform the event with Value such as
+        //        onclick = "alert("HEY")"
+        //        We also need value, alert, to do next event (use attrVal line 44)
+        
 
         // Get all buttons element (this works fine, just another way to get attribute)
         Elements buttons = docFile.getElementsByTag("button");
@@ -90,7 +108,27 @@ public class Team6 {
         // TODO: connecting again takes some time, do we have any other way?
         Document doc2 = Jsoup.connect(linkHref).get();
         System.out.println(doc2.title());
+        */
+    	
+    	/*
+    	final WebClient webClient = new WebClient();
+    	HtmlPage page3;
+    	page3 = webClient.getPage("https://melodize.github.io/");
+    	HtmlForm loginForm = page3.getFormByName("Sign In");
+    	HtmlTextInput username = loginForm.getInputByName("NameofUsernameElement");
+    	HtmlPasswordInput pass = loginForm.getInputByName("NameofPassowordElement");
+    	HtmlSubmitInput b = loginForm.getInputByValue("LoginButtonValue");
 
+    	username.setValueAttribute("Actualy Username");
+    	pass.setValueAttribute("Actual Password");
+    	HtmlPage page2;
+    	page2 = b.click();
+    	*/
+    	
+    	final WebClient webClient = new WebClient(BrowserVersion.CHROME);
+    	final HtmlPage page = webClient.getPage("http://htmlunit.sourceforge.net");
+    	System.out.println("HtmlUnit - Welcome to HtmlUnit".contentEquals(page.getTitleText()));
 
+    	
     }
 }
