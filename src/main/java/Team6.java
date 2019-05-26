@@ -13,8 +13,10 @@ import java.util.logging.Level;
 import com.gargoylesoftware.htmlunit.BrowserVersion;
 import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.WebConsole.Logger;
+import com.gargoylesoftware.htmlunit.html.HtmlButton;
 import com.gargoylesoftware.htmlunit.html.HtmlElement;
 import com.gargoylesoftware.htmlunit.html.HtmlForm;
+import com.gargoylesoftware.htmlunit.html.HtmlInput;
 import com.gargoylesoftware.htmlunit.html.HtmlOption;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
 import com.gargoylesoftware.htmlunit.html.HtmlPasswordInput;
@@ -92,7 +94,7 @@ public class Team6 {
         }
         System.out.println("-------------------------------");
 
-
+        /*
         // 2. Load document from URL (not from file)
         Document doc = Jsoup.connect("http://example.com/").get();
 
@@ -107,28 +109,24 @@ public class Team6 {
         // TODO: connecting again takes some time, do we have any other way?
         Document doc2 = Jsoup.connect(linkHref).get();
         System.out.println(doc2.title());
-        
+        */
         
         /*
         final WebClient webClient = new WebClient(BrowserVersion.CHROME);
-    	HtmlPage page3;
-    	page3 = webClient.getPage("http://example.com/");
-    	HtmlForm loginForm = page3.getFormByName("Sign In");
-    	HtmlTextInput username = loginForm.getInputByName("NameofUsernameElement");
-    	HtmlPasswordInput pass = loginForm.getInputByName("NameofPassowordElement");
-    	HtmlSubmitInput b = loginForm.getInputByValue("LoginButtonValue");
-
-    	username.setValueAttribute("Actualy Username");
-    	pass.setValueAttribute("Actual Password");
-    	HtmlPage page2;
-    	page2 = b.click();
+    	HtmlPage melodize;
+    	melodize = webClient.getPage("https://melodize.github.io/");
+    	//HtmlForm form = test1.getFormByName("/action_page.php");
+    	
+    	HtmlButton htmlButton = (HtmlButton) melodize.getElementById("workerBtn");
+        HtmlPage htmlPage = (HtmlPage) htmlButton.click();
+        System.out.println(htmlPage.getTitleText());
     	*/
-    	
-    	
+        
+    	/*
     	final WebClient webClient = new WebClient(BrowserVersion.CHROME);
-    	final HtmlPage page = webClient.getPage("http://example.com/");
-    	System.out.println(title.contentEquals(page.getTitleText()));
-    	
+    	final HtmlPage page = webClient.getPage("C:/Users/aerol/OneDrive/Desktop/CS453_Automated_Testing_FSM/src/main/resources/test1.html");
+    	System.out.println(page.getTitleText());
+    	*/
         
     }
 }
