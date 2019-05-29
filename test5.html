@@ -1,0 +1,210 @@
+<!doctype html>
+<html>
+ <head> 
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"> 
+  <link rel="icon" href="./img/icon.png"> 
+  <title>Melodize - Home</title> 
+  <link href="scripts/jquery/css/ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet"> 
+  <link href="css/general.css" rel="stylesheet"> 
+  <link href="css/home.css" rel="stylesheet"> 
+  <link href="css/songInfo.css" rel="stylesheet"> 
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> 
+  <link href="https://fonts.googleapis.com/css?family=Amita" rel="stylesheet"> 
+  <link href="https://fonts.googleapis.com/css?family=Boogaloo" rel="stylesheet"> 
+  <link href="https://fonts.googleapis.com/css?family=Caveat" rel="stylesheet"> 
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> 
+ </head> 
+ <body> 
+  <ul class="nav-ul"> 
+   <li class="nav-li"> 
+    <div onclick="window.location='./index.html';">
+      Melodize 
+    </div></li> 
+   <li class="nav-li"><a id="loginTab">Sign In</a></li> 
+   <li class="nav-li"><a id="profileTab" href="./profile.html" style="display: none">Profile</a></li> 
+   <li class="nav-li"><a href="./gallery.html" id="team6_0">Gallery</a></li> 
+   <li class="nav-li"><a href="./index.html" id="team6_1">Home</a></li> 
+  </ul> 
+  <div class="animate-bottom" style="font-size: 20px; text-align: center; padding: 14px"> 
+   <div style="padding: 14px"> 
+    <div class="container section-home"> 
+     <h1 style="font-size: 80px; font-family:'Caveat';">Welcome to Melodize</h1> 
+     <div>
+       Listening to your favourite tunes has become easier than ever thanks to the variety of streaming platforms available today. However, it is not so easy for the public to contribute to the music composition process due to the public¡¯s lack of expertise in the field and easily available tools; as a result, music composition remains to be a task exclusive to music artists. We want to change that dynamic. We want to make music composition a task available to anyone. 
+     </div> 
+    </div> 
+   </div> 
+   <div class="col-sm-12 section-home"> 
+    <div class="col-sm-6"> 
+     <h1 style="font-size: 50px; font-family:'Caveat';">Get the ball rolling</h1> 
+     <br> By submitting lyrics to your song 
+     <br> 
+     <br> Describe the mood, tone, and theme of your song 
+     <br> Watch the progress of the composition in real time 
+     <br> 
+     <br> 
+     <button class="green-btn" id="requesterBtn">SUBMIT LYRICS</button> 
+    </div> 
+    <div class="col-sm-6"> 
+     <img class="screenShot" src="./img/sc2.png"> 
+    </div> 
+   </div> 
+   <div class="col-sm-12 section-home"> 
+    <div class="col-sm-6"> 
+     <img class="screenShot" src="./img/sc1.png"> 
+    </div> 
+    <div class="col-sm-6"> 
+     <h1 style="font-size: 50px; font-family:'Caveat';">Express your ideas</h1> 
+     <br> On an already submitted lyric 
+     <br> 
+     <br> Suggest notes that you think suites the song 
+     <br> Vote on your favorite passages 
+     <br> 
+     <br> 
+     <button class="green-btn" id="workerBtn">START COMPOSING</button> 
+    </div> 
+   </div> 
+   <div class="col-sm-12 section-home"> 
+    <div class="col-sm-10 col-sm-offset-1"> 
+     <h1 style="font-size: 50px; font-family:'Caveat';">Live Demo</h1> 
+     <br> 
+     <div class="screenShot video-container"> 
+      <iframe src="https://www.youtube.com/embed/nNwPpxmL_Ww" frameborder="0" allowfullscreen></iframe> 
+     </div> 
+    </div> 
+   </div> 
+   <div class="col-sm-12 section-home" style="background-color: #c1d9ff"> 
+    <div class="col-sm-12"> 
+     <h1>Learn more about us</h1> What can I do here? 
+     <br> How does this platform work? 
+     <br> How do I contribute? 
+     <br> How do I give you my feedbacks? 
+     <br> 
+     <br> 
+     <button class="blue-btn" id="learnBtn">LEARN MORE</button> 
+    </div> 
+   </div> 
+   <!--
+      <div class="col-sm-12 section-home">
+        <div class="col-sm-6">
+          <h1>Express yourself</h1><br>
+          By creating an account<br><br>
+          You can submit your lyrics, comment others<br>
+          Change profile picture to show who you are<br><br>
+          <button class="green-btn" id="signUpBtn">SIGN UP</button>
+        </div>
+        <div class="col-sm-6">
+          <img class="screenShot" src="./img/sc6.png">
+        </div>        
+      </div>
+
+      <div class="col-sm-12 section-home">
+        <div class="col-sm-6">
+          <img class="screenShot" src="./img/sc7.png">
+        </div>
+        <div class="col-sm-6">
+          <h1>Check completions</h1><br>
+          On the hall of fame<br><br>
+          Leave a comment on these materpieces<br>
+          Try to change some notes to suit your taste<br><br>
+          <button class="green-btn" id="galleryBtn">CHECK GALLERY</button>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-10 col-sm-offset-1 songList-home">
+          <div class="list-tag"><statnum id="totalSongs">0</statnum> SONGS</div>
+          <div class="sort-tag">
+            Sort by:
+            <select id="sortingSelect">
+              <option value=2>participants (dec)</option>
+              <option value=3>participants (inc)</option>
+              <option value=1>title (dec)</option>
+              <option value=0>title (inc)</option>
+            </select>
+          </div>
+          <div id="songList" class="song-list"></div><br>
+          <center><div id="songList-showMore" class="showMore"><i class="material-icons">&#xE313;</i> Show More</div></center>
+          <center><button class="green-btn" id="listBtn" style="font-size: 24px">START COMPOSING</button></center>
+        </div>
+      </div>
+
+      <div class="col-sm-12 section-home" id="learnStart">
+        <h1 class="section-tag">Tasks</h1>
+        <div class="col-sm-6" style="display: inline-block;">
+          <img class="section-image" src="./img/sc3.png">
+        </div>
+        <div class="section-content">
+          The three tasks our platform supports are,<br><br>
+          1. Submission of lyrics, which will be the base of melody compositions<br>
+          2. Composing melody to submitted lyrics<br>
+          3. Freedom to experiment with melody composition without lyrics as a base<br>
+        </div>
+      </div>
+
+      <div class="col-sm-12 section-home">
+        <h1 class="section-tag">Aggregation</h1>
+        <div class="col-sm-6" style="display: inline-block;">
+          <img class="section-image" src="./img/sc4.png">
+        </div>
+        <div class="section-content">
+          How we aggregate  each and every one of your input is crucial to our process as it directly affects the coherency and flow of our songs. We take each of your segment inputs and pool them together first. Then, we choose the most popular note for each syllable and integrate it into the song.<br><br>
+
+          While doing so, we wanted our composition process to be interactive so that you can take inspiration from others and provide inspiration to others. By ticking the "see what others have done" button, you will be able to see the distribution of popular notes that have been voted so far. Of course, if you want to be fully independent in your composition, feel free to tick out the box and explore on your own.
+        </div>
+      </div>
+
+      <div class="col-sm-12 section-home">
+        <h1 class="section-tag">Quality Control</h1>
+        <div class="col-sm-6" style="display: inline-block;">
+          <img class="section-image" src="./img/sc1.png">
+        </div>
+        <div class="section-content">
+          Tasks 1 and 2 needs quality control while task 3 does not. For the first task, adjusting the number of inputs we collect per segment will allow adequent balance between time efficiency, and reducing the influence of damaging inputs. For the second task, flagging features will allow users to flag inappropriate lyric submissions, which will be reviewed manually.
+        </div>
+      </div>
+
+      <div class="col-sm-12 section-home">
+        <h1 class="section-tag">Result</h1>
+        <div class="col-sm-6" style="display: inline-block;">
+          <img class="section-image" src="./img/sc5.png">
+        </div>
+        <div class="section-content">
+          The result should be a whole coherent song. By which I mean a sequence of notes that match with the syllables of the lyrics. We do not provide a feature that converts these notes into vocals. The most popular and or recently finished songs can be viewed in the gallery tab. One can also experiment on completed songs from the gallery tab; changes made in this manner will not be saved in the official release of the song.
+        </div>
+      </div>
+--> 
+  </div> 
+  <div id="loginModal" class="modal"> 
+   <div class="modal-content" style="width: 340px; height: 500px"> 
+    <span class="close">¡¿</span> 
+    <div class="login-div" style="font-family: 'Amita'; font-size: 24px; padding: 40px">
+      Welcome to Melodize 
+    </div> 
+    <div class="login-div"> 
+     <input class="login-input" type="text" id="id" placeholder="ID"> 
+    </div> 
+    <div class="login-div"> 
+     <input class="login-input" type="password" id="pw" placeholder="Password"> 
+    </div> 
+    <div class="login-div" style="padding: 2px; color: red; display: none" id="warning_msg">
+      Wrong ID or Password 
+    </div> 
+    <div class="login-div"> 
+     <button class="btn btn-default login-input" id="loginBtn">Sign in</button> 
+    </div> 
+    <div class="login-div" style="padding: 2px">
+      Don't have an account? 
+     <a href="./signup.html" id="team6_8">Sign up here</a> 
+    </div> 
+   </div> 
+  </div> 
+  <script src="jquery-1.9.0.min.js"></script> 
+  <script src="jquery-ui-1.10.0.custom.min.js"></script> 
+  <script src="jquery-plugin.js"></script> 
+  <script src="firebase.js"></script> 
+  <script src="login.js"></script> 
+  <script src="home.js"></script>  
+ </body>
+</html>

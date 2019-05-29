@@ -1,0 +1,141 @@
+<!doctype html>
+<html>
+ <head> 
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"> 
+  <link rel="icon" href="./img/icon.png"> 
+  <title>Melodize - Profile</title> 
+  <link href="scripts/jquery/css/ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet"> 
+  <link href="css/general.css" rel="stylesheet"> 
+  <link href="css/profile.css" rel="stylesheet"> 
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> 
+  <link href="https://fonts.googleapis.com/css?family=Amita" rel="stylesheet"> 
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> 
+ </head> 
+ <body> 
+  <ul class="nav-ul"> 
+   <li class="nav-li"> 
+    <div onclick="window.location='./index.html';">
+      Melodize 
+    </div></li> 
+   <li class="nav-li"><a id="loginTab">Sign In</a></li> 
+   <li class="nav-li"><a id="profileTab" href="./profile.html" style="display: none">Profile</a></li> 
+   <li class="nav-li"><a href="./gallery.html" id="team6_2">Gallery</a></li> 
+   <li class="nav-li"><a href="./index.html" id="team6_3">Home</a></li> 
+  </ul> 
+  <div id="loader"></div> 
+  <img class="profile-back" id="profileBack" src="./img/empty.png" onerror="this.src = './img/index.png'"> 
+  <div id="mainDiv" style="display: none;" class="animate-bottom"> 
+   <div class="col-sm-4"> 
+    <div class="info-col"> 
+     <div class="profile-box"> 
+      <img id="profilePic" class="profile-pic" src="./img/default-avatar.jpg" onerror="this.src = './img/default-avatar.jpg'"> 
+      <div id="profileId" class="profile-id"></div> 
+      <div class="profile-subbox"> 
+       <table class="profile-tr"> 
+        <tbody> 
+         <tr class="profile-tr"> 
+          <td class="profile-td"><i class="material-icons">audiotrack</i> 
+           <statnum id="profileContributions">
+             0 
+           </statnum><br>Compositions</td> 
+          <td class="profile-td"><i class="material-icons">backup</i> 
+           <statnum id="profileRequestNum">
+             0 
+           </statnum><br>Requests</td> 
+          <td class="profile-td"><i class="material-icons">check_circle</i> 
+           <statnum id="profileScore">
+             0 
+           </statnum><br>Score</td> 
+         </tr> 
+        </tbody> 
+       </table> 
+      </div> 
+      <div class="profile-subbox"> 
+       <button id="changeProfileBtn" class="btn btn-default">Change Profile Pic</button> 
+       <!--<button id="changeBackBtn" class="btn btn-default">Change Background</button>--> 
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+   <div class="col-sm-4"> 
+    <div class="list-tag"> 
+     <redfont id="requestNum">
+       0 
+     </redfont> REQUESTS 
+    </div> 
+    <div id="myRequests"></div> 
+    <br> 
+    <center> 
+     <div id="showMore1" class="showMore"> 
+      <i class="material-icons">?</i> Show More 
+     </div> 
+    </center> 
+    <center> 
+     <button class="green-btn" id="requesterBtn">SUBMIT LYRICS</button> 
+    </center> 
+   </div> 
+   <div class="col-sm-4"> 
+    <div class="list-tag"> 
+     <redfont id="contributionNum">
+       0 
+     </redfont> CONTRIBUTIONS 
+    </div> 
+    <div id="myContributions"></div> 
+    <br> 
+    <center> 
+     <div id="showMore2" class="showMore"> 
+      <i class="material-icons">?</i> Show More 
+     </div> 
+    </center> 
+    <center> 
+     <button class="green-btn" id="workerBtn">START COMPOSING</button> 
+    </center> 
+   </div> 
+  </div> 
+  <div id="loginModal" class="modal"> 
+   <div class="modal-content" style="width: 340px; height: 500px"> 
+    <span class="close">¡¿</span> 
+    <div class="login-div" style="font-family: 'Amita'; font-size: 24px; padding: 40px">
+      Welcome to Melodize 
+    </div> 
+    <div class="login-div"> 
+     <input class="login-input" type="text" id="id" placeholder="ID"> 
+    </div> 
+    <div class="login-div"> 
+     <input class="login-input" type="password" id="pw" placeholder="Password"> 
+    </div> 
+    <div class="login-div" style="padding: 2px; color: red; display: none" id="warning_msg">
+      Wrong ID or Password 
+    </div> 
+    <div class="login-div"> 
+     <button class="btn btn-default login-input" id="loginBtn">Sign in</button> 
+    </div> 
+    <div class="login-div" style="padding: 2px">
+      Don't have an account? 
+     <a href="./signup.html">Sign up here</a> 
+    </div> 
+   </div> 
+  </div> 
+  <div id="profileModal" class="modal"> 
+   <div class="modal-content" style="width: 340px;"> 
+    <span class="close" id="profileClose">¡¿</span> 
+    <br> 
+    <div class="login-div"> 
+     <input class="login-input" id="profileURL" placeholder="New image URL"> 
+    </div> 
+    <center> 
+     <img id="profilePreview" class="profile-pic" " src="." onerror="this.src = './img/default-avatar.jpg'"> 
+    </center> 
+    <div class="login-div"> 
+     <button class="btn btn-default login-input" id="profileBtn">Change</button> 
+    </div> 
+   </div> 
+  </div> 
+  <script src="jquery-1.9.0.min.js"></script> 
+  <script src="jquery-ui-1.10.0.custom.min.js"></script> 
+  <script src="firebase.js"></script> 
+  <script src="login.js"></script> 
+  <script src="profile.js"></script>  
+ </body>
+</html>

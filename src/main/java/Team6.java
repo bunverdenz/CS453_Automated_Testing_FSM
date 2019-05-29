@@ -20,8 +20,15 @@ import com.gargoylesoftware.htmlunit.html.HtmlSubmitInput;
 import com.gargoylesoftware.htmlunit.html.HtmlTextInput;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.util.*;
+
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 // TODO: create new file/class for each function to organize the whole project
 public class Team6 {
@@ -30,7 +37,9 @@ public class Team6 {
      static List<Element> elements = new ArrayList<Element>();
      static List<Node> fsm = new ArrayList<Node>();
      static String root = "https://melodize.github.io/";
-     
+     static String baseid = "team6_";
+     static int countid = 0; 
+     static int nodeid = 0;
      public static void addHTML(Element e1, Node n) throws IOException{
     	 if(n.old) {
       		return;
@@ -40,14 +49,31 @@ public class Team6 {
       	final WebClient webClient = new WebClient(BrowserVersion.CHROME);
       	webClient.getOptions().setThrowExceptionOnScriptError(false);
         webClient.getOptions().setJavaScriptEnabled(true);
-        HtmlPage page;
         String url;
+        HtmlPage page;
         if(n.getDoc() != null) {
-        	url = ((Document) e1).location();
+        	url = n.getDoc().location();
         	page = webClient.getPage(url);
         }else {
-        	page = webClient.getPage(root);
+        	url = root;
+        	page = webClient.getPage(url);
         }
+        String outputname = "";
+        if(url.contentEquals(root)) {
+        	outputname = "index";
+        }else {
+        	String[] temp = url.split("/");
+        	for(String s : temp) {
+        		if(s.contains(".html")) {
+        			outputname = s.substring(0, s.length() - 5);
+        		}
+        	}
+        }
+        String fileName = "C:/Users/chaec/Documents/GitHub/CS453_Automated_Testing_FSM/src/main/resources/" + outputname + ".html";
+        
+        BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(fileName), "utf-8"));
+        
+        
           for(Element e : e1.getAllElements()){      // all elements in html
           	boolean dont = false;
           	if(mod > 0) {
@@ -56,15 +82,17 @@ public class Team6 {
           	}
               tags.add(e.tagName().toLowerCase());    // add each tag in tags List
               if(e.tagName().equals("button")) {
-		          	
-			          
 			        HtmlButton htmlButton;
 			        HtmlPage htmlPage;
-		              
+			        if(e.id() == "") {
+            			e.attr("id", baseid + "" + countid);
+            			countid++;
+            		}else if(e.id().contains("team6_")) {
+            			continue;
+            		}
 		          	htmlButton = (HtmlButton) page.getElementById(e.id());
 		          	try {
 		          		htmlPage = (HtmlPage) htmlButton.click(); 
-		          		System.out.println(htmlPage);
 		          	}catch(Exception x) {
 		          		System.out.print(x);
 		          		continue;
@@ -72,7 +100,7 @@ public class Team6 {
 		          	boolean add = true;
 		              String url1 = htmlPage.getUrl().toString();
 		              String[] temp = url1.split("/");
-		              Document doc2 = Jsoup.connect(url1).get();
+		              Document doc2;
 		              if(url1.contains("http")) {
 		      			try{
 		      				doc2 = Jsoup.connect(url1).get();
@@ -99,16 +127,16 @@ public class Team6 {
 		     				add = false;
 		     			}
 		     		}
-		      		for(Node e2 : n.out) {
-		      			if(e2.getTitle().equals(out.getTitle())){
-		      				dont = true;
-		      				break;
-		      			}
-		      		}
+			       	for(String[] edge : n.edges) {
+          		    	if(edge[1].equals(e.id())){
+          		    		dont = true;
+          		    		break;
+          		    	}
+          		    }
 		      		if(!dont) {
 		      			System.out.println("adding now to " + n.getTitle());
 		      			System.out.println(out.getTitle());
-		      			Object[] edge = {htmlButton, "b"};
+		      			String[] edge = {htmlButton.getId(), "b"};
 		      			n.addToEdge(edge);
 		      			n.addToOut(out);
 		      			if(add) {
@@ -123,13 +151,16 @@ public class Team6 {
               	Elements modale = e.getAllElements();
              	mod = modale.size();
               	String title = e.id();
-              	Node out = new Node(title, e);
+              	Document doc = Jsoup.connect(root).get();
+              	Node out = new Node(title, e, doc);
+              	
               	for(Node node : fsm) {
           			if(node.getTitle().contentEquals(out.getTitle())) {
           				out = node;
           				add = false;
           			}
           		}
+              	
               	for(Node neighbor : n.out) {
               		if(neighbor.getModal() != null) {
               			String ntitle = neighbor.getTitle();
@@ -139,11 +170,13 @@ public class Team6 {
               			}
               		}
               	}
+              	
               	if(!dont) {
               		System.out.println("adding now to " + n.getTitle());
               		System.out.println(out.getTitle());
               		n.addToOut(out);
-              		n.addToEdge(null);
+              		String[] edge = {null, "dud"};
+              		n.addToEdge(edge);
               		if(add) {
               			fsm.add(out);
               		}
@@ -151,6 +184,7 @@ public class Team6 {
               	dont = false;
               	continue;
               }
+              
               for(Attribute att : e.attributes().asList()){
               	String attrKey = att.getKey();
                   String attrVal = att.getValue();
@@ -161,6 +195,12 @@ public class Team6 {
                   		String linkHref = e.attr("href");
                   		String[] temp = linkHref.split("/");
                   		Document doc2;
+                  		if(e.id() == "") {
+                			e.attr("id", baseid + "" + countid);
+                			countid++;
+                		}else if(e.id().contains("team6_")) {
+                			continue;
+                		}
                   		if(linkHref.contains("http")) {
                   			try{
                   				doc2 = Jsoup.connect(linkHref).get();
@@ -187,15 +227,29 @@ public class Team6 {
                   				add = false;
                   			}
                   		}
-              		    for(Node e2 : n.out) {
-                      		if(e2.getTitle().equals(out.getTitle())) {
-  	            				dont = true;
-  	            			}
-  	            		}
+              		    for(String[] edge : n.edges) {
+              		    	if(edge[1].equals(e.id())){
+              		    		dont = true;
+              		    		break;
+              		    	}
+              		    }
                   		if(!dont) {
                   			n.addToOut(out);
-                  			Object[] edge = {e, "e"};
-                  			n.addToEdge(edge);
+                  			String[] edge;
+                  			try {
+                				if(e.id() == "") {
+                					System.out.println("how did I know");
+                					String[] temp1 = {null, "dud"};
+                					edge = temp1;
+                				}else {
+                					String[] temp1 = {e.id(), "e"};
+                					edge = temp1;
+                				}
+                			}catch(Exception x) {
+                				String[] temp1 = {null, "dud"};
+            					edge = temp1;
+                			}
+                			n.addToEdge(edge);
                   			System.out.println("adding now to " + n.getTitle());
                   			System.out.println(out.getTitle());
                   			if(add) {
@@ -208,6 +262,14 @@ public class Team6 {
                       
               }
           }
+          String str = n.getDoc().toString();
+          writer.write(str);
+
+          writer.close();
+          File input = new File(fileName);
+          n.setFile(input);
+          nodeid++;
+          webClient.close();
           for(Node e2 : n.out) {
          	if(e2.getModal() != null) {
          		Element m = e2.getModal();
@@ -236,12 +298,13 @@ public class Team6 {
         Node home = new Node(doc.title(), doc);
         fsm.add(home);
         final WebClient webClient = new WebClient(BrowserVersion.CHROME);
+        String fileName = "C:/Users/chaec/Documents/GitHub/CS453_Automated_Testing_FSM/src/main/resources/test" + nodeid + ".html";
+        BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(fileName), "utf-8"));
         HtmlPage page;
         page = webClient.getPage(root);
         int mod = 0;
         for(Element e : doc.getAllElements()){
         	if(mod > 0) {
-        		System.out.println(e.id());
         		mod--;
         		continue;
         	}
@@ -255,19 +318,23 @@ public class Team6 {
                 webClient.getOptions().setJavaScriptEnabled(true);
                 HtmlButton htmlButton;
                 HtmlPage htmlPage;
-                
+                if(e.id() == "") {
+        			e.attr("id", baseid + "" + countid);
+        			countid++;
+        		}else {
+        			System.out.println(e.id());
+        		}
             	htmlButton = (HtmlButton) page.getElementById(e.id());
             	try {
               		htmlPage = (HtmlPage) htmlButton.click();
-              		System.out.println(htmlPage);
               	}catch(Exception x) {
               		System.out.print(x);
               		continue;
               	}
-              	boolean add = true;
+              		boolean add = true;
                   String url = htmlPage.getUrl().toString();
                   String[] temp = url.split("/");
-                  Document doc2 = Jsoup.connect(url).get();
+                  Document doc2;
                   if(url.contains("http")) {
           			try{
           				doc2 = Jsoup.connect(url).get();
@@ -288,24 +355,23 @@ public class Team6 {
           			}
           		}    
   		       	Node out = new Node(doc2.title(), doc2);
-  		       	System.out.println(out.getTitle());
   		       	for(Node node : fsm) {
          			if(node.getTitle().contentEquals(out.getTitle())) {
          				out = node;
          				add = false;
          			}
          		}
-          		for(Node e2 : home.out) {
-          			if(e2.getTitle().equals(out.getTitle())){
-          				dont = true;
-          				break;
-          			}
-          		}
+			      for(String[] e1 : home.edges) {
+		  			if(e1[1].equals(e.id())){
+		  				dont = true;
+		  				break;
+		  			}
+		  		}
           		if(!dont) {
           			System.out.println("adding now to " + home.getTitle());
           			System.out.println(out.getTitle());
           			home.addToOut(out);
-          			Object[] edge = {htmlButton, "b"};
+          			String[] edge = {htmlButton.getId(), "b"};
           			home.addToEdge(edge);
           			if(add) {
           				fsm.add(out);
@@ -318,10 +384,9 @@ public class Team6 {
             if(e.hasClass("modal")) {
             	boolean add = true;
             	String title = e.id();
-            	Node out = new Node(title, e);
+              	Node out = new Node(title, e, doc);
             	Elements modale = e.getAllElements();
             	mod = modale.size();
-            	System.out.println(mod);
             	for(Node node : fsm) {
         			if(node.getTitle().contentEquals(out.getTitle())) {
         				out = node;
@@ -341,7 +406,8 @@ public class Team6 {
             		System.out.println("adding now to " + home.getTitle());
              		System.out.println(out.getTitle());
             		home.addToOut(out);
-            		home.addToEdge(null);
+            		String[] edge = {null, "dud"};
+            		home.addToEdge(edge);
             		if(add) {
             			fsm.add(out);
             		}
@@ -362,6 +428,10 @@ public class Team6 {
                 		String linkHref = e.attr("href");
                 		String[] temp = linkHref.split("/");
                 		Document doc2;
+                		if(e.id() == "") {
+                			e.attr("id", baseid + "" + countid);
+                			countid++;
+                		}
                 		if(linkHref.contains("http")) {
                 			try{
                 				doc2 = Jsoup.connect(linkHref).get();
@@ -382,15 +452,14 @@ public class Team6 {
                 			}
                 		}    
         		       	Node out = new Node(doc2.title(), doc2);
-        		       	System.out.println(out.getTitle());
         		       	for(Node node : fsm) {
                 			if(node.getTitle().contentEquals(out.getTitle())) {
                 				out = node;
                 				add = false;
                 			}
                 		}
-                		for(Node e1 : home.out) {
-                			if(e1.getTitle().equals(out.getTitle())){
+                		for(String[] e1 : home.edges) {
+                			if(e1[1].equals(e.id())){
                 				dont = true;
                 				break;
                 			}
@@ -399,7 +468,19 @@ public class Team6 {
                 			System.out.println("adding now to home");
                 			System.out.println(out.getTitle());
                 			home.addToOut(out);
-                			Object[] edge = {e, "e"};
+                			String[] edge;
+                			try {
+                				if(e.id() == "") {
+                					String[] temp1 = {null, "dud"};
+                					edge = temp1;
+                				}else {
+                					String[] temp1 = {e.id(), "e"};
+                					edge = temp1;
+                				}
+                			}catch(Exception x) {
+                				String[] temp1 = {null, "e"};
+            					edge = temp1;
+                			}
                 			home.addToEdge(edge);
                 			if(add) {
                 				fsm.add(out);
@@ -410,8 +491,16 @@ public class Team6 {
                 }
             }
         }
-        
-        for(Node e1 : home.out) {
+        String str = home.getDoc().toString();
+        writer.write(str);
+
+        writer.close();
+        File input = new File(fileName);
+        home.setFile(input);
+        nodeid++;
+        webClient.close();
+        for(int i = 0; i < home.out.size(); i ++) {
+        	Node e1 = home.out.get(i);
         	if(e1.getModal() != null) {
         		Element m = e1.getModal();
         		addHTML(m, e1);
@@ -424,6 +513,8 @@ public class Team6 {
         //home.print();
         Node.printgraph(home);
         Node.graphreset(home);
+        //Node.getJS(fsm);
+        Node.getFile(root, fsm);
         Node.graphtraverse(home);
         java.lang.System.exit(0);
     }
