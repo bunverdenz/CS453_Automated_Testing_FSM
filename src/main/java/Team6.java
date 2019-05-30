@@ -46,7 +46,7 @@ public class Team6 {
       	}
       	n.old = true;
       	int mod = 0;
-      	final WebClient webClient = new WebClient(BrowserVersion.CHROME);
+      	WebClient webClient = new WebClient(BrowserVersion.CHROME);
       	webClient.getOptions().setThrowExceptionOnScriptError(false);
         webClient.getOptions().setJavaScriptEnabled(true);
         String url;
@@ -72,7 +72,7 @@ public class Team6 {
         String fileName = "C:/Users/chaec/Documents/GitHub/CS453_Automated_Testing_FSM/src/main/resources/" + outputname + ".html";
         
         BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(fileName), "utf-8"));
-        
+        webClient.close();
         
           for(Element e : e1.getAllElements()){      // all elements in html
           	boolean dont = false;
@@ -82,9 +82,13 @@ public class Team6 {
           	}
               tags.add(e.tagName().toLowerCase());    // add each tag in tags List
               if(e.tagName().equals("button")) {
+            	  	webClient = new WebClient(BrowserVersion.CHROME);
+                	webClient.getOptions().setThrowExceptionOnScriptError(false);
+                	webClient.getOptions().setJavaScriptEnabled(true);
 			        HtmlButton htmlButton;
 			        HtmlPage htmlPage;
-			        if(e.id() == "") {
+			        page = webClient.getPage(url);
+			        if(e.id().contentEquals("")) {
             			e.attr("id", baseid + "" + countid);
             			countid++;
             		}else if(e.id().contains("team6_")) {
@@ -92,7 +96,8 @@ public class Team6 {
             		}
 		          	htmlButton = (HtmlButton) page.getElementById(e.id());
 		          	try {
-		          		htmlPage = (HtmlPage) htmlButton.click(); 
+		          		htmlPage = (HtmlPage) htmlButton.click();
+		          		webClient.close();
 		          	}catch(Exception x) {
 		          		System.out.print(x);
 		          		continue;
@@ -128,7 +133,7 @@ public class Team6 {
 		     			}
 		     		}
 			       	for(String[] edge : n.edges) {
-          		    	if(edge[1].equals(e.id())){
+          		    	if(edge[0] != null && edge[0].equals(e.id())){
           		    		dont = true;
           		    		break;
           		    	}
@@ -195,7 +200,7 @@ public class Team6 {
                   		String linkHref = e.attr("href");
                   		String[] temp = linkHref.split("/");
                   		Document doc2;
-                  		if(e.id() == "") {
+                  		if(e.id().contentEquals("")) {
                 			e.attr("id", baseid + "" + countid);
                 			countid++;
                 		}else if(e.id().contains("team6_")) {
@@ -228,7 +233,7 @@ public class Team6 {
                   			}
                   		}
               		    for(String[] edge : n.edges) {
-              		    	if(edge[1].equals(e.id())){
+              		    	if(edge[0] != null && edge[0].equals(e.id())){
               		    		dont = true;
               		    		break;
               		    	}
@@ -237,7 +242,7 @@ public class Team6 {
                   			n.addToOut(out);
                   			String[] edge;
                   			try {
-                				if(e.id() == "") {
+                				if(e.id().contentEquals("")) {
                 					System.out.println("how did I know");
                 					String[] temp1 = {null, "dud"};
                 					edge = temp1;
@@ -270,15 +275,17 @@ public class Team6 {
           n.setFile(input);
           nodeid++;
           webClient.close();
-          for(Node e2 : n.out) {
-         	if(e2.getModal() != null) {
-         		Element m = e2.getModal();
-         		addHTML(m, e2);
-         	}else {
-         		Document doc2 = e2.getDoc();
-         		addHTML(doc2, e2);
-         	}
+          for(int i = 0; i < n.out.size(); i ++) {
+          	Node node = n.out.get(i);
+          	if(node.getModal() != null) {
+          		Element m = node.getModal();
+          		addHTML(m, node);
+          	}else {
+          		Document doc2 = node.getDoc();
+          		addHTML(doc2, node);
+          	}
   		}
+          
      }
      
     public static void main(String[] args) throws IOException {
@@ -297,13 +304,13 @@ public class Team6 {
         Document doc = Jsoup.connect(root).get();
         Node home = new Node(doc.title(), doc);
         fsm.add(home);
-        final WebClient webClient = new WebClient(BrowserVersion.CHROME);
+       
         String fileName = "C:/Users/chaec/Documents/GitHub/CS453_Automated_Testing_FSM/src/main/resources/test" + nodeid + ".html";
         BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(fileName), "utf-8"));
-        HtmlPage page;
-        page = webClient.getPage(root);
+        
         int mod = 0;
         for(Element e : doc.getAllElements()){
+        	
         	if(mod > 0) {
         		mod--;
         		continue;
@@ -312,13 +319,15 @@ public class Team6 {
             tags.add(e.tagName().toLowerCase());    // add each tag in tags List
             //System.out.println("Tag: "+ e.tag()+" attributes = "+e.attributes());  // attributes with values in string
             //System.out.println("Tag: "+ e.tag()+" attributes = "+e.attributes().asList()); //attributes in List<Attribute>
-            if(e.tagName().equals("button")) {
-            	
-                webClient.getOptions().setThrowExceptionOnScriptError(false);
+            if(e.tagName().equals("button")) {           	
+            	WebClient webClient = new WebClient(BrowserVersion.CHROME);
+            	webClient.getOptions().setThrowExceptionOnScriptError(false);
                 webClient.getOptions().setJavaScriptEnabled(true);
+            	HtmlPage page;
+                page = webClient.getPage(root);
                 HtmlButton htmlButton;
                 HtmlPage htmlPage;
-                if(e.id() == "") {
+                if(e.id().contentEquals("")) {
         			e.attr("id", baseid + "" + countid);
         			countid++;
         		}else {
@@ -326,7 +335,8 @@ public class Team6 {
         		}
             	htmlButton = (HtmlButton) page.getElementById(e.id());
             	try {
-              		htmlPage = (HtmlPage) htmlButton.click();
+              		htmlPage = htmlButton.click();
+              		webClient.close();
               	}catch(Exception x) {
               		System.out.print(x);
               		continue;
@@ -428,7 +438,7 @@ public class Team6 {
                 		String linkHref = e.attr("href");
                 		String[] temp = linkHref.split("/");
                 		Document doc2;
-                		if(e.id() == "") {
+                		if(e.id().equals("")) {
                 			e.attr("id", baseid + "" + countid);
                 			countid++;
                 		}
@@ -470,7 +480,7 @@ public class Team6 {
                 			home.addToOut(out);
                 			String[] edge;
                 			try {
-                				if(e.id() == "") {
+                				if(e.id().contentEquals("")) {
                 					String[] temp1 = {null, "dud"};
                 					edge = temp1;
                 				}else {
@@ -498,7 +508,6 @@ public class Team6 {
         File input = new File(fileName);
         home.setFile(input);
         nodeid++;
-        webClient.close();
         for(int i = 0; i < home.out.size(); i ++) {
         	Node e1 = home.out.get(i);
         	if(e1.getModal() != null) {
@@ -513,7 +522,6 @@ public class Team6 {
         //home.print();
         Node.printgraph(home);
         Node.graphreset(home);
-        //Node.getJS(fsm);
         Node.getFile(root, fsm);
         Node.graphtraverse(home);
         java.lang.System.exit(0);

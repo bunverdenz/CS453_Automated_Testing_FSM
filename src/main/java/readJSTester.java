@@ -61,7 +61,6 @@ public class readJSTester {
    
    public static void downloadFileFromURL(String urlString, String destination) {    
         try {
-        	System.out.println(destination);
             URL website = new URL(urlString);
             ReadableByteChannel rbc;
             java.io.File file = new java.io.File(destination);

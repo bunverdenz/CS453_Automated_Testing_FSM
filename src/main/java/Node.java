@@ -111,7 +111,6 @@ public class Node{
 			System.out.println("to node: " + n.getTitle());
 		}
 		for(Node n : node.out) {
-			
 			printgraph(n);
 		}
 	}
@@ -133,25 +132,20 @@ public class Node{
 		}
 		node.trav = true;
 		java.util.logging.Logger.getLogger("com.gargoylesoftware.htmlunit").setLevel(Level.OFF);
-		final WebClient webClient = new WebClient(BrowserVersion.CHROME);
-      	webClient.getOptions().setThrowExceptionOnScriptError(false);
-        webClient.getOptions().setJavaScriptEnabled(true);
-        final WebClient webClient2 = new WebClient(BrowserVersion.CHROME);
-        webClient2.getOptions().setThrowExceptionOnScriptError(false);
-        webClient2.getOptions().setJavaScriptEnabled(true);
-        HtmlPage page, page2;
-        java.net.URL url = node.myfile.toURI().toURL();
-        String url2 = node.getDoc().location();
-    	page = webClient.getPage(url);
-    	page2 = webClient2.getPage(url2);
+        
         
 		int i = 0;
 		System.out.println("for node: " + node.getTitle());
 		for(String[] edge : node.edges) {
+			
 			Node n = node.out.get(i);
 			String title = ""; 
 			if(edge[0] != null && edge[0].contains("team6")) {
-				page = webClient.getPage(url);
+				WebClient webClient = new WebClient(BrowserVersion.CHROME);
+		      	webClient.getOptions().setThrowExceptionOnScriptError(false);
+		        webClient.getOptions().setJavaScriptEnabled(true);
+		        java.net.URL url = node.myfile.toURI().toURL();
+		    	HtmlPage page = webClient.getPage(url);
 				if(edge[1].equals("b")) {
 					String buttonid = edge[0];
 					HtmlButton button = (HtmlButton) page.getElementById(buttonid);
@@ -161,6 +155,7 @@ public class Node{
 					try {
 						String eid = edge[0];
 						HtmlElement element = (HtmlElement) page.getElementById(eid);
+						System.out.println(element);
 						HtmlPage htmlPage = (HtmlPage) element.click();
 						title = htmlPage.getTitleText();
 					}catch (Exception e) {
@@ -179,10 +174,18 @@ public class Node{
 					System.out.println(title);
 					System.out.println("");
 				}
+				webClient.close();
 			}else {
+				WebClient webClient2 = new WebClient(BrowserVersion.CHROME);
+		        webClient2.getOptions().setThrowExceptionOnScriptError(false);
+		        webClient2.getOptions().setJavaScriptEnabled(true);
+		        HtmlPage page2;
+		        String url2 = node.getDoc().location();
+		    	page2 = webClient2.getPage(url2);
 				if(edge[1].equals("dud")) {
 					System.out.println("mdud");
 					System.out.println(edge[0]);
+					i++;
 					continue;
 				}else if(edge[1].equals("b")) {
 					String buttonid = edge[0];
@@ -204,6 +207,7 @@ public class Node{
 					}catch (Exception e) {
 						title = "error";
 					}
+				
 				}
 				
 				if(!title.equals(n.getTitle())) {
@@ -218,17 +222,19 @@ public class Node{
 					System.out.println(title);
 					System.out.println("");
 				}
+				webClient2.close();
 			}
 			
 			i++;
 		}
 		System.out.println("");
 		System.out.println("");
-		webClient.close();
-		webClient2.close();
-		for(Node n : node.out) {
-			graphtraverse(n);
+		
+		for(int j = 0; j < node.out.size(); j++) {
+          	Node n = node.out.get(j);
+          	graphtraverse(n);
 		}
+
 	}
 	
 	static void getFile(String root, List<Node> fsm) throws IOException {
