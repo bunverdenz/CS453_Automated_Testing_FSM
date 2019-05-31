@@ -57,12 +57,13 @@ public class htmlUnitTester {
     			System.out.println(e1);
     			HtmlElement e3 = (HtmlElement) e1.getElementsByTagName("a").get(0);
     			System.out.println(e3);
-    			HtmlButton b = (HtmlButton) page.getElementById("loginBtn");
+    			HtmlButton b = (HtmlButton) page.getElementById("requesterBtn");
     			b.click();
     			HtmlPage page3 = (HtmlPage) e3.click();
     			System.out.println(page3);
     		}
     	}
+    	
     }
     
     	

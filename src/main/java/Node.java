@@ -29,30 +29,30 @@ import com.gargoylesoftware.htmlunit.javascript.host.URL;
 public class Node{
 	
 	private String title;
-	public Document mydoc;
-	public Element mymodal;
+	private String  mydoc;
+	public boolean mymodal;
 	public File myfile;
 	public ArrayList<Node> out;
 	public boolean old;
 	public boolean trav;
 	public ArrayList<String[]> edges;
 	
-	Node(String title, Element modal, Document doc){
+	Node(String title, String doc, boolean b){
 		out = new ArrayList<Node>();
 		edges = new ArrayList<String[]>();
 		this.title = title;
 		this.mydoc = doc;
-		this.mymodal = modal;
+		this.mymodal = true;
 		this.myfile = null;
 		this.old = false;
 		this.trav = false;
 	}
-	Node(String title, Document doc){
+	Node(String title, String doc){
 		out = new ArrayList<Node>();
 		edges = new ArrayList<String[]>();
 		this.title = title;
 		this.mydoc = doc;
-		this.mymodal = null;
+		this.mymodal = false;
 		this.myfile = null;
 		this.old = false;
 		this.trav = false;
@@ -62,7 +62,7 @@ public class Node{
 	void setFile(File file) {
 		this.myfile = file;
 	}
-	Element getModal() {
+	boolean getModal() {
 		return mymodal;
 	}
 	
@@ -70,7 +70,7 @@ public class Node{
 		return title;
 	}
 	
-	Document getDoc() {
+	String getDoc() {
 		return mydoc;
 	}
 	void addToOut(Node node) {
@@ -101,18 +101,24 @@ public class Node{
 	}
 	
 	static void printgraph(Node node) {
+		
 		if(node.trav) {
 			return;
 		}
+		System.out.print("\n");
 		node.trav = true;
 		System.out.println("from node: " + node.getTitle());
-		
+		int i = 0;
 		for(Node n : node.out) {
+			System.out.println("edge: " + node.edges.get(i)[0]);
 			System.out.println("to node: " + n.getTitle());
+			i++;
 		}
 		for(Node n : node.out) {
 			printgraph(n);
 		}
+		
+
 	}
 	
 	static void graphreset(Node node) {
@@ -180,7 +186,7 @@ public class Node{
 		        webClient2.getOptions().setThrowExceptionOnScriptError(false);
 		        webClient2.getOptions().setJavaScriptEnabled(true);
 		        HtmlPage page2;
-		        String url2 = node.getDoc().location();
+		        String url2 = node.getDoc();
 		    	page2 = webClient2.getPage(url2);
 				if(edge[1].equals("dud")) {
 					System.out.println("mdud");
