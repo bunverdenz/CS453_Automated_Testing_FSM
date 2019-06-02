@@ -10,6 +10,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Attribute;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import org.jsoup.parser.Tag;
 import org.jsoup.select.Elements;
 
 import java.io.BufferedInputStream;
@@ -20,6 +21,8 @@ import java.io.FileWriter;
 
 import com.gargoylesoftware.htmlunit.BrowserVersion;
 import com.gargoylesoftware.htmlunit.WebClient;
+import com.gargoylesoftware.htmlunit.html.DomElement;
+import com.gargoylesoftware.htmlunit.html.DomNodeList;
 import com.gargoylesoftware.htmlunit.html.HtmlButton;
 import com.gargoylesoftware.htmlunit.html.HtmlDivision;
 import com.gargoylesoftware.htmlunit.html.HtmlElement;
@@ -132,82 +135,155 @@ public class Node{
 		}
 	}
 	
-	static void graphtraverse(Node node) throws IOException{
+	static void graphtraverse(Node node) throws IOException, InterruptedException{
 		if(node.trav) {
 			return;
 		}
+		System.out.println();
 		node.trav = true;
 		java.util.logging.Logger.getLogger("com.gargoylesoftware.htmlunit").setLevel(Level.OFF);
-        
-        
-		int i = 0;
+		WebClient webClient = new WebClient(BrowserVersion.CHROME);
+      	webClient.getOptions().setThrowExceptionOnScriptError(false);
+        webClient.getOptions().setJavaScriptEnabled(true);
+        Document doc = Jsoup.parse(node.myfile, "utf-8", "www.example.com/");
+        String url = node.getDoc();
+        System.out.println(url);
 		System.out.println("for node: " + node.getTitle());
-		for(String[] edge : node.edges) {
-			
+		for(int i = 0; i < node.edges.size(); i++) {
+			String[] edge = node.edges.get(i);
 			Node n = node.out.get(i);
+			HtmlPage page = webClient.getPage(url);
 			String title = ""; 
 			if(edge[0] != null && edge[0].contains("team6")) {
-				WebClient webClient = new WebClient(BrowserVersion.CHROME);
-		      	webClient.getOptions().setThrowExceptionOnScriptError(false);
-		        webClient.getOptions().setJavaScriptEnabled(true);
-		        java.net.URL url = node.myfile.toURI().toURL();
-		    	HtmlPage page = webClient.getPage(url);
-				if(edge[1].equals("b")) {
+				if(edge[1].contains("b")) {
+					List<DomElement> buttons = page.getElementsByTagName("button");
 					String buttonid = edge[0];
-					HtmlButton button = (HtmlButton) page.getElementById(buttonid);
-					HtmlPage htmlPage = (HtmlPage) button.click();
-					title = htmlPage.getTitleText();
+					Element button1 = doc.getElementById(buttonid);
+					String href = button1.attr("href");
+					for(DomElement button : buttons) {
+						String comp = button.getAttribute("href");
+						if(href.equals(comp)) {
+							HtmlPage htmlpage = button.click();
+							title = htmlpage.getTitleText();
+						}
+					}
+				}else if(edge[1].equals("e")) {
+					try {
+						Element edge1 = doc.getElementById(edge[0]);
+						String tagname = edge1.tag().toString();
+						List<DomElement> buttons = page.getElementsByTagName(tagname);
+						String href = edge1.attr("href");
+
+						for(DomElement button : buttons) {
+							String comp = button.getAttribute("href");
+							if(href.equals(comp)) {
+								HtmlPage htmlpage = button.click();
+								title = htmlpage.getTitleText();
+							}
+						}
+						
+					}catch (Exception e) {
+						System.out.println(e);
+						title = "error";
+					}
+				}
+				if(edge[1].contentEquals("dud")) {
+					System.out.println("dud");
+					Node out = node.out.get(i);
+					System.out.println(edge[0]);
+					System.out.println(title);
+					System.out.println(out.getTitle());
+				}
+				else if(!title.equals(n.getTitle())) {
+					boolean c = false;
+					if(i < node.edges.size() - 1) {
+						String temp = node.edges.get(i+1)[1];
+						if(edge[1].contentEquals("bc")) { 
+							c = true;
+							node.edges.get(i)[1] = "cdud";
+						}else {
+							node.edges.get(i)[1] = "edud";
+						}
+						node.edges.get(i+1)[1] = temp;
+						//System.out.println(edge[1]);
+					}else {
+						node.edges.get(i)[1] = "edud";
+					}
+					if(c) {
+						System.out.println("cdud");
+						System.out.println("for edge: " + edge[0]);
+						System.out.println("may go to: "+ n.getTitle());
+					}else {
+						System.out.println("edud");
+						System.out.println("for edge: " + edge[0]);
+						System.out.println("should go to: "+ n.getTitle());
+					}
+					System.out.println("goes to " + title);
+					System.out.println("");
+				}else {
+					System.out.println("it works!");
+					System.out.println(edge[0]);
+					System.out.println(title);
+					System.out.println("");
+				}
+			}else {
+				if(edge[1].equals("dud")) {
+					System.out.println("dud");
+					Node out = node.out.get(i);
+					System.out.println(edge[0]);
+					System.out.println(out.getTitle());
+					continue;
+				}else if(edge[1].contains("b")) {
+					String buttonid = edge[0];
+					try {
+						HtmlElement button = (HtmlElement) page.getElementById(buttonid);
+						HtmlPage htmlPage = (HtmlPage) button.click();
+						title = htmlPage.getTitleText();
+						if(n.getModal()) {
+							if(checkModal(htmlPage, n)) {
+								System.out.println("it works!");
+								System.out.println(edge[0]);
+								System.out.println(n.getTitle());
+								System.out.println("");
+							}else {
+								boolean c = false;
+								title = htmlPage.getTitleText();
+								if(i < node.edges.size() - 1) {
+									String temp = node.edges.get(i+1)[1];
+									if(edge[1].contentEquals("bc")) { 
+										c = true;
+										node.edges.get(i)[1] = "cdud";
+									}else {
+										node.edges.get(i)[1] = "edud";
+									}
+									node.edges.get(i+1)[1] = temp;
+									//System.out.println(edge[1]);
+								}else {
+									node.edges.get(i)[1] = "edud";
+								}
+								if(c) {
+									System.out.println("cdud");
+									System.out.println("for edge: " + edge[0]);
+									System.out.println("may go to: "+ n.getTitle());
+								}else {
+									System.out.println("edud");
+									System.out.println("for edge: " + edge[0]);
+									System.out.println("should go to: "+ n.getTitle());
+								}
+								System.out.println("goes to " + title);
+								System.out.println("");
+							}
+							continue;
+						}
+						
+					}catch (Exception e) {
+						System.out.println(e);
+						title = "error";
+					}
 				}else if(edge[1].equals("e")) {
 					try {
 						String eid = edge[0];
 						HtmlElement element = (HtmlElement) page.getElementById(eid);
-						System.out.println(element);
-						HtmlPage htmlPage = (HtmlPage) element.click();
-						title = htmlPage.getTitleText();
-					}catch (Exception e) {
-						title = "error";
-					}
-				}
-				if(!title.equals(n.getTitle())) {
-					edge[1] = "dud";
-					System.out.println("edud");
-					System.out.println(edge[0]);
-					System.out.println(n.getTitle());
-					System.out.println(title);
-					System.out.println("");
-				}else {
-					System.out.println(edge[0]);
-					System.out.println(title);
-					System.out.println("");
-				}
-				webClient.close();
-			}else {
-				WebClient webClient2 = new WebClient(BrowserVersion.CHROME);
-		        webClient2.getOptions().setThrowExceptionOnScriptError(false);
-		        webClient2.getOptions().setJavaScriptEnabled(true);
-		        HtmlPage page2;
-		        String url2 = node.getDoc();
-		    	page2 = webClient2.getPage(url2);
-				if(edge[1].equals("dud")) {
-					System.out.println("mdud");
-					System.out.println(edge[0]);
-					i++;
-					continue;
-				}else if(edge[1].equals("b")) {
-					String buttonid = edge[0];
-					System.out.println(page2);
-					try {
-						HtmlButton button = (HtmlButton) page2.getElementById(buttonid);
-						HtmlPage htmlPage = (HtmlPage) button.click();
-						System.out.println(button);
-						title = htmlPage.getTitleText();
-					}catch (Exception e) {
-						title = "error";
-					}
-				}else if(edge[1].equals("e")) {
-					try {
-						String eid = edge[0];
-						HtmlElement element = (HtmlElement) page2.getElementById(eid);
 						HtmlPage htmlPage = (HtmlPage) element.click();
 						title = htmlPage.getTitleText();
 					}catch (Exception e) {
@@ -217,37 +293,393 @@ public class Node{
 				}
 				
 				if(!title.equals(n.getTitle())) {
-					edge[1] = "dud";
-					System.out.println("edud");
-					System.out.println(edge[0]);
-					System.out.println(n.getTitle());
-					System.out.println(title);
+					boolean c = false;
+					if(i < node.edges.size() - 1) {
+						String temp = node.edges.get(i+1)[1];
+						if(edge[1].contentEquals("bc")) { 
+							c = true;
+							node.edges.get(i)[1] = "cdud";
+						}else {
+							node.edges.get(i)[1] = "edud";
+						}
+						node.edges.get(i+1)[1] = temp;
+						//System.out.println(edge[1]);
+					}else {
+						node.edges.get(i)[1] = "edud";
+					}
+					if(c) {
+						System.out.println("cdud");
+						System.out.println("for edge: " + edge[0]);
+						System.out.println("may go to: "+ n.getTitle());
+					}else {
+						System.out.println("edud");
+						System.out.println("for edge: " + edge[0]);
+						System.out.println("should go to: "+ n.getTitle());
+					}
+					System.out.println("goes to " + title);
 					System.out.println("");
 				}else {
+					System.out.println("it works!");
 					System.out.println(edge[0]);
 					System.out.println(title);
 					System.out.println("");
 				}
-				webClient2.close();
 			}
-			
-			i++;
 		}
-		System.out.println("");
-		System.out.println("");
-		
+		webClient.close();
+
+		System.out.println("--------------------------------------------------------------------");		
 		for(int j = 0; j < node.out.size(); j++) {
           	Node n = node.out.get(j);
-          	graphtraverse(n);
+          	if(n.mymodal) {
+          		graphtraversem(n, node.edges.get(j)[0]);
+          	}else {	
+	          	graphtraverse(n);
+          	}
 		}
 
+	}
+	static void graphtraversem(Node node, String ed) throws IOException, InterruptedException{
+		if(node.trav) {
+			return;
+		}
+		System.out.println();
+		node.trav = true; 
+		System.out.println("for node : " + node.getTitle());
+		java.util.logging.Logger.getLogger("com.gargoylesoftware.htmlunit").setLevel(Level.OFF);
+		String doc = node.getDoc();
+		System.out.println(node.getDoc());
+		File file = node.myfile;
+		Document doc2 = Jsoup.parse(file, "UTF-8", "http://example.com/");
+		WebClient webClient = new WebClient(BrowserVersion.CHROME);
+      	webClient.getOptions().setThrowExceptionOnScriptError(false);
+        webClient.getOptions().setJavaScriptEnabled(true);
+        for(Element e : doc2.getAllElements()) {
+    		if(e.hasClass("modal") && e.id().contentEquals(node.getTitle())) {
+    			for(int i = 0; i < node.edges.size(); i++) {
+    				String[] edge = node.edges.get(i);
+    				Node n = node.out.get(i);
+    				String title = ""; 
+    				HtmlPage page2 = webClient.getPage(doc);
+			        HtmlElement element = (HtmlElement) page2.getElementById(ed);
+			        HtmlPage page = (HtmlPage) element.click();
+    				if(edge[0] != null && edge[0].contains("team6")) {
+    					if(edge[1].contains("b")) {
+    						List<DomElement> buttons = page2.getElementsByTagName("button");
+    						String buttonid = edge[0];
+    						Element button1 = doc2.getElementById(buttonid);
+    						String href = button1.attr("href");
+    						for(DomElement button : buttons) {
+    							String comp = button.getAttribute("href");
+    							if(href.equals(comp)) {
+    								page = element.click();
+    								HtmlPage htmlpage = button.click();
+    								title = htmlpage.getTitleText();
+    								if(n.getDoc().equals(node.getDoc())) {
+    									if(checkReturn(htmlpage, node)) { 
+    									System.out.println("it works!");
+    									System.out.println(edge[0]);
+    									System.out.println(n.getTitle());
+    									System.out.println("");
+    								}else {
+    									boolean c = false;
+    									if(i < node.edges.size() - 1) {
+    										String temp = node.edges.get(i+1)[1];
+    										if(edge[1].contentEquals("bc")) { 
+    											c = true;
+    											node.edges.get(i)[1] = "cdud";
+    										}else {
+    											node.edges.get(i)[1] = "edud";
+    										}
+    										node.edges.get(i+1)[1] = temp;
+    										//System.out.println(edge[1]);
+    									}else {
+    										node.edges.get(i)[1] = "edud";
+    									}
+    									if(c) {
+    										System.out.println("cdud");
+    										System.out.println("for edge: " + edge[0]);
+    										System.out.println("may go to: "+ n.getTitle());
+    									}else {
+    										System.out.println("edud");
+    										System.out.println("for edge: " + edge[0]);
+    										System.out.println("should go to: "+ n.getTitle());
+    									}
+    									System.out.println("goes to " + title);
+    									System.out.println("");
+    								}
+    									continue;
+    								}
+    								
+    							}
+    						}
+    					}else if(edge[1].equals("e")) {
+    						try {
+    							String edgeid = edge[0];
+    							Element edge1 = doc2.getElementById(edgeid);
+    							String tagname = edge1.tag().toString();
+    							List<DomElement> buttons = page2.getElementsByTagName(tagname);
+    							String href = edge1.attr("href");
+        						for(DomElement button : buttons) {
+        							String comp = button.getAttribute("href");
+        							if(href.equals(comp)) {
+        								page = element.click();
+        								HtmlPage htmlpage = button.click();
+        								title = htmlpage.getTitleText();
+        							}
+        						}
+    						}catch (Exception x) {
+    							System.out.println(x);
+    							title = "error";
+    						}
+    					}
+    					if(edge[1].contentEquals("dud")) {
+    						System.out.println("dud");
+    						Node out = node.out.get(i);
+    						System.out.println(edge[0]);
+    						System.out.println(title);
+    						System.out.println(out.getTitle());
+    					}
+    					else if(!title.equals(n.getTitle())) {
+    						boolean c = false;
+    						if(i < node.edges.size() - 1) {
+    							String temp = node.edges.get(i+1)[1];
+    							if(edge[1].contentEquals("bc")) { 
+    								c = true;
+    								node.edges.get(i)[1] = "cdud";
+    							}else {
+    								node.edges.get(i)[1] = "edud";
+    							}
+    							node.edges.get(i+1)[1] = temp;
+    							//System.out.println(edge[1]);
+    						}else {
+    							node.edges.get(i)[1] = "edud";
+    						}
+    						if(c) {
+    							System.out.println("cdud");
+    							System.out.println("for edge: " + edge[0]);
+    							System.out.println("may go to: "+ n.getTitle());
+    						}else {
+    							System.out.println("edud");
+    							System.out.println("for edge: " + edge[0]);
+    							System.out.println("should go to: "+ n.getTitle());
+    						}
+    						System.out.println("goes to " + title);
+    						System.out.println("");
+    					}else {
+    						System.out.println("it works!");
+    						System.out.println(edge[0]);
+    						System.out.println(title);
+    						System.out.println("");
+    					}
+    				}else {
+    			        
+    					if(edge[1].equals("dud")) {
+    						System.out.println("dud");
+    						Node out = node.out.get(i);
+    						System.out.println(edge[0]);
+    						System.out.println(title);
+    						System.out.println(out.getTitle());
+    						continue;
+    					}else if(edge[1].contains("b")) {
+    						String buttonid = edge[0];
+    						try {
+    							HtmlElement button = (HtmlElement) page2.getElementById(buttonid);
+    							HtmlPage htmlPage = (HtmlPage) button.click();
+    							title = htmlPage.getTitleText();
+    							if(n.getDoc().equals(node.getDoc())) {
+									if(checkReturn(htmlPage, node)) { 
+									System.out.println("it works!");
+									System.out.println(edge[0]);
+									System.out.println(n.getTitle());
+									System.out.println("");
+								}else {
+									boolean c = false;
+									if(i < node.edges.size() - 1) {
+										String temp = node.edges.get(i+1)[1];
+										if(edge[1].contentEquals("bc")) { 
+											c = true;
+											node.edges.get(i)[1] = "cdud";
+										}else {
+											node.edges.get(i)[1] = "edud";
+										}
+										node.edges.get(i+1)[1] = temp;
+										//System.out.println(edge[1]);
+									}else {
+										node.edges.get(i)[1] = "edud";
+									}
+									if(c) {
+										System.out.println("cdud");
+										System.out.println("for edge: " + edge[0]);
+										System.out.println("may go to: "+ n.getTitle());
+									}else {
+										System.out.println("edud");
+										System.out.println("for edge: " + edge[0]);
+										System.out.println("should go to: "+ n.getTitle());
+									}
+									System.out.println("goes to " + title);
+									System.out.println("");
+								}
+									continue;
+								}
+    							
+    						}catch (Exception x) {
+    							title = "error";
+    						}
+    					}else if(edge[1].equals("e")) {
+    						try {
+    							String eid = edge[0];
+    							HtmlElement ed1 = (HtmlElement) page2.getElementById(eid);
+    							HtmlPage htmlPage = (HtmlPage) ed1.click();
+    							title = htmlPage.getTitleText();
+    						}catch (Exception x) {
+    							title = "error";
+    						}
+    					
+    					}
+    					
+    					if(!title.equals(n.getTitle())) {
+    						boolean c = false;
+    						if(i < node.edges.size() - 1) {
+    							String temp = node.edges.get(i+1)[1];
+    							if(edge[1].contentEquals("bc")) { 
+    								c = true;
+    								node.edges.get(i)[1] = "cdud";
+    							}else {
+    								node.edges.get(i)[1] = "edud";
+    							}
+    							node.edges.get(i+1)[1] = temp;
+    							//System.out.println(edge[1]);
+    						}else {
+    							node.edges.get(i)[1] = "edud";
+    						}
+    						if(c) {
+    							System.out.println("cdud");
+    							System.out.println("for edge: " + edge[0]);
+    							System.out.println("may go to: "+ n.getTitle());
+    						}else {
+    							System.out.println("edud");
+    							System.out.println("for edge: " + edge[0]);
+    							System.out.println("should go to: "+ n.getTitle());
+    						}
+    						System.out.println("goes to " + title);
+    						System.out.println("");
+    					}else {
+    						System.out.println("it works!");
+    						System.out.println(edge[0]);
+    						System.out.println(title);
+    						System.out.println("");
+    					}
+    				}
+    			}
+    			break;
+    		}
+    	}
+        webClient.close();
+        System.out.println("--------------------------------------------------------------------");		
+		for(int j = 0; j < node.out.size(); j++) {
+          	Node n = node.out.get(j);
+          	if(n.mymodal) {
+          		graphtraversem(n, node.edges.get(j)[0]);
+          	}else {	
+	          	graphtraverse(n);
+          	}
+		}
+        
+	}
+	
+	static boolean checkModal(HtmlPage page, Node n) throws IOException {
+		boolean result = false;
+		Document doc = Jsoup.parse(n.myfile, "utf-8", "www.example.com");
+		 for(Element e : doc.getAllElements()) {
+	    		if(e.hasClass("modal") && e.id().contentEquals(n.getTitle())) {
+	    			for(int i = 0; i < n.edges.size(); i++) {
+	    				String[] edge = n.edges.get(i);
+	    				String edgeid = edge[0];
+	    				boolean found = false;
+	    				try {
+	    					if(!edgeid.contains("team6")) {
+	    						DomElement e1 = page.getElementById(edgeid);
+	    						if(e1 == null) {
+	    							return false;
+	    						}
+	    						continue;
+	    					}
+	    					Element edge1 = doc.getElementById(edgeid);
+	    					
+							String tagname = edge1.tag().toString();
+							List<DomElement> buttons = page.getElementsByTagName(tagname);
+							String href = edge1.attr("href");
+							for(DomElement button : buttons) {
+								String comp = button.getAttribute("href");
+								if(href.equals(comp)) {
+									found = true;
+									break;
+								}
+							}
+	    					if(!found) {
+	    						return false;
+	    					}
+	    				}catch(Exception x) {
+	    					System.out.println(x);
+	    					return false;
+	    				}
+	    			}
+	    		}
+		 }
+		
+		return true;
+	}
+	
+	static boolean checkReturn(HtmlPage page, Node n) throws IOException {
+		boolean result = false;
+		boolean allfound = true;
+		Document doc = Jsoup.parse(n.myfile, "utf-8", "www.example.com");
+		for(int i = 0; i < n.edges.size(); i++) {
+			String[] edge = n.edges.get(i);
+			String edgeid = edge[0];
+			boolean found = false;
+			try {
+				if(!edgeid.contains("team6")) {
+					DomElement e1 = page.getElementById(edgeid);
+					if(e1 != null) {
+						found = true;
+					}
+					return true;
+				}
+				Element edge1 = doc.getElementById(edgeid);
+				
+				String tagname = edge1.tag().toString();
+				List<DomElement> buttons = page.getElementsByTagName(tagname);
+				String href = edge1.attr("href");
+				for(DomElement button : buttons) {
+					String comp = button.getAttribute("href");
+					if(href.equals(comp)) {
+						found = true;
+						break;
+					}
+					if(!found) {
+						return true;
+					}
+				}
+			}catch(Exception x) {
+				System.out.println(x);
+				return false;
+			}
+		}
+		return false;
 	}
 	
 	static void getFile(String root, List<Node> fsm) throws IOException {
 		List<String[]> jses = getJS(fsm);
 		for(String[] s : jses) {
-			if(s[0].length() > 7 && s[0].substring(0, 7).contentEquals("scripts")) {
+			if(!s[0].contains("http")) {
 				String FILE_URL = root + s[0];
+				String FILE_NAME = "C:/Users/chaec/Documents/GitHub/CS453_Automated_Testing_FSM/src/main/resources/" + s[1];
+				readJSTester text = new readJSTester();
+				text.downloadFileFromURL(FILE_URL, FILE_NAME);
+			}else {
+				String FILE_URL = s[0];
 				String FILE_NAME = "C:/Users/chaec/Documents/GitHub/CS453_Automated_Testing_FSM/src/main/resources/" + s[1];
 				readJSTester text = new readJSTester();
 				text.downloadFileFromURL(FILE_URL, FILE_NAME);

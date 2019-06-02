@@ -38,20 +38,44 @@ public class readJSTester {
          lines = text.readSmallTextFile(outputFileName);  
          for(int i = 0; i < lines.size(); i++) {
         	String line = lines.get(i);
+        	
             if(line.contains(".on('click'")) {
-            	if(line.charAt(2) == '\"') {
-            		String temp = "" + line.charAt(3);
-            		int j = 4;
-            		while(line.charAt(j) != '\"') {
-            			temp += line.charAt(j);
-            			j++;
+            	String temp = "";
+            	int ind = line.indexOf(".on('click");
+            	if(line.substring(0, ind).contains("document")) {
+            		ind = line.indexOf(",", ind);
+            		int ind2 = line.indexOf(",", ind+1);
+            		if(ind < 0 || ind2 < 0) {
+            			continue;
             		}
-            		if(temp.charAt(0) == '#') {
-            			temp = temp.substring(1);
+            		temp = line.substring(ind+1, ind2);
+            		if(temp.contains("#")) {
+            			int sharp = temp.indexOf("#");
+            			int end = temp.indexOf("\"", sharp);
+                		if(end < 0) {
+                			end = temp.indexOf("\'", sharp);
+                		}
+                		if(end < 0) {
+                			continue;
+                		}
+                		temp = temp.substring(sharp+1, end);
+            			continue;
             		}
-            		buttons.add(temp);
-            		buttonelements.add(getButtonElements(lines, modals, i));
             	}
+            	if(line.contains("#")) {
+            		int sharp = line.indexOf("#");
+            		int end = line.indexOf("\"", sharp);
+            		if(end < 0) {
+            			end = line.indexOf("\'", sharp);
+            		}
+            		if(end < 0 || sharp < 0) {
+            			continue;
+            		}
+
+            		temp = line.substring(sharp+1, end);            		
+            	}
+            	buttons.add(temp);
+        		buttonelements.add(getButtonElements(lines, modals, i));
             }
          }
          
@@ -152,10 +176,34 @@ public class readJSTester {
 	   ArrayList<String[]> elements = new ArrayList<String[]>();
 	   ArrayList<String[]> hrefs = new ArrayList<String[]>();
 	   int i = num;
+	   int cond = 0;
+	   boolean condon = false;
 	   String line = lines.get(i);
 	   while(!line.contains("})")) {
 		   line = lines.get(i);
 		   i++;
+		   if(line.contains("if")) {
+			  cond++;
+			  condon = true;
+		   }
+		   if(condon) {
+			   if(cond == 0) {
+				   condon = false;
+				   
+			   }
+			   else{
+				   if(line.contains("{")) {
+			   
+					   int count = ( line.split("\\{", -1).length ) - 1;
+					   cond += count;
+				   }
+				   if(line.contains("}")) {
+					   int count = ( line.split("\\}", -1).length ) - 1;
+					   cond -= count;
+				   }
+			   }
+			   
+		   }
 		   if(line.contains("show") || line.contains("hide")) {
 			   String temp = line.trim();
 			   int ind = temp.indexOf('#');
@@ -172,12 +220,22 @@ public class readJSTester {
 			   String targ = temp.substring(ind+1, end);
 			   for(String s : modals) {
 				   if(s.equals(targ)) {
-					   if(line.contains("show")) {
-						   String[] show = {targ, "show"};
-						   elements.add(show);
+					   if(condon) {
+						   if(line.contains("show")) {
+							   String[] show = {targ, "showc"};
+							   elements.add(show);
+						   }else {
+							   String[] hide = {targ, "hidec"};
+							   elements.add(hide);
+						   } 
 					   }else {
-						   String[] hide = {targ, "hide"};
-						   elements.add(hide);
+						   if(line.contains("show")) {
+							   String[] show = {targ, "show"};
+							   elements.add(show);
+						   }else {
+							   String[] hide = {targ, "hide"};
+							   elements.add(hide);
+						   }
 					   }
 				   }
 				   
@@ -196,15 +254,24 @@ public class readJSTester {
 				  int end = line.indexOf(";", var);
 				  String temp = line.substring(var + 1, end);
 				  temp = temp.trim();
-				  if(!(temp.contains("\"") || temp.contains("\'"))) {
-					  type = "hrefvar";
-				  }else if(temp.equals("\"\"")) {
-					  temp = "index.html";
-				  }
+				  if(condon) {
+					  if(!(temp.contains("\"") || temp.contains("\'"))) {
+						  type = "hrefvarc";
+					  }else if(temp.equals("\"\"")) {
+						  type = "hrefc";
+						  temp = "index.html";
+					  }
+				   }else {
+					  if(!(temp.contains("\"") || temp.contains("\'"))) {
+						  type = "hrefvar";
+					  }else if(temp.equals("\"\"")) {
+						  temp = "index.html";
+					  }
+				   }
 				  
 				  String[] href = {temp, type};
 				  elements.add(href);
-				  if(type.equals("hrefvar")) {
+				  if(type.equals("hrefvar") || type.contentEquals("hrefvarc")) {
 					  String[] temp1 = {temp, "" + (elements.size()-1)};
 					  hrefs.add(temp1);
 				  }
@@ -213,112 +280,6 @@ public class readJSTester {
 	   i = num;
 	   if(hrefs.size() > 0) {
 		   line = lines.get(i);
-		   while(!lines.get(i).contains("})")) {
-			   line = lines.get(i);
-			   i++;
-			   for(String[] href : hrefs) {
-				   boolean found = false;
-				   String link = "";
-				   if(line.contains(href[0])) {
-					   int ind1 = line.indexOf(href[0]);
-					   String temp = line.substring(ind1);
-					   int var = line.indexOf("=", ind1);
-					   if(var < 0) {
-							  continue;
-					   }else if(line.charAt(var+1) == '=' || line.charAt(var-1) == '!') {
-						   continue;
-					   }
-					  int end = line.indexOf(";", var);
-					  if(end < 0) {
-						  continue;
-					  }
-					  found = true;
-					  link = line.substring(var + 1, end);
-					  link = temp.trim();
-				   }
-				   if(found) {
-					   if(link.equals("\"\"")) {
-						   link = "index.html";
-					   }
-					   String[] foundtrue = {link, "href"};
-					   elements.set(Integer.parseInt(href[1]), foundtrue);
-				   }
-			   }
-		   }
-	   }
-	   return elements;
-   }
-   
-   public static ArrayList<String[]> getFunctionElements(List<String> lines, List<String> modals, int num){
-	   ArrayList<String[]> elements = new ArrayList<String[]>();
-	   ArrayList<String[]> hrefs = new ArrayList<String[]>();
-	   int hier = 1;
-	   int i = num + 1;
-	   while(hier != 0) {
-		   String line = lines.get(i);
-		   i++;
-		   if(line.contains("{")) {
-			   hier++;
-		   }
-		   if(line.contains("}")){
-			   hier--;
-		   }
-		   if(line.contains("show") || line.contains("hide")) {
-			   String temp = line.trim();
-			   int ind = temp.indexOf('#');
-			   if(ind < 0) {
-				   continue;
-			   }
-			   int end = temp.indexOf('\'', ind);
-			   if(end < 0) {
-				   end = temp.indexOf('\"', ind);
-				   if(end < 0) {
-					   continue;
-				   }
-			   }
-			   String targ = temp.substring(ind+1, end);
-			   for(String s : modals) {
-				   if(s.equals(targ)) {
-					   if(line.contains("show")) {
-						   String[] show = {targ, "show"};
-						   elements.add(show);
-					   }else {
-						   String[] hide = {targ, "hide"};
-						   elements.add(hide);
-					   }
-				   }
-				   
-			   }
-		   }else if(!line.contains(".") && line.contains(");") && !line.contains("});")){
-			   String[] funct = {line.trim(), "func"};
-			   elements.add(funct);
-		   }
-		   else if(line.contains("href")) {
-				  String type = "href";
-				  int ind = line.indexOf("href");
-				  int var = line.indexOf("=", ind);
-				  if(var < 0) {
-					  continue;
-				  }
-				  int end = line.indexOf(";", var);
-				  String temp = line.substring(var + 1, end);
-				  temp = temp.trim();
-				  if(!(temp.contains("\"") || temp.contains("\'"))) {
-					  type = "hrefvar";
-				  }else if(temp.equals("\"\"")) {
-					  temp = "index.html";
-				  }
-				  String[] href = {temp, type};
-				  elements.add(href);
-				  if(type.equals("hrefvar")) {
-					  String[] temp1 = {temp, "" + (elements.size()-1)};
-					  hrefs.add(temp1);
-				  }
-			   }
-	   }
-	   i = num;
-	   if(hrefs.size() > 0) {
-		   String line = lines.get(i);
 		   while(!line.contains("})")) {
 			   line = lines.get(i);
 			   i++;
@@ -347,6 +308,172 @@ public class readJSTester {
 						   link = "index.html";
 					   }
 					   String[] foundtrue = {link, "href"};
+					   if(href[1].contentEquals("hrefvarc")) {
+						   foundtrue[1] = "hrefc";
+					   }
+					   
+					   elements.set(Integer.parseInt(href[1]), foundtrue);
+				   }
+			   }
+		   }
+	   }
+	   return elements;
+   }
+   
+   public static ArrayList<String[]> getFunctionElements(List<String> lines, List<String> modals, int num){
+	   ArrayList<String[]> elements = new ArrayList<String[]>();
+	   ArrayList<String[]> hrefs = new ArrayList<String[]>();
+	   int hier = 1;
+	   int i = num + 1;
+	   int cond = 0;
+	   boolean condon = false;
+	   while(hier != 0) {
+		   String line = lines.get(i);
+		   i++;
+		   if(line.contains("if")) {
+			   	  cond++;
+				  condon = true;
+			   }
+		   if(condon) {
+			   if(cond == 0) {
+				   condon = false;
+				   
+			   }
+			   else{
+				   if(line.contains("{")) {
+			   
+					   int count = ( line.split("\\{", -1).length ) - 1;
+					   cond += count;
+				   }
+				   if(line.contains("}")) {
+					   int count = ( line.split("\\}", -1).length ) - 1;
+					   cond -= count;
+				   }
+			   }
+				   
+			   }
+		   if(line.contains("{")) {
+			   int count = ( line.split("\\{", -1).length ) - 1;
+			   hier += count;
+		   }
+		   if(line.contains("}")){
+			   int count = ( line.split("\\}", -1).length ) - 1;
+			   hier -= count;
+		   }
+		   if(line.contains("show") || line.contains("hide")) {
+			   String temp = line.trim();
+			   int ind = temp.indexOf('#');
+			   if(ind < 0) {
+				   continue;
+			   }
+			   int end = temp.indexOf('\'', ind);
+			   if(end < 0) {
+				   end = temp.indexOf('\"', ind);
+				   if(end < 0) {
+					   continue;
+				   }
+			   }
+			   String targ = temp.substring(ind+1, end);
+			   for(String s : modals) {
+				   if(condon) {
+					   if(line.contains("show")) {
+						   String[] show = {targ, "showc"};
+						   elements.add(show);
+					   }else {
+						   String[] hide = {targ, "hidec"};
+						   elements.add(hide);
+					   } 
+				   }else {
+					   if(line.contains("show")) {
+						   String[] show = {targ, "show"};
+						   elements.add(show);
+					   }else {
+						   String[] hide = {targ, "hide"};
+						   elements.add(hide);
+					   }
+				   }
+				   
+			   }
+		   }else if(!line.contains(".") && line.contains(");") && !line.contains("});")){
+			   String[] funct = {line.trim(), "func"};
+			   elements.add(funct);
+		   }
+		   else if(line.contains("href")) {
+				  String type = "href";
+				  int ind = line.indexOf("href");
+				  int var = line.indexOf("=", ind);
+				  if(var < 0) {
+					  continue;
+				  }
+				  int end = line.indexOf(";", var);
+				  String temp = line.substring(var + 1, end);
+				  temp = temp.trim();
+				  if(condon) {
+					  if(!(temp.contains("\"") || temp.contains("\'"))) {
+						  type = "hrefvarc";
+					  }else if(temp.equals("\"\"")) {
+						  type = "hrefc";
+						  temp = "index.html";
+					  }
+				   }else {
+					  if(!(temp.contains("\"") || temp.contains("\'"))) {
+						  type = "hrefvar";
+					  }else if(temp.equals("\"\"")) {
+						  temp = "index.html";
+					  }
+				   }
+				  String[] href = {temp, type};
+				  elements.add(href);
+				  if(type.equals("hrefvar")) {
+					  String[] temp1 = {temp, "" + (elements.size()-1)};
+					  hrefs.add(temp1);
+				  }
+			   }
+	   }
+	   i = num;
+	   hier = 1;
+	   if(hrefs.size() > 0) {
+		   String line = lines.get(i);
+		   while(hier != 0) {
+			   if(line.contains("{")) {
+				   int count = ( line.split("{", -1).length ) - 1;
+				   hier += count;
+			   }
+			   if(line.contains("}")){
+				   int count = ( line.split("}", -1).length ) - 1;
+				   hier -= count;
+			   }
+			   line = lines.get(i);
+			   i++;
+			   for(String[] href : hrefs) {
+				   boolean found = false;
+				   String link = "";
+				   if(line.contains(href[0])) {
+					   int ind1 = line.indexOf(href[0]);
+					   String temp = line.substring(ind1);
+					   int var = line.indexOf("=", ind1);
+					   if(var < 0) {
+							  continue;
+					   }else if(line.charAt(var+1) == '=' || line.charAt(var-1) == '!') {
+						   continue;
+					   }
+					  int end = line.indexOf(";", var);
+					  if(end < 0) {
+						  continue;
+					  }
+					  found = true;
+					  link = line.substring(var + 1, end);
+					  link = temp.trim();
+				   }
+				   if(found) {
+					   if(link.equals("\"\"")) {
+						   link = "index.html";
+					   }
+					   String[] foundtrue = {link, "href"};
+					   if(href[1].contentEquals("hrefvarc")) {
+						   foundtrue[1] = "hrefc";
+					   }
+					   
 					   elements.set(Integer.parseInt(href[1]), foundtrue);
 				   }
 			   }

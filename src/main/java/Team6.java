@@ -36,260 +36,12 @@ public class Team6 {
      static List<String> attrs = new ArrayList<String>(); //record attributes
      static List<Element> elements = new ArrayList<Element>();
      static List<Node> fsm = new ArrayList<Node>();
-     static String root = "https://melodize.github.io/";
+     static String root = "https://effective-relic-240011.appspot.com/";
      static String baseid = "team6_";
      static int countid = 0; 
      static int nodeid = 0;
-     /*public static void addHTML(Element e1, Node n) throws IOException{
-    	 if(n.old) {
-      		return;
-      	}
-      	n.old = true;
-      	int mod = 0;
-      	WebClient webClient = new WebClient(BrowserVersion.CHROME);
-      	webClient.getOptions().setThrowExceptionOnScriptError(false);
-        webClient.getOptions().setJavaScriptEnabled(true);
-        String url;
-        HtmlPage page;
-        if(n.getDoc() != null) {
-        	url = n.getDoc().location();
-        	page = webClient.getPage(url);
-        }else {
-        	url = root;
-        	page = webClient.getPage(url);
-        }
-        String outputname = "";
-        if(url.contentEquals(root)) {
-        	outputname = "index";
-        }else {
-        	String[] temp = url.split("/");
-        	for(String s : temp) {
-        		if(s.contains(".html")) {
-        			outputname = s.substring(0, s.length() - 5);
-        		}
-        	}
-        }
-        String fileName = "C:/Users/chaec/Documents/GitHub/CS453_Automated_Testing_FSM/src/main/resources/" + outputname + ".html";
-        
-        BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(fileName), "utf-8"));
-        webClient.close();
-        
-          for(Element e : e1.getAllElements()){      // all elements in html
-          	boolean dont = false;
-          	if(mod > 0) {
-          		mod--;
-         		continue;
-          	}
-              tags.add(e.tagName().toLowerCase());    // add each tag in tags List
-              if(e.tagName().equals("button")) {
-            	  	webClient = new WebClient(BrowserVersion.CHROME);
-                	webClient.getOptions().setThrowExceptionOnScriptError(false);
-                	webClient.getOptions().setJavaScriptEnabled(true);
-			        HtmlButton htmlButton;
-			        HtmlPage htmlPage;
-			        page = webClient.getPage(url);
-			        if(e.id().contentEquals("")) {
-            			e.attr("id", baseid + "" + countid);
-            			countid++;
-            		}else if(e.id().contains("team6_")) {
-            			continue;
-            		}
-		          	htmlButton = (HtmlButton) page.getElementById(e.id());
-		          	try {
-		          		htmlPage = (HtmlPage) htmlButton.click();
-		          		webClient.close();
-		          	}catch(Exception x) {
-		          		System.out.print(x);
-		          		continue;
-		          	}
-		          	boolean add = true;
-		              String url1 = htmlPage.getUrl().toString();
-		              String[] temp = url1.split("/");
-		              Document doc2;
-		              if(url1.contains("http")) {
-		      			try{
-		      				doc2 = Jsoup.connect(url1).get();
-		      			}catch (Exception x){
-		      				continue;
-		      			}
-		      		}else if(temp.length > 1) {
-		      			try{
-		      				doc2 = Jsoup.connect(root + temp[1]).get();
-		      			}catch (Exception x){
-		      				continue;
-		      			}
-		      		}else {
-		      			try{
-		      				doc2 = Jsoup.connect(root + url1).get();
-		      			}catch (Exception x){
-		      				continue;
-		      			}
-		      		}    
-			       	Node out = new Node(doc2.title(), doc2);
-			       	for(Node node : fsm) {
-		     			if(node.getTitle().contentEquals(out.getTitle())) {
-		     				out = node;
-		     				add = false;
-		     			}
-		     		}
-			       	for(String[] edge : n.edges) {
-          		    	if(edge[0] != null && edge[0].equals(e.id())){
-          		    		dont = true;
-          		    		break;
-          		    	}
-          		    }
-		      		if(!dont) {
-		      			System.out.println("adding now to " + n.getTitle());
-		      			System.out.println(out.getTitle());
-		      			String[] edge = {htmlButton.getId(), "b"};
-		      			n.addToEdge(edge);
-		      			n.addToOut(out);
-		      			if(add) {
-		      				fsm.add(out);
-		      			}
-		      		}
-		      		dont = false;
-		      		continue;
-          	}
-              if(e.hasClass("modal") && !e.equals(e1)) {
-              	boolean add = true;
-              	Elements modale = e.getAllElements();
-             	mod = modale.size();
-              	String title = e.id();
-              	Document doc = Jsoup.connect(root).get();
-              	Node out = new Node(title, e, doc);
-              	
-              	for(Node node : fsm) {
-          			if(node.getTitle().contentEquals(out.getTitle())) {
-          				out = node;
-          				add = false;
-          			}
-          		}
-              	
-              	for(Node neighbor : n.out) {
-              		if(neighbor.getModal() != null) {
-              			String ntitle = neighbor.getTitle();
-              			if(ntitle.equals(title)) {
-              				dont = true;
-              				break;
-              			}
-              		}
-              	}
-              	
-              	if(!dont) {
-              		System.out.println("adding now to " + n.getTitle());
-              		System.out.println(out.getTitle());
-              		n.addToOut(out);
-              		String[] edge = {null, "dud"};
-              		n.addToEdge(edge);
-              		if(add) {
-              			fsm.add(out);
-              		}
-              	}
-              	dont = false;
-              	continue;
-              }
-              
-              for(Attribute att : e.attributes().asList()){
-              	String attrKey = att.getKey();
-                  String attrVal = att.getValue();
-                  attrs.add(attrKey.toLowerCase());
-                  if(attrKey.contentEquals("href")) {
-                  	if(attrVal.contains("html")) {
-                  		boolean add = true;
-                  		String linkHref = e.attr("href");
-                  		int first = linkHref.indexOf("/");
-                  		String temp = linkHref.substring(first + 1);
-                  		Document doc2;
-                  		if(e.id().contentEquals("")) {
-                			e.attr("id", baseid + "" + countid);
-                			countid++;
-                		}else if(e.id().contains("team6_")) {
-                			continue;
-                		}
-                  		if(linkHref.contains("http")) {
-                  			try{
-                  				doc2 = Jsoup.connect(linkHref).get();
-                  			}catch (Exception x){
-                  				continue;
-                  			}
-                  		}else if(temp.length() > 1) {
-                  			try{
-                  				doc2 = Jsoup.connect(root + temp).get();
-                  			}catch (Exception x){
-                  				continue;
-                  			}
-                  		}else {
-                  			try{
-                  				doc2 = Jsoup.connect(root + linkHref).get();
-                  			}catch (Exception x){
-                  				continue;
-                  			}
-                  		}        		       	
-              		    Node out = new Node(doc2.title(), doc2);
-              		    for(Node node : fsm) {
-                  			if(node.getTitle().contentEquals(out.getTitle())) {
-                  				out = node;
-                  				add = false;
-                  			}
-                  		}
-              		    for(String[] edge : n.edges) {
-              		    	if(edge[0] != null && edge[0].equals(e.id())){
-              		    		dont = true;
-              		    		break;
-              		    	}
-              		    }
-                  		if(!dont) {
-                  			n.addToOut(out);
-                  			String[] edge;
-                  			try {
-                				if(e.id().contentEquals("")) {
-                					System.out.println("how did I know");
-                					String[] temp1 = {null, "dud"};
-                					edge = temp1;
-                				}else {
-                					String[] temp1 = {e.id(), "e"};
-                					edge = temp1;
-                				}
-                			}catch(Exception x) {
-                				String[] temp1 = {null, "dud"};
-            					edge = temp1;
-                			}
-                			n.addToEdge(edge);
-                  			System.out.println("adding now to " + n.getTitle());
-                  			System.out.println(out.getTitle());
-                  			if(add) {
-                  				fsm.add(out);
-                  			}
-                  		}
-                  		dont = false;
-                  	}
-                  }
-                      
-              }
-          }
-          String str = n.getDoc().toString();
-          writer.write(str);
-
-          writer.close();
-          File input = new File(fileName);
-          n.setFile(input);
-          nodeid++;
-          webClient.close();
-          for(int i = 0; i < n.out.size(); i ++) {
-          	Node node = n.out.get(i);
-          	if(node.getModal() != null) {
-          		Element m = node.getModal();
-          		addHTML(m, node);
-          	}else {
-          		Document doc2 = node.getDoc();
-          		addHTML(doc2, node);
-          	}
-  		}
-          
-     }*/
      
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, InterruptedException {
     	
     	java.util.logging.Logger.getLogger("com.gargoylesoftware.htmlunit").setLevel(Level.OFF);
     	
@@ -302,7 +54,7 @@ public class Team6 {
                 "ondrag","ondragend","ondrop","onscroll","ondragstart",
                 "onload","alert");
 
-        Document doc = Jsoup.connect(root).get();
+        Document doc = Jsoup.parse(new File("C:/Users/chaec/Documents/GitHub/CS453_Automated_Testing_FSM/src/main/resources/test_base.html"), "utf-8", "https://www.example.com/");
         Node home = new Node(doc.title(), doc.location());
         fsm.add(home);
         ArrayList<ArrayList> result = preprocess(doc);
@@ -315,19 +67,52 @@ public class Team6 {
         Node.printgraph(home);
         Node.graphreset(home);
         //Node.getFile(root, fsm);
-        //Node.graphtraverse(home);
+        Node.graphtraverse(home);
         java.lang.System.exit(0);
     }
-    static ArrayList<ArrayList> preprocess(Document doc) throws IOException {
+    
+    static ArrayList<ArrayList> preprocess(Document doc) throws IOException, InterruptedException {
     	List<String> modals = new ArrayList<String>();
     	List<String> jses = new ArrayList<String>();
+    	List<String[]> htmlactions = new ArrayList<String[]>();
+    	List<ArrayList> functions = new ArrayList<ArrayList>();
     	ArrayList<ArrayList> elements = new ArrayList<ArrayList>();
     	ArrayList<String[]> buttons = new ArrayList<String[]>();
+    	int num = 0;
+    	functions = jstester.preprocessdoc(doc);
     	for(Element e : doc.getAllElements()){
+    		
     		if(e.hasClass("modal")) {
     			String title = e.id();
     			modals.add(title);
     		}
+    		if(e.hasAttr("onclick")) {
+    			String func = e.attr("onclick");
+    			if(e.id() != "") {
+    				if(func.contains("(")) {
+    					int paren = func.indexOf("(");
+    					if(paren > 0) {
+    						func = func.substring(0, paren);    		
+
+    					}
+    				}
+    				String[] temp = {e.id(),func};
+    				buttons.add(temp);
+    			}else {
+    				if(func.contains("(")) {
+    					int paren = func.indexOf("(");
+    					if(paren > 0) {
+    						func = func.substring(0, paren);    			
+    					}
+    				}
+    				String[] temp = {"" + num,func};
+    				buttons.add(temp);
+    				num++;
+    			}
+    			
+    		}
+    		
+    		
     		for(Attribute att : e.attributes().asList()) {
     			if(att.getKey().contentEquals("src") && att.getValue().contains(".js")) {
     				if(att.getValue().contains("http")) {
@@ -339,6 +124,7 @@ public class Team6 {
     		}
     	}
     	
+    	
     	for(String js : jses) {
     		ArrayList<ArrayList> result = readJSTester.getJSInfo(js, "C:/Users/chaec/Documents/GitHub/CS453_Automated_Testing_FSM/src/main/resources/output.txt", modals);
     		buttons.addAll(result.get(0));
@@ -347,22 +133,28 @@ public class Team6 {
     	ArrayList<ArrayList> result = new ArrayList<ArrayList>();
     	result.add(buttons);
     	result.add(elements);
+    	ArrayList<ArrayList> result2 = jstester.addEdgesHTML(buttons, functions);
     	return result;
     }
     
     static String processhref(String href) {
     	String result = href;
     	int slash = href.indexOf("/");
-    	if(!href.contains("html")) {
+    	if(!(href.contains("/") || href.contains("html"))) {
     		return "-1";
     	}
-    	if(slash >= 0 && slash < 2) {
+    	
+    	if(href.contains("http") || href.contains("www.") || href.contains(".org") || href.contains(".com") || href.contains(".net")){
+    		if(href.contains(root)) {
+    			return result;
+    		}
+    		return "-1";
+    	}else if(slash >= 0 && slash < 2) {
     		result = root + href.substring(slash + 1);
     	}else if(href.contains("html")) {
     		result = root + href;
-    	}else {
-    		
-    		return "-1";
+    	}else if(href.contentEquals("/")) {
+    		result = root;
     	}
     	
     	return result;
@@ -384,7 +176,11 @@ public class Team6 {
         	ArrayList<String[]> edgeelement = edgeelements.get(i);
         	for(String[] arr : edgeelement) {
         		boolean add = true;
-        		if(arr[1].contentEquals("href")) {
+        		boolean found = false;
+        		if(arr[1].contains("href")) {
+        			if(arr[1].contentEquals("hrefc")){
+        				edge[1] = "bc";
+        			}
         			String link;
         			if(arr[0].contains("\"")) {
         				link = arr[0].substring(1, arr[0].length()-1);
@@ -393,35 +189,65 @@ public class Team6 {
         				link = arr[0];
         			}
         			link = processhref(link);
+        			if(link.contentEquals("-1")) {
+                		continue;
+                	}
     				Document doc2 = Jsoup.connect(link).get();
     				Node out = new Node(doc2.title(), doc2.location());
-    				System.out.println("adding now to: " + doc.title() + " edge: " + edge[0] + " to node : " + out.getTitle());    				
+    				    				
     				for(Node node : fsm) {
-            			if(node.getTitle().contentEquals(out.getTitle())) {
+            			if(node.getDoc().contentEquals(out.getDoc())) {
             				out = node;
             				add = false;
             				break;
             			}
         			}
+    				int n = 0;
+    				for(String[] edge1 : home.edges) {
+
+                		Node node = home.out.get(n);
+                		if(edge1[0].equals(button) && node.getDoc().equals(out.getDoc())) {
+                			found = true;
+                		}
+                		n++;
+                	}
+            		if(found) {
+                		continue;
+                	}
     				home.addToOut(out);
     				home.addToEdge(edge);
-    				
+    				System.out.println("adding now to: " + doc.title() + " edge: " + edge[0] + " to node : " + out.getDoc());
         			if(add) {
         				fsm.add(out);
         			}
-        		}else if(arr[1].contentEquals("show")){
+        		}else if(arr[1].contains("show")){
+        			if(arr[1].contentEquals("showc")){
+        				edge[1] = "bc";
+        			}
         			Node out = new Node(arr[0], doc.location(), true);
-    				System.out.println("adding now to: " + doc.title() + " edge: " + edge[0] + " to node : " + out.getTitle());
+    				
     				for(Node node : fsm) {
-            			if(node.getTitle().contentEquals(out.getTitle())) {
+            			if(node.getDoc().contentEquals(out.getDoc())) {
             				out = node;
             				add = false;
             				break;
             			}
         			}
+    				int n = 0;
+    				for(String[] edge1 : home.edges) {
+
+                		Node node = home.out.get(n);
+                		if(edge1[0].equals(button) && node.getDoc().equals(out.getDoc())) {
+                			found = true;
+                		}
+                		n++;
+                	}
+            		if(found) {
+                		continue;
+                	}
     				home.addToOut(out);
         			home.addToEdge(edge);
-        			
+        			System.out.println("adding now to: " + doc.title() + " edge: " + edge[0] + " to node : " + out.getDoc());
         			if(add) {
         				fsm.add(out);
         			}
@@ -443,9 +269,16 @@ public class Team6 {
         	if(!there) {
         		continue;
         	}
-        	for(String[] arr : edgeelement) {
+        	
+        	
+        	for(int j = 0; j < edgeelement.size(); j++) {
         		boolean add = true;
-        		if(arr[1].contentEquals("href")) {
+        		String[] arr = edgeelement.get(j);
+        		boolean found = false;
+        		if(arr[1].contains("href")) {
+        			if(arr[1].contentEquals("hrefc")){
+        				edge[1] = "bc";
+        			}
         			String link;
         			if(arr[0].contains("\"")) {
         				link = arr[0].substring(1, arr[0].length()-1);
@@ -453,33 +286,64 @@ public class Team6 {
         			}else {
         				link = arr[0];
         			}
+        			
         			link = processhref(link);
+        			if(link.contentEquals("-1")) {
+                		continue;
+                	}
     				Document doc2 = Jsoup.connect(link).get();
     				Node out = new Node(doc2.title(), doc2.location());
-    				System.out.println("adding now to: " + home.getTitle() + " edge: " + edge[0] + " to node : " + out.getTitle());    				
+    								
     				for(Node node : fsm) {
-            			if(node.getTitle().contentEquals(out.getTitle())) {
+            			if(node.getDoc().contentEquals(out.getDoc())) {
             				out = node;
             				add = false;
             				break;
             			}
         			}
+    				int n = 0;
+    				for(String[] edge1 : home.edges) {
+                		Node node = home.out.get(n);
+                		if(edge1[0].equals(button) && node.getDoc().equals(out.getDoc())) {
+                			found = true;
+                		}
+                		n++;
+                	}
+            		if(found) {
+                		continue;
+                	}
     				home.addToOut(out);
     				home.addToEdge(edge);
-    				
+    				System.out.println("adding now to: " + home.getTitle() + " edge: " + edge[0] + " to node : " + out.getDoc());    
         			if(add) {
         				fsm.add(out);
         			}
-        		}else if(arr[1].contentEquals("hide")){
+        		}else if(arr[1].contains("hide")){
+        			if(arr[1].contentEquals("hidec")){
+        				edge[1] = "bc";
+        			}
         			Node out = new Node(doc.title(), doc.location(), true);
-    				System.out.println("adding now to: " + home.getTitle() + " edge: " + edge[0] + " to node : " + out.getTitle());
+    				
     				for(Node node : fsm) {
-            			if(node.getTitle().contentEquals(out.getTitle())) {
+            			if(node.getDoc().contentEquals(out.getDoc())) {
             				out = node;
             				add = false;
             				break;
             			}
         			}
+    				int n = 0;
+    				for(String[] edge1 : home.edges) {
+                		
+                		Node node = home.out.get(n);
+                		if(edge1[0].equals(button) && node.getDoc().equals(out.getDoc())) {
+                			found = true;
+                		}
+                		n++;
+                	}
+            		if(found) {
+                		continue;
+                	}
+            		System.out.println("adding now to: " + home.getTitle() + " edge: " + edge[0] + " to node : " + out.getDoc());
     				home.addToOut(out);
         			home.addToEdge(edge);
         			
@@ -491,26 +355,34 @@ public class Team6 {
         }
     }
     
-    static void addHTML(Node node) throws IOException {
-    	
+    static void addHTML(Node node) throws IOException, InterruptedException {
     	if(node.old) {
       		return;
       	}
     	System.out.println("");
-      	node.old = true;
-    	String root = node.getDoc();
-    	Document doc = Jsoup.connect(root).get();
+      	String url = node.getDoc();
+    	Document doc = Jsoup.connect(url).get();
         ArrayList<ArrayList> result = preprocess(doc);
         ArrayList<String> elements = result.get(0);
         ArrayList<ArrayList> edgeelements = result.get(1);
         ArrayList<String> compare = new ArrayList<String>();
+        
+        int premod = 0;
         for(Element e : doc.getAllElements()) {
+        	if(premod > 0) {
+        		premod--;
+        		continue;
+        	}
+        	if(e.hasClass("modal")) {
+            	Elements modale = e.getAllElements();
+            	premod = modale.size();
+            	continue;
+            }
         	if(!e.id().equals("")) {
         		compare.add(e.id());
         	}
         }
         getJSElements(doc, elements, compare, edgeelements, node);
-        String url = node.getDoc();
         String outputname = "";
         if(url.contentEquals(root)) {
         	outputname = "index";
@@ -521,7 +393,15 @@ public class Team6 {
         			outputname = s.substring(0, s.length() - 5);
         		}
         	}
+        	if(outputname.equals("")) {
+            	outputname = temp[temp.length-1];
+            }
         }
+        if(outputname.contains("?")) {
+        	int ind = outputname.indexOf('?');
+        	outputname = outputname.substring(0, ind) + nodeid;
+        }
+        
         String fileName = "C:/Users/chaec/Documents/GitHub/CS453_Automated_Testing_FSM/src/main/resources/" + outputname + ".html";
         BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(fileName), "utf-8"));
         
@@ -534,7 +414,6 @@ public class Team6 {
         	boolean dont = false;
         	
             String tag = e.tagName().toLowerCase();
-
             if(e.hasClass("modal")) {
             	Elements modale = e.getAllElements();
             	mod = modale.size();
@@ -551,30 +430,29 @@ public class Team6 {
                 		continue;
                 	}
                 	if(e.id().contentEquals("")) {
-            			e.attr("id", baseid + "" + countid);
+              			e.attr("id", baseid + "" + countid);
             			countid++;
             		}else if(e.id().contains("team6_")) {
             			continue;
             		}
                 	Document doc2 = Jsoup.connect(link).get();
                 	boolean add = true;
-    		       	Node out = new Node(doc2.title(), doc2.location());
+    		       	Node out = new Node(doc2.title(), link);
     		       	for(Node neighbors : fsm) {
-            			if(neighbors.getTitle().contentEquals(out.getTitle())) {
+            			if(neighbors.getDoc().contentEquals(out.getDoc())) {
             				out = neighbors;
             				add = false;
             			}
             		}
-            		for(String[] e1 : node.edges) {
-            			if(e1[1].equals(e.id())){
-            				dont = true;
-            				break;
-            			}
-            		}
+    		       	int n = 0;
+    		       	for(String[] edge1 : node.edges) {
+                		Node node1 = node.out.get(n);
+                		if(edge1[0].equals(e.id()) && node1.getDoc().equals(out.getDoc())) {
+                			dont = true;
+                		}
+                		n++;
+                	}
             		if(!dont) {
-            			System.out.println("adding now to " + node.getTitle());
-            			System.out.println(out.getTitle());
-            			node.addToOut(out);
             			String[] edge;
             			try {
             				if(e.id().contentEquals("")) {
@@ -588,7 +466,9 @@ public class Team6 {
             				String[] temp1 = {null, "e"};
         					edge = temp1;
             			}
+            			node.addToOut(out);
             			node.addToEdge(edge);
+            			System.out.println("adding now to " + node.getTitle() + " edge: " + edge[0] + " to node: " + out.getDoc());
             			if(add) {
             				fsm.add(out);
             			}
@@ -604,7 +484,7 @@ public class Team6 {
         File input = new File(fileName);
         node.setFile(input);
         nodeid++;
-        
+        node.old = true;
         for(int i = 0; i < node.out.size(); i ++) {
         	Node e1 = node.out.get(i);
         	if(e1.getModal()) {
@@ -615,15 +495,15 @@ public class Team6 {
         	
 		}
     }
-    static void addModal(Node node) throws IOException {
+    static void addModal(Node node) throws IOException, InterruptedException {
     	
     	if(node.old) {
     		return;
     	}
     	System.out.println("");
     	node.old = true;
-    	String root = node.getDoc();
-    	Document doc = Jsoup.connect(root).get();
+    	String url = node.getDoc();
+    	Document doc = Jsoup.connect(url).get();
         ArrayList<ArrayList> result = preprocess(doc);
         ArrayList<String> elements = result.get(0);
         ArrayList<ArrayList> edgeelements = result.get(1);
@@ -636,6 +516,17 @@ public class Team6 {
         }
         if(modale == null) {
         	return;
+        }
+        String outputname = "";
+        if(url.contentEquals(root)) {
+        	outputname = "index";
+        }else {
+        	String[] temp = url.split("/");
+        	for(String s : temp) {
+        		if(s.contains(".html")) {
+        			outputname = s.substring(0, s.length() - 5);
+        		}
+        	}
         }
         for(Element e : modale.getAllElements()) {
         	if(!e.id().equals("")) {
@@ -660,29 +551,29 @@ public class Team6 {
                 		continue;
                 	}
                 	if(e.id().contentEquals("")) {
-            			e.attr("id", baseid + "" + countid);
+              			e.attr("id", baseid + "" + countid);
             			countid++;
             		}else if(e.id().contains("team6_")) {
             			continue;
             		}
                 	Document doc2 = Jsoup.connect(link).get();
                 	boolean add = true;
-    		       	Node out = new Node(doc2.title(), doc2.location());
+    		       	Node out = new Node(doc2.title(), link);
     		       	for(Node neighbors : fsm) {
-            			if(neighbors.getTitle().contentEquals(out.getTitle())) {
+            			if(neighbors.getDoc().contentEquals(out.getDoc())) {
             				out = neighbors;
             				add = false;
             			}
             		}
-            		for(String[] e1 : node.edges) {
-            			if(e1[1].equals(e.id())){
-            				dont = true;
-            				break;
-            			}
-            		}
+    		    	int n = 0;
+    		       	for(String[] edge1 : node.edges) {
+                		Node node1 = node.out.get(n);
+                		if(edge1[0].equals(e.id()) && node1.getDoc().equals(out.getDoc())) {
+                			dont = true;
+                		}
+                		n++;
+                	}
             		if(!dont) {
-            			System.out.println("adding now to " + node.getTitle());
-            			System.out.println(out.getTitle());
             			node.addToOut(out);
             			String[] edge;
             			try {
@@ -698,6 +589,7 @@ public class Team6 {
         					edge = temp1;
             			}
             			node.addToEdge(edge);
+            			System.out.println("adding now to " + node.getTitle() + " edge: " + edge[0] + " to node: " + out.getDoc());
             			if(add) {
             				fsm.add(out);
             			}
