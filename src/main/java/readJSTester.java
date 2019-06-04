@@ -30,6 +30,9 @@ public class readJSTester {
    static List<String> lines = new ArrayList<String>();          
 
    public static ArrayList<ArrayList> getJSInfo(String webFileName, String outputFileName, List<String> modals) throws IOException{
+	  
+	   //System.out.println(webFileName);
+	   
 	   ArrayList<ArrayList> buttonelements = new ArrayList<ArrayList>();
 	   ArrayList<String> buttons = new ArrayList<String>();
 	   readJSTester text = new readJSTester();
@@ -37,8 +40,9 @@ public class readJSTester {
          downloadFileFromURL(webFileName, outputFileName);
          lines = text.readSmallTextFile(outputFileName);  
          for(int i = 0; i < lines.size(); i++) {
-        	String line = lines.get(i);
         	
+        	String line = lines.get(i);
+        	//System.out.println(line);
             if(line.contains(".on('click'")) {
             	String temp = "";
             	int ind = line.indexOf(".on('click");

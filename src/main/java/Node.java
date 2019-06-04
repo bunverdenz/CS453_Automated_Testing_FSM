@@ -30,7 +30,7 @@ import com.gargoylesoftware.htmlunit.html.HtmlPage;
 import com.gargoylesoftware.htmlunit.javascript.host.URL;
 
 public class Node{
-	
+	static String root = "http://melodize.github.io/";
 	private String title;
 	private String  mydoc;
 	public boolean mymodal;
@@ -135,7 +135,243 @@ public class Node{
 		}
 	}
 	
-	static void graphtraverse(Node node) throws IOException, InterruptedException{
+	static boolean checkhref(String href) {
+    	boolean result = true;
+    	int slash = href.indexOf("/");
+    	if(!(href.contains("/") || href.contains("html"))) {
+    		return false;
+    	}
+    	
+    	if(href.contains("http") || href.contains("www.") || href.contains(".org") || href.contains(".com") || href.contains(".net") || href.contains(".jpg") || href.contains(".png")){
+    		if(href.contains(root)) {
+    			return result;
+    		}
+    		return false;
+    	}
+    	return true;
+    }
+	
+	/*static void graphtraverse(Node root) {
+		WebClient webClient = new WebClient(BrowserVersion.CHROME);
+      	webClient.getOptions().setThrowExceptionOnScriptError(false);
+        webClient.getOptions().setJavaScriptEnabled(true);
+        Document doc = Jsoup.parse(root.myfile, "utf-8", "www.example.com/");
+        String url = root.getDoc();
+	}*/
+	
+	static void graphtraverse(Node node, HtmlPage p) throws IOException, InterruptedException{
+		if(node.trav) {
+			return;
+		}
+		System.out.println();
+		node.trav = true;
+		java.util.logging.Logger.getLogger("com.gargoylesoftware.htmlunit").setLevel(Level.OFF);
+		/*WebClient webClient = new WebClient(BrowserVersion.CHROME);
+      	webClient.getOptions().setThrowExceptionOnScriptError(false);
+        webClient.getOptions().setJavaScriptEnabled(true);*/
+        Document doc = Jsoup.parse(node.myfile, "utf-8", "www.example.com/");
+        String url = node.getDoc();
+        System.out.println(url);
+		System.out.println("for node: " + node.getTitle());
+		
+		for(int i = 0; i < node.edges.size(); i++) {
+			System.out.println(i);
+
+			String[] edge = node.edges.get(i);
+			Node n = node.out.get(i);
+			//HtmlPage page = webClient.getPage(url);
+			String title = ""; 
+			if(edge[0] != null && edge[0].contains("team6")) {
+				if(edge[1].contains("b")) {
+					List<DomElement> buttons = p.getElementsByTagName("button");
+					String buttonid = edge[0];
+					Element button1 = doc.getElementById(buttonid);
+					String href = button1.attr("href");
+					String ind = edge[0].substring(6);
+					System.out.println(ind);
+					int index = Integer.parseInt(ind);
+					int compare = -1;
+					for(DomElement button : buttons) {
+						if(button.hasAttribute("onclick")) {
+							if(!edge[1].contentEquals("bh")) {
+								continue;
+							}else {
+								if(checkhref("href") && button.getId().contentEquals("")) {
+									compare++;
+								}
+							}
+						}
+						String comp = button.getAttribute("href");
+						if(checkhref("href") && button.getId().contentEquals("")) {
+							compare++;
+						}
+						if(compare == index) {
+							HtmlPage htmlpage = button.click();
+							title = htmlpage.getTitleText();
+							if(n.getModal()) {
+								if(checkModal(htmlpage, n)) {
+									System.out.println("it works!");
+									System.out.println(edge[0]);
+									System.out.println(n.getTitle());
+									System.out.println("");
+									graphtraverse(n, htmlpage);
+									break;
+								}
+							}else if(node.getModal()) {
+								if(checkReturn(htmlpage, n)) {
+									System.out.println("it works!");
+									System.out.println(edge[0]);
+									System.out.println(n.getTitle());
+									System.out.println("");
+									graphtraverse(n, htmlpage);
+									break;
+								}
+							}
+							if(title.equals(n.getTitle())) {
+								System.out.println("it works!");
+								System.out.println(edge[0]);
+								System.out.println(n.getTitle());
+								System.out.println("");
+								graphtraverse(n, htmlpage);
+							}
+						}
+					}
+				}else if(edge[1].equals("e")) {
+					try {
+						Element edge1 = doc.getElementById(edge[0]);
+						String tagname = edge1.tag().toString();
+						List<DomElement> buttons = p.getElementsByTagName(tagname);
+						String href = edge1.attr("href");
+						String ind  = edge[0].substring(6);
+						int index = Integer.parseInt(ind);
+						System.out.println(index);
+						int compare = -1;
+						for(DomElement button : buttons) {
+							String comp = button.getAttribute("href");
+							if(button.hasAttribute("onclick")) {
+								continue;
+							}
+							if(checkhref("href") && button.getId().contentEquals("")) {
+								compare++;
+							}
+							if(compare == index) {
+								System.out.println(index);
+								HtmlPage htmlpage = button.click();
+								title = htmlpage.getTitleText();
+								if(title.equals(n.getTitle())) {
+									System.out.println("it works!");
+									System.out.println(edge[0]);
+									System.out.println(n.getTitle());
+									System.out.println("");
+									graphtraverse(n, htmlpage);
+									break;
+								}
+							}
+						}
+						
+					}catch (Exception e) {
+						System.out.println(e);
+						title = "error";
+					}
+				}
+			}else {
+				if(edge[1].equals("dud")) {
+					System.out.println("dud");
+					Node out = node.out.get(i);
+					System.out.println(edge[0]);
+					System.out.println(out.getTitle());
+					continue;
+				}else if(edge[1].contains("b")) {
+					String buttonid = edge[0];
+					try {
+						HtmlElement button = (HtmlElement) p.getElementById(buttonid);
+						HtmlPage htmlPage = (HtmlPage) button.click();
+						title = htmlPage.getTitleText();
+						if(n.getModal()) {
+
+							if(checkModal(htmlPage, n)) {
+								System.out.println("it works!");
+								System.out.println(edge[0]);
+								System.out.println(n.getTitle());
+								System.out.println("");
+								graphtraverse(n, htmlPage);
+								continue;
+							}
+								
+						}else if(node.getModal()) {
+							if(checkReturn(htmlPage, n)) {
+								System.out.println("it works!");
+								System.out.println(edge[0]);
+								System.out.println(n.getTitle());
+								System.out.println("");
+								graphtraverse(n, htmlPage);
+								continue;
+							}
+						
+						}else {
+							System.out.println("it works!");
+							System.out.println(edge[0]);
+							System.out.println(n.getTitle());
+							System.out.println("");
+							graphtraverse(n, htmlPage);
+							continue;
+						}
+						}catch (Exception e) {
+						System.out.println(e);
+						title = "error";
+					}
+				}else if(edge[1].equals("e")) {
+					try {
+						String eid = edge[0];
+						HtmlElement element = (HtmlElement) p.getElementById(eid);
+						HtmlPage htmlPage = (HtmlPage) element.click();
+						title = htmlPage.getTitleText();
+						if(title.equals(n.getTitle())) {
+							System.out.println("it works!");
+							System.out.println(edge[0]);
+							System.out.println(n.getTitle());
+							System.out.println("");
+							graphtraverse(n, htmlPage);
+							continue;
+						}
+					}catch (Exception e) {
+						title = "error";
+					}
+				
+				}
+				boolean c = false;
+				
+				if(i < node.edges.size() - 1) {
+					String temp = node.edges.get(i+1)[1];
+					if(edge[1].contentEquals("bc")) { 
+						c = true;
+						node.edges.get(i)[1] = "cdud";
+					}else {
+						node.edges.get(i)[1] = "edud";
+					}
+					node.edges.get(i+1)[1] = temp;
+				}else {
+					node.edges.get(i)[1] = "edud";
+				}
+				if(c) {
+					System.out.println("cdud");
+					System.out.println("for edge: " + edge[0]);
+					System.out.println("may go to: "+ n.getTitle());
+				}else {
+					System.out.println("edud");
+					System.out.println("for edge: " + edge[0]);
+					System.out.println("should go to: "+ n.getTitle());
+				}
+				System.out.println("goes to " + title);
+				System.out.println("");
+			}
+			
+			
+		}
+		System.out.println("--------------------------------------------------------------------");	
+	}
+	
+	/*static void graphtraverse(Node node) throws IOException, InterruptedException{
 		if(node.trav) {
 			return;
 		}
@@ -173,12 +409,14 @@ public class Node{
 						String tagname = edge1.tag().toString();
 						List<DomElement> buttons = page.getElementsByTagName(tagname);
 						String href = edge1.attr("href");
-
+							
 						for(DomElement button : buttons) {
 							String comp = button.getAttribute("href");
 							if(href.equals(comp)) {
+								System.out.println(comp);
 								HtmlPage htmlpage = button.click();
 								title = htmlpage.getTitleText();
+								break;
 							}
 						}
 						
@@ -205,7 +443,7 @@ public class Node{
 							node.edges.get(i)[1] = "edud";
 						}
 						node.edges.get(i+1)[1] = temp;
-						//System.out.println(edge[1]);
+
 					}else {
 						node.edges.get(i)[1] = "edud";
 					}
@@ -586,10 +824,9 @@ public class Node{
           	}
 		}
         
-	}
+	}*/
 	
 	static boolean checkModal(HtmlPage page, Node n) throws IOException {
-		boolean result = false;
 		Document doc = Jsoup.parse(n.myfile, "utf-8", "www.example.com");
 		 for(Element e : doc.getAllElements()) {
 	    		if(e.hasClass("modal") && e.id().contentEquals(n.getTitle())) {
@@ -606,9 +843,9 @@ public class Node{
 	    						continue;
 	    					}
 	    					Element edge1 = doc.getElementById(edgeid);
-	    					
 							String tagname = edge1.tag().toString();
 							List<DomElement> buttons = page.getElementsByTagName(tagname);
+							
 							String href = edge1.attr("href");
 							for(DomElement button : buttons) {
 								String comp = button.getAttribute("href");

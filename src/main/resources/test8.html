@@ -1,0 +1,109 @@
+<!doctype html>
+<html>
+ <head> 
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"> 
+  <link rel="icon" href="./img/icon.png"> 
+  <title>Melodize - Gallery</title> 
+  <link href="scripts/jquery/css/ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet" id="team6_0"> 
+  <link href="css/general.css" rel="stylesheet" id="team6_0"> 
+  <link href="css/gallery.css" rel="stylesheet" id="team6_0"> 
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> 
+  <link href="https://fonts.googleapis.com/css?family=Amita" rel="stylesheet"> 
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> 
+ </head> 
+ <body> 
+  <ul class="nav-ul"> 
+   <li class="nav-li">
+    <div onclick="window.location='./index.html';">
+     Melodize
+    </div></li> 
+   <li class="nav-li"><a id="loginTab">Sign In</a></li> 
+   <li class="nav-li"><a id="profileTab" href="./profile.html" style="display: none">Profile</a></li> 
+   <li class="nav-li"><a href="./gallery.html" id="team6_0">Gallery</a></li> 
+   <li class="nav-li"><a href="./index.html" id="team6_1">Home</a></li> 
+  </ul> 
+  <dir id="loader"></dir> 
+  <div id="mainDiv" style="display: none;" class="animate-bottom container"> 
+   <!--<div class="statBoard">
+        <div class="title">Total Users: </div><div class="info" id="totalUsers">0 users</div>
+        <div class="title">Requests: </div><div class="info" id="requests">0 lyrics</div>
+        <div class="title">Completed: </div><div class="info" id="completed"> 0 songs</div>
+      </div>--> 
+   <div class="col-sm-5"> 
+    <table id="leaderboard" class="leaderboard" style="width: 100%;"> 
+     <tbody>
+      <tr> 
+       <th class="list-tag">RANK</th> 
+       <th>USER</th> 
+       <th>SCORE</th> 
+      </tr> 
+     </tbody>
+    </table> 
+    <center>
+     <div id="showMore" class="showMore">
+      <i class="material-icons"></i> Show More
+     </div>
+    </center> 
+   </div> 
+   <div id="board" class="col-sm-7"> 
+    <div class="inBox"> 
+     <div style="font-family: 'Amita'; font-size: 24px;">
+      Statistics
+     </div>
+     <br> 
+     <div class="title">
+      Total Users: 
+     </div>
+     <statnum id="totalUsers">
+      0
+     </statnum>
+     <span class="info"> users</span> 
+     <div class="title">
+      Requests: 
+     </div>
+     <statnum id="requests">
+      0
+     </statnum>
+     <span class="info"> lyrics</span> 
+     <div class="title">
+      Completed: 
+     </div>
+     <statnum id="completed">
+      0
+     </statnum>
+     <span class="info"> songs</span> 
+    </div> 
+   </div> 
+  </div> 
+  <div id="loginModal" class="modal"> 
+   <div class="modal-content" style="width: 340px; height: 500px"> 
+    <span class="close">×</span> 
+    <div class="login-div" style="font-family: 'Amita'; font-size: 24px; padding: 40px">
+     Welcome to Melodize
+    </div> 
+    <div class="login-div">
+     <input class="login-input" type="text" id="id" placeholder="ID">
+    </div> 
+    <div class="login-div">
+     <input class="login-input" type="password" id="pw" placeholder="Password">
+    </div> 
+    <div class="login-div" style="padding: 2px; color: red; display: none" id="warning_msg">
+     Wrong ID or Password
+    </div> 
+    <div class="login-div">
+     <button class="btn btn-default login-input" id="loginBtn">Sign in</button>
+    </div> 
+    <div class="login-div" style="padding: 2px">
+     Don't have an account? 
+     <a href="./signup.html">Sign up here</a>
+    </div> 
+   </div> 
+  </div> 
+  <script src="scripts/jquery/js/jquery-1.9.0.min.js"></script> 
+  <script src="scripts/jquery/js/jquery-ui-1.10.0.custom.min.js"></script> 
+  <script src="https://www.gstatic.com/firebasejs/3.6.2/firebase.js"></script> 
+  <script src="scripts/login.js"></script> 
+  <script src="scripts/gallery.js"></script>  
+ </body>
+</html>

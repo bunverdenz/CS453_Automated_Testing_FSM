@@ -39,6 +39,7 @@ public class jstester {
 	         boolean func = false;
 	     	for(String line : lines) {
 	     		if(line.contains("function")) {
+	     			//System.out.println(line);
 	     			func = true;
 	     			String[] temp = line.split(" ");
 	     			String temp1 = temp[temp.length- 1];
@@ -55,7 +56,6 @@ public class jstester {
 	         int i = 0;
 	         int ind = 0;
 	     	for(String line : lines) {
-	     		System.out.println(line);
 	     		if(ind == 0) {
 	     			func = false;
 	     		}
@@ -64,7 +64,7 @@ public class jstester {
 	     			String temp1 = temp[temp.length- 1];
 	     			if(temp1.contains("(")) {
 	     				func = true;
-	         			ind = 1;
+	         			ind = -1;
 	     			}else {
 	     				func = false;
 	     				ind = 0;
@@ -72,7 +72,9 @@ public class jstester {
 	     		}
 	     		if(func) {  
 	   			  if(line.contains("{")) {
-	   				   
+	   				  if(ind == -1) {
+	   					  ind = 0;
+	   				  }
 	   				  int count = ( line.split("\\{", -1).length ) - 1;
 	   				  ind += count;
 	   			  }
@@ -85,36 +87,37 @@ public class jstester {
 	   	      		  }
 	  				   
 	   			  }
+	   			  line = line.trim();
+ 				  if(line.contains("hide")) {
+	   					int bind = line.indexOf(".hide");
+	   					String modal = "hide_" + line.substring(0, bind);
+	   					functionelements.get(i).add(modal);
+	   					continue;
+	   					
+ 				  }else if(line.contains("show")) {
+ 					  	int bind = line.indexOf(".show");
+ 					  	String modal = "show_" + line.substring(0, bind);
+ 					  	functionelements.get(i).add(modal);
+ 					  	continue;
+ 				  }
+ 				  if(line.contains("href") && line.substring(0, 13).equals("location.href") && ind == 1) {
+ 					  if(line.contains("=")) {
+ 						  int eq = line.indexOf('=');
+ 						  int semi = line.indexOf(';', eq);
+ 						 if(eq > 0) {
+	      						  String var; 
+	      						  if(semi > eq) {
+	      							  var = line.substring(eq + 1, semi);
+	      						  }else {
+	      							  var = line.substring(eq + 1);
+ 						  }
+ 							  functionelements.get(i).add("href_" + var);
+ 					  }
+ 					  }
+ 				  }
 	   			  if(line.contains("onclick")) {
-	   				  line = line.trim();
-	   				  if(line.contains("hide")) {
-		   					int bind = line.indexOf(".hide");
-		   					String modal = "hide_" + line.substring(0, bind);
-		   					functionelements.get(i).add(modal);
-		   					continue;
-		   					
-	   				  }else if(line.contains("show")) {
-	   					  	int bind = line.indexOf(".show");
-	   					  	String modal = "show_" + line.substring(0, bind);
-	   					  	functionelements.get(i).add(modal);
-	   					  	continue;
-	   				  }
-	   				  if(line.substring(0, 13).equals("location.href") && ind == 1) {
-	   					  if(line.contains("=")) {
-	   						  int eq = line.indexOf('=');
-	   						  int semi = line.indexOf(';', eq);
-	   						 if(eq > 0) {
-		      						  String var; 
-		      						  if(semi > eq) {
-		      							  var = line.substring(eq + 1, semi);
-		      						  }else {
-		      							  var = line.substring(eq + 1);
-	   						  }
-	   						  
-	   							  functionelements.get(i).add(var);
-	   					  }
-	   					  }
-	   				  }else if(line.contains("setAttribute")) {
+	   				  
+	   					  if(line.contains("setAttribute")) {
 	   					  
 	   					  int bind = line.indexOf(".setAttribute");
 	   					  String button = line.substring(0, bind);
@@ -187,7 +190,6 @@ public class jstester {
 			 if(line.contains(button)) {
 				 line = line.trim();
 				 if(line.contains("=")) {
-					
 					 int eqind = line.indexOf("=");
 					 int semi = line.indexOf(";");
 					 if(eqind > 0) {
@@ -219,13 +221,17 @@ public class jstester {
 		 ArrayList<String> buttons = new ArrayList<String>();
 		 ArrayList<ArrayList> functions = new ArrayList<ArrayList>();
 		 for(String[] b : temp) {
+			 
 			 ArrayList<String[]> edges = new ArrayList<String[]>();
 			 String func = b[1];
+			 //System.out.println(func);
 			 buttons.add(b[0]);
 			 for(ArrayList<String> arr : functions2) {
-
-				 if(func.equals(arr.get(0))) {				 
+				 System.out.println(arr.get(0));
+				 if(func.equals(arr.get(0))) {	
+					 System.out.println(func);
 					 for(String s : arr) {
+						System.out.println(s);
 						String[] result = processfunctions(s);
 						if(result[0] != null) {
 							edges.add(result);
@@ -282,8 +288,7 @@ public class jstester {
 			 String target = s.substring(6);
 			 result[0] = target;
 			 result[1] = "hide";
-		 }else if(s.contains("func_"))
-		 {
+		 }else if(s.contains("func_")){
 			 String target = s.substring(6);
 			 result[0] = target;
 			 result[1] = "func";
