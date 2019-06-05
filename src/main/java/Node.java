@@ -39,13 +39,13 @@ public class Node{
 	public boolean old;
 	public boolean trav;
 	public int numin;
-	public ArrayList<String[]> edges;
+	public ArrayList<ArrayList> edges;
 	
 	public static ArrayList<String> printGraphList;
 	
 	Node(String title, String doc, boolean b){
 		out = new ArrayList<Node>();
-		edges = new ArrayList<String[]>();
+		edges = new ArrayList<ArrayList>();
 		printGraphList = new ArrayList<String>();
 		
 		this.title = title;
@@ -58,7 +58,7 @@ public class Node{
 	}
 	Node(String title, String doc){
 		out = new ArrayList<Node>();
-		edges = new ArrayList<String[]>();
+		edges = new ArrayList<ArrayList>();
 		this.title = title;
 		this.mydoc = doc;
 		this.mymodal = false;
@@ -88,7 +88,11 @@ public class Node{
 	}
 	
 	void addToEdge(String[] e) {
-		edges.add(e);
+		
+		ArrayList<String[]> newedge = new ArrayList<String[]>();
+		newedge.add(e);
+		this.edges.add(newedge);
+		
 	}
 	
 	Node getOutNode(int i) {
@@ -120,12 +124,44 @@ public class Node{
 		System.out.println("from node: " + node.getTitle());
 		int i = 0;
 		for(Node n : node.out) {
-			System.out.println("edge: " + node.edges.get(i)[0]);
+			ArrayList<String[]> edges = node.edges.get(i);
+			System.out.println("edge: " + edges.get(0)[0]);
 			System.out.println("to node: " + n.getTitle());
 			i++;
 		}
 		for(Node n : node.out) {
 			printgraph(n);
+		}
+	}
+	
+	static void printgraphafter(Node node) {
+		if(node.trav) {
+			
+			return;
+		}
+		System.out.print("\n");
+		node.trav = true;
+		System.out.println("from node: " + node.getTitle());
+		int i = 0;
+		for(Node n : node.out) {
+			ArrayList<String[]> edges = node.edges.get(i);
+			System.out.println("edge: " + edges.get(0)[0]);
+			System.out.println("edge: " + edges.get(0)[1]);
+			System.out.println("to node: " + n.getTitle());
+			if(!edges.get(0)[0].contentEquals("dud")) {
+				System.out.println("new path!");
+				for(String[] edge : edges) {
+					for(int j = 2; j < edge.length; j++) {
+						System.out.println(edge[j]);
+					}
+				}
+				
+				System.out.println("\\\\\\\\");
+			}
+			i++;
+		}
+		for(Node n : node.out) {
+			printgraphafter(n);
 		}
 	}
 	
@@ -139,9 +175,8 @@ public class Node{
 		printGraphList.add("fn: " + node.getTitle());
 		int i = 0;
 		for(Node n : node.out) {
-			//System.out.println("edge: " + node.edges.get(i)[0]);
-			printGraphList.add("ed: " + node.edges.get(i)[0]);
-			//System.out.println("to node: " + n.getTitle());
+			ArrayList<String[]> edges = node.edges.get(i);
+			printGraphList.add("ed: " + edges.get(0)[0]);
 			printGraphList.add("tn: " + n.getTitle());
 			i++;
 		}
@@ -151,7 +186,8 @@ public class Node{
 	}
 	
 	static void graphreset(Node node) {
-		if(!node.old && !node.trav) { //|| (node.getDoc().contentEquals(root.getDoc())) || (node.getTitle().contentEquals(root.getTitle()))) {
+		
+		if(!node.trav) { //|| (node.getDoc().contentEquals(root.getDoc())) || (node.getTitle().contentEquals(root.getTitle()))) {
 			return;
 		}
 		node.old = false;
@@ -159,6 +195,18 @@ public class Node{
 		for(Node n : node.out) {
 			graphreset(n);
 		}
+		
+	}
+	
+	static void prereset(Node node) {
+		if(node.trav) { //|| (node.getDoc().contentEquals(root.getDoc())) || (node.getTitle().contentEquals(root.getTitle()))) {
+			return;
+		}
+		node.trav = true;
+		for(Node n : node.out) {
+			prereset(n);
+		}
+		
 	}
 	
 	static void graphreset(Node node, Node root) {
@@ -196,11 +244,14 @@ public class Node{
         String url = root.getDoc();
 	}*/
 	
-	static void graphtraverse(Node root, Node node, HtmlPage p) throws IOException, InterruptedException{
+	static void graphtraverse(Node root, Node node, HtmlPage p, ArrayList<String> path) throws IOException, InterruptedException{
 		if(node.trav) {
 			return;
 		}
-		
+		ArrayList<String> temppath = new ArrayList<String>();
+		for(String edge : path) {
+			temppath.add(edge);
+		}
 		if(node.equals(root)) {
 			WebClient webClient = new WebClient(BrowserVersion.CHROME);
 	      	webClient.getOptions().setThrowExceptionOnScriptError(false);
@@ -221,18 +272,28 @@ public class Node{
 		
 		for(int i = 0; i < node.edges.size(); i++) {
 			System.out.println(node.getTitle());
+			path = new ArrayList<String>();
+			for(String edge : temppath) {
+				path.add(edge);
+			}
+			if(node.equals(root)) {
+				path = new ArrayList<String>();
+			}
 			
 			System.out.println(i);
 			boolean found = false;
-			String[] edge = node.edges.get(i);
+			ArrayList<String[]> edges = node.edges.get(i);
+			
+			
+			String[] edge = edges.get(0);
 			Node n = node.out.get(i);
-			/*if(node.equals(root) && !n.getDoc().contentEquals(root.getDoc()) && !n.getTitle().contentEquals(root.getTitle())) {
-				graphreset(n, root);
-			}*/
+			if(!n.getTitle().contentEquals(node.getTitle())) {
+				path.add(edges.get(0)[0]);
+			}
 			System.out.println(edge[0]);
 			System.out.println(edge[1]);
 			System.out.println(n.getTitle());
-			//HtmlPage page = webClient.getPage(url);
+			
 			String title = ""; 
 			if(edge[0] != null && edge[0].contains("team6")) {
 				
@@ -263,31 +324,37 @@ public class Node{
 							if(n.getModal()) {
 								if(checkModal(htmlpage, n)) {
 									System.out.println("it works!");
+									String[] arraypath = convertarray(path);
+									node.edges.get(i).add(arraypath);
 									System.out.println(edge[0]);
 									System.out.println(n.getTitle());
 									System.out.println(n.equals(node));
 									System.out.println("");
-									graphtraverse(root, n, htmlpage);
+									graphtraverse(root, n, htmlpage, path);
 									found = true;
 									break;
 								}
 							}else if(node.getModal()) {
 								if(checkReturn(htmlpage, n)) {
 									System.out.println("it works!");
+									String[] arraypath = convertarray(path);
+									node.edges.get(i).add(arraypath);
 									System.out.println(edge[0]);
 									System.out.println(n.getTitle());
 									System.out.println("");
-									graphtraverse(root, n, htmlpage);
+									graphtraverse(root, n, htmlpage, path);
 									found = true;
 									break;
 								}
 							}
 							if(title.equals(n.getTitle())) {
 								System.out.println("it works!");
+								String[] arraypath = convertarray(path);
+								node.edges.get(i).add(arraypath);
 								System.out.println(edge[0]);
 								System.out.println(n.getTitle());
 								System.out.println("");
-								graphtraverse(root, n, htmlpage);
+								graphtraverse(root, n, htmlpage, path);
 								found = true;
 								continue;
 							}
@@ -319,10 +386,12 @@ public class Node{
 								title = htmlpage.getTitleText();
 								if(title.equals(n.getTitle())) {
 									System.out.println("it works!");
+									String[] arraypath = convertarray(path);
+									node.edges.get(i).add(arraypath);
 									System.out.println(edge[0]);
 									System.out.println(n.getTitle());
 									System.out.println("");
-									graphtraverse(root, n, htmlpage);
+									graphtraverse(root, n, htmlpage, path);
 									found = true;
 									break;
 								}else {
@@ -354,10 +423,12 @@ public class Node{
 
 							if(checkModal(htmlPage, n)) {
 								System.out.println("it works!");
+								String[] arraypath = convertarray(path);
+								node.edges.get(i).add(arraypath);
 								System.out.println(edge[0]);
 								System.out.println(n.getTitle());
 								System.out.println("");
-								graphtraverse(root, n, htmlPage);
+								graphtraverse(root, n, htmlPage, path);
 								found = true;
 								continue;
 							}
@@ -365,20 +436,24 @@ public class Node{
 						}else if(node.getModal()) {
 							if(checkReturn(htmlPage, n)) {
 								System.out.println("it works!");
+								String[] arraypath = convertarray(path);
+								node.edges.get(i).add(arraypath);
 								System.out.println(edge[0]);
 								System.out.println(n.getTitle());
 								System.out.println("");
-								graphtraverse(root, n, htmlPage);
+								graphtraverse(root, n, htmlPage, path);
 								found = true;
 								continue;
 							}
 						
 						}else {
 							System.out.println("it works!");
+							String[] arraypath = convertarray(path);
+							node.edges.get(i).add(arraypath);
 							System.out.println(edge[0]);
 							System.out.println(n.getTitle());
 							System.out.println("");
-							graphtraverse(root, n, htmlPage);
+							graphtraverse(root, n, htmlPage, path);
 							found = true;
 							continue;
 						}
@@ -394,10 +469,12 @@ public class Node{
 						title = htmlPage.getTitleText();
 						if(title.equals(n.getTitle())) {
 							System.out.println("it works!");
+							String[] arraypath = convertarray(path);
+							node.edges.get(i).add(arraypath);
 							System.out.println(edge[0]);
 							System.out.println(n.getTitle());
 							System.out.println("");
-							graphtraverse(root, n, htmlPage);
+							graphtraverse(root, n, htmlPage, path);
 							found = true;
 							continue;
 						}
@@ -418,22 +495,18 @@ public class Node{
 		        	System.out.println(node.numin);
 		        	node.trav = false;
 		        }
-				boolean c = false;
+				//boolean c = false;
 				if(node.numin <= 0) {
 					if(i < node.edges.size() - 1) {
-						String temp = node.edges.get(i+1)[1];
-						if(edge[1].contentEquals("bc")) { 
-							c = true;
-							node.edges.get(i)[1] = "cdud";
-						}else {
-							node.edges.get(i)[1] = "edud";
-						}
-						node.edges.get(i+1)[1] = temp;
+						ArrayList<String[]> edges1 = node.edges.get(i+1);
+						String temp = edges1.get(0)[1];
+						edges.get(0)[1] = "dud";
+						edges1.get(0)[1] = temp;
 					}else {
-						node.edges.get(i)[1] = "edud";
+						edges.get(0)[1] = "dud";
 					}
 				}
-				if(c) {
+				if(edge[1].contentEquals("bc")) {
 					System.out.println("cdud");
 					System.out.println("for edge: " + edge[0]);
 					System.out.println("may go to: "+ n.getTitle());
@@ -451,6 +524,16 @@ public class Node{
 		
 		
 		//System.out.println("--------------------------------------------------------------------");	
+	}
+	
+	static String[] convertarray(ArrayList<String> path) {
+		String[] result = new String[path.size()];
+		int i = 0;
+		for(String s : path) {
+			result[i] = s;
+			i++;
+		}
+		return result;
 	}
 	
 
@@ -708,7 +791,8 @@ public class Node{
 		 for(Element e : doc.getAllElements()) {
 	    		if(e.hasClass("modal") && e.id().contentEquals(n.getTitle())) {
 	    			for(int i = 0; i < n.edges.size(); i++) {
-	    				String[] edge = n.edges.get(i);
+	    				ArrayList<String[]> edges = n.edges.get(i);
+	    				String[] edge = edges.get(0);
 	    				String edgeid = edge[0];
 	    				boolean found = false;
 	    				try {
@@ -750,7 +834,8 @@ public class Node{
 		boolean allfound = true;
 		Document doc = Jsoup.parse(n.myfile, "utf-8", "www.example.com");
 		for(int i = 0; i < n.edges.size(); i++) {
-			String[] edge = n.edges.get(i);
+			ArrayList<String[]> edges = n.edges.get(i);
+			String[] edge = edges.get(0);
 			String edgeid = edge[0];
 			boolean found = false;
 			try {

@@ -49,7 +49,24 @@ public class htmlUnitTester {
         webClient.getOptions().setJavaScriptEnabled(true);
     	java.net.URL url = file.toURI().toURL();
     	HtmlPage page = webClient.getPage("https://melodize.github.io/");
-    
+    	
+    	
+  	    HtmlElement loginTab = (HtmlElement) page.getElementById("loginTab");
+  	    HtmlPage modal = loginTab.click();
+  	    HtmlTextInput id = (HtmlTextInput) modal.getByXPath("//input[@id='id']").get(0);
+	    id.type("swtest/n");
+	    HtmlPasswordInput pw = (HtmlPasswordInput) modal.getByXPath("//input[@id='pw']").get(0);
+	    pw.type("swtest/n"); 
+	    HtmlElement loginBtn = (HtmlElement) modal.getElementById("loginBtn");
+	    HtmlPage finalpage = loginBtn.click();
+	    
+	    HtmlElement profile = (HtmlElement) finalpage.getElementById("profileTab");
+	    System.out.print(profile);
+	    
+
+
+	    System.out.println(page.asText());
+    	
     	Document doc = Jsoup.connect("https://melodize.github.io/").get();
     	for(Element e : doc.getAllElements()) {
     		if(e.hasClass("modal")) {

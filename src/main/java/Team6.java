@@ -86,8 +86,13 @@ public class Team6 {
         //Node.getFile(root, fsm);
         HtmlPage page = webClient.getPage(root);
         //page = loginTest.processLogin("aerolane0302@gmail.com", "software123", page);
-        Node.graphtraverse(home, home, page);
+        ArrayList<String> path = new ArrayList<String>();
+        Node.graphtraverse(home, home, page, path);
         webClient.close();
+        Node.prereset(home);
+        Node.graphreset(home);
+        Node.printgraphafter(home);
+        
         java.lang.System.exit(0);
     }
     
@@ -239,10 +244,15 @@ public class Team6 {
                      }
                  }
                 int n = 0;
-                for(String[] edge1 : home.edges) {
+                ArrayList<String[]> edges = new ArrayList<String[]>();
+                if(home.edges.size() > 0) {
+                	edges = home.edges.get(0);
+                }
+                for(int j = 0; j < edges.size(); j++) {
+                	  String[] edge1 = edges.get(j);
 
                       Node node = home.out.get(n);
-                      if(edge1[0].equals(button) && node.getDoc().equals(out.getDoc())) {
+                      if(edge1[0].equals(button) &&node.getDoc().equals(out.getDoc()) || node.getTitle().contentEquals(out.getTitle())) {
                          found = true;
                       }
                       n++;
@@ -273,10 +283,14 @@ public class Team6 {
                      }
                  }
                 int n = 0;
-                for(String[] edge1 : home.edges) {
-
+                ArrayList<String[]> edges = new ArrayList<String[]>();
+                if(home.edges.size() > 0) {
+                	edges = home.edges.get(0);
+                }
+                for(int j = 0; j < edges.size(); j++) {
+                	  String[] edge1 = edges.get(j);
                       Node node = home.out.get(n);
-                      if(edge1[0].equals(button) && node.getTitle().equals(out.getTitle())) {
+                      if(edge1[0].equals(button) && node.getDoc().equals(out.getDoc()) || node.getTitle().contentEquals(out.getTitle())) {
                          found = true;
                       }
                       n++;
@@ -284,7 +298,7 @@ public class Team6 {
                   if(found) {
                       continue;
                    }
-                home.addToOut(out);
+                 home.addToOut(out);
                  home.addToEdge(edge);
                  System.out.println("adding now to: " + doc.title() + " edge: " + edge[0] + " to node : " + out.getTitle());
                  if(add) {
@@ -342,9 +356,14 @@ public class Team6 {
                      }
                  }
                 int n = 0;
-                for(String[] edge1 : home.edges) {
+                ArrayList<String[]> edges = new ArrayList<String[]>();
+                if(home.edges.size() > 0) {
+                	edges = home.edges.get(0);
+                }
+                for(int k = 0; k < edges.size(); k++) {
+                	  String[] edge1 = edges.get(k);
                       Node node = home.out.get(n);
-                      if(edge1[0].equals(button) && node.getDoc().equals(out.getDoc())) {
+                      if(edge1[0].equals(button) && node.getDoc().equals(out.getDoc()) || node.getTitle().contentEquals(out.getTitle())) {
                          found = true;
                       }
                       n++;
@@ -373,10 +392,14 @@ public class Team6 {
                      }
                  }
                 int n = 0;
-                for(String[] edge1 : home.edges) {
-                      
+                ArrayList<String[]> edges = new ArrayList<String[]>();
+                if(home.edges.size() > 0) {
+                	edges = home.edges.get(0);
+                }
+                for(int k = 0; k < edges.size(); k++) {
+                	  String[] edge1 = edges.get(k);
                       Node node = home.out.get(n);
-                      if(edge1[0].equals(button) && node.getDoc().equals(out.getDoc())) {
+                      if(edge1[0].equals(button) && node.getDoc().equals(out.getDoc()) || node.getTitle().contentEquals(out.getTitle())) {
                          found = true;
                       }
                       n++;
@@ -446,9 +469,14 @@ public class Team6 {
                      }
                  }
                 int n = 0;
-                for(String[] edge1 : home.edges) {
+                ArrayList<String[]> edges = new ArrayList<String[]>();
+                if(home.edges.size() > 0) {
+                	edges = home.edges.get(0);
+                }
+                for(int k = 0; k < edges.size(); k++) {
+                	  String[] edge1 = edges.get(k);
                       Node node = home.out.get(n);
-                      if(edge1[0].equals(button) && node.getDoc().equals(out.getDoc())) {
+                      if(edge1[0].equals(button) &&node.getDoc().equals(out.getDoc()) || node.getTitle().contentEquals(out.getTitle())) {
                          found = true;
                       }
                       n++;
@@ -475,10 +503,15 @@ public class Team6 {
                      }
                  }
                 int n = 0;
-                for(String[] edge1 : home.edges) {
+                ArrayList<String[]> edges = new ArrayList<String[]>();
+                if(home.edges.size() > 0) {
+                	edges = home.edges.get(0);
+                }
+                for(int k = 0; k < edges.size(); k++) {
+                	  String[] edge1 = edges.get(k);
                       
                       Node node = home.out.get(n);
-                      if(edge1[0].equals(button) && node.getDoc().equals(out.getDoc())) {
+                      if(edge1[0].equals(button) && node.getDoc().equals(out.getDoc()) || node.getTitle().contentEquals(out.getTitle())) {
                          found = true;
                       }
                       n++;
@@ -505,10 +538,15 @@ public class Team6 {
                      }
                  }
                 int n = 0;
-                for(String[] edge1 : home.edges) {
+                ArrayList<String[]> edges = new ArrayList<String[]>();
+                if(home.edges.size() > 0) {
+                	edges = home.edges.get(0);
+                }
+                for(int k = 0; k < edges.size(); k++) {
+                	  String[] edge1 = edges.get(k);
 
                       Node node = home.out.get(n);
-                      if(edge1[0].equals(button) && node.getDoc().equals(out.getDoc())) {
+                      if(edge1[0].equals(button) && node.getDoc().equals(out.getDoc()) || node.getTitle().contentEquals(out.getTitle())) {
                          found = true;
                       }
                       n++;
@@ -630,9 +668,14 @@ public class Team6 {
                      }
                   }
                     int n = 0;
-                    for(String[] edge1 : node.edges) {
+                    ArrayList<String[]> edges = new ArrayList<String[]>();
+                    if(node.edges.size() > 0) {
+                    	edges = node.edges.get(0);
+                    }
+                    for(int j = 0; j < edges.size(); j++) {
+                    	  String[] edge1 = edges.get(j);
                       Node node1 = node.out.get(n);
-                      if(edge1[0].equals(e.id()) && node1.getDoc().equals(out.getDoc())) {
+                      if(edge1[0].equals(e.id()) && node.getDoc().equals(out.getDoc()) || node.getTitle().contentEquals(out.getTitle())) {
                          dont = true;
                       }
                       n++;
@@ -756,9 +799,14 @@ public class Team6 {
                      }
                   }
                  int n = 0;
-                    for(String[] edge1 : node.edges) {
+                 ArrayList<String[]> edges = new ArrayList<String[]>();
+                 if(node.edges.size() > 0) {
+                 	edges = node.edges.get(0);
+                 }
+                 for(int j = 0; j < edges.size(); j++) {
+                 	  String[] edge1 = edges.get(j);
                       Node node1 = node.out.get(n);
-                      if(edge1[0].equals(e.id()) && node1.getDoc().equals(out.getDoc())) {
+                      if(edge1[0].equals(e.id()) && node.getDoc().equals(out.getDoc()) || node.getTitle().contentEquals(out.getTitle())) {
                          dont = true;
                       }
                       n++;
