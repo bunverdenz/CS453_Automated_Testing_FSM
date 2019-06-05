@@ -1,0 +1,142 @@
+<!doctype html>
+<html>
+ <head> 
+  <meta charset="utf-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1"> 
+  <title>My Account Information</title> 
+  <link href="css/main.css" rel="stylesheet"> 
+  <link href="css/public.css" rel="stylesheet"> 
+  <link rel="icon" href="favicon.ico"> 
+  <script src="js/jquery.min.js"></script> 
+  <script src="js/main.js"></script> 
+  <script src="js/public.js"></script> 
+  <script src="js/index.js"></script> 
+  <script type="text/javascript" src="js/nasdk.js"></script> 
+  <script type="text/javascript" src="js/header.js"></script> 
+  <!--<script src="//connect.facebook.net/en_US/all.js"></script>--> 
+  <link href="css/index.css" rel="stylesheet"> 
+  <!--[if lt IE 9]>
+<script src="js/html5shiv.min.js"></script>
+<script src="js/respond.min.js"></script>
+<![endif]--> 
+ </head> 
+ <body class="pt-70"> 
+  <nav id="nav" class="navbar-fixed-top"> 
+   <div class="mainNavbar pcMainNavbar"> 
+    <a href="index.html" class="mainLogo" id="team6_0"> <img src="images/logo.png" alt="Logo"> </a> 
+    <div class="navbarLink"> 
+     <a href="index.html" id="team6_1">Home</a> 
+     <a href="webapp.html" id="team6_2">Personal Web</a> 
+     <a href="commercial.html" id="team6_3">Commercial</a> 
+     <a href="software.html" class="active" id="team6_4">Software</a> 
+    </div> 
+   </div> 
+  </nav> 
+  <div class="container"> 
+   <div class="row"> 
+    <div class="senTit"> 
+     <h1>Retrieve My Download Links</h1> 
+    </div> 
+    <div class="col-md-5 col-md-offset-1"> 
+     <p> * Please be advised that the old login system for software users is no longer active. The current login system on our website is for users of our online web application subscription services only, which are separate platforms from the software.</p>
+     <p> </p>
+     <p>Note: The download links are valid for 180 days. Updates during the first six months after purchase are free!</p> 
+     <p>If you purchased our software more than 180 days ago, please <a href="https://www.naturalreaders.com/uplinkspay.htm" id="team6_5">update to get the latest version + one natural voice.</a> </p> 
+     <p></p> 
+     <p>Note: Make sure the email you enter is the email you used to place the order.</p> 
+     <div id="jsfill_downexplain"> 
+      <div class="explain"> 
+       <label for="usr">Email Address:</label> 
+       <input type="text" class="form-control" id="emailaddress" placeholder="Enter Email Address"> 
+       <p></p> 
+       <a class="font113"> <button type="button" class="btn btn-primary" onclick="getmylinks()">Get My Download Links</button> </a> 
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+  </div> 
+  <hr> 
+  <div class="container"> 
+   <div class="row"> 
+    <div class="senTit"> 
+     <h1>Update to Latest Version</h1> 
+    </div> 
+    <div class="col-md-5 col-md-offset-1"> 
+     <p>Note: The download links are valid for 180 days. Updates during the first six months after purchase are free!</p> 
+     <p>If you purchased our software more than 180 days ago, please update to get the latest version + one natural voice. </p> 
+     <div id="jsfill_downexplain"> 
+      <p class="explain"> <a class="font113" target="_blank" href="https://www.naturalreaders.com/uplinkspay.htm" id="jsfill_uplinkspay"> <button type="button" class="btn btn-primary">Update to Latest Version</button> </a> </p> 
+     </div> 
+    </div> 
+    <div class="col-md-6"> 
+     <p> <img src="images/img-01.png" class="img-responsive center-block" alt=""> </p> 
+    </div> 
+   </div> 
+  </div> 
+  <hr> 
+  <div class="container"> 
+   <div class="row"> 
+    <div class="senTit"> 
+     <h1>Interested in Online Version?</h1> 
+    </div> 
+    <div class="col-md-5 col-md-offset-1" id="jsfill_snlist"> 
+     <p>NaturalReader Online is a text-to-speech web application with high quality premium voices for personal use only. Login from any computer to convert any written text such as MS Word, PDF files, non-DRM eBooks, and webpages into spoken natural sounding speech.</p> 
+     <p>Can be accessed from any computer.</p> 
+     <p>Access to all Premium Voices.</p> 
+     <p>Subscription pricing.</p> 
+     <p> Always up to date.</p> 
+     <p> <a href="webapp.html" id="team6_6">Learn More</a></p> 
+    </div> 
+    <div class="col-md-6"> 
+     <p> <img src="images/img-03.png" class="img-responsive center-block" alt=""> </p> 
+    </div> 
+   </div> 
+  </div> 
+  <hr> 
+  <!--<hr/>  --> 
+  <!-- <div class="container">
+		<div class="row">
+             <div class="senTit">
+			<h1>NaturalReader Mobile Apps</h1>
+		</div>   
+			<div class="col-md-5 col-md-push-6 col-md-offset-1">
+				<p class="explain">Install iOS and Android Apps<br></p>
+                <p class="explain">For iOS,</p>
+                <p class="explain">1) Download NaturalReader Text to Speech (Free) in App Store.</p>
+                <p class="explain">2) Activate the unlimited function: –>Menu–>Sync With Desktop–>Enter the above serial number.<br></p>
+                <p class="explain">For Android,</p>
+                <p class="explain">Download NaturalReader Text to Speech in Google Play</p>
+                	</div>
+			<div class="col-md-6 col-md-pull-6">
+				<p><img src="images/img-07.png"  class="img-responsive center-block" alt="" /></p>
+			</div>
+		</div>
+        
+        
+        
+
+	</div>--> 
+  <script>
+function getmylinks() {
+  var emails = document.getElementById("emailaddress").value;
+  
+  window.location.href = "https://s3.amazonaws.com/naturalsoft-ca/invoices/myaccount.html?email="+emails;
+}
+</script> 
+  <div id="includedContent"></div> 
+  <script>
+
+		(function (i, s, o, g, r, a, m) {
+		i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+			(i[r].q = i[r].q || []).push(arguments)
+		}, i[r].l = 1 * new Date(); a = s.createElement(o),
+			m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+		})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+
+		ga('create', 'UA-466667-1', 'naturalreaders.com');
+		ga('send', 'pageview');
+
+	</script> 
+ </body>
+</html>

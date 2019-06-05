@@ -30,7 +30,7 @@ import com.gargoylesoftware.htmlunit.html.HtmlPage;
 import com.gargoylesoftware.htmlunit.javascript.host.URL;
 
 public class Node{
-	static String root = "http://melodize.github.io/";
+	//static String root = "https://anoboard.netlify.com/";
 	private String title;
 	private String  mydoc;
 	public boolean mymodal;
@@ -40,9 +40,13 @@ public class Node{
 	public boolean trav;
 	public ArrayList<String[]> edges;
 	
+	public static ArrayList<String> printGraphList;
+	
 	Node(String title, String doc, boolean b){
 		out = new ArrayList<Node>();
 		edges = new ArrayList<String[]>();
+		printGraphList = new ArrayList<String>();
+		
 		this.title = title;
 		this.mydoc = doc;
 		this.mymodal = true;
@@ -120,12 +124,31 @@ public class Node{
 		for(Node n : node.out) {
 			printgraph(n);
 		}
-		
-
+	}
+	
+	static void listPrintGraph(Node node) {
+		if(node.trav) {
+			return;
+		}
+		System.out.print("\n");
+		node.trav = true;
+		//System.out.println("from node: " + node.getTitle());
+		printGraphList.add("fn: " + node.getTitle());
+		int i = 0;
+		for(Node n : node.out) {
+			//System.out.println("edge: " + node.edges.get(i)[0]);
+			printGraphList.add("ed: " + node.edges.get(i)[0]);
+			//System.out.println("to node: " + n.getTitle());
+			printGraphList.add("tn: " + n.getTitle());
+			i++;
+		}
+		for(Node n : node.out) {
+			listPrintGraph(n);
+		}
 	}
 	
 	static void graphreset(Node node) {
-		if(!node.old && !node.trav) {
+		if(!node.old && !node.trav) { //|| (node.getDoc().contentEquals(root.getDoc())) || (node.getTitle().contentEquals(root.getTitle()))) {
 			return;
 		}
 		node.old = false;
@@ -135,15 +158,26 @@ public class Node{
 		}
 	}
 	
-	static boolean checkhref(String href) {
+	static void graphreset(Node node, Node root) {
+		if(!node.old && !node.trav || (node.getDoc().contentEquals(root.getDoc())) || (node.getTitle().contentEquals(root.getTitle()))) {
+			return;
+		}
+		node.old = false;
+		node.trav = false;
+		for(Node n : node.out) {
+			graphreset(n, root);
+		}
+	}
+	
+	static boolean checkhref(String href, String roothref) {
     	boolean result = true;
     	int slash = href.indexOf("/");
     	if(!(href.contains("/") || href.contains("html"))) {
     		return false;
     	}
     	
-    	if(href.contains("http") || href.contains("www.") || href.contains(".org") || href.contains(".com") || href.contains(".net") || href.contains(".jpg") || href.contains(".png")){
-    		if(href.contains(root)) {
+    	if(href.contains("http") || href.contains("css") || href.contains("www.") || href.contains(".org") || href.contains(".com") || href.contains(".net") || href.contains(".jpg") || href.contains(".png")){
+    		if(href.contains(roothref)) {
     			return result;
     		}
     		return false;
@@ -159,11 +193,8 @@ public class Node{
         String url = root.getDoc();
 	}*/
 	
-	static void graphtraverse(Node node, HtmlPage p) throws IOException, InterruptedException{
-		if(node.trav) {
-			return;
-		}
-		System.out.println();
+	static void graphtraverse(Node root, Node node, HtmlPage p) throws IOException, InterruptedException{
+		
 		node.trav = true;
 		java.util.logging.Logger.getLogger("com.gargoylesoftware.htmlunit").setLevel(Level.OFF);
 		/*WebClient webClient = new WebClient(BrowserVersion.CHROME);
@@ -172,13 +203,20 @@ public class Node{
         Document doc = Jsoup.parse(node.myfile, "utf-8", "www.example.com/");
         String url = node.getDoc();
         System.out.println(url);
-		System.out.println("for node: " + node.getTitle());
+		//System.out.println("for node: " + node.getTitle());
 		
 		for(int i = 0; i < node.edges.size(); i++) {
+			System.out.println(node.getDoc());
 			System.out.println(i);
-
+			boolean found = false;
 			String[] edge = node.edges.get(i);
 			Node n = node.out.get(i);
+			/*if(node.equals(root) && !n.getDoc().contentEquals(root.getDoc()) && !n.getTitle().contentEquals(root.getTitle())) {
+				graphreset(n, root);
+			}*/
+			System.out.println(edge[0]);
+			System.out.println(edge[1]);
+			System.out.println(n.getTitle());
 			//HtmlPage page = webClient.getPage(url);
 			String title = ""; 
 			if(edge[0] != null && edge[0].contains("team6")) {
@@ -188,7 +226,6 @@ public class Node{
 					Element button1 = doc.getElementById(buttonid);
 					String href = button1.attr("href");
 					String ind = edge[0].substring(6);
-					System.out.println(ind);
 					int index = Integer.parseInt(ind);
 					int compare = -1;
 					for(DomElement button : buttons) {
@@ -196,13 +233,14 @@ public class Node{
 							if(!edge[1].contentEquals("bh")) {
 								continue;
 							}else {
-								if(checkhref("href") && button.getId().contentEquals("")) {
+								compare++;
+								/*if(checkhref("href") && button.getId().contentEquals("")) {
 									compare++;
-								}
+								}*/
 							}
 						}
 						String comp = button.getAttribute("href");
-						if(checkhref("href") && button.getId().contentEquals("")) {
+						if(checkhref(comp, root.getDoc()) && button.getId().contentEquals("")) {
 							compare++;
 						}
 						if(compare == index) {
@@ -213,8 +251,8 @@ public class Node{
 									System.out.println("it works!");
 									System.out.println(edge[0]);
 									System.out.println(n.getTitle());
-									System.out.println("");
-									graphtraverse(n, htmlpage);
+									graphtraverse(root, n, htmlpage);
+									found = true;
 									break;
 								}
 							}else if(node.getModal()) {
@@ -222,8 +260,8 @@ public class Node{
 									System.out.println("it works!");
 									System.out.println(edge[0]);
 									System.out.println(n.getTitle());
-									System.out.println("");
-									graphtraverse(n, htmlpage);
+									graphtraverse(root, n, htmlpage);
+									found = true;
 									break;
 								}
 							}
@@ -231,8 +269,9 @@ public class Node{
 								System.out.println("it works!");
 								System.out.println(edge[0]);
 								System.out.println(n.getTitle());
-								System.out.println("");
-								graphtraverse(n, htmlpage);
+								graphtraverse(root, n, htmlpage);
+								found = true;
+								continue;
 							}
 						}
 					}
@@ -244,26 +283,26 @@ public class Node{
 						String href = edge1.attr("href");
 						String ind  = edge[0].substring(6);
 						int index = Integer.parseInt(ind);
-						System.out.println(index);
 						int compare = -1;
 						for(DomElement button : buttons) {
 							String comp = button.getAttribute("href");
 							if(button.hasAttribute("onclick")) {
 								continue;
 							}
-							if(checkhref("href") && button.getId().contentEquals("")) {
+							if(checkhref(comp, root.getDoc()) && button.getId().contentEquals("")) {
 								compare++;
 							}
 							if(compare == index) {
-								System.out.println(index);
+								System.out.println(comp);
+								System.out.println(href);
 								HtmlPage htmlpage = button.click();
 								title = htmlpage.getTitleText();
 								if(title.equals(n.getTitle())) {
 									System.out.println("it works!");
 									System.out.println(edge[0]);
 									System.out.println(n.getTitle());
-									System.out.println("");
-									graphtraverse(n, htmlpage);
+									graphtraverse(root, n, htmlpage);
+									found = true;
 									break;
 								}
 							}
@@ -293,8 +332,8 @@ public class Node{
 								System.out.println("it works!");
 								System.out.println(edge[0]);
 								System.out.println(n.getTitle());
-								System.out.println("");
-								graphtraverse(n, htmlPage);
+								graphtraverse(root, n, htmlPage);
+								found = true;
 								continue;
 							}
 								
@@ -303,8 +342,8 @@ public class Node{
 								System.out.println("it works!");
 								System.out.println(edge[0]);
 								System.out.println(n.getTitle());
-								System.out.println("");
-								graphtraverse(n, htmlPage);
+								graphtraverse(root, n, htmlPage);
+								found = true;
 								continue;
 							}
 						
@@ -312,8 +351,8 @@ public class Node{
 							System.out.println("it works!");
 							System.out.println(edge[0]);
 							System.out.println(n.getTitle());
-							System.out.println("");
-							graphtraverse(n, htmlPage);
+							graphtraverse(root, n, htmlPage);
+							found = true;
 							continue;
 						}
 						}catch (Exception e) {
@@ -330,8 +369,8 @@ public class Node{
 							System.out.println("it works!");
 							System.out.println(edge[0]);
 							System.out.println(n.getTitle());
-							System.out.println("");
-							graphtraverse(n, htmlPage);
+							graphtraverse(root, n, htmlPage);
+							found = true;
 							continue;
 						}
 					}catch (Exception e) {
@@ -339,8 +378,12 @@ public class Node{
 					}
 				
 				}
-				boolean c = false;
 				
+				
+			}
+			if(!found) {
+				boolean c = false;
+				System.out.println("what?");
 				if(i < node.edges.size() - 1) {
 					String temp = node.edges.get(i+1)[1];
 					if(edge[1].contentEquals("bc")) { 
@@ -365,10 +408,13 @@ public class Node{
 				System.out.println("goes to " + title);
 				System.out.println("");
 			}
-			
-			
+			System.out.println("--------------------------------------------------------------------");	
 		}
-		System.out.println("--------------------------------------------------------------------");	
+		
+		if(node.trav) {
+			return;
+		}
+		//System.out.println("--------------------------------------------------------------------");	
 	}
 	
 	/*static void graphtraverse(Node node) throws IOException, InterruptedException{

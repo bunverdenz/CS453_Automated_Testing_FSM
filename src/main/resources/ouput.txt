@@ -1,0 +1,155 @@
+// melodize DB
+var config={
+	apiKey: "AIzaSyAoupKkkppZXzP4aw034529f7qCk_v7v3Q",
+	databaseURL: "https://melodize-c68af.firebaseio.com",
+}
+// melodize-copy DB
+/*var config={
+	apiKey: "AIzaSyDH9uoKcFkkT0CZKtEPCDOTveHGzvEGsvU",
+	databaseURL: "https://melodize-copy.firebaseio.com",
+}*/
+
+firebase.initializeApp(config);
+var database = firebase.database();
+var userRef = database.ref("user");
+
+var close = document.getElementsByClassName("close")[0];
+
+var logged_in = localStorage.getItem("id");
+var pageAfterLogin = "";	//if this has any url value, an user will be moved to that url after he signs in
+var pageCritical = false;	//if this is true, an user will be forced to move to the index page if he signs out
+var pageReload = false;
+
+var isMobile = false;
+if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|ipad|iris|kindle|Android|Silk|lge |maemo|midp|mmp|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i.test(navigator.userAgent) 
+    || /1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(navigator.userAgent.substr(0,4))) isMobile = true;
+
+$(document).ready(function(){
+	if(logged_in){
+		$("#loginTab").text("Sign Out");
+		$("#profileTab").show();
+	}
+});
+
+$("#loginModal").keypress(function (e) {
+  if (e.which == 13){
+  	login();
+	return false;
+  }
+});
+
+$("#loginTab").on('click', function(){
+	logged_in = localStorage.getItem("id");
+	if(!logged_in){
+	    $("#id").val("");
+		$("#pw").val("");
+		$('#warning_msg').hide();
+	    $('#loginModal').show();
+	    $("#id").select();
+	}
+    else{
+		localStorage.removeItem("id");
+		$("#loginTab").text("Sign In");
+		$("#profileTab").hide();
+		if(pageCritical) window.location.href = "./index.html";
+		else if(pageReload) location.reload();
+	}
+})
+
+close.onclick = function() {
+    $('#loginModal').hide();
+   	$("#id").val("");
+	$("#pw").val("");
+	pageAfterLogin = "";
+}
+
+$("#loginBtn").on('click', function(){
+	login();
+})
+
+window.onclick = function(event) {
+    if (event.target == document.getElementById('loginModal')) {
+        $('#loginModal').hide();
+        pageAfterLogin = "";
+    }
+}
+
+function login(){
+	var id = $("#id").val();
+	var pw = $("#pw").val();
+	
+	database.ref("user/accounts/"+id+"/%%%"+pw).once('value', function(snapshot){
+		if(snapshot.val() != undefined){
+			localStorage.setItem("id", id);
+			$("#loginTab").text("Sign Out");
+			$("#profileTab").show();
+			$('#loginModal').hide();
+			if(pageAfterLogin != "") window.location.href = pageAfterLogin;
+			else if(pageReload) location.reload();
+		}
+		else{
+			$("#pw").select();
+			$('#warning_msg').show();
+		}
+	});
+};
+
+function safe(str){
+	if((typeof str) == "string")
+		return str.replace(/[</>]/g, "");
+	return str;
+};
+
+function sendFeedback(feed){
+	var feedbackRef = database.ref("user/feeedback");
+	feedbackRef.push({
+		opinion: feed,
+	});
+	console.log("sent!");
+};
+
+function translate(text){
+	for(var i=0; i < text.length; i++){
+		$(text[i][0]).html(text[i][1]);
+		console.log(text[i][1]);
+	}
+}
+
+function givePoints(id, point){
+	var score;
+	database.ref("user/accounts/"+id).once('value', function(snapshot){
+		score = snapshot.val().score;
+	}).then(function(){
+		database.ref("user/accounts/"+id).update({
+			score: score+point,
+		});
+	})
+}
+
+function giveContributions(id, notes){
+	var contribution;
+	database.ref("user/accounts/"+id).once('value', function(snapshot){
+		contribution = snapshot.val().contributions;
+	}).then(function(){
+		database.ref("user/accounts/"+id).update({
+			contributions: contribution+notes,
+		});
+	})
+}
+/*
+function freeForAll(point){
+	var userRef = database.ref("user/accounts");
+	userRef.on("child_added", function(snapshot){
+		console.log(snapshot.key+" got +"+point+"pt");
+		givePoints(snapshot.key, point);
+	});
+}
+*/
+$(document).on('click', 'idLink', function(){
+	seeOthersProfile($(this).text());
+})
+
+function seeOthersProfile(id){
+	localStorage.setItem("other_id", id);
+	window.location.href = "./otherprofile.html";
+}

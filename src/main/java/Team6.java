@@ -37,7 +37,10 @@ public class Team6 {
      static List<String> attrs = new ArrayList<String>(); //record attributes
      static List<Element> elements = new ArrayList<Element>();
      static List<Node> fsm = new ArrayList<Node>();
-     static String root = "https://melodize.github.io/";
+     
+     static ArrayList<String> drawStringList;
+     
+     static String root = "https://www.naturalreaders.com/";
      static String baseid = "team6_";
      static int countid = 0; 
      static int nodeid = 0;
@@ -77,11 +80,13 @@ public class Team6 {
         
         
         Node.printgraph(home);
+        Node.listPrintGraph(home);
+        
         Node.graphreset(home);
         //Node.getFile(root, fsm);
         HtmlPage page = webClient.getPage(url);
-        page = loginTest.processLogin("swtest", "swtest", page);
-        Node.graphtraverse(home, page);
+        page = loginTest.processLogin("bunverdenz@gmail.com", "123456", page);
+        Node.graphtraverse(home, home, page);
         webClient.close();
         java.lang.System.exit(0);
     }
@@ -149,8 +154,9 @@ public class Team6 {
        
        
        for(String js : jses) {
-          ArrayList<ArrayList> result = readJSTester.getJSInfo(js, "C:/Users/chaec/Documents/GitHub/CS453_Automated_Testing_FSM/src/main/resources/output.txt", modals);
-          //System.out.println(result);
+          ArrayList<ArrayList> result = readJSTester.getJSInfo(js, "C:/Users/aerol/OneDrive/Desktop/CS453_Automated_Testing_FSM/src/main/resources/output.txt", modals);
+          
+          //System.out.println(js);
           buttons.addAll(result.get(0));
           elements.addAll(result.get(1));
        }
@@ -173,7 +179,7 @@ public class Team6 {
           return "-1";
        }
        
-       if(href.contains("http") || href.contains("www.") || href.contains(".org") || href.contains(".com") || href.contains(".net") || href.contains(".jpg") || href.contains(".png")){
+       if(href.contains("http") || href.contains("css") || href.contains("www.") || href.contains(".org") || href.contains(".com") || href.contains(".net") || href.contains(".jpg") || href.contains(".png")){
           if(href.contains(root)) {
              return result;
           }
@@ -569,7 +575,7 @@ public class Team6 {
            outputname = outputname.substring(0, ind) + nodeid;
         }
         
-        String fileName = "C:/Users/chaec/Documents/GitHub/CS453_Automated_Testing_FSM/src/main/resources/test" + nodeid + ".html";
+        String fileName = "C:/Users/aerol/OneDrive/Desktop/CS453_Automated_Testing_FSM/src/main/resources/test" + nodeid + ".html";
         BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(fileName), "utf-8"));
         
         int mod = 0;
@@ -711,7 +717,7 @@ public class Team6 {
         }
         getModalElements(doc, elements, compare, edgeelements, node);
         getHTMLElements(doc, elements1, compare, edgeelements1, node);
-        String fileName = "C:/Users/chaec/Documents/GitHub/CS453_Automated_Testing_FSM/src/main/resources/test" + nodeid + ".html";
+        String fileName = "C:/Users/aerol/OneDrive/Desktop/CS453_Automated_Testing_FSM/src/main/resources/test" + nodeid + ".html";
         BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(fileName), "utf-8"));
         for(Element e : modale.getAllElements()){
            boolean dont = false;

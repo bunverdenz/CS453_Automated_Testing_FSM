@@ -1,210 +1,299 @@
 <!doctype html>
-<html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html lang="en">
+ <!--<![endif]-->
  <head> 
-  <meta charset="UTF-8"> 
-  <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"> 
-  <link rel="icon" href="./img/icon.png"> 
-  <title>Melodize - Home</title> 
-  <link href="scripts/jquery/css/ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet" id="team6_0"> 
-  <link href="css/general.css" rel="stylesheet" id="team6_0"> 
-  <link href="css/home.css" rel="stylesheet" id="team6_0"> 
-  <link href="css/songInfo.css" rel="stylesheet" id="team6_0"> 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> 
-  <link href="https://fonts.googleapis.com/css?family=Amita" rel="stylesheet"> 
-  <link href="https://fonts.googleapis.com/css?family=Boogaloo" rel="stylesheet"> 
-  <link href="https://fonts.googleapis.com/css?family=Caveat" rel="stylesheet"> 
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> 
+  <meta charset="utf-8"> 
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+  <title>Free Text to Speech: Online, App, Software &amp; Commercial license with Natural Sounding Voices.</title> 
+  <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"> 
+  <meta name="description" content="Free text to speech online app with natural voices, convert text to audio and mp3, for personal and commercial use"> 
+  <meta name="keywords" content="text to speech, text to voice, text speak, text reader, voice reader, text to voice, tts, free text to speech, read text, speech engine,"> 
+  <!-- Facebook and Twitter integration --> 
+  <meta property="og:title" content="text to speech online"> 
+  <meta property="og:image" content="https://www.naturalreaders.com/images/share_preview2.jpg"> 
+  <!-- <meta property="og:url" content=""/>
+	<meta property="og:site_name" content=""/> --> 
+  <meta property="og:description" content="text to speech online"> 
+  <meta name="twitter:title" content="text to speech online"> 
+  <meta name="twitter:image" content="https://www.naturalreaders.com/images/share_preview2.jpg"> 
+  <!-- <meta name="twitter:url" content="" />
+	<meta name="twitter:card" content="" /> --> 
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory --> 
+  <link rel="shortcut icon" href="favicon.ico"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"> 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"> 
+  <!-- <link rel="stylesheet" href="libs/owlcarousel/assets/owl.carousel.min.css"> --> 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"> 
+  <!-- <link rel="stylesheet" href="libs/owlcarousel/assets/owl.theme.default.min.css"> --> 
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css" integrity="sha384-PDle/QlgIONtM1aqA2Qemk5gPOE7wFq8+Em+G/hmo5Iq0CCmYZLv3fVRDJ4MMwEA" crossorigin="anonymous"> 
+  <!--<link rel="stylesheet" href="css/fonts.css">--> 
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700,900" rel="stylesheet"> 
+  <link rel="stylesheet" href="comfiles/indexfiles/css/main.css?v=2019022603"> 
+  <!-- <link rel="stylesheet" href="css/media.css"> --> 
+  <!-- <script src="libs/modernizr/modernizr.js"></script> --> 
+  <!-- Global site tag (gtag.js) - Google Analytics --> 
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-466667-1"></script> 
+  <script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+
+		gtag('config', 'UA-466667-1');
+		function getparastr(strname) {
+			paramValue = "";
+			isFound = false;
+			if (window.location.href.indexOf("?") > 0 && window.location.href.indexOf("=") > 0) {
+				arrSource = unescape(window.location.href).substring(window.location.href.indexOf("?") + 1, window.location.href.length).split("&");
+				i = 0;
+				while (i < arrSource.length && !isFound) {
+					if (arrSource[i].indexOf("=") > 0) {
+						if (arrSource[i].split("=")[0].toLowerCase() == strname.toLowerCase()) {
+							paramValue = arrSource[i].split("=")[1];
+							isFound = true;
+						}
+					}
+					i++;
+				}
+			}
+			return paramValue;
+		}
+
+		var url = getparastr('url');
+		if (url != null && url != '') {
+			window.location.href = 'online/index.html?url=' + url;
+		}
+	</script> 
  </head> 
  <body> 
-  <ul class="nav-ul"> 
-   <li class="nav-li">
-    <div onclick="window.location='./index.html';">
-     Melodize
-    </div></li> 
-   <li class="nav-li"><a id="loginTab">Sign In</a></li> 
-   <li class="nav-li"><a id="profileTab" href="./profile.html" style="display: none">Profile</a></li> 
-   <li class="nav-li"><a href="./gallery.html" id="team6_0">Gallery</a></li> 
-   <li class="nav-li"><a href="./index.html" id="team6_1">Home</a></li> 
-  </ul> 
-  <div class="animate-bottom" style="font-size: 20px; text-align: center; padding: 14px"> 
-   <div style="padding: 14px"> 
-    <div class="container section-home"> 
-     <h1 style="font-size: 80px; font-family:'Caveat';">Welcome to Melodize</h1> 
-     <div>
-       Listening to your favourite tunes has become easier than ever thanks to the variety of streaming platforms available today. However, it is not so easy for the public to contribute to the music composition process due to the public’s lack of expertise in the field and easily available tools; as a result, music composition remains to be a task exclusive to music artists. We want to change that dynamic. We want to make music composition a task available to anyone. 
+  <header> 
+   <div class="container"> 
+    <div class="row"> 
+     <div class="col navigation"> 
+      <a href="#" class="logo-wrapper"> <img src="comfiles/indexfiles/img/logo.png" alt=""> <span>NaturalReader</span> </a> 
+      <a aria-label="mobile menu" class="nav-toggle"> <span class="top"></span> <span></span> <span class="bottom"></span> </a> 
+      <ul class="menu-left"> 
+       <li class="el"><a href="./webapp.html" id="team6_0">Online</a></li> 
+       <li class="el"><a href="./software.html" id="team6_1">Software</a></li> 
+       <li class="el"><a href="./commercial.html" id="team6_2">Commercial</a></li> 
+       <li class="el"><a href="./exploring.html?index=2&amp;info=contactus" id="team6_3">About</a> </li> 
+       <li><a href="./online/" class="button" id="team6_4">Online Reader</a></li> 
+      </ul> 
      </div> 
     </div> 
    </div> 
-   <div class="col-sm-12 section-home"> 
-    <div class="col-sm-6"> 
-     <h1 style="font-size: 50px; font-family:'Caveat';">Get the ball rolling</h1>
-     <br> By submitting lyrics to your song
-     <br>
-     <br> Describe the mood, tone, and theme of your song
-     <br> Watch the progress of the composition in real time
-     <br>
-     <br> 
-     <button class="green-btn" id="requesterBtn">SUBMIT LYRICS</button> 
+  </header> 
+  <section class="speech"> 
+   <div class="container"> 
+    <div class="wrapper-stick-image"> 
+     <img src="comfiles/indexfiles/img/logo-speeach.png" class="right-photo"> 
     </div> 
-    <div class="col-sm-6"> 
-     <img class="screenShot" src="./img/sc2.png"> 
-    </div> 
-   </div> 
-   <div class="col-sm-12 section-home"> 
-    <div class="col-sm-6"> 
-     <img class="screenShot" src="./img/sc1.png"> 
-    </div> 
-    <div class="col-sm-6"> 
-     <h1 style="font-size: 50px; font-family:'Caveat';">Express your ideas</h1>
-     <br> On an already submitted lyric
-     <br>
-     <br> Suggest notes that you think suites the song
-     <br> Vote on your favorite passages
-     <br>
-     <br> 
-     <button class="green-btn" id="workerBtn">START COMPOSING</button> 
-    </div> 
-   </div> 
-   <div class="col-sm-12 section-home"> 
-    <div class="col-sm-10 col-sm-offset-1"> 
-     <h1 style="font-size: 50px; font-family:'Caveat';">Live Demo</h1>
-     <br> 
-     <div class="screenShot video-container"> 
-      <iframe src="https://www.youtube.com/embed/nNwPpxmL_Ww" frameborder="0" allowfullscreen></iframe> 
+    <div class="row"> 
+     <div class="col-12 col-lg-6"> 
+      <h1>Powerful Text-to-Speech for at home, work, or on the go.</h1> 
+      <p>Upload text and documents or convert to mp3 to listen to anywhere anytime.</p> 
+      <div class="button-wrapper"> 
+       <a href="./online/" class="button blue" id="team6_5">Go To Online Reader</a> 
+       <a href="" class="button transparent video-btn" data-toggle="modal" data-src="https://player.vimeo.com/video/222434433?badge=0" data-target="#myModal">Watch Video</a> 
+      </div> 
+     </div> 
+     <div class="offset-md-6"> 
      </div> 
     </div> 
    </div> 
-   <div class="col-sm-12 section-home" style="background-color: #c1d9ff"> 
-    <div class="col-sm-12"> 
-     <h1>Learn more about us</h1> What can I do here?
-     <br> How does this platform work?
-     <br> How do I contribute?
-     <br> How do I give you my feedbacks?
-     <br>
-     <br> 
-     <button class="blue-btn" id="learnBtn">LEARN MORE</button> 
+  </section> 
+  <section class="oval-group"> 
+   <div class="container"> 
+    <div class="row"> 
+     <div class="col ovals-body"> 
+      <div class="oval-item"> 
+       <div class="oval icon-voice"></div> 
+       <h1>Natural Sounding Voices</h1> 
+       <p>High quality, crystal-clear reading</p> 
+      </div> 
+      <div class="oval-item"> 
+       <div class="oval icon-eyes"></div> 
+       <h1>OCR Technology</h1> 
+       <p>Read from scanned documents or images</p> 
+      </div> 
+      <div class="oval-item"> 
+       <div class="oval headphone-icon"></div> 
+       <h1>Listen On The Go</h1> 
+       <p>Listen to past uploads or convert to mp3</p> 
+      </div> 
+     </div> 
     </div> 
    </div> 
-   <!--
-      <div class="col-sm-12 section-home">
-        <div class="col-sm-6">
-          <h1>Express yourself</h1><br>
-          By creating an account<br><br>
-          You can submit your lyrics, comment others<br>
-          Change profile picture to show who you are<br><br>
-          <button class="green-btn" id="signUpBtn">SIGN UP</button>
-        </div>
-        <div class="col-sm-6">
-          <img class="screenShot" src="./img/sc6.png">
-        </div>        
-      </div>
-
-      <div class="col-sm-12 section-home">
-        <div class="col-sm-6">
-          <img class="screenShot" src="./img/sc7.png">
-        </div>
-        <div class="col-sm-6">
-          <h1>Check completions</h1><br>
-          On the hall of fame<br><br>
-          Leave a comment on these materpieces<br>
-          Try to change some notes to suit your taste<br><br>
-          <button class="green-btn" id="galleryBtn">CHECK GALLERY</button>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-sm-10 col-sm-offset-1 songList-home">
-          <div class="list-tag"><statnum id="totalSongs">0</statnum> SONGS</div>
-          <div class="sort-tag">
-            Sort by:
-            <select id="sortingSelect">
-              <option value=2>participants (dec)</option>
-              <option value=3>participants (inc)</option>
-              <option value=1>title (dec)</option>
-              <option value=0>title (inc)</option>
-            </select>
-          </div>
-          <div id="songList" class="song-list"></div><br>
-          <center><div id="songList-showMore" class="showMore"><i class="material-icons">&#xE313;</i> Show More</div></center>
-          <center><button class="green-btn" id="listBtn" style="font-size: 24px">START COMPOSING</button></center>
-        </div>
-      </div>
-
-      <div class="col-sm-12 section-home" id="learnStart">
-        <h1 class="section-tag">Tasks</h1>
-        <div class="col-sm-6" style="display: inline-block;">
-          <img class="section-image" src="./img/sc3.png">
-        </div>
-        <div class="section-content">
-          The three tasks our platform supports are,<br><br>
-          1. Submission of lyrics, which will be the base of melody compositions<br>
-          2. Composing melody to submitted lyrics<br>
-          3. Freedom to experiment with melody composition without lyrics as a base<br>
-        </div>
-      </div>
-
-      <div class="col-sm-12 section-home">
-        <h1 class="section-tag">Aggregation</h1>
-        <div class="col-sm-6" style="display: inline-block;">
-          <img class="section-image" src="./img/sc4.png">
-        </div>
-        <div class="section-content">
-          How we aggregate  each and every one of your input is crucial to our process as it directly affects the coherency and flow of our songs. We take each of your segment inputs and pool them together first. Then, we choose the most popular note for each syllable and integrate it into the song.<br><br>
-
-          While doing so, we wanted our composition process to be interactive so that you can take inspiration from others and provide inspiration to others. By ticking the "see what others have done" button, you will be able to see the distribution of popular notes that have been voted so far. Of course, if you want to be fully independent in your composition, feel free to tick out the box and explore on your own.
-        </div>
-      </div>
-
-      <div class="col-sm-12 section-home">
-        <h1 class="section-tag">Quality Control</h1>
-        <div class="col-sm-6" style="display: inline-block;">
-          <img class="section-image" src="./img/sc1.png">
-        </div>
-        <div class="section-content">
-          Tasks 1 and 2 needs quality control while task 3 does not. For the first task, adjusting the number of inputs we collect per segment will allow adequent balance between time efficiency, and reducing the influence of damaging inputs. For the second task, flagging features will allow users to flag inappropriate lyric submissions, which will be reviewed manually.
-        </div>
-      </div>
-
-      <div class="col-sm-12 section-home">
-        <h1 class="section-tag">Result</h1>
-        <div class="col-sm-6" style="display: inline-block;">
-          <img class="section-image" src="./img/sc5.png">
-        </div>
-        <div class="section-content">
-          The result should be a whole coherent song. By which I mean a sequence of notes that match with the syllables of the lyrics. We do not provide a feature that converts these notes into vocals. The most popular and or recently finished songs can be viewed in the gallery tab. One can also experiment on completed songs from the gallery tab; changes made in this manner will not be saved in the official release of the song.
-        </div>
-      </div>
---> 
-  </div> 
-  <div id="loginModal" class="modal"> 
-   <div class="modal-content" style="width: 340px; height: 500px"> 
-    <span class="close">×</span> 
-    <div class="login-div" style="font-family: 'Amita'; font-size: 24px; padding: 40px">
-     Welcome to Melodize
+  </section> 
+  <section class="listen-recommendations"> 
+   <div class="container"> 
+    <div class="wrapper-stick-image"> 
+     <img src="comfiles/indexfiles/img/logo-listen-recommendations.png" alt="" class="img-left"> 
     </div> 
-    <div class="login-div">
-     <input class="login-input" type="text" id="id" placeholder="ID">
+    <div class="row"> 
+     <div class="col-12 col-lg-7 offset-lg-5 right-section"> 
+      <p style="font-size:24px; color: #1B7DF9;">Personal Online &amp; Personal Software</p> 
+      <h1>Listen on your own time at your own pace. </h1> 
+      <div class="button-wrapper"> 
+       <a href="./online/" class="button blue" id="team6_6">Personal Online</a> 
+       <a href="./software.html" class="button transparent" id="team6_7">Personal Software</a> 
+      </div> 
+      <p>For personal use and recommended for:</p> 
+      <div class="tiles-body"> 
+       <div class="tiles-row"> 
+        <div class="tiles student"> 
+         <span>Students</span> 
+        </div> 
+        <div class="tiles pro"> 
+         <span>Working Professionals</span> 
+        </div> 
+       </div> 
+       <div class="tiles-row"> 
+        <div class="tiles dyslexia"> 
+         <span>Dyslexic Readers</span> 
+        </div> 
+        <div class="tiles foreign mb-0"> 
+         <span>Foreign Language Learners</span> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
     </div> 
-    <div class="login-div">
-     <input class="login-input" type="password" id="pw" placeholder="Password">
+   </div> 
+  </section> 
+  <section class="create-audio"> 
+   <div class="container"> 
+    <div class="wrapper-stick-image"> 
+     <img src="comfiles/indexfiles/img/audio-create.png" alt="" class="img-right"> 
     </div> 
-    <div class="login-div" style="padding: 2px; color: red; display: none" id="warning_msg">
-     Wrong ID or Password
+    <div class="row"> 
+     <div class="col-12 col-lg-6 left-section"> 
+      <p style="font-size:24px; color: #1B7DF9;">NaturalReader Commercial</p> 
+      <h1>Create audio files more easily for commercial use.</h1> 
+      <ul class="list-for-create-audio"> 
+       <li>Create narration for YouTube videos.</li> 
+       <li>Generate audio for eLearning material</li> 
+       <li>Public use, broadcasting, or IVR systems</li> 
+       <li>Latest and most intelligent AI voices</li> 
+      </ul> 
+      <div class="button-wrapper"> 
+       <a href="./commercial.html" class="button" id="team6_8">Go To NaturalReader Commercial</a> 
+       <a href="" class="button transparent video-btn" data-toggle="modal" data-src="https://player.vimeo.com/video/250860051?badge=0" data-target="#myModal">Watch Video</a> 
+      </div> 
+     </div> 
+     <div class="offset-lg-6"></div> 
     </div> 
-    <div class="login-div">
-     <button class="btn btn-default login-input" id="loginBtn">Sign in</button>
+   </div> 
+  </section> 
+  <section class="section-for-carousel"> 
+   <div class="container"> 
+    <div class="row"> 
+     <div class="col-12"> 
+      <h1>What users say about our products</h1> 
+      <div class="owl-carousel"> 
+       <div class="element"> 
+        <p>“As a parent of a struggling Middle School student with Dyslexia, reading has always been a challenge. We use NaturalReader Software and the MP3 export feature almost daily to help him get through lengthy reading assignments. NaturalReader has been instrumental in helping him to excel in school!.”</p> 
+        <span>- Mary Hardin</span> 
+       </div> 
+       <div class="element"> 
+        <p>“I no longer strain my eyes trying to read tiny fonts in e-mails or web pages or spend time recording my own voice for teaching purposes. I have a "bilingual" NaturalReader and it has become a very useful tool. By the way, my students haven't noticed that my "friend" Kate, who reads lessons so nicely, is a computer..”</p> 
+        <span>- Ariel Miranda</span> 
+       </div> 
+       <div class="element"> 
+        <p>“As an assistive technology advocate for an Independent Living Center for Riverside County California, I think Nature Reader is a wonderful and affordable software for children with learning disability and dyslexia. I have cerebral palsy myself and this software has increased my productivity more than I had imagined. What I like the most about the software is the interface, because of my bad eyesight I had to increase the font, it makes reading more fun and pleasurable.”</p> 
+        <span>- Chi-Hung Luke Hsieh</span> 
+       </div> 
+       <div class="element"> 
+        <p>“This software helps me pronounce words that I cannot and it helps me avoid making grammatical errors when writing my case briefs and my essays. I enjoy the fact that I can convert my online textbooks into MP3’s and listen to them on my smart phone or while driving in my car. ”</p> 
+        <span>- Danita Moses</span> 
+       </div> 
+       <div class="element"> 
+        <p>“I use NaturalReader to read aloud passages from ebooks I have bought, PDF documents, webpages with lots of text, and to read back to me things I have typed to 'hear them'. This helps me greatly as although I am a visual/kinetic learner, words are not pictures. ”</p> 
+        <span>- Ayla Duffton</span> 
+       </div> 
+       <div class="element"> 
+        <p>“NaturalReader has been a transformational and liberating product for me. As someone that suffers from a learning disability, having this product to proof my emails, presentations and contracts, has allowed me to become more independent and not have the burden to rely on someone to proof my work. ”</p> 
+        <span>- Paul Colangelo</span> 
+       </div> 
+      </div> 
+     </div> 
     </div> 
-    <div class="login-div" style="padding: 2px">
-     Don't have an account? 
-     <a href="./signup.html">Sign up here</a>
+   </div> 
+  </section> 
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"> 
+   <div class="modal-dialog" role="document"> 
+    <div class="modal-content"> 
+     <div class="modal-body"> 
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">×</span> </button> 
+      <!-- 16:9 aspect ratio --> 
+      <div class="embed-responsive embed-responsive-16by9"> 
+       <iframe class="embed-responsive-item" src="" id="video" allowscriptaccess="always"></iframe> 
+      </div> 
+     </div> 
     </div> 
    </div> 
   </div> 
-  <script src="scripts/jquery/js/jquery-1.9.0.min.js"></script> 
-  <script src="scripts/jquery/js/jquery-ui-1.10.0.custom.min.js"></script> 
-  <script src="scripts/jquery/js/jquery-plugin.js"></script> 
-  <script src="https://www.gstatic.com/firebasejs/3.6.2/firebase.js"></script> 
-  <script src="scripts/login.js"></script> 
-  <script src="scripts/home.js"></script>   
+  <footer> 
+   <div class="container"> 
+    <div class="row"> 
+     <div class="col-12 d-flex justify-content-between wrapper-for-list"> 
+      <div class="img-wrapper"> 
+       <img src="comfiles/indexfiles/img/logo.png" alt=""> 
+      </div> 
+      <div class="bottom-menu"> 
+       <ul>
+        Products 
+        <li><a href="./webapp.html" id="team6_9">Online</a></li> 
+        <li><a href="./software.html" id="team6_10">Software</a></li> 
+        <li><a href="./commercial.html" id="team6_11">Commercial</a></li> 
+        <li><a href="https://s3.amazonaws.com/naturalsoft-ca/web/chrome/index.html">Chrome Extension</a></li> 
+       </ul> 
+       <ul>
+        About Us 
+        <li><a href="./exploring.html" id="team6_12">Testimonials</a></li> 
+        <li><a href="./exploring.html?index=1&amp;info=faq#" id="team6_13">FAQ</a></li> 
+        <li><a href="./exploring.html?index=2&amp;info=contactus" id="team6_14">Contact Us</a></li> 
+        <li></li> 
+       </ul> 
+       <ul>
+        Policies 
+        <li><a href="./exploring.html?index=3&amp;info=polices" id="team6_15">Refund</a> </li> 
+        <li><a href="./exploring.html?index=3&amp;info=polices" id="team6_16">Privacy &amp; Terms</a></li> 
+        <li><a href="./exploring.html?index=3&amp;info=polices" id="team6_17">User Agreement</a></li> 
+       </ul> 
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+   <div class="copyright"> 
+    <div class="container"> 
+     <div class="row"> 
+      <div class="col-12 wrapper-copyright"> 
+       <span>© NaturalSoft Ltd. All rights reserved.</span> 
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+  </footer> 
+  <!-- Здесь пишем код --> 
+  <!-- <div class="hidden"></div>
+
+	<div class="loader">
+		<div class="loader_inner"></div>
+	</div> --> 
+  <!--[if lt IE 9]>
+	<script src="libs/html5shiv/es5-shim.min.js"></script>
+	<script src="libs/html5shiv/html5shiv.min.js"></script>
+	<script src="libs/html5shiv/html5shiv-printshiv.min.js"></script>
+	<script src="libs/respond/respond.min.js"></script>
+	<![endif]--> 
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script> 
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script> 
+  <!-- <script src="libs/owlcarousel/owl.carousel.js"></script> --> 
+  <script src="comfiles/indexfiles/js/common.js?v=2019022202"></script>  
  </body>
 </html>

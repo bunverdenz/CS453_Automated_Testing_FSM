@@ -1,210 +1,489 @@
 <!doctype html>
-<html>
+<html lang="en">
  <head> 
-  <meta charset="UTF-8"> 
-  <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"> 
-  <link rel="icon" href="./img/icon.png"> 
-  <title>Melodize - Home</title> 
-  <link href="scripts/jquery/css/ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet"> 
-  <link href="css/general.css" rel="stylesheet"> 
-  <link href="css/home.css" rel="stylesheet"> 
-  <link href="css/songInfo.css" rel="stylesheet"> 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> 
-  <link href="https://fonts.googleapis.com/css?family=Amita" rel="stylesheet"> 
-  <link href="https://fonts.googleapis.com/css?family=Boogaloo" rel="stylesheet"> 
-  <link href="https://fonts.googleapis.com/css?family=Caveat" rel="stylesheet"> 
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> 
+  <!-- Required meta tags --> 
+  <meta charset="utf-8"> 
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+  <title>Online Text to Speech Web APP with Natural Voices</title> 
+  <meta name="Description" content="Text to speech online web APP with natural sounding voices. Supports PDF, word, ebooks, webpages, Convert text to audio files."> 
+  <meta name="Keywords" content="text to speech, text to voice, text speak, text reader, voice reader, text to voice, tts, free text to speech, read text, speech engine,"> 
+  <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"> 
+  <!-- Facebook and Twitter integration --> 
+  <meta property="og:title" content="text to speech online"> 
+  <meta property="og:image" content="https://www.naturalreaders.com/images/share_preview2.jpg"> 
+  <!-- <meta property="og:url" content=""/>
+	<meta property="og:site_name" content=""/> --> 
+  <meta property="og:description" content="text to speech online"> 
+  <meta name="twitter:title" content="text to speech online"> 
+  <meta name="twitter:image" content="https://www.naturalreaders.com/images/share_preview2.jpg"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> 
+  <link href="comfiles/webapp/css/personal.css?ver=1.3" rel="stylesheet"> 
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"> 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.0/css/bootstrap-grid.min.css"> 
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css" integrity="sha384-PDle/QlgIONtM1aqA2Qemk5gPOE7wFq8+Em+G/hmo5Iq0CCmYZLv3fVRDJ4MMwEA" crossorigin="anonymous"> 
+  <!--<link rel="stylesheet" href="css/fonts.css">--> 
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700,900" rel="stylesheet"> 
+  <!-- <script src="libs/modernizr/modernizr.js"></script> --> 
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-466667-1"></script> 
+  <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-466667-1');
+    </script> 
+  <script>
+        var APP_ID = "vccymf6u";
+
+        window.intercomSettings = {
+            app_id: APP_ID
+        };
+    </script> 
+  <script>(function () { var w = window; var ic = w.Intercom; if (typeof ic === "function") { ic('reattach_activator'); ic('update', w.intercomSettings); } else { var d = document; var i = function () { i.c(arguments); }; i.q = []; i.c = function (args) { i.q.push(args); }; w.Intercom = i; var l = function () { var s = d.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = 'https://widget.intercom.io/widget/' + APP_ID; var x = d.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x); }; if (w.attachEvent) { w.attachEvent('onload', l); } else { w.addEventListener('load', l, false); } } })();</script> 
  </head> 
  <body> 
-  <ul class="nav-ul"> 
-   <li class="nav-li">
-    <div onclick="window.location='./index.html';">
-     Melodize
-    </div></li> 
-   <li class="nav-li"><a id="loginTab">Sign In</a></li> 
-   <li class="nav-li"><a id="profileTab" href="./profile.html" style="display: none">Profile</a></li> 
-   <li class="nav-li"><a href="./gallery.html">Gallery</a></li> 
-   <li class="nav-li"><a href="./index.html">Home</a></li> 
-  </ul> 
-  <div class="animate-bottom" style="font-size: 20px; text-align: center; padding: 14px"> 
-   <div style="padding: 14px"> 
-    <div class="container section-home"> 
-     <h1 style="font-size: 80px; font-family:'Caveat';">Welcome to Melodize</h1> 
-     <div>
-       Listening to your favourite tunes has become easier than ever thanks to the variety of streaming platforms available today. However, it is not so easy for the public to contribute to the music composition process due to the public’s lack of expertise in the field and easily available tools; as a result, music composition remains to be a task exclusive to music artists. We want to change that dynamic. We want to make music composition a task available to anyone. 
+  <div class="main"> 
+   <header> 
+    <div class="container"> 
+     <div class="row"> 
+      <div class="col navigation position-static"> 
+       <a href="../index.html" class="logo-wrapper" id="team6_0"> <img src="comfiles/webapp/img/logo.png" alt=""> <span>NaturalReader</span> </a> 
+       <a aria-label="mobile menu" class="nav-toggle"> <span class="top"></span> <span></span> <span class="bottom"></span> </a> 
+       <ul id="accordion" class="menu-left"> 
+        <li class="el"><a href="#">Online</a></li> 
+        <li class="el"><a href="software.html" id="team6_0">Software</a></li> 
+        <li class="el"><a href="commercial.html" id="team6_1">Commercial</a></li> 
+        <li class="el"><a href="exploring.html?index=2&amp;info=contactus" id="team6_2">About</a></li> 
+        <li><a href="https://www.naturalreaders.com/online/" class="button" id="team6_3">Online Reader</a></li> 
+       </ul> 
+      </div> 
+     </div> 
+    </div> 
+   </header> 
+   <section class="audio-section"> 
+    <div class="container"> 
+     <div class="wrapper-image wrapper-image-left"> 
+      <img src="comfiles/webapp/img/wave.svg" class="left-photo"> 
+     </div> 
+     <div class="row"> 
+      <div class="col-12 col-lg-6"> 
+       <div class="container-img"> 
+        <img src="comfiles/webapp/img/running_lady.svg" alt=""> 
+       </div> 
+      </div> 
+      <div class="col-12 col-lg-6"> 
+       <div class="section-info-block"> 
+        <h2>Personal Online</h2> 
+        <h1>Listen to audio anywhere at anytime</h1> 
+        <p> Listen to your school notes, office documents, and even printed books from your computer or mobile devices </p> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+   </section> 
+   <section class="read-scanned"> 
+    <div class="container"> 
+     <div class="row"> 
+      <div class="col-12 col-lg-6"> 
+       <div class="section-info-block"> 
+        <h1>Supports PDF and most document formats</h1> 
+        <p> PDF, txt, doc(x), ppt(x), pages, ods, odt, and non-DRM epub files. </p> 
+       </div> 
+      </div> 
+      <div class="col-12 col-lg-6"> 
+       <div class="img-block-right"> 
+        <img src="comfiles/webapp/img/pdf.svg" alt="Book Image"> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+   </section> 
+   <section class="chrome-info-section"> 
+    <div class="container"> 
+     <div class="row"> 
+      <div class="col-12 col-lg-8 order-2 order-lg-1"> 
+       <div class="img-block-left"> 
+        <img src="comfiles/webapp/img/chrome.gif" alt="Book Image"> 
+       </div> 
+      </div> 
+      <div class="col-12 col-lg-4 order-1 order-lg-2"> 
+       <div class="section-info-block"> 
+        <h1>Chrome Extension</h1> 
+        <p> Listen to your emails, news, articles, and Google Docs directly from the webpage.<br> <a target="_blank" href="https://s3.amazonaws.com/naturalsoft-ca/web/chrome/index.html">Add Chrome Extension Now</a> </p> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+   </section> 
+   <section class="support-pdf"> 
+    <div class="container"> 
+     <div class="row"> 
+      <div class="col-12 col-lg-6 left-section"> 
+       <div class="section-info-block"> 
+        <h1>Read Aloud Images <br>&amp; Scanned Files</h1> 
+        <p> Use OCR to listen to your printed books, scanned documents, and text from PNG or JPEG images. </p> 
+       </div> 
+      </div> 
+      <div class="col-12 col-lg-6"> 
+       <div class="img-block-right"> 
+        <img src="comfiles/webapp/img/OCR.svg" alt="Book Image"> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+   </section> 
+   <section class="chrome-info-section"> 
+    <div class="container"> 
+     <div class="row"> 
+      <div class="col-12 col-lg-8 order-2 order-lg-1"> 
+       <div class="img-block-left"> 
+        <img src="comfiles/webapp/img/wave.png" alt="Book Image"> 
+       </div> 
+      </div> 
+      <div class="col-12 col-lg-4 order-1 order-lg-2"> 
+       <div class="section-info-block"> 
+        <h1>New Plus Voices</h1> 
+        <p> Plus Voices are the most intelligent, high-fidelity, accurate voices in the market today<br> <a target="_blank" href="plusvoicedemo.html" id="team6_4">Voice Demo</a> </p> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+   </section> 
+   <section class="feature-section"> 
+    <h2 class="title-section">More Features</h2> 
+    <div class="container"> 
+     <div class="row"> 
+      <div class="col-12 col-lg-4"> 
+       <div class="features-block"> 
+        <div class="features-btn"> 
+         <div class="img-container"> 
+          <img src="data:image/svg+xml;utf8,<svg width='16px' height='24px' viewBox='0 0 16 24' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'><g id='Page-1' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd' stroke-linecap='round' stroke-linejoin='round'><g id='Personal-Online' transform='translate(-166.000000, -4185.000000)' stroke='%231B7DF9' stroke-width='1.5'><g id='mobile' transform='translate(162.000000, 4185.000000)'><g id='mobile-phone'><rect id='Rectangle-path' x='5.251' y='0.75' width='13.5' height='22.5' rx='3'></rect><path d='M5.251,18.75 L18.751,18.75' id='Shape'></path></g></g></g></g></svg>" alt="" class="icon-btn"> 
+         </div> 
+         <span class="title">Mobile</span> 
+        </div> 
+        <div class="features-content"> 
+         <p>Listen to your documents from the desktop or mobile</p> 
+        </div> 
+       </div> 
+      </div> 
+      <div class="col-12 col-lg-4"> 
+       <div class="features-block"> 
+        <div class="features-btn"> 
+         <div class="img-container"> 
+          <img src="data:image/svg+xml;utf8,<svg width='22px' height='24px' viewBox='0 0 22 24' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'><g id='Page-1' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd' stroke-linecap='round' stroke-linejoin='round'><g id='Personal-Online' transform='translate(-561.000000, -4185.000000)' stroke='%231B7DF9' stroke-width='1.5'><g id='voices' transform='translate(560.000000, 4185.000000)'><g id='headphones-human'><path d='M8.714,2.548 C5.1720111,3.45560469 2.5327262,6.41824569 2.03869513,10.0411402 C1.54466405,13.6640348 3.29434299,17.2251709 6.464,19.048 L6.464,23.248' id='Shape'></path><circle id='Oval' cx='10.964' cy='11.25' r='3.75'></circle><path d='M13.214,8.25 L13.214,1.5 C13.214,1.08578644 12.8782136,0.75 12.464,0.75 L9.464,0.75 C9.04978644,0.75 8.714,1.08578644 8.714,1.5 L8.714,8.25' id='Shape'></path><path d='M15.464,23.25 L15.464,21.01 L16.47,21.178 C17.3399513,21.3232345 18.2297371,21.0782909 18.9027958,20.5082907 C19.5758546,19.9382904 19.9639859,19.1009911 19.964,18.219 L19.964,15.76 L20.899,15.527 C21.3724222,15.4087093 21.758715,15.067522 21.9345814,14.6123383 C22.1104479,14.1571545 22.0539049,13.6448716 21.783,13.239 L19.964,10.51 L19.964,9.76 C19.964,6.219 17.096,3.25 13.214,2.46' id='Shape'></path></g></g></g></g></svg>" alt="" class="icon-btn"> 
+         </div> 
+         <span class="title">100+ Natural Voices</span> 
+        </div> 
+        <div class="features-content"> 
+         <p>Many natural sounding voices available from 16 different languages.</p> 
+        </div> 
+       </div> 
+      </div> 
+      <div class="col-12 col-lg-4"> 
+       <div class="features-block"> 
+        <div class="features-btn"> 
+         <div class="img-container"> 
+          <img src="data:image/svg+xml;utf8,<svg width='24px' height='24px' viewBox='0 0 24 24' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'><g id='Page-1' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd' stroke-linecap='round' stroke-linejoin='round'><g id='Personal-Online' transform='translate(-962.000000, -4185.000000)' stroke='%231B7DF9' stroke-width='1.5'><g id='pronunciation' transform='translate(962.000000, 4185.000000)'><g id='study-book'><path d='M8.173,18.219 C6.23031245,17.5760191 4.20444992,17.2189499 2.159,17.159 C1.36618239,17.1153386 0.746668504,16.458012 0.75,15.664 L0.75,2.3 C0.748997585,1.88348276 0.921227635,1.48530238 1.22544798,1.20080704 C1.52966833,0.916311705 1.93848397,0.771120181 2.354,0.8 C8.678,1.131 12,3.388 12,5.114 C12,3.4 15.715,1.157 21.641,0.806 C22.0573485,0.775663676 22.4675061,0.920202292 22.7728508,1.20486175 C23.0781955,1.48952121 23.2511037,1.88854919 23.25,2.306 L23.25,14.906' id='Shape'></path><path d='M12,5.114 L12,9.001' id='Shape'></path><path d='M9.342,6.548 C7.54135007,5.89777844 5.67051585,5.46145183 3.768,5.248' id='Shape'></path><path d='M19.414,9.221 C19.76,9.165 20.1143333,9.11333333 20.477,9.066' id='Shape'></path><path d='M9.342,10.363 C7.53986499,9.71780735 5.66962298,9.28161887 3.768,9.063' id='Shape'></path><path d='M9.342,14.406 C7.52287666,13.7590075 5.63554028,13.3228231 3.717,13.106' id='Shape'></path><path d='M14.9,6.555 C16.720024,5.90756408 18.6084052,5.47137083 20.528,5.255' id='Shape'></path><path d='M23.136,23.251 L23.236,22.129 C23.3725013,20.6264286 22.3718414,19.2562482 20.899,18.929 L17.248,18.118 L17.248,12.376 C17.248,11.3404661 16.4085339,10.501 15.373,10.501 C14.3374661,10.501 13.498,11.3404661 13.498,12.376 L13.498,21.581 L12.021,20.473 C11.410687,20.0158856 10.5571861,20.0768212 10.0180037,20.6160037 C9.47882122,21.1551861 9.41788563,22.008687 9.875,22.619 L10.349,23.251' id='Shape'></path></g></g></g></g></svg>" alt="" class="icon-btn"> 
+         </div> 
+         <span class="title">Pronunciation Editor</span> 
+        </div> 
+        <div class="features-content"> 
+         <p>Correct or improve on the pronunciation of any word in any language. </p> 
+        </div> 
+       </div> 
+      </div> 
+      <div class="col-12 col-lg-4"> 
+       <div class="features-block"> 
+        <div class="features-btn"> 
+         <div class="img-container"> 
+          <img src="data:image/svg+xml;utf8,<svg width='24px' height='22px' viewBox='0 0 24 22' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'><g id='Page-1' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd' stroke-linecap='round' stroke-linejoin='round'><g id='Personal-Online' transform='translate(-162.000000, -4322.000000)' stroke='%231B7DF9' stroke-width='1.5'><g id='dyslexia' transform='translate(162.000000, 4321.000000)'><g id='font-size'><path d='M0.75,12.749 L11.25,12.749' id='Shape'></path><path d='M15.75,17.249 L23.25,17.249' id='Shape'></path><path d='M15.75,21.749 L15.75,13.5 C15.75,11.4289322 17.4289322,9.75 19.5,9.75 C21.5710678,9.75 23.25,11.4289322 23.25,13.5 L23.25,21.75' id='Shape'></path><path d='M0.75,21.749 L0.75,7.5 C0.75,4.60050506 3.10050506,2.25 6,2.25 C8.89949494,2.25 11.25,4.60050506 11.25,7.5 L11.25,21.75' id='Shape'></path></g></g></g></g></svg>" alt="" class="icon-btn"> 
+         </div> 
+         <span class="title">Dyslexia Font</span> 
+        </div> 
+        <div class="features-content"> 
+         <p>Specifically designed as a reading aid to help dyslexic readers. </p> 
+        </div> 
+       </div> 
+      </div> 
+      <div class="col-12 col-lg-4"> 
+       <div class="features-block"> 
+        <div class="features-btn"> 
+         <div class="img-container"> 
+          <img src="data:image/svg+xml;utf8,<svg width='20px' height='24px' viewBox='0 0 20 24' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'><g id='Page-1' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd' stroke-linecap='round' stroke-linejoin='round'><g id='Personal-Online' transform='translate(-564.000000, -4321.000000)' stroke='%231B7DF9' stroke-width='1.5'><g id='bookmark' transform='translate(562.000000, 4321.000000)'><g id='book-close-bookmark-1'><path d='M21,23.25 L5.25,23.25 C4.00735931,23.25 3,22.2426407 3,21' id='Shape'></path><path d='M12,2.25 L6,2.25 C4.34314575,2.25 3,3.59314575 3,5.25 L3,21 C3,19.7573593 4.00735931,18.75 5.25,18.75 L20.25,18.75 C20.6642136,18.75 21,18.4142136 21,18 L21,3 C21,2.58578644 20.6642136,2.25 20.25,2.25 L18,2.25' id='Shape'></path><path d='M19.5,23.25 L19.5,18.75' id='Shape'></path><path d='M18,12.75 L15,9.75 L12,12.75 L12,2.25 C12,1.42157288 12.6715729,0.75 13.5,0.75 L16.5,0.75 C17.3284271,0.75 18,1.42157288 18,2.25 L18,12.75 Z' id='Shape'></path></g></g></g></g></svg>" alt="" class="icon-btn"> 
+         </div> 
+         <span class="title">Bookmark Sections</span> 
+        </div> 
+        <div class="features-content"> 
+         <p>Add bookmark to save your place and continue reading later. </p> 
+        </div> 
+       </div> 
+      </div> 
+      <div class="col-12 col-lg-4"> 
+       <div class="features-block"> 
+        <div class="features-btn"> 
+         <div class="img-container"> 
+          <img src="data:image/svg+xml;utf8,<svg width='24px' height='24px' viewBox='0 0 24 24' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'><g id='Page-1' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd' stroke-linecap='round' stroke-linejoin='round'><g id='Personal-Online' transform='translate(-962.000000, -4321.000000)' stroke='%231B7DF9' stroke-width='1.5'><g id='footer' transform='translate(962.000000, 4321.000000)'><g id='artboard-add'><path d='M4.5,0.75 L4.5,1.5' id='Shape'></path><path d='M1.5,4.5 L0.75,4.5' id='Shape'></path><path d='M4.5,23.25 L4.5,22.5' id='Shape'></path><path d='M1.5,19.5 L0.75,19.5' id='Shape'></path><path d='M19.5,0.75 L19.5,1.5' id='Shape'></path><path d='M22.5,4.5 L23.25,4.5' id='Shape'></path><path d='M19.5,23.25 L19.5,22.5' id='Shape'></path><path d='M22.5,19.5 L23.25,19.5' id='Shape'></path><rect id='Rectangle-path' x='4.5' y='4.5' width='15.1455078' height='14.9423828'></rect><g id='Group' transform='translate(7.572754, 4.971191)'><g id='shrink-vertical'><path d='M6.500625,8.5488 L6.500625,13.9488' id='Shape'></path><polyline id='Shape' points='8.844375 10.7988 6.500625 8.5488 4.156875 10.7988'></polyline><polyline id='Shape' points='4.844375 3.5988 2.500625 5.8488 0.156875 3.5988'></polyline><path d='M2.500625,0.4488 L2.500625,5.8488' id='Shape'></path></g></g></g></g></g></g></svg>" alt="" class="icon-btn"> 
+         </div> 
+         <span class="title">Footer &amp; Header Adjustment</span> 
+        </div> 
+        <div class="features-content"> 
+         <p>Adjust reading margins to skip reading from headers and footnotes on the page. </p> 
+        </div> 
+       </div> 
+      </div> 
+      <!-- <div class="col-12 col-lg-4">
+                        <div class="features-block">
+                            <div class="features-btn">
+                                <div class="img-container">
+                                    <img src="data:image/svg+xml;utf8,<svg width='24px' height='24px' viewBox='0 0 24 24' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'><g id='Page-1' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd' stroke-linecap='round' stroke-linejoin='round'><g id='Personal-Online' transform='translate(-962.000000, -4321.000000)' stroke='%231B7DF9' stroke-width='1.5'><g id='footer' transform='translate(962.000000, 4321.000000)'><g id='artboard-add'><path d='M4.5,0.75 L4.5,1.5' id='Shape'></path><path d='M1.5,4.5 L0.75,4.5' id='Shape'></path><path d='M4.5,23.25 L4.5,22.5' id='Shape'></path><path d='M1.5,19.5 L0.75,19.5' id='Shape'></path><path d='M19.5,0.75 L19.5,1.5' id='Shape'></path><path d='M22.5,4.5 L23.25,4.5' id='Shape'></path><path d='M19.5,23.25 L19.5,22.5' id='Shape'></path><path d='M22.5,19.5 L23.25,19.5' id='Shape'></path><rect id='Rectangle-path' x='4.5' y='4.5' width='15.1455078' height='14.9423828'></rect><g id='Group' transform='translate(7.572754, 4.971191)'><g id='shrink-vertical'><path d='M6.500625,8.5488 L6.500625,13.9488' id='Shape'></path><polyline id='Shape' points='8.844375 10.7988 6.500625 8.5488 4.156875 10.7988'></polyline><polyline id='Shape' points='4.844375 3.5988 2.500625 5.8488 0.156875 3.5988'></polyline><path d='M2.500625,0.4488 L2.500625,5.8488' id='Shape'></path></g></g></g></g></g></g></svg>"
+                                        alt="" class="icon-btn">
+                                </div>
+                                <span class="title">OCR</span>
+                            </div>
+                            <div class="features-content">
+                                <p>Read from scanned PDFs, pictures, or screenshots using OCR.</p>
+                            </div>
+                        </div>
+                    </div> --> 
+     </div> 
+    </div> 
+   </section> 
+   <section class="simple-plan-section" name="upgrade" id="upgrade"> 
+    <div class="container"> 
+     <div class="row"> 
+      <div class="col-12"> 
+       <div class="simple-plan-container"> 
+        <h2 class="title-section">Simple Plans for Everyone</h2> 
+        <p>*All prices are in USD</p> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+   </section> 
+   <section class="price-section"> 
+    <div class="container"> 
+     <div class="row justify-content-around"> 
+      <div class="col-12 col-md-6 col-xl-4"> 
+       <div class="price-card-container"> 
+        <h3 class="price-card-title">FREE</h3> 
+        <div class="price-card-icon-container"> 
+         <img src="data:image/svg+xml;utf8,<svg width='66px' height='63px' viewBox='0 0 66 63' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'><g id='Page-1' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd' stroke-linecap='round' stroke-linejoin='round'><g id='Personal-Online' transform='translate(-287.000000, -5035.000000)' stroke='%231B7DF9' stroke-width='4.5'><g id='Group-24' transform='translate(260.000000, 5008.000000)'><g id='webfree' transform='translate(28.000000, 28.000000)'><g id='desktop-monitor-smiley'><polygon id='Shape' points='42 59.52 22 59.52 24 48 40 48'></polygon><path d='M16,59.52 L48,59.52' id='Shape'></path><path d='M2,40.32 L62,40.32' id='Shape'></path><rect id='Rectangle-path' x='2' y='1.92' width='60' height='46.08' rx='3'></rect><path d='M21.6746667,26.88 C27.5249399,32.0005562 36.4750601,32.0005562 42.3253333,26.88' id='Shape'></path><path d='M24,13.44 L24,17.28' id='Shape'></path><path d='M40,13.44 L40,17.28' id='Shape'></path></g></g></g></g></g></svg>" alt="" class="price-card-icon"> 
+        </div> 
+        <div class="price-container"> 
+         <span class="price">$0</span> 
+         <span class="mo">/ month</span> 
+         <p>(Free to use)</p> 
+        </div> 
+        <div class="price-card-body"> 
+         <ul class="price-list-info"> 
+          <li>Unlimited use with Free Voices</li> 
+          <li>20 minutes per day with Premium Voices</li> 
+          <li>Chrome Extension with unlimited Free Voices</li> 
+          <li>Supports pdf, txt, doc(x), pages, odt, ppt(x), ods, non-DRM epub files</li> 
+         </ul> 
+        </div> 
+        <div class="price-card-footer"> 
+         <a href="../online/" class="price-card-btn" id="team6_5">Try It Now</a> 
+        </div> 
+       </div> 
+      </div> 
+      <div class="col-12 col-md-6 col-xl-4"> 
+       <div class="price-card-container"> 
+        <h3 class="price-card-title">PREMIUM</h3> 
+        <div class="price-card-icon-container"> 
+         <img src="data:image/svg+xml;utf8,<svg width='64px' height='56px' viewBox='0 0 64 56' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'><g id='Page-1' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd' stroke-linecap='round' stroke-linejoin='round'><g id='Personal-Online' transform='translate(-688.000000, -5040.000000)' stroke='%231B7DF9' stroke-width='4.5'><g id='web-premium' transform='translate(688.000000, 5036.000000)'><g id='diamond'><path d='M51.2986667,8.6 C50.5432491,7.59277663 49.3576959,7 48.0986667,7 L16.0986667,7 C14.8396375,7 13.6540842,7.59277663 12.8986667,8.6 L4,20.4693333 C2.88823462,21.9526017 2.94120961,24.0053825 4.128,25.4293333 L29.0293333,55.5626667 C29.7893394,56.4701903 30.9122735,56.9944853 32.096,56.9944853 C33.2797265,56.9944853 34.4026606,56.4701903 35.1626667,55.5626667 L60.064,25.4293333 C61.2507904,24.0053825 61.3037654,21.9526017 60.192,20.4693333 L51.2986667,8.6 Z' id='Shape'></path><path d='M14.264,7.44533333 L32.0986667,57' id='Shape'></path><path d='M49.9306667,7.44533333 L32.0986667,57' id='Shape'></path><path d='M3.19466667,23 L60.9893333,23' id='Shape'></path><polyline id='Shape' points='20.0986667 23 32.0986667 7 44.0986667 23'></polyline></g></g></g></g></svg>" alt="" class="price-card-icon"> 
+        </div> 
+        <div class="price-container"> 
+         <span class="price">$9.99</span> 
+         <span class="mo">/ month</span> 
+         <p> (Or $59.88/ year)</p> 
+        </div> 
+        <div class="price-card-body"> 
+         <ul class="price-list-info"> 
+          <li>Unlimited use with Premium Voices</li> 
+          <li>OCR to read from images &amp; scanned PDFs</li> 
+          <li>MP3 Conversion (1 million characters/month)</li> 
+          <li>Chrome Extension with unlimited Premium Voices</li> 
+          <li>Pronunciation Editor</li> 
+          <li>Supports pdf, txt, doc(x), pages, odt, ppt(x), ods, non-DRM epub, jpeg, png</li> 
+         </ul> 
+        </div> 
+        <div class="price-card-footer"> 
+         <a href="../checkout/plans?plan=personal" class="price-card-btn" id="team6_5">Get Started</a> 
+        </div> 
+       </div> 
+      </div> 
+      <div class="col-12 col-md-6 col-xl-4"> 
+       <div class="price-card-container"> 
+        <h3 class="price-card-title">PLUS</h3> 
+        <div class="price-card-icon-container"> 
+         <img src="data:image/svg+xml;utf8,<svg width='64px' height='66px' viewBox='0 0 64 66' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'><g id='Page-1' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd' stroke-linecap='round' stroke-linejoin='round'><g id='Personal-Online' transform='translate(-1087.000000, -5035.000000)' stroke='%231B7DF9' stroke-width='4.5'><g id='premium-plus' transform='translate(1088.000000, 5036.000000)'><g id='Regular'><path d='M27.5786667,60.72 L8.512,33.6533333 C7.83155675,32.6561269 7.83155675,31.3438731 8.512,30.3466667 L27.5786667,3.28 C28.1250233,2.47826011 29.0324644,1.99853483 30.0026667,1.99853483 C30.9728689,1.99853483 31.88031,2.47826011 32.4266667,3.28 L51.4933333,30.3466667 C52.1737766,31.3438731 52.1737766,32.6561269 51.4933333,33.6533333 L32.4266667,60.72 C31.88031,61.5217399 30.9728689,62.0014652 30.0026667,62.0014652 C29.0324644,62.0014652 28.1250233,61.5217399 27.5786667,60.72 Z' id='Shape'></path><path d='M52.0026667,32 L8.00266667,32' id='Shape'></path><polyline id='Shape' points='30.0026667 2 20.0026667 32 30.0026667 62'></polyline><polyline id='Shape' points='30.0026667 2 40.0026667 32 30.0026667 62'></polyline><path d='M52.0026667,8 L60.0026667,8' id='Shape'></path><path d='M56.0026667,4 L56.0026667,12' id='Shape'></path><path d='M2.00266667,56 L10.0026667,56' id='Shape'></path><path d='M6.00266667,52 L6.00266667,60' id='Shape'></path></g></g></g></g></svg>" alt="" class="price-card-icon"> 
+        </div> 
+        <div class="price-container"> 
+         <span class="price">$19.00</span> 
+         <span class="mo">/ month</span> 
+         <p>(Or $110/ year)</p> 
+        </div> 
+        <div class="price-card-body"> 
+         <ul class="price-list-info"> 
+          <!-- <li>All features of Web Premium included</li>
+                                    <li>Listen to scanned PDFs with OCR</li>
+                                    <li>Listen to images with OCR function</li>
+                                    <li>Convert to mp3 for up to 1,000,000 characters per month</li>
+                                    <li>Take photos of text to listen from mobile version</li> --> 
+          <li>Unlimited use with Premium and Plus Voices (100+ voices total!)</li> 
+          <li>OCR to read from images &amp; scanned PDFs</li> 
+          <li>MP3 Conversion (1 million characters/month)</li> 
+          <li>Chrome Extension with unlimited Premium &amp; Plus Voices</li> 
+          <li>Pronunciation Editor</li> 
+          <li>Supports pdf, txt, doc(x), pages, odt, ppt(x), ods, non-DRM epub, jpeg, png</li> 
+         </ul> 
+        </div> 
+        <div class="price-card-footer"> 
+         <a href="../checkout/plans?plan=plus" class="price-card-btn" id="team6_5">Get Started</a> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+   </section> 
+   <section class="questions-section"> 
+    <div class="title-section"> 
+     <h2>Frequently Asked Questions</h2> 
+     <a target="_blank" href="../personalwebfaq.html" id="team6_5">(More Frequently Asked Questions)</a> 
+    </div> 
+    <div class="container"> 
+     <div class="row"> 
+      <div class="col-12"> 
+       <div id="accordion"> 
+        <div class="questions-card"> 
+         <div class="questions-header" id="headingOne"> 
+          <h5 class="mb-0"> <button class="btn-link" data-toggle="collapse" data-target="#questionsCollapseOne" aria-expanded="true" aria-controls="questionsCollapseOne"> What are the refund &amp; cancellation policies? <i class="fas fa-chevron-down"></i> </button> </h5> 
+         </div> 
+         <div id="questionsCollapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion"> 
+          <div class="card-body">
+            We strongly recommend that all customers try before you buy. You can try the application for free from this page or by clicking on the 'Online Reader' link from our website: 
+           <a href="../online/" id="team6_5">https://www.naturalreaders.com/online/</a> 
+           <br>
+           <br> 
+           <b>By default, all subscriptions are set to auto-renew at the end of the billing period but you can turn this off at any time by selecting 'Cancel Subscription' from your account's Billing Information.</b> After you cancel, paid service will continue until the end of the current billing period without renewal.
+           <br>
+           <br> 
+           <b>Cancelling your subscription will not automatically initiate a refund, which is done by request only.</b> 
+           <br>
+           <br> 
+           <b>Yearly subscribers of NaturalReader Online may request a refund for up to 30 days after the subscription start/renewal date and monthly subscribers may request a refund for up to 14 days.</b> To request a refund, please contact us through our website's help system (click on the blue chat icon in the bottom right corner). 
+           <br>
+           <br> *Cancelling from the NaturalReader Online platform will have no effect on your NaturalReader Commercial subscription if you are subscribed to both versions. To cancel your Commercial subscription, please do so from your Billing Settings by logging in directly to NaturalReader Commercial. 
+           <br>
+           <br> **The above policy applies to NaturalReader Online only. For cancellation policies for NaturalReader Commercial, please see that product page or our website's Policies section for more information. 
+          </div> 
+         </div> 
+        </div> 
+        <div class="questions-card"> 
+         <div class="questions-header" id="headingTwo"> 
+          <h5 class="mb-0"> <button class="btn-link collapsed" data-toggle="collapse" data-target="#questionsCollapseTwo" aria-expanded="false" aria-controls="questionsCollapseTwo"> Are there limits to converting documents to mp3 files with NaturalReader Online? <i class="fas fa-chevron-down"></i> </button> </h5> 
+         </div> 
+         <div id="questionsCollapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion"> 
+          <div class="card-body">
+            All paid subscriptions for NaturalReader Online include mp3 conversion for up to 1 million characters per month. This limit is applied to mp3 conversions only, not for basic text-to-speech from reading directly from the application. This limit resets the same day as your renewal.
+           <br>
+           <br> 
+           <!-- With the NaturalReader Online plans, you can convert text into downloadable mp3 files. This feature is limited to 1 000 000 characters for mp3 conversion per month for all subscription plans. The text to speech conversion itself is unlimited —this limit only applies if you are looking to download the audio as an mp3 file.<br><br>
+
+                                    If you’re concerned about these limitations, we recommend you take a look at the NaturalReader software versions. Personal, Professional, and Ultimate all can convert the text into downloadable audio files, and this feature is unlimited in all those versions (for personal use only).<br><br> --> 
+           <b>Audio files generated using NaturalReader Online are permitted for personal use only. </b> For any non-personal, commercial, or public use or redistribution of the audio files, please check out NaturalReader Commercial. 
+          </div> 
+         </div> 
+        </div> 
+        <div class="questions-card"> 
+         <div class="questions-header" id="headingThree"> 
+          <h5 class="mb-0"> <button class="btn-link collapsed" data-toggle="collapse" data-target="#questionsCollapseThree" aria-expanded="false" aria-controls="questionsCollapseThree"> What is personal use? <i class="fas fa-chevron-down"></i> </button> </h5> 
+         </div> 
+         <div id="questionsCollapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion"> 
+          <div class="card-body">
+            Personal use means that only you the individual purchaser may use the software or application for your own private listening. Audio files created with the personal-use versions cannot be used publicly (including on websites or YouTube videos), commercially, or otherwise redistributed in any way. Only you may create the audio files for only yourself to enjoy and they cannot be utilized or made available to any other systems or people.
+           <br>
+           <br> Please keep in mind that 'internal' or 'non-profit' use (such as for messaging systems or training videos) nonetheless requires a commercial license to allow redistribution of the audio content.
+           <br>
+           <br> For any non-personal use, please check out NaturalReader Commercial, which is a separate application.
+           <br>
+           <br> 
+          </div> 
+         </div> 
+        </div> 
+        <div class="questions-card"> 
+         <div class="questions-header" id="headingFour"> 
+          <h5 class="mb-0"> <button class="btn-link collapsed" data-toggle="collapse" data-target="#questionsCollapseFour" aria-expanded="false" aria-controls="questionsCollapseFour"> What voices or languages are available for each subscription plan? <i class="fas fa-chevron-down"></i> </button> </h5> 
+         </div> 
+         <div id="questionsCollapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion"> 
+          <div class="card-body">
+            Premium comes with unlimited use of the Premium Voices with no access to the Plus Voices. Plus comes with unlimited use of the Premium Voices as well as exclusive access to 50 additional Plus Voices.
+           <br>
+           <br> Languages available with Premium Voices:
+           <br>
+           <br> A total of 50+ voices for English (US, UK); Dutch; French (European, Canadian); German; Italian; Portuguese (European, Brazilian); Spanish (European, Mexican, US); and Swedish.
+           <br>
+           <br> Languages available with Plus Voices:
+           <br>
+           <br> An additional 50 voices for English (US, UK, Australian, Indian, Welsh); Danish; Dutch; French (European, Canadian); German; Icelandic; Italian; Norwegian; Polish; Portuguese (European, Brazilian); Romanian; Russian; Spanish (European, US); Swedish; Turkish; and Welsh. 
+          </div> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+   </section> 
+  </div> 
+  <hr> 
+  <footer class="footer"> 
+   <div class="container"> 
+    <div class="row"> 
+     <div class="col-12 d-flex justify-content-between wrapper-for-list"> 
+      <div class="img-wrapper"> 
+       <img src="comfiles/webapp/img/logo.png" alt=""> 
+      </div> 
+      <div class="bottom-menu"> 
+       <ul>
+        Products 
+        <li><a href="#">Online</a></li> 
+        <li><a href="software.html" id="team6_5">Software</a></li> 
+        <li><a href="commercial.html" id="team6_6">Commercial</a></li> 
+        <li><a href="https://s3.amazonaws.com/naturalsoft-ca/web/chrome/index.html">Chrome Extension</a></li> 
+       </ul> 
+       <ul>
+        About Us 
+        <li><a href="exploring.html" id="team6_7">Testimonials</a></li> 
+        <li><a href="exploring.html?index=1&amp;info=faq#" id="team6_8">FAQ</a></li> 
+        <li><a href="exploring.html?index=2&amp;info=contactus" id="team6_9">Contact Us</a></li> 
+        <li></li> 
+       </ul> 
+       <ul>
+        Policies 
+        <li><a href="exploring.html?index=3&amp;info=polices" id="team6_10">Refund</a></li> 
+        <li><a href="exploring.html?index=3&amp;info=polices" id="team6_11">Privacy &amp; Terms</a></li> 
+        <li><a href="exploring.html?index=3&amp;info=polices" id="team6_12">User Agreement</a></li> 
+       </ul> 
+      </div> 
      </div> 
     </div> 
    </div> 
-   <div class="col-sm-12 section-home"> 
-    <div class="col-sm-6"> 
-     <h1 style="font-size: 50px; font-family:'Caveat';">Get the ball rolling</h1>
-     <br> By submitting lyrics to your song
-     <br>
-     <br> Describe the mood, tone, and theme of your song
-     <br> Watch the progress of the composition in real time
-     <br>
-     <br> 
-     <button class="green-btn" id="requesterBtn">SUBMIT LYRICS</button> 
-    </div> 
-    <div class="col-sm-6"> 
-     <img class="screenShot" src="./img/sc2.png"> 
-    </div> 
-   </div> 
-   <div class="col-sm-12 section-home"> 
-    <div class="col-sm-6"> 
-     <img class="screenShot" src="./img/sc1.png"> 
-    </div> 
-    <div class="col-sm-6"> 
-     <h1 style="font-size: 50px; font-family:'Caveat';">Express your ideas</h1>
-     <br> On an already submitted lyric
-     <br>
-     <br> Suggest notes that you think suites the song
-     <br> Vote on your favorite passages
-     <br>
-     <br> 
-     <button class="green-btn" id="workerBtn">START COMPOSING</button> 
-    </div> 
-   </div> 
-   <div class="col-sm-12 section-home"> 
-    <div class="col-sm-10 col-sm-offset-1"> 
-     <h1 style="font-size: 50px; font-family:'Caveat';">Live Demo</h1>
-     <br> 
-     <div class="screenShot video-container"> 
-      <iframe src="https://www.youtube.com/embed/nNwPpxmL_Ww" frameborder="0" allowfullscreen></iframe> 
+   <div class="copyright"> 
+    <div class="container"> 
+     <div class="row"> 
+      <div class="col-12 wrapper-copyright"> 
+       <span>© NaturalSoft Ltd. All rights reserved.</span> 
+      </div> 
      </div> 
     </div> 
    </div> 
-   <div class="col-sm-12 section-home" style="background-color: #c1d9ff"> 
-    <div class="col-sm-12"> 
-     <h1>Learn more about us</h1> What can I do here?
-     <br> How does this platform work?
-     <br> How do I contribute?
-     <br> How do I give you my feedbacks?
-     <br>
-     <br> 
-     <button class="blue-btn" id="learnBtn">LEARN MORE</button> 
-    </div> 
-   </div> 
-   <!--
-      <div class="col-sm-12 section-home">
-        <div class="col-sm-6">
-          <h1>Express yourself</h1><br>
-          By creating an account<br><br>
-          You can submit your lyrics, comment others<br>
-          Change profile picture to show who you are<br><br>
-          <button class="green-btn" id="signUpBtn">SIGN UP</button>
-        </div>
-        <div class="col-sm-6">
-          <img class="screenShot" src="./img/sc6.png">
-        </div>        
-      </div>
-
-      <div class="col-sm-12 section-home">
-        <div class="col-sm-6">
-          <img class="screenShot" src="./img/sc7.png">
-        </div>
-        <div class="col-sm-6">
-          <h1>Check completions</h1><br>
-          On the hall of fame<br><br>
-          Leave a comment on these materpieces<br>
-          Try to change some notes to suit your taste<br><br>
-          <button class="green-btn" id="galleryBtn">CHECK GALLERY</button>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-sm-10 col-sm-offset-1 songList-home">
-          <div class="list-tag"><statnum id="totalSongs">0</statnum> SONGS</div>
-          <div class="sort-tag">
-            Sort by:
-            <select id="sortingSelect">
-              <option value=2>participants (dec)</option>
-              <option value=3>participants (inc)</option>
-              <option value=1>title (dec)</option>
-              <option value=0>title (inc)</option>
-            </select>
-          </div>
-          <div id="songList" class="song-list"></div><br>
-          <center><div id="songList-showMore" class="showMore"><i class="material-icons">&#xE313;</i> Show More</div></center>
-          <center><button class="green-btn" id="listBtn" style="font-size: 24px">START COMPOSING</button></center>
-        </div>
-      </div>
-
-      <div class="col-sm-12 section-home" id="learnStart">
-        <h1 class="section-tag">Tasks</h1>
-        <div class="col-sm-6" style="display: inline-block;">
-          <img class="section-image" src="./img/sc3.png">
-        </div>
-        <div class="section-content">
-          The three tasks our platform supports are,<br><br>
-          1. Submission of lyrics, which will be the base of melody compositions<br>
-          2. Composing melody to submitted lyrics<br>
-          3. Freedom to experiment with melody composition without lyrics as a base<br>
-        </div>
-      </div>
-
-      <div class="col-sm-12 section-home">
-        <h1 class="section-tag">Aggregation</h1>
-        <div class="col-sm-6" style="display: inline-block;">
-          <img class="section-image" src="./img/sc4.png">
-        </div>
-        <div class="section-content">
-          How we aggregate  each and every one of your input is crucial to our process as it directly affects the coherency and flow of our songs. We take each of your segment inputs and pool them together first. Then, we choose the most popular note for each syllable and integrate it into the song.<br><br>
-
-          While doing so, we wanted our composition process to be interactive so that you can take inspiration from others and provide inspiration to others. By ticking the "see what others have done" button, you will be able to see the distribution of popular notes that have been voted so far. Of course, if you want to be fully independent in your composition, feel free to tick out the box and explore on your own.
-        </div>
-      </div>
-
-      <div class="col-sm-12 section-home">
-        <h1 class="section-tag">Quality Control</h1>
-        <div class="col-sm-6" style="display: inline-block;">
-          <img class="section-image" src="./img/sc1.png">
-        </div>
-        <div class="section-content">
-          Tasks 1 and 2 needs quality control while task 3 does not. For the first task, adjusting the number of inputs we collect per segment will allow adequent balance between time efficiency, and reducing the influence of damaging inputs. For the second task, flagging features will allow users to flag inappropriate lyric submissions, which will be reviewed manually.
-        </div>
-      </div>
-
-      <div class="col-sm-12 section-home">
-        <h1 class="section-tag">Result</h1>
-        <div class="col-sm-6" style="display: inline-block;">
-          <img class="section-image" src="./img/sc5.png">
-        </div>
-        <div class="section-content">
-          The result should be a whole coherent song. By which I mean a sequence of notes that match with the syllables of the lyrics. We do not provide a feature that converts these notes into vocals. The most popular and or recently finished songs can be viewed in the gallery tab. One can also experiment on completed songs from the gallery tab; changes made in this manner will not be saved in the official release of the song.
-        </div>
-      </div>
---> 
-  </div> 
-  <div id="loginModal" class="modal"> 
-   <div class="modal-content" style="width: 340px; height: 500px"> 
-    <span class="close">×</span> 
-    <div class="login-div" style="font-family: 'Amita'; font-size: 24px; padding: 40px">
-     Welcome to Melodize
-    </div> 
-    <div class="login-div">
-     <input class="login-input" type="text" id="id" placeholder="ID">
-    </div> 
-    <div class="login-div">
-     <input class="login-input" type="password" id="pw" placeholder="Password">
-    </div> 
-    <div class="login-div" style="padding: 2px; color: red; display: none" id="warning_msg">
-     Wrong ID or Password
-    </div> 
-    <div class="login-div">
-     <button class="btn btn-default login-input" id="loginBtn">Sign in</button>
-    </div> 
-    <div class="login-div" style="padding: 2px">
-     Don't have an account? 
-     <a href="./signup.html" id="team6_0">Sign up here</a>
-    </div> 
-   </div> 
-  </div> 
-  <script src="scripts/jquery/js/jquery-1.9.0.min.js"></script> 
-  <script src="scripts/jquery/js/jquery-ui-1.10.0.custom.min.js"></script> 
-  <script src="scripts/jquery/js/jquery-plugin.js"></script> 
-  <script src="https://www.gstatic.com/firebasejs/3.6.2/firebase.js"></script> 
-  <script src="scripts/login.js"></script> 
-  <script src="scripts/home.js"></script>   
+  </footer> 
+  <!-- jQuery first, then Tether, then Bootstrap JS. --> 
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> 
+  <!-- <script src="js/bootstrap.bundle.min.js"></script> --> 
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script> 
+  <script src="comfiles/webapp/js/custom.js?ver=1.3"></script>  
  </body>
 </html>

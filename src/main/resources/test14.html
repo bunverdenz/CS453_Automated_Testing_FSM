@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+ <head> 
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"> 
+  <meta http-equiv="Cache-Control" content="max-age=604800"> 
+  <title>Free text to speech with Naturally Sounding Voices Online Demo — Free NaturalReader</title> 
+  <link rel="icon" href="favicon.ico"> 
+  <link rel="stylesheet" href="css/audioIndex.css"> 
+  <link rel="stylesheet" href="css/webreader.css"> 
+  <!-- <link rel="stylesheet" type="text/css" href="css/jquery-fallr-2.0.1.css" /> --> 
+  <script src="https://apis.google.com/js/platform.js" async defer></script> 
+  <meta name="description" content="text to speech with naturally sounding voices. Let your computer read PDF, word, ebooks, webpages and other documents with online naturally sounding voices and convert text to MP3, or text to WAV files, text to audio files, read text aloud, download free text to speech software now text readers, computer reader, Reader, online reader, talking text, voice text. naturally sounding voices, TTS, learning disability, reading disability, visual impaired, low vision, text to speech solutions, text to MP3, Optical Character Recognition (OCR), Screen Reader, Dyslexia Software, Dyslexia."> 
+  <meta property="og:image" content="https://www.naturalreaders.com/images/share_preview2.jpg"> 
+ </head> 
+ <body style="font-family:Helvetica Neue,Helvetica,Arial,sans-serif"> 
+  <div class="container"> 
+   <div class="mainHeader"> 
+    <div class="logo"> 
+     <a href="index.html" id="team6_0"> 
+      <div class="icon"></div> 
+      <div class="icon_back">
+       <span>Home</span>
+      </div> </a> 
+    </div> 
+   </div> 
+   <div class="mainContent clearfix"> 
+    <div class="topContent">
+     NaturalReader's Web Reader allows you to listen to any webpage instantly.
+    </div> 
+    <div class="centerContent"> 
+     <div class="sbrowserLayer"> 
+      <div> 
+       <p>1) Drag this button to your Favorites/Bookmarks Bar.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="bookmarkletLink"><img src="images/drag2.png" alt="NaturalReader"></a></p> 
+       <p>&nbsp;</p> 
+       <p>2) Click the NaturalReader button to start listening.</p> 
+       <p>From any webpage, the text will instanly upload to the web-reader and be ready to be listen to.</p> 
+       <div class="vedioContent"> 
+        <a id="play-video" class="video-play-button" href="#"> <span></span> </a> 
+        <div id="video-overlay" class="video-overlay"> 
+         <a class="video-overlay-close">×</a> 
+        </div> 
+       </div> 
+       <div class="tipsContent"> 
+        <p><a id="tipA" href="https://support.apple.com/kb/PH21460?locale=en_US" target="_blank" style="text-decoration:underline">Is your Favorites/Bookmark Bar not showing? Find out below how to make it visible:</a></p> 
+        <p>&nbsp;</p> 
+        <p><img id="png" src="images/safari.png"></p> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+  </div> 
+  <script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script> 
+  <script src="js/bookmark.js"></script> 
+  <script type="text/javascript">
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+
+  ga('create', 'UA-466667-1', 'naturalreaders.com');
+  ga('send', 'pageview');
+  
+  
+  function myBrowser(){
+    var userAgent = navigator.userAgent; //取得浏览器的userAgent字符串
+    var isOpera = userAgent.indexOf("Opera") > -1;
+    if (isOpera) {
+        return "Opera"
+    }; //判断是否Opera浏览器
+    if (userAgent.indexOf("Firefox") > -1) {
+        return "FF";
+    } //判断是否Firefox浏览器
+    if (userAgent.indexOf("Chrome") > -1){
+  return "Chrome";
+ }
+    if (userAgent.indexOf("Safari") > -1) {
+        return "Safari";
+    } //判断是否Safari浏览器
+    if (userAgent.indexOf("compatible") > -1 && userAgent.indexOf("MSIE") > -1 && !isOpera) {
+        return "IE";
+    }; //判断是否IE浏览器
+}
+var type=myBrowser();
+  if("Chrome"==type){
+  	// $("#gif").attr("src","images/chrome.gif");
+  	$("#png").attr("src","images/chrome.png");
+  	$("#tipA").attr("href","https://support.google.com/chrome/answer/95745?hl=en");
+  	//fn_showLayer($('.cbrowserLayer'));
+  }else if("Safari"==type){
+  	// $("#gif").attr("src","images/safari.gif");
+  	$("#png").attr("src","images/safari.png");
+  	$("#tipA").attr("href","https://support.apple.com/kb/PH21460?locale=en_US");
+  	//fn_showLayer($('.sbrowserLayer'));
+  }else if("FF"==type){
+  	// $("#gif").attr("src","images/firefox.gif");
+  	$("#png").attr("src","images/firefox.png");
+  	$("#tipA").attr("href","https://support.mozilla.org/en-US/kb/bookmarks-toolbar-display-favorite-websites#w_show-or-hide-the-bookmarks-toolbar");
+  	//fn_showLayer($('.fbrowserLayer'));
+  }else{
+  	// $("#gif").attr("src","images/ie.gif");
+  	$("#png").attr("src","images/ie.png");
+  	$("#tipA").attr("href","https://support.microsoft.com/en-us/instantanswers/cb97447c-a200-476f-a241-cd3958144d02/see-your-favorites-bar");
+  	//fn_showLayer($('.ibrowserLayer'));
+  }
+  function fn_showLayer(layer){
+  	var $contentLayer=layer;
+  	$contentLayer.show();
+  }
+
+    $('#play-video').on('click', function (e) {
+            e.preventDefault();
+            $('#video-overlay').addClass('open');
+            $("#video-overlay").append('<iframe src="https://player.vimeo.com/video/230178596" frameborder="0" allowfullscreen></iframe>');
+        });
+
+    $('.video-overlay, .video-overlay-close').on('click', function (e) {
+        e.preventDefault();
+        close_video();
+    });
+
+    $(document).keyup(function (e) {
+        if (e.keyCode === 27) { close_video().click; }
+    });
+
+    function close_video() {
+        $('.video-overlay.open').removeClass('open').find('iframe').remove();
+    };
+</script>  
+ </body>
+</html>

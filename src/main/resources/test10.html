@@ -1,103 +1,759 @@
 <!doctype html>
-<html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html lang="en">
+ <!--<![endif]-->
  <head> 
-  <meta charset="UTF-8"> 
-  <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"> 
-  <link rel="icon" href="./img/icon.png"> 
-  <title>Melodize - About</title> 
-  <link href="scripts/jquery/css/ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet" id="team6_0"> 
-  <link href="css/general.css" rel="stylesheet" id="team6_0"> 
-  <link href="css/home.css" rel="stylesheet" id="team6_0"> 
-  <link href="css/songInfo.css" rel="stylesheet" id="team6_0"> 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> 
-  <link href="https://fonts.googleapis.com/css?family=Amita" rel="stylesheet"> 
-  <link href="https://fonts.googleapis.com/css?family=Boogaloo" rel="stylesheet"> 
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> 
+  <meta charset="utf-8"> 
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+  <title>AI text to speech voices with naturalreader</title> 
+  <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"> 
+  <meta name="description" content="Free text to speech online app with natural voices, convert text to audio and mp3, for personal and commercial use"> 
+  <meta name="keywords" content="text to speech, text to voice, text speak, text reader, voice reader, text to voice, tts, free text to speech, read text, speech engine,"> 
+  <!-- Facebook and Twitter integration --> 
+  <meta property="og:title" content="text to speech online"> 
+  <meta property="og:image" content="https://www.naturalreaders.com/images/share_preview2.jpg"> 
+  <!-- <meta property="og:url" content=""/>
+	<meta property="og:site_name" content=""/> --> 
+  <meta property="og:description" content="text to speech online"> 
+  <meta name="twitter:title" content="text to speech online"> 
+  <meta name="twitter:image" content="https://www.naturalreaders.com/images/share_preview2.jpg"> 
+  <!-- <meta name="twitter:url" content="" />
+	<meta name="twitter:card" content="" /> --> 
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory --> 
+  <link rel="shortcut icon" href="favicon.ico"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"> 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"> 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"> 
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css" integrity="sha384-PDle/QlgIONtM1aqA2Qemk5gPOE7wFq8+Em+G/hmo5Iq0CCmYZLv3fVRDJ4MMwEA" crossorigin="anonymous"> 
+  <!-- Latest compiled and minified CSS --> 
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css"> 
+  <!--<link rel="stylesheet" href="css/fonts.css">--> 
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700,900" rel="stylesheet"> 
+  <link rel="stylesheet" href="comfiles/plusvoicedemo/css/plus.css?v=0"> 
+  <link href="https://fonts.googleapis.com/css?family=Material+Icons" rel="stylesheet"> 
+  <!-- <link rel="stylesheet" href="css/media.css"> --> 
+  <!-- <script src="libs/modernizr/modernizr.js"></script> --> 
+  <!-- Global site tag (gtag.js) - Google Analytics --> 
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-466667-1"></script> 
+  <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-466667-1');
+        function getparastr(strname) {
+            paramValue = "";
+            isFound = false;
+            if (window.location.href.indexOf("?") > 0 && window.location.href.indexOf("=") > 0) {
+                arrSource = unescape(window.location.href).substring(window.location.href.indexOf("?") + 1, window.location.href.length).split("&");
+                i = 0;
+                while (i < arrSource.length && !isFound) {
+                    if (arrSource[i].indexOf("=") > 0) {
+                        if (arrSource[i].split("=")[0].toLowerCase() == strname.toLowerCase()) {
+                            paramValue = arrSource[i].split("=")[1];
+                            isFound = true;
+                        }
+                    }
+                    i++;
+                }
+            }
+            return paramValue;
+        }
+
+        var url = getparastr('url');
+        if (url != null && url != '') {
+            window.location.href = 'online/index.html?url=' + url;
+        }
+    </script> 
  </head> 
  <body> 
-  <ul class="nav-ul"> 
-   <li class="nav-li">
-    <div onclick="window.location='./index.html';">
-     Melodize
-    </div></li> 
-   <li class="nav-li"><a id="loginTab">Sign In</a></li> 
-   <li class="nav-li"><a id="profileTab" href="./profile.html" style="display: none">Profile</a></li> 
-   <li class="nav-li"><a href="./gallery.html" id="team6_0">Gallery</a></li> 
-   <li class="nav-li"><a href="./index.html" id="team6_1">Home</a></li> 
-  </ul> 
-  <div class="animate-bottom" style="font-size: 20px; text-align: center; padding: 14px"> 
-   <div class="col-sm-12 section-home"> 
-    <h1 class="section-tag">Tasks</h1> 
-    <div class="col-sm-6" style="display: inline-block;"> 
-     <img class="section-image" src="./img/sc3.png"> 
-    </div> 
-    <div class="section-content">
-      Our platform aims to support all in all 3 tasks:
-     <br>
-     <br> 1. Submission of lyrics, where you can submit lyrics to receive a complementing melody for it. Just click on ‘submit lyrics’ button and write your lyrics as well as the general direction you want the song to take!
-     <br> 2. Compose melody to submitted lyrics. Now that there are lyrics, we need to acquire a melody! Using crowdsourcing, we seek to gather input from variety of people and join their suggestions together to compose ‘the melody’ for the lyrics submitted.
-     <br> 3. Lastly, we want you to have fun freely experimenting with notes and melody composition, not just doing it according to the lyrics!
-     <br> 
+  <header> 
+   <div class="container"> 
+    <div class="row"> 
+     <div class="col navigation"> 
+      <a href="#" class="logo-wrapper"> <img src="comfiles/indexfiles/img/logo.png" alt=""> <span>NaturalReader</span> </a> 
+      <a aria-label="mobile menu" class="nav-toggle"> <span class="top"></span> <span></span> <span class="bottom"></span> </a> 
+      <ul class="menu-left"> 
+       <li class="el"><a href="./webapp.html" id="team6_0">Online</a></li> 
+       <li class="el"><a href="./software.html" id="team6_1">Software</a></li> 
+       <li class="el"><a href="./commercial.html" id="team6_2">Commercial</a></li> 
+       <li class="el"><a href="./exploring.html?index=2&amp;info=contactus" id="team6_3">About</a> </li> 
+       <li><a href="./online/" class="button" id="team6_4">Online Reader</a></li> 
+      </ul> 
+     </div> 
     </div> 
    </div> 
-   <div class="col-sm-12 section-home"> 
-    <h1 class="section-tag">Aggregation</h1> 
-    <div class="col-sm-6" style="display: inline-block;"> 
-     <img class="section-image" src="./img/sc4.png"> 
+  </header> 
+  <section class="speech-info"> 
+   <div class="container"> 
+    <div class="row"> 
+     <div class="col-12"> 
+      <div class="section-info-block"> 
+       <h3>Plus Voices</h3> 
+       <h1>High-fidelity, accurate, lifelike voices</h1> 
+       <p> Using the latest technology for the most natural experience </p> 
+      </div> 
+      <div class="button-wrapper"> 
+       <a href="./checkout/plans?plan=plus" class="button blue" id="team6_5">Buy Plus Plan</a> 
+       <a href="#demo" class="button transparent video-btn">Voice Demo</a> 
+      </div> 
+     </div> 
     </div> 
-    <div class="section-content">
-      Aggregation is the most important part of our platform. Once we have the data from tens of people, we need a way to acquire the final product. We decided to, as mentioned above, open a small section of the song at a time to be composed. After enough users have participated, we take the highest chosen notes as the melody, and go on to the next section.This is because we wanted you to have freedom and a feeling that you are ‘composing’, while maintaining a coherent flow of sound. By limiting the section we take input for, we hope to see a common pattern that represent the sound of the crowd.
-     <br> While doing so, we wanted our composition process to be interactive so that you can take inspiration from others and provide inspiration to others. By ticking the "see what others have done" button, you will be able to see the distribution of popular notes that have been voted so far. Of course, if you want to be fully independent in your composition, feel free to tick out the box and explore on your own. 
+   </div>  
+  </section> 
+  <section class="record-section"> 
+   <h1 id="demo" class="title-section text-center">Pre-Recorded Voice Demo</h1> 
+   <div class="container"> 
+    <div class="row justify-content-between"> 
+     <!-- <div class="col-12 col-lg-5">
+                    <div class="text-content" id="accordionExample">
+                        <div id="jquery_jplayer_1"></div>
+                        <select class="selectpicker" id="textSelect">
+                            <option value="1">1) fiction > The Little Mermaid</option>
+                            <option value="2"> 2) fiction > The Odyssey</option>
+                            <option value="3">3) academic (textbook) > College Physics </option>
+                            <option value="4">4) academic (textbook) > Anatomy and Physiology</option>
+                            <option value="5">5) news > NASA's Webb to Explore Galaxies</option>
+                            <option value="6">6) news > Web-based Teaching Can Improve Science Understanding </option>
+                        </select>
+                        <div id="collapse1" class="collapse" data-parent="#accordionExample">
+                            <div class="card-body">
+                                <p>The Little Mermaid by Hans Christian Andersen</p>
+
+                                <p>Far out in the ocean, where the water is as blue as the prettiest cornflower, and as
+                                    clear as crystal, it is very, very deep; so deep, indeed, that no cable could fathom
+                                    it: many church steeples, piled one upon another, would not reach from the ground
+                                    beneath to the surface of the water above. There dwell the Sea King and his
+                                    subjects. We must not imagine that there is nothing at the bottom of the sea but
+                                    bare yellow sand. No, indeed; the most singular flowers and plants grow there; the
+                                    leaves and stems of which are so pliant, that the slightest agitation of the water
+                                    causes them to stir as if they had life. Fishes, both large and small, glide between
+                                    the branches, as birds fly among the trees here upon land. In the deepest spot of
+                                    all, stands the castle of the Sea King. Its walls are built of coral, and the long
+                                    gothic windows are of the clearest amber. The roof is formed of shells, that open
+                                    and close as the water flows over them. Their appearance is very beautiful, for in
+                                    each lies a glittering pearl, which would be fit for the diadem of a queen.
+                                </p>
+                                <p><small>
+                                        Source: http://hca.gilead.org.il/li_merma.html</small>
+                                </p>
+
+                            </div>
+                        </div>
+                        <div id="collapse2" class="collapse" data-parent="#accordionExample">
+                            <div class="card-body">
+                                <p>The Odyssey by Homer</p>
+                                <p>Tell me, O Muse, of that ingenious hero who travelled far and wide after he had
+                                    sacked the famous town of Troy.
+                                    Many cities did he visit, and many were the nations with whose manners and customs
+                                    he was acquainted; moreover
+                                    he suffered much by sea while trying to save his own life and bring his men safely
+                                    home; but do what he might he
+                                    could not save his men, for they perished through their own sheer folly in eating
+                                    the cattle of the Sun-god
+                                    Hyperion; so the god prevented them from ever reaching home. Tell me, too, about all
+                                    these things, oh daughter
+                                    of Jove, from whatsoever source you may know them.</p>
+                                <p>So now all who escaped death in battle or by shipwreck had got safely home except
+                                    Ulysses, and he, though he was
+                                    longing to return to his wife and country, was detained by the goddess Calypso, who
+                                    had got him into a large
+                                    cave and wanted to marry him. But as years went by, there came a time when the gods
+                                    settled that he should go
+                                    back to Ithaca; even then, however, when he was among his own people, his troubles
+                                    were not yet over;
+                                    nevertheless all the gods had now begun to pity him except Neptune, who still
+                                    persecuted him without ceasing and
+                                    would not let him get home</p>
+                                <p>Source: https://www.gutenberg.org/files/ 1727/1727-h/ 1727-h.htm</p>
+                            </div>
+                        </div>
+                        <div id="collapse3" class="collapse" data-parent="#accordionExample">
+                            <div class="card-body">
+                                <p>College Physics - Physical Quantities and Units</p>
+                                <p>The range of objects and phenomena studied in physics is immense. From the incredibly
+                                    short lifetime of a nucleus
+                                    to the age of the Earth, from the tiny sizes of sub-nuclear particles to the vast
+                                    distance to the edges of the
+                                    known universe, from the force exerted by a jumping flea to the force between Earth
+                                    and the Sun, there are
+                                    enough factors of 10 to challenge the imagination of even the most experienced
+                                    scientist. Giving numerical
+                                    values for physical quantities and equations for physical principles allows us to
+                                    understand nature much more
+                                    deeply than does qualitative description alone. To comprehend these vast ranges, we
+                                    must also have accepted
+                                    units in which to express them. And we shall find that (even in the potentially
+                                    mundane discussion of meters,
+                                    kilograms, and seconds) a profound simplicity of nature appears—all physical
+                                    quantities can be expressed as
+                                    combinations of only four fundamental physical quantities: length, mass, time, and
+                                    electric current.</p>
+                                <p><small>Source: https://cnx.org/ contents/ Ax2o07Ul@1 6.1: EC6WBNqn@10/ 1-2- Physical-
+                                        Quantities- and-Units# 42532</small></p>
+                            </div>
+                        </div>
+                        <div id="collapse4" class="collapse" data-parent="#accordionExample">
+                            <div class="card-body">
+                                <p>Anatomy and Physiology</p>
+                                <p>By the end of this section, you will be able to:</p>
+                                <p>- Compare and contrast anatomy and physiology, including their specializations and
+                                    methods of study</p>
+                                <p>- Discuss the fundamental relationship between anatomy and physiology</p>
+                                <p>Human anatomy is the scientific study of the body’s structures. Some of these
+                                    structures are very small and can
+                                    only be observed and analyzed with the assistance of a microscope. Other larger
+                                    structures can readily be seen,
+                                    manipulated, measured, and weighed. The word “anatomy” comes from a Greek root that
+                                    means “to cut apart.” Human
+                                    anatomy was first studied by observing the exterior of the body and observing the
+                                    wounds of soldiers and other
+                                    injuries. Later, physicians were allowed to dissect bodies of the dead to augment
+                                    their knowledge. When a body
+                                    is dissected, its structures are cut apart in order to observe their physical
+                                    attributes and their relationships
+                                    to one another. Dissection is still used in medical schools, anatomy courses, and in
+                                    pathology labs. In order to
+                                    observe structures in living people, however, a number of imaging techniques have
+                                    been developed. These
+                                    techniques allow clinicians to visualize structures inside the living body such as a
+                                    cancerous tumor or a
+                                    fractured bone.</p>
+                                <p><small> https://cnx.org/ contents/ FPtK1zmh@15.2: raNQgZ7E@7/ 1-1- Overview-
+                                        of-Anatomy -and- Physiology</small></p>
+                            </div>
+                        </div>
+                        <div id="collapse5" class="collapse" data-parent="#accordionExample">
+                            <div class="card-body">
+                                <p>NASA’s Webb to Explore Galaxies from Cosmic Dawn to Present Day by Ann Jenkins</p>
+                                <p>Through the combined power of NASA’s James Webb Space Telescope and gravity creating
+                                    "natural telescopes" in
+                                    space, astronomers hope to answer two science questions that are fundamental to
+                                    understanding the origins
+                                    and evolution of the universe:</p>
+                                <p>- How did the first galaxies in the universe form, and did they make the universe
+                                    transparent to light?</p>
+                                <p>- How did later galaxies produce and disperse into the universe the heavier elements
+                                    that are the building
+                                    blocks of stars, planets, and even humans?</p>
+                                <p>These questions will be addressed in some of the first observations made by the Webb
+                                    telescope, slated to
+                                    launch in March 2021. These observations will be part of the Director's
+                                    Discretionary-Early Release Science
+                                    program, which provides time to selected projects early in the telescope's mission.
+                                    This program allows the
+                                    astronomical community to quickly learn how best to use Webb's capabilities, while
+                                    also yielding robust
+                                    science.</p>
+                                <p>An international team led by Tommaso Treu of the University of California, Los
+                                    Angeles, has been
+                                    investigating how Webb can tackle these two key questions about the universe in the
+                                    Early Release Science
+                                    program.</p>
+                                <p><small>Source: https://www.nasa.gov/ feature/ goddard/ 2019 /nasa-s-webb- to-explore-
+                                        galaxies- from-cosmic-dawn- to-present-day</small></p>
+                            </div>
+                        </div>
+                        <div id="collapse6" class="collapse" data-parent="#accordionExample">
+                            <div class="card-body">
+                                <p>Web-based teaching can improve science understanding for struggling pupils by Taylor
+                                    & Francis Group</p>
+                                <p>Web-based learning tools can help deepen science knowledge among all middle school
+                                    students, and ease the science
+                                    literacy gap for underachieving students, according to a three-year study published
+                                    today in the International
+                                    Journal of Science Education.</p>
+                                <p>While all participating students improved their science knowledge, the results were
+                                    particularly notable for less
+                                    able students.</p>
+                                <p>Students with learning disabilities improved 18 percentage points on assessments of
+                                    science knowledge from
+                                    pre-test to post-test, and English language learners increased 15 percentage points.
+                                    Pupils taught the same
+                                    content with traditional methods, such as textbooks, showed only 5-point gains.</p>
+                                <p>"Well-designed instructional technology really works to lessen the science literacy
+                                    gap among diverse groups of
+                                    learners. Technology offers an engaging and motivating environment for learning, and
+                                    we are just beginning to
+                                    understand how we can use it effectively to support students with learning
+                                    disabilities and English language
+                                    learners.</p>
+                                <p><small> https://www.sciencedaily.com/ releases /2018/02/ 180212084504.htm</small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-3">
+                    <div class="record-content d-flex flex-column">
+                        <div class="voice-item d-flex justify-content-between align-items-center">
+                            <div class="voice-detail">
+                                <div class="voice-name">Matthew</div>
+                                <div class="voice-tip text-capitalize">US Male Voice</div>
+                            </div>
+                            <div class="voice-play">
+                                <button id="voice1" class="btn-play" onclick="playaudio('voice1')">
+                                    <span></span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="voice-item d-flex justify-content-between align-items-center">
+                            <div class="voice-detail">
+                                <div class="voice-name">Joanna</div>
+                                <div class="voice-tip text-capitalize">US Female Voice</div>
+                            </div>
+                            <div class="voice-play">
+                                <button id="voice9" class="btn-play" onclick="playaudio('voice9')">
+                                    <span></span>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="voice-item d-flex justify-content-between align-items-center">
+                            <div class="voice-detail">
+                                <div class="voice-name">Guy</div>
+                                <div class="voice-tip text-capitalize">US Male Voice</div>
+                            </div>
+                            <div class="voice-play">
+                                <button id="voice2" class="btn-play" onclick="playaudio('voice2')">
+                                    <span></span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="voice-item d-flex justify-content-between align-items-center">
+                            <div class="voice-detail">
+                                <div class="voice-name">Kate</div>
+                                <div class="voice-tip text-capitalize">UK Female Voice</div>
+                            </div>
+                            <div class="voice-play">
+                                <button id="voice6" class="btn-play" onclick="playaudio('voice6')">
+                                    <span></span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="voice-item d-flex justify-content-between align-items-center">
+                            <div class="voice-detail">
+                                <div class="voice-name">Salli</div>
+                                <div class="voice-tip text-capitalize">US Female Voice</div>
+                            </div>
+                            <div class="voice-play">
+                                <button id="voice3" class="btn-play" onclick="playaudio('voice3')">
+                                    <span></span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="voice-item d-flex justify-content-between align-items-center">
+                            <div class="voice-detail">
+                                <div class="voice-name">Emma</div>
+                                <div class="voice-tip text-capitalize">UK Female Voice</div>
+                            </div>
+                            <div class="voice-play">
+                                <button id="voice12" class="btn-play" onclick="playaudio('voice12')">
+                                    <span></span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="voice-item d-flex justify-content-between align-items-center">
+                            <div class="voice-detail">
+                                <div class="voice-name">Joey</div>
+                                <div class="voice-tip text-capitalize">US Male Voice</div>
+                            </div>
+                            <div class="voice-play">
+                                <button id="voice8" class="btn-play" onclick="playaudio('voice8')">
+                                    <span></span>
+                                </button>
+                            </div>
+                        </div>
+                        
+
+                      
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-lg-3">
+                    <div class="record-content d-flex flex-column">
+                        
+                        <div class="voice-item d-flex justify-content-between align-items-center">
+                            <div class="voice-detail">
+                                <div class="voice-name">Brian</div>
+                                <div class="voice-tip text-capitalize">UK Male Voice</div>
+                            </div>
+                            <div class="voice-play">
+                                <button id="voice5" class="btn-play" onclick="playaudio('voice5')">
+                                    <span></span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="voice-item d-flex justify-content-between align-items-center">
+                            <div class="voice-detail">
+                                <div class="voice-name">Amy</div>
+                                <div class="voice-tip text-capitalize">UK Female Voice</div>
+                            </div>
+                            <div class="voice-play">
+                                <button id="voice13" class="btn-play" onclick="playaudio('voice13')">
+                                    <span></span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="voice-item d-flex justify-content-between align-items-center">
+                            <div class="voice-detail">
+                                <div class="voice-name">Jessa</div>
+                                <div class="voice-tip text-capitalize">US Female Voice</div>
+                            </div>
+                            <div class="voice-play">
+                                <button id="voice4" class="btn-play" onclick="playaudio('voice4')">
+                                    <span></span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="voice-item d-flex justify-content-between align-items-center">
+                            <div class="voice-detail">
+                                <div class="voice-name">Raveena</div>
+                                <div class="voice-tip text-capitalize">Indian Female Voice</div>
+                            </div>
+                            <div class="voice-play">
+                                <button id="voice7" class="btn-play" onclick="playaudio('voice7')">
+                                    <span></span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="voice-item d-flex justify-content-between align-items-center">
+                            <div class="voice-detail">
+                                <div class="voice-name">Kendra</div>
+                                <div class="voice-tip text-capitalize">US Female Voice</div>
+                            </div>
+                            <div class="voice-play">
+                                <button id="voice10" class="btn-play" onclick="playaudio('voice10')">
+                                    <span></span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="voice-item d-flex justify-content-between align-items-center">
+                            <div class="voice-detail">
+                                <div class="voice-name">Kimberly</div>
+                                <div class="voice-tip text-capitalize">US Female Voice</div>
+                            </div>
+                            <div class="voice-play">
+                                <button id="voice11" class="btn-play" onclick="playaudio('voice11')">
+                                    <span></span>
+                                </button>
+                            </div>
+                        </div>
+
+                        
+
+                    </div>
+                </div> --> 
+    </div> 
+    <div class="row justify-content-between"> 
+     <div id="jquery_jplayer_1"></div> 
+     <div class="col-12 col-lg-7 text-content"> 
+      <div id="carousel-text" class="carousel slide" data-interval="false"> 
+       <div class="actions mb-4  d-flex justify-content-between align-items-center"> 
+        <div class="d-flex"> 
+         <a onclick="carouselChange('prev')" class="carousel-control-prev carousel-btn" href="#carousel-text" role="button" data-slide="prev"> <i class="material-icons"> arrow_back </i> </a> 
+         <a onclick="carouselChange('next')" class="carousel-control-next carousel-btn" href="#carousel-text" role="button" data-slide="next"> <i class="material-icons"> arrow_forward </i> </a> 
+        </div> 
+        <ol class="carousel-indicators"> 
+         <li data-target="#carousel-text" data-slide-to="0" class="active"> </li> 
+         <li data-target="#carousel-text" data-slide-to="1"> </li> 
+         <li data-target="#carousel-text" data-slide-to="2"> </li> 
+         <li data-target="#carousel-text" data-slide-to="3"> </li> 
+         <li data-target="#carousel-text" data-slide-to="4"> </li> 
+         <li data-target="#carousel-text" data-slide-to="5"> </li> 
+        </ol> 
+       </div> 
+       <div class="carousel-inner "> 
+        <div class="carousel-item active"> 
+         <div class=""> 
+          <h4 class="header">Fiction 01 </h4> 
+          <div class="text"> 
+           <p>Far out in the ocean, where the water is as blue as the prettiest cornflower, and as clear as crystal, it is very, very deep; so deep, indeed, that no cable could fathom it: many church steeples, piled one upon another, would not reach from the ground beneath to the surface of the water above. There dwell the Sea King and his subjects. We must not imagine that there is nothing at the bottom of the sea but bare yellow sand. No, indeed; the most singular flowers and plants grow there; the leaves and stems of which are so pliant, that the slightest agitation of the water causes them to stir as if they had life. Fishes, both large and small, glide between the branches, as birds fly among the trees here upon land. In the deepest spot of all, stands the castle of the Sea King. Its walls are built of coral, and the long gothic windows are of the clearest amber. The roof is formed of shells, that open and close as the water flows over them. Their appearance is very beautiful, for in each lies a glittering pearl, which would be fit for the diadem of a queen. </p> 
+          </div> 
+          <div class="source"> 
+           <p>The Little Mermaid by Hans Christian Andersen </p> 
+          </div> 
+         </div> 
+        </div> 
+        <div class="carousel-item"> 
+         <div class=""> 
+          <h4 class="header">Fiction 02</h4> 
+          <div class="text"> 
+           <p>Tell me, O Muse, of that ingenious hero who travelled far and wide after he had sacked the famous town of Troy. Many cities did he visit, and many were the nations with whose manners and customs he was acquainted; moreover he suffered much by sea while trying to save his own life and bring his men safely home; but do what he might he could not save his men, for they perished through their own sheer folly in eating the cattle of the Sun-god Hyperion; so the god prevented them from ever reaching home. Tell me, too, about all these things, oh daughter of Jove, from whatsoever source you may know them.</p> 
+           <p>So now all who escaped death in battle or by shipwreck had got safely home except Ulysses, and he, though he was longing to return to his wife and country, was detained by the goddess Calypso, who had got him into a large cave and wanted to marry him. But as years went by, there came a time when the gods settled that he should go back to Ithaca; even then, however, when he was among his own people, his troubles were not yet over; nevertheless all the gods had now begun to pity him except Neptune, who still persecuted him without ceasing and would not let him get home</p> 
+          </div> 
+          <div class="source"> 
+           <p>The Odyssey - Homer</p> 
+          </div> 
+         </div> 
+        </div> 
+        <div class="carousel-item"> 
+         <div class=""> 
+          <h4 class="header">Academic (textbook) 01 </h4> 
+          <div class="text"> 
+           <p>The range of objects and phenomena studied in physics is immense. From the incredibly short lifetime of a nucleus to the age of the Earth, from the tiny sizes of sub-nuclear particles to the vast distance to the edges of the known universe, from the force exerted by a jumping flea to the force between Earth and the Sun, there are enough factors of 10 to challenge the imagination of even the most experienced scientist. Giving numerical values for physical quantities and equations for physical principles allows us to understand nature much more deeply than does qualitative description alone. To comprehend these vast ranges, we must also have accepted units in which to express them. And we shall find that (even in the potentially mundane discussion of meters, kilograms, and seconds) a profound simplicity of nature appears—all physical quantities can be expressed as combinations of only four fundamental physical quantities: length, mass, time, and electric current.</p> 
+          </div> 
+          <div class="source"> 
+           <p>College Physics - Physical Quantities and Units</p> 
+          </div> 
+         </div> 
+        </div> 
+        <div class="carousel-item"> 
+         <div class=""> 
+          <h4 class="header">Academic (textbook) 02</h4> 
+          <div class="text"> 
+           <p>By the end of this section, you will be able to:</p> 
+           <p>- Compare and contrast anatomy and physiology, including their specializations and methods of study</p> 
+           <p>- Discuss the fundamental relationship between anatomy and physiology</p> 
+           <p>Human anatomy is the scientific study of the body’s structures. Some of these structures are very small and can only be observed and analyzed with the assistance of a microscope. Other larger structures can readily be seen, manipulated, measured, and weighed. The word “anatomy” comes from a Greek root that means “to cut apart.” Human anatomy was first studied by observing the exterior of the body and observing the wounds of soldiers and other injuries. Later, physicians were allowed to dissect bodies of the dead to augment their knowledge. When a body is dissected, its structures are cut apart in order to observe their physical attributes and their relationships to one another. Dissection is still used in medical schools, anatomy courses, and in pathology labs. In order to observe structures in living people, however, a number of imaging techniques have been developed. These techniques allow clinicians to visualize structures inside the living body such as a cancerous tumor or a fractured bone.</p> 
+          </div> 
+          <div class="source"> 
+           <p>Anatomy and Physiology</p> 
+          </div> 
+         </div> 
+        </div> 
+        <div class="carousel-item"> 
+         <div class=""> 
+          <h4 class="header">News 01</h4> 
+          <div class="text"> 
+           <p>Through the combined power of NASA’s James Webb Space Telescope and gravity creating "natural telescopes" in space, astronomers hope to answer two science questions that are fundamental to understanding the origins and evolution of the universe:</p> 
+           <p>- How did the first galaxies in the universe form, and did they make the universe transparent to light?</p> 
+           <p>- How did later galaxies produce and disperse into the universe the heavier elements that are the building blocks of stars, planets, and even humans?</p> 
+           <p>These questions will be addressed in some of the first observations made by the Webb telescope, slated to launch in March 2021. These observations will be part of the Director's Discretionary-Early Release Science program, which provides time to selected projects early in the telescope's mission. This program allows the astronomical community to quickly learn how best to use Webb's capabilities, while also yielding robust science.</p> 
+           <p>An international team led by Tommaso Treu of the University of California, Los Angeles, has been investigating how Webb can tackle these two key questions about the universe in the Early Release Science program.</p> 
+          </div> 
+          <div class="source"> 
+           <p>NASA’s Webb to Explore Galaxies from Cosmic Dawn to Present Day - Ann Jenkins </p> 
+          </div> 
+         </div> 
+        </div> 
+        <div class="carousel-item"> 
+         <div class=""> 
+          <h4 class="header">News 02</h4> 
+          <div class="text"> 
+           <p>Web-based learning tools can help deepen science knowledge among all middle school students, and ease the science literacy gap for underachieving students, according to a three-year study published today in the International Journal of Science Education.</p> 
+           <p>While all participating students improved their science knowledge, the results were particularly notable for less able students.</p> 
+           <p>Students with learning disabilities improved 18 percentage points on assessments of science knowledge from pre-test to post-test, and English language learners increased 15 percentage points. Pupils taught the same content with traditional methods, such as textbooks, showed only 5-point gains.</p> 
+           <p>"Well-designed instructional technology really works to lessen the science literacy gap among diverse groups of learners. Technology offers an engaging and motivating environment for learning, and we are just beginning to understand how we can use it effectively to support students with learning disabilities and English language learners.</p> 
+          </div> 
+          <div class="source"> 
+           <p>Web-based teaching can improve science understanding for struggling pupils - Taylor &amp; Francis Group</p> 
+          </div> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+     <div class="col-12 col-lg-4 offset-lg-1"> 
+      <h4 class="mt-3 mb-4">Accents</h4> 
+      <ul class="nav nav-pills mb-4" id="pills-tab" role="tablist"> 
+       <li class="nav-item"> <a class="nav-link active" id="pills-US-tab" data-toggle="pill" href="#pills-US" role="tab" aria-controls="pills-US" aria-selected="true"> <img src="./comfiles/plusvoicedemo/img/US.png"> </a> </li> 
+       <li class="nav-item"> <a class="nav-link" id="pills-GB-tab" data-toggle="pill" href="#pills-GB" role="tab" aria-controls="pills-GB" aria-selected="false"> <img src="./comfiles/plusvoicedemo/img/GB.png"> </a> </li> 
+      </ul> 
+      <div class="tab-content" id="pills-tabContent"> 
+       <div class="tab-pane fade show active" id="pills-US" role="tabpanel" aria-labelledby="pills-US-tab"> 
+        <p class="text-uppercase">US English</p> 
+        <div class="record-content d-flex flex-column"> 
+         <div class="voice-item d-flex justify-content-between align-items-center"> 
+          <div class="voice-detail"> 
+           <div class="voice-name">
+            Matthew
+           </div> 
+           <div class="voice-tip text-capitalize">
+            US Male Voice
+           </div> 
+          </div> 
+          <div class="voice-play"> 
+           <button id="voice1" class="btn-play" onclick="playaudio('voice1')"> <span></span> </button> 
+          </div> 
+         </div> 
+         <div class="voice-item d-flex justify-content-between align-items-center"> 
+          <div class="voice-detail"> 
+           <div class="voice-name">
+            Joanna
+           </div> 
+           <div class="voice-tip text-capitalize">
+            US Female Voice
+           </div> 
+          </div> 
+          <div class="voice-play"> 
+           <button id="voice9" class="btn-play" onclick="playaudio('voice9')"> <span></span> </button> 
+          </div> 
+         </div> 
+         <div class="voice-item d-flex justify-content-between align-items-center"> 
+          <div class="voice-detail"> 
+           <div class="voice-name">
+            Guy
+           </div> 
+           <div class="voice-tip text-capitalize">
+            US Male Voice
+           </div> 
+          </div> 
+          <div class="voice-play"> 
+           <button id="voice2" class="btn-play" onclick="playaudio('voice2')"> <span></span> </button> 
+          </div> 
+         </div> 
+         <div class="voice-item d-flex justify-content-between align-items-center"> 
+          <div class="voice-detail"> 
+           <div class="voice-name">
+            Salli
+           </div> 
+           <div class="voice-tip text-capitalize">
+            US Female Voice
+           </div> 
+          </div> 
+          <div class="voice-play"> 
+           <button id="voice3" class="btn-play" onclick="playaudio('voice3')"> <span></span> </button> 
+          </div> 
+         </div> 
+         <div class="voice-item d-flex justify-content-between align-items-center"> 
+          <div class="voice-detail"> 
+           <div class="voice-name">
+            Joey
+           </div> 
+           <div class="voice-tip text-capitalize">
+            US Male Voice
+           </div> 
+          </div> 
+          <div class="voice-play"> 
+           <button id="voice8" class="btn-play" onclick="playaudio('voice8')"> <span></span> </button> 
+          </div> 
+         </div> 
+        </div> 
+       </div> 
+       <div class="tab-pane fade" id="pills-GB" role="tabpanel" aria-labelledby="pills-GB-tab"> 
+        <p class="text-uppercase">UK English</p> 
+        <div class="voice-item d-flex justify-content-between align-items-center"> 
+         <div class="voice-detail"> 
+          <div class="voice-name">
+           Kate
+          </div> 
+          <div class="voice-tip text-capitalize">
+           UK Female Voice
+          </div> 
+         </div> 
+         <div class="voice-play"> 
+          <button id="voice6" class="btn-play" onclick="playaudio('voice6')"> <span></span> </button> 
+         </div> 
+        </div> 
+        <div class="voice-item d-flex justify-content-between align-items-center"> 
+         <div class="voice-detail"> 
+          <div class="voice-name">
+           Emma
+          </div> 
+          <div class="voice-tip text-capitalize">
+           UK Female Voice
+          </div> 
+         </div> 
+         <div class="voice-play"> 
+          <button id="voice12" class="btn-play" onclick="playaudio('voice12')"> <span></span> </button> 
+         </div> 
+        </div> 
+        <div class="voice-item d-flex justify-content-between align-items-center"> 
+         <div class="voice-detail"> 
+          <div class="voice-name">
+           Brian
+          </div> 
+          <div class="voice-tip text-capitalize">
+           UK Male Voice
+          </div> 
+         </div> 
+         <div class="voice-play"> 
+          <button id="voice5" class="btn-play" onclick="playaudio('voice5')"> <span></span> </button> 
+         </div> 
+        </div> 
+        <div class="voice-item d-flex justify-content-between align-items-center"> 
+         <div class="voice-detail"> 
+          <div class="voice-name">
+           Amy
+          </div> 
+          <div class="voice-tip text-capitalize">
+           UK Female Voice
+          </div> 
+         </div> 
+         <div class="voice-play"> 
+          <button id="voice13" class="btn-play" onclick="playaudio('voice13')"> <span></span> </button> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
     </div> 
    </div> 
-   <div class="col-sm-12 section-home"> 
-    <h1 class="section-tag">Quality Control</h1> 
-    <div class="col-sm-6" style="display: inline-block;"> 
-     <img class="section-image" src="./img/sc8.png"> 
-    </div> 
-    <div class="section-content">
-      Now the third task is not something that requires quality control. Lyrics and melody composition, however, requires proper control if we are to get a good result. For the lyric submission, inappropriate words can be flagged, which would result in manual review of the lyrics, and removal if deemed necessary. Imposing quality control on composing is a bit more complicated; after all, music is very subjective. We thought we would try to acquire the sound of the crowd from the inputs of various users by taking the average of the user input small segment of the song at a time: simply put, users will work at a small part of the lyrics at one time, and we think by controlling the length of the segment and time, we will be able to reduce ‘trolling’ inputs. More details of this are available below at Aggregation. 
-    </div> 
-   </div> 
-   <div class="col-sm-12 section-home"> 
-    <h1 class="section-tag">Result</h1> 
-    <div class="col-sm-6" style="display: inline-block;"> 
-     <img class="section-image" src="./img/sc5.png"> 
-    </div> 
-    <div class="section-content">
-      The result should be a whole coherent song. By which I mean a sequence of notes that match with the syllables of the lyrics. We do not provide a feature that converts these notes into vocals. The most popular and or recently finished songs can be viewed in the gallery tab. One can also experiment on completed songs from the gallery tab; changes made in this manner will not be saved in the official release of the song. 
+  </section> 
+  <section> 
+   <div class="container"> 
+    <div class="row"> 
+     <p>*There's more languages and voices available! You can try all Plus Voices directly from <a href="https://www.naturalreaders.com/online/" id="team6_6"> NR Online </a>for up to 5 minutes per day.</p> 
+     <div class="col-7 col-lg-7">
+      <img src="comfiles/plusvoicedemo/img/voicelist.png" alt="" width="100%" height="100%">
+     </div> 
     </div> 
    </div> 
-  </div> 
-  <div id="loginModal" class="modal"> 
-   <div class="modal-content" style="width: 340px; height: 500px"> 
-    <span class="close">×</span> 
-    <div class="login-div" style="font-family: 'Amita'; font-size: 24px; padding: 40px">
-     Welcome to Melodize
-    </div> 
-    <div class="login-div">
-     <input class="login-input" type="text" id="id" placeholder="ID">
-    </div> 
-    <div class="login-div">
-     <input class="login-input" type="password" id="pw" placeholder="Password">
-    </div> 
-    <div class="login-div" style="padding: 2px; color: red; display: none" id="warning_msg">
-     Wrong ID or Password
-    </div> 
-    <div class="login-div">
-     <button class="btn btn-default login-input" id="loginBtn">Sign in</button>
-    </div> 
-    <div class="login-div" style="padding: 2px">
-     Don't have an account? 
-     <a href="./signup.html">Sign up here</a>
+  </section> 
+  <footer> 
+   <div class="container"> 
+    <div class="row"> 
+     <div class="col-12 d-flex justify-content-between wrapper-for-list"> 
+      <div class="img-wrapper"> 
+       <img src="comfiles/indexfiles/img/logo.png" alt=""> 
+      </div> 
+      <div class="bottom-menu"> 
+       <ul>
+        Products 
+        <li><a href="./webapp.html" id="team6_7">Online</a></li> 
+        <li><a href="./software.html" id="team6_8">Software</a></li> 
+        <li><a href="./commercial.html" id="team6_9">Commercial</a></li> 
+        <li><a href="https://s3.amazonaws.com/naturalsoft-ca/web/chrome/index.html">Chrome Extension</a></li> 
+       </ul> 
+       <ul>
+        About Us 
+        <li><a href="./exploring.html" id="team6_10">Testimonials</a></li> 
+        <li><a href="./exploring.html?index=1&amp;info=faq#" id="team6_11">FAQ</a></li> 
+        <li><a href="./exploring.html?index=2&amp;info=contactus" id="team6_12">Contact Us</a></li> 
+        <li></li> 
+       </ul> 
+       <ul>
+        Policies 
+        <li><a href="./exploring.html?index=3&amp;info=polices" id="team6_13">Refund</a> </li> 
+        <li><a href="./exploring.html?index=3&amp;info=polices" id="team6_14">Privacy &amp; Terms</a></li> 
+        <li><a href="./exploring.html?index=3&amp;info=polices" id="team6_15">User Agreement</a></li> 
+       </ul> 
+      </div> 
+     </div> 
     </div> 
    </div> 
-  </div> 
-  <script src="scripts/jquery/js/jquery-1.9.0.min.js"></script> 
-  <script src="scripts/jquery/js/jquery-ui-1.10.0.custom.min.js"></script> 
-  <script src="scripts/jquery/js/jquery-plugin.js"></script> 
-  <script src="https://www.gstatic.com/firebasejs/3.6.2/firebase.js"></script> 
-  <script src="scripts/login.js"></script> 
-  <script src="scripts/home.js"></script>  
+   <div class="copyright"> 
+    <div class="container"> 
+     <div class="row"> 
+      <div class="col-12 wrapper-copyright"> 
+       <span>© NaturalSoft Ltd. All rights reserved.</span> 
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+  </footer> 
+  <!-- Здесь пишем код --> 
+  <!-- <div class="hidden"></div>
+
+	<div class="loader">
+		<div class="loader_inner"></div>
+	</div> --> 
+  <!--[if lt IE 9]>
+	<script src="libs/html5shiv/es5-shim.min.js"></script>
+	<script src="libs/html5shiv/html5shiv.min.js"></script>
+	<script src="libs/html5shiv/html5shiv-printshiv.min.js"></script>
+	<script src="libs/respond/respond.min.js"></script>
+	<![endif]--> 
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script> 
+  <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script> --> 
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script> 
+  <!-- Latest compiled and minified JavaScript --> 
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/bootstrap-select.min.js"></script> 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jplayer/2.9.2/jplayer/jquery.jplayer.min.js"></script> 
+  <script src="comfiles/plusvoicedemo/js/demo.js?v=1.0"></script>  
  </body>
 </html>

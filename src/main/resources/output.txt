@@ -1,52 +1,156 @@
-var projectRef = database.ref("projects");
-var totalSongs = 0;
-var songList = [];
-var songList_initialThreshold = 10;
-var songList_showCount = songList_initialThreshold;
-var songList_window = 10;
-var koreanText =   [["li:nth-child(5) > a","홈"],
-					["li:nth-child(4) > a","갤러리"],
-					["li:nth-child(3) > a","프로필"],
-					[".section-home:nth-child(1) > h1", "Melodize에 환영합니다"],
-					[".section-home:nth-child(2) > div:nth-child(1)","<h1>시작하기</h1><br>직접 작사한 가사를 공유하세요<br><br>"+
-																	"자신이 정한 테마, 분위기에 따라<br>실시간으로 멜로디가 완성되는 것을 확인하세요<br><br>"+
-																	"<button class='green-btn' id='requesterBtn'>가사 내기</button>"],
-					[".section-home:nth-child(3) > div:nth-child(2)","<h1>표현하기</h1><br>제시된 가사들 중에 마음에 드는 것을 고르고<br><br>"+
-																	"자신이 생각하는 멜로디를 만드세요<br><br>"+
-																	"<button class='green-btn' id='requesterBtn'>작곡 하기</button>"],
-					[".section-home:nth-child(3) > div > h1", "표현하기"],
-					[".section-home:nth-child(4) > div > h1", "둘러보기"],
-					[".section-home:nth-child(5) > div > h1", "더 알아보기"],];
+/* common */
+$('.nav-toggle').on('click', function() {
+    $(this).toggleClass('open');
+    $('.menu-left').toggleClass('collapse');
+});
 
-$("#requesterBtn").on('click', function() {
-	logged_in = localStorage.getItem("id");
-	if(logged_in)
-		window.location.href = "./request.html";
-	else{
-		$("#id").val("");
-		$("#pw").val("");
-	   	$('#warning_msg').hide();
-	    $('#loginModal').show();
-	    $("#id").select();
-	    pageAfterLogin = "./request.html";
-	}
-})
+/* switch mac / win */
 
-$("#workerBtn").on('click', function() {
-	window.location.href = "./songInfo.html";
-})
+var voicesinfo =
+    [
+        ['5201', 'USEnglish Mike        ', 'ATT', 'Windows'],
+        ['5202', 'USEnglish Crystal     ', 'ATT', 'Windows'],
+        ['5275', 'USEnglish Rod         ', 'ACC', 'Windows'],
+        ['5276', 'USEnglish Sharon      ', 'ACC', 'Windows'],
+        ['5203', 'USEnglish Mel         ', 'ATT', 'Windows'],
+        ['5204', 'USEnglish Julia       ', 'ATT', 'Windows'],
+        ['5205', 'USEnglish Ray         ', 'ATT', 'Windows'],
+        ['5206', 'USEnglish Lauren      ', 'ATT', 'Windows'],
+        ['5207', 'USEnglish Rich        ', 'ATT', 'Windows'],
+        ['5236', 'USEnglish Laura       ', 'ACC', 'Windows'],
+        ['5237', 'USEnglish Heather     ', 'ACC', 'Windows'],
+        ['5238', 'USEnglish Ryan        ', 'ACC', 'Windows'],
+        ['5208', 'USEnglish Claire      ', 'ATT', 'Windows'],
+        ['5255', 'USEnglish Tracy       ', 'ACC', 'Windows'],
+        ['5261', 'USEnglish Ella(child) ', 'ACC', 'Windows'],
+        ['5262', 'USEnglish Josh(child) ', 'ACC', 'Windows'],
+        ['5209', 'British Charles       ', 'ATT', 'Windows'],
+        ['5210', 'British Audrey        ', 'ATT', 'Windows'],
+        ['5221', 'British Graham        ', 'ACC', 'Windows'],
+        ['5222', 'British Lucy          ', 'ACC', 'Windows'],
+        ['5223', 'British Peter         ', 'ACC', 'Windows'],
+        ['5224', 'British Rachel        ', 'ACC', 'Windows'],
+        ['5259', 'British Harry         ', 'ACC', 'Windows'],
+        ['5260', 'British Rosie         ', 'ACC', 'Windows'],
+        ['5211', 'French Alain          ', 'ATT', 'Windows'],
+        ['5212', 'French Juliette       ', 'ATT', 'Windows'],
+        ['5225', 'French Louise         ', 'ACC', 'Windows'],
+        ['5226', 'French Alice          ', 'ACC', 'Windows'],
+        ['5227', 'French Bruno          ', 'ACC', 'Windows'],
+        ['5228', 'French Claire         ', 'ACC', 'Windows'],
+        ['5229', 'French Julie          ', 'ACC', 'Windows'],
+        ['5213', 'German  Reiner        ', 'ATT', 'Windows'],
+        ['5214', 'German Klara          ', 'ATT', 'Windows'],
+        ['5230', 'German Klaus          ', 'ACC', 'Windows'],
+        ['5240', 'German Sarah          ', 'ACC', 'Windows'],
+        ['5215', 'Spanish Alberto       ', 'ATT', 'Windows'],
+        ['5216', 'Spanish Rosa          ', 'ATT', 'Windows'],
+        ['5219', 'Arabic Salma          ', 'ACC', 'Windows'],
+        ['5220', 'Arabic Youssef        ', 'ACC', 'Windows'],
+        ['5254', 'Arabic Mehdi          ', 'ACC', 'Windows'],
+        ['5231', 'Italian Chiara        ', 'ACC', 'Windows'],
+        ['5232', 'Italian Vittorio      ', 'ACC', 'Windows'],
+        ['5233', 'Spanish Maria         ', 'ACC', 'Windows'],
+        ['5234', 'Swedish Emma          ', 'ACC', 'Windows'],
+        ['5235', 'Swedish Erik          ', 'ACC', 'Windows'],
+        ['5239', 'USSpanish Rosa        ', 'ACC', 'Windows'],
+        ['5256', 'Japanese Sakura       ', 'ACC', 'Windows'],
+        ['5257', 'Chinese Lulu          ', 'ACC', 'Windows'],
+        ['5258', 'Portuguese Celia      ', 'ACC', 'Windows'],
+        ['5250', 'USEnglish Laura       ', 'ACC', 'Mac'],
+        ['5251', 'USEnglish Heather     ', 'ACC', 'Mac'],
+        ['5252', 'USEnglish Ryan        ', 'ACC', 'Mac'],
+        ['5263', 'USEnglish Tracy       ', 'ACC', 'Mac'],
+        ['5264', 'USEnglish Will        ', 'ACC', 'Mac'],
+        ['5241', 'British Graham        ', 'ACC', 'Mac'],
+        ['5242', 'British Lucy          ', 'ACC', 'Mac'],
+        ['5243', 'British Peter         ', 'ACC', 'Mac'],
+        ['5244', 'British Rachel        ', 'ACC', 'Mac'],
+        ['5245', 'French Alice          ', 'ACC', 'Mac'],
+        ['5246', 'French Bruno          ', 'ACC', 'Mac'],
+        ['5247', 'French Claire         ', 'ACC', 'Mac'],
+        ['5248', 'French Julie          ', 'ACC', 'Mac'],
+        ['5249', 'Spanish Maria         ', 'ACC', 'Mac'],
+        ['5253', 'Spanish Rosa          ', 'ACC', 'Mac'],
+        ['5271', 'Spanish Antonio       ', 'ACC', 'Mac'],
+        ['5272', 'Spanish Ines          ', 'ACC', 'Mac'],
+        ['5265', 'German Andreas        ', 'ACC', 'Mac'],
+        ['5266', 'German Julia          ', 'ACC', 'Mac'],
+        ['5267', 'German Klaus          ', 'ACC', 'Mac'],
+        ['5268', 'German Sarah          ', 'ACC', 'Mac'],
+        ['5269', 'Italian Chiara        ', 'ACC', 'Mac'],
+        ['5270', 'Italian Vittorio      ', 'ACC', 'Mac'],
+        ['5273', 'Swedish Emma          ', 'ACC', 'Mac'],
+        ['5274', 'Swedish Erik          ', 'ACC', 'Mac']
 
-$("#listBtn").on('click', function() {
-	window.location.href = "./songInfo.html";
-})
+    ];
 
-$("#learnBtn").on('click', function() {
-	//$('html, body').animate({ scrollTop: $('#learnStart').offset().top }, 'slow');
-	window.location.href = "./about.html";
-})
 
-function init(){
-	$("#songList-showMore").hide();
-}
+var sysTypte = "";
+var choosedLan = 'USEnglish';
+var win_source_link = "data:image/svg+xml;utf8, <svg width='66px' height='79px' viewBox='0 0 66 79' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'> <g id='Page-1' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'> <g id='download' transform='translate(2.000000, 2.000000)'> <polygon id='Shape' stroke='%231B7DF9' stroke-width='4.5' points='41 58.52 21 58.52 23 47 39 47'></polygon> <path d='M15,58.52 L47,58.52' id='Shape' stroke='%231B7DF9' stroke-width='4.5'></path> <path d='M1,39.32 L61,39.32' id='Shape' stroke='%231B7DF9' stroke-width='4.5'></path> <rect id='Rectangle-path' stroke='%231B7DF9' stroke-width='4.5' x='1' y='0.92' width='60' height='46.08' rx='3'></rect> <path d='M20.6746667,25.88 C26.5249399,31.0005562 35.4750601,31.0005562 41.3253333,25.88' id='Shape' stroke='%231B7DF9' stroke-width='4.5'></path> <path d='M23,12.44 L23,16.28' id='Shape' stroke='%231B7DF9' stroke-width='4.5'></path> <path d='M39,12.44 L39,16.28' id='Shape' stroke='%231B7DF9' stroke-width='4.5'></path> <text id='Windows' fill='%231B7DF9' font-family='HelveticaNeue, Helvetica Neue' font-size='15' font-weight='normal'> <tspan x='0' y='76'>Windows</tspan> </text> </g> </g> </svg>  "
+var mac_source_link = "data:image/svg+xml;utf8, <svg width='66px' height='77px' viewBox='0 0 66 77' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'> <g id='Page-1' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'> <g id='download' transform='translate(2.000000, 2.000000)'> <polygon id='Shape' stroke='%231B7DF9' stroke-width='4.5' points='41 58.52 21 58.52 23 47 39 47'></polygon> <path d='M15,58.52 L47,58.52' id='Shape' stroke='%231B7DF9' stroke-width='4.5'></path> <path d='M1,39.32 L61,39.32' id='Shape' stroke='%231B7DF9' stroke-width='4.5'></path> <rect id='Rectangle-path' stroke='%231B7DF9' stroke-width='4.5' x='1' y='0.92' width='60' height='46.08' rx='3'></rect> <path d='M20.6746667,25.88 C26.5249399,31.0005562 35.4750601,31.0005562 41.3253333,25.88' id='Shape' stroke='%231B7DF9' stroke-width='4.5'></path> <path d='M23,12.44 L23,16.28' id='Shape' stroke='%231B7DF9' stroke-width='4.5'></path> <path d='M39,12.44 L39,16.28' id='Shape' stroke='%231B7DF9' stroke-width='4.5'></path> <text id='Mac' fill='%231B7DF9' font-family='HelveticaNeue, Helvetica Neue' font-size='15' font-weight='normal'> <tspan x='16' y='74'>Mac</tspan> </text> </g> </g> </svg>  "
+function set_windows_status() {
+    document.getElementById("free_download_btn").href="https://s3.amazonaws.com/naturalsoftdownload-voices/software/standardsetup.exe"; 
+    document.getElementById("personal_checkout").href="https://www.naturalreaders.com/choosevoice.html?code=33010000"; 
+    document.getElementById("professional_checkout").href="https://www.naturalreaders.com/choosevoice.html?code=33020000"; 
+    document.getElementById("ultimate_checkout").href="https://www.naturalreaders.com/choosevoice.html?code=33070000"; 
+    document.getElementById("free_version_icon").src = win_source_link; 
+    document.getElementById("personal_version_icon").src = win_source_link; 
+    document.getElementById("pro_version_icon").src = win_source_link; 
+    document.getElementById("ultimate_version_icon").src = win_source_link; 
 
-init();
+  }
+  function set_mac_status() {
+    document.getElementById("free_download_btn").href="https://s3.amazonaws.com/naturalsoftdownload-voices/software/NaturalReaderFree.pkg"; 
+    document.getElementById("personal_checkout").href="https://www.naturalreaders.com/choosevoice.html?code=33060000"; 
+    document.getElementById("professional_checkout").href="https://www.naturalreaders.com/choosevoice.html?code=33200000"; 
+    document.getElementById("ultimate_checkout").href="https://www.naturalreaders.com/choosevoice.html?code=33210000"; 
+    document.getElementById("free_version_icon").src = mac_source_link; 
+    document.getElementById("personal_version_icon").src = mac_source_link;
+    document.getElementById("pro_version_icon").src = mac_source_link;
+    document.getElementById("ultimate_version_icon").src = mac_source_link;
+  }
+  function fillvoicelist(){
+    var sel = document.getElementById('voicelist');
+    // create new option element
+    var opt;
+
+// add opt to end of select box (sel)
+ 
+    for (var i = 0; i < 74; i++) {
+        opt = document.createElement('option');
+        opt.appendChild( document.createTextNode(voicesinfo[i][1] + '(' +voicesinfo[i][3]+ ')') );
+        opt.value = "335200" + voicesinfo[i][0].substring(2, 4);
+        sel.appendChild(opt); 
+    }
+    
+   
+  }
+
+$(function () {
+  
+
+    document.getElementById("pills-mac-tab").onclick = function() {
+    
+        set_mac_status();
+        return false;
+      };
+      document.getElementById("pills-win-tab").onclick = function() {
+        set_windows_status();
+        return false;
+      };
+    if (navigator.appVersion.indexOf("Mac") != -1) {
+        $('#pills-mac-tab').tab('show');
+        set_mac_status();
+    } else {
+        $('#pills-mac-tab').tab('show');
+        set_windows_status();
+    };
+    fillvoicelist();
+    document.getElementById("voice_buy").onclick = function() {
+        var voiceCode = document.getElementById('voicelist').value;
+        window.location.href = 'https://www.naturalreaders.com/cart.php?code=' + voiceCode + '&op=add';
+    };
+    
+});
