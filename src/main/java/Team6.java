@@ -40,7 +40,7 @@ public class Team6 {
      
      static ArrayList<String> drawStringList;
      
-     static String root = "https://www.naturalreaders.com/";
+     static String root = "https://melodize.github.io/";
      static String baseid = "team6_";
      static int countid = 0; 
      static int nodeid = 0;
@@ -75,7 +75,7 @@ public class Team6 {
         WebClient webClient = new WebClient(BrowserVersion.CHROME);
          webClient.getOptions().setThrowExceptionOnScriptError(false);
         webClient.getOptions().setJavaScriptEnabled(true);
-        String url = home.getDoc();
+        String url = home.getDoc(); 
         
         
         
@@ -84,8 +84,8 @@ public class Team6 {
         
         Node.graphreset(home);
         //Node.getFile(root, fsm);
-        HtmlPage page = webClient.getPage(url);
-        page = loginTest.processLogin("bunverdenz@gmail.com", "123456", page);
+        HtmlPage page = webClient.getPage(root);
+        //page = loginTest.processLogin("aerolane0302@gmail.com", "software123", page);
         Node.graphtraverse(home, home, page);
         webClient.close();
         java.lang.System.exit(0);
@@ -233,6 +233,7 @@ public class Team6 {
                 for(Node node : fsm) {
                      if(node.getDoc().contentEquals(out.getDoc())) {
                         out = node;
+                        node.numin++;
                         add = false;
                         break;
                      }
@@ -266,6 +267,7 @@ public class Team6 {
                 for(Node node : fsm) {
                      if(node.getTitle().contentEquals(out.getTitle())) {
                         out = node;
+                        node.numin++;
                         add = false;
                         break;
                      }
@@ -334,6 +336,7 @@ public class Team6 {
                 for(Node node : fsm) {
                      if(node.getDoc().contentEquals(out.getDoc())) {
                         out = node;
+                        node.numin++;
                         add = false;
                         break;
                      }
@@ -364,6 +367,7 @@ public class Team6 {
                 for(Node node : fsm) {
                      if(node.getDoc().contentEquals(out.getDoc())) {
                         out = node;
+                        node.numin++;
                         add = false;
                         break;
                      }
@@ -436,6 +440,7 @@ public class Team6 {
                 for(Node node : fsm) {
                      if(node.getDoc().contentEquals(out.getDoc())) {
                         out = node;
+                        node.numin++;
                         add = false;
                         break;
                      }
@@ -464,6 +469,7 @@ public class Team6 {
                 for(Node node : fsm) {
                      if(node.getDoc().contentEquals(out.getDoc())) {
                         out = node;
+                        node.numin++;
                         add = false;
                         break;
                      }
@@ -493,6 +499,7 @@ public class Team6 {
                 for(Node node : fsm) {
                      if(node.getDoc().contentEquals(out.getDoc())) {
                         out = node;
+                        node.numin++;
                         add = false;
                         break;
                      }

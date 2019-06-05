@@ -1,616 +1,91 @@
 <!doctype html>
-<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
-<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
-<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!-->
-<html lang="en">
- <!--<![endif]-->
+<html>
  <head> 
-  <meta charset="utf-8"> 
-  <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
-  <title>NaturalReader Text to Speech Software Download</title> 
-  <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"> 
-  <meta name="description" content="Desktop Text to speech download software with natural sounding voices. Supports PDF, word, ebooks, webpages, Convert text to audio files."> 
-  <meta name="keywords" content="text to speech, text to voice, text speak, text reader, voice reader, text to voice, tts, free text to speech, read text, speech engine,"> 
-  <!-- Facebook and Twitter integration --> 
-  <meta property="og:title" content="text to speech software"> 
-  <meta property="og:image" content="https://www.naturalreaders.com/images/share_preview2.jpg"> 
-  <!-- <meta property="og:url" content=""/>
-	<meta property="og:site_name" content=""/> --> 
-  <meta property="og:description" content="text to speech download"> 
-  <meta name="twitter:title" content="text to speech software"> 
-  <meta name="twitter:image" content="https://www.naturalreaders.com/images/share_preview2.jpg"> 
-  <!-- <meta name="twitter:url" content="" />
-	<meta name="twitter:card" content="" /> --> 
-  <!-- Place favicon.ico and apple-touch-icon.png in the root directory --> 
-  <link rel="shortcut icon" href="favicon.ico"> 
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"> 
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css" integrity="sha384-PDle/QlgIONtM1aqA2Qemk5gPOE7wFq8+Em+G/hmo5Iq0CCmYZLv3fVRDJ4MMwEA" crossorigin="anonymous"> 
-  <!-- Latest compiled and minified CSS --> 
-  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700,900" rel="stylesheet"> 
-  <link rel="stylesheet" href="comfiles/software/css/software.css"> 
-  <!-- <script src="libs/modernizr/modernizr.js"></script> --> 
-  <!-- Global site tag (gtag.js) - Google Analytics --> 
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-466667-1"></script> 
-  <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-
-        gtag('config', 'UA-466667-1');
-        function getparastr(strname) {
-            paramValue = "";
-            isFound = false;
-            if (window.location.href.indexOf("?") > 0 && window.location.href.indexOf("=") > 0) {
-                arrSource = unescape(window.location.href).substring(window.location.href.indexOf("?") + 1, window.location.href.length).split("&");
-                i = 0;
-                while (i < arrSource.length && !isFound) {
-                    if (arrSource[i].indexOf("=") > 0) {
-                        if (arrSource[i].split("=")[0].toLowerCase() == strname.toLowerCase()) {
-                            paramValue = arrSource[i].split("=")[1];
-                            isFound = true;
-                        }
-                    }
-                    i++;
-                }
-            }
-            return paramValue;
-        }
-
-        var url = getparastr('url');
-        if (url != null && url != '') {
-            window.location.href = 'online/index.html?url=' + url;
-        }
-    </script> 
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"> 
+  <link rel="icon" href="./img/icon.png"> 
+  <title>Melodize - Sign Up</title> 
+  <link href="scripts/jquery/css/ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet"> 
+  <link href="css/general.css" rel="stylesheet"> 
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> 
+  <link href="https://fonts.googleapis.com/css?family=Amita" rel="stylesheet"> 
  </head> 
  <body> 
-  <header> 
-   <div class="container"> 
-    <div class="row"> 
-     <div class="col navigation"> 
-      <a href="https://www.naturalreaders.com/" class="logo-wrapper" id="team6_0"> <img src="comfiles/software/img/logo.png" alt=""> <span>NaturalReader</span> </a> 
-      <a aria-label="mobile menu" class="nav-toggle"> <span class="top"></span> <span></span> <span class="bottom"></span> </a> 
-      <ul class="menu-left"> 
-       <li class="el"><a href="./webapp.html" id="team6_1">Online</a></li> 
-       <li class="el"><a href="./software.html" id="team6_2">Software</a></li> 
-       <li class="el"><a href="./commercial.html" id="team6_3">Commercial</a></li> 
-       <li class="el"><a href="./exploring.html?index=2&amp;info=contactus" id="team6_4">About</a> </li> 
-       <li><a href="./online/" class="button" id="team6_5">Online Reader</a></li> 
-      </ul> 
-     </div> 
+  <ul class="nav-ul"> 
+   <li class="nav-li">
+    <div onclick="window.location='./index.html';">
+     Melodize
+    </div></li> 
+   <li class="nav-li"><a id="loginTab">Sign In</a></li> 
+   <li class="nav-li"><a id="profileTab" href="./profile.html" style="display: none">Profile</a></li> 
+   <li class="nav-li"><a href="./gallery.html" id="team6_0">Gallery</a></li> 
+   <li class="nav-li"><a href="./index.html" id="team6_1">Home</a></li> 
+  </ul> 
+  <div class="animate-bottom"> 
+   <div style="margin: 0 auto; width: 60%;"> 
+    <div class="login-div" style="font-family: 'Amita'; font-size: 24px; padding: 30px">
+     Sign up
     </div> 
-   </div> 
-  </header> 
-  <section class="intro"> 
-   <div class="container"> 
-    <div class="row"> 
-     <div class="col-12 col-lg-6 left"> 
-      <h3 class="text-info">NaturalReader Software</h3> 
-      <h1>Read many formats,</h1> 
-      <h1>all in one place</h1> 
-      <p>NaturalReader is a downloadable text-to-speech software for personal use. This easy-to-use software with natural-sounding voices can read to you any text such as Microsoft Word files, webpages, PDF files, and E-mails. Available with a one-time payment for a perpetual license. </p> 
-     </div> 
-     <div class="col-12 col-lg-6"> 
-      <img src="comfiles/software/img/test.svg" class="right-photo"> 
-     </div> 
+    <div class="login-div">
+     <input class="login-input" type="text" id="signupId" placeholder="New ID">
     </div> 
-   </div> 
-  </section> 
-  <section class="simple-plan-section" name="upgrade" id="upgrade"> 
-   <div class="container"> 
-    <div class="row"> 
-     <div class="col-12"> 
-      <div class="simple-plan-container"> 
-       <div class="title-section">
-        Simple Plans for Everyone
-       </div> 
-       <div class="container-billing-nav"> 
-        <ul class="nav nav-pills justify-content-center" id="pills-tab" role="tablist"> 
-         <li class="nav-item"> <a class="nav-link" id="pills-mac-tab" data-toggle="pill" href="#pills-mac" role="tab" aria-controls="pills-mac" aria-selected="true"> 
-           <div class="d-flex align-items-center"> 
-            <img src="comfiles/software/img/apple.png"> 
-            <div class="version-lbl">
-             Mac Version
-            </div> 
-           </div> </a> </li> 
-         <div class="vertical-line"></div> 
-         <li class="nav-item"> <a class="nav-link" id="pills-win-tab" data-toggle="pill" href="#pills-win" role="tab" aria-controls="pills-win" aria-selected="false"> 
-           <div class="d-flex align-items-center"> 
-            <img src="comfiles/software/img/windows.png"> 
-            <div class="version-lbl">
-             Windows Version
-            </div> 
-           </div> </a> </li> 
-        </ul> 
-       </div> 
-       <p>*All prices are in USD</p> 
-      </div> 
-     </div> 
+    <div class="login-div" style="padding: 2px; color: red; display: none" id="idDuplicate">
+     ID already exists!
     </div> 
-   </div> 
-  </section> 
-  <div class="tab-content" id="pills-tabContent"> 
-   <div class="tab-pane fade" id="pills-mac" role="tabpanel" aria-labelledby="pills-mac-tab"> 
-    <section class="price-section"> 
-     <div class="container"> 
-      <div class="row justify-content-around"> 
-       <div class="col-12 col-md-6 col-lg-5"> 
-        <div class="price-card-container"> 
-         <div class="price-card-header d-flex justify-content-start align-items-center"> 
-          <div class="price-card-icon-container"> 
-           <img id="free_version_icon" src="" alt="" class="price-card-icon"> 
-          </div> 
-          <div class="price-container"> 
-           <h3 class="price-card-title">FREE</h3> 
-           <span class="price">$0</span> 
-           <p class="mo">(Free to use)</p> 
-          </div> 
-         </div> 
-         <div class="price-card-body"> 
-          <ul class="price-list-info"> 
-           <li>Unlimited use with Free Voices</li> 
-           <li>Floating bar to read text in other applications</li> 
-           <li>Read webpages directly</li> 
-           <li>Works with PDF, Docx, TXT and ePub</li> 
-          </ul> 
-         </div> 
-         <div class="price-card-footer"> 
-          <a href="#" class="price-card-btn" id="free_download_btn">Free Download</a> 
-         </div> 
-        </div> 
-       </div> 
-       <div class="col-12 col-md-6 col-lg-5"> 
-        <div class="price-card-container"> 
-         <div class="price-card-header d-flex justify-content-start align-items-center"> 
-          <div class="price-card-icon-container"> 
-           <img id="personal_version_icon" src="" alt="" class="price-card-icon"> 
-          </div> 
-          <div class="price-container"> 
-           <h3 class="price-card-title">Personal</h3> 
-           <span class="price">$99.50</span> 
-           <p class="mo">(One-time payment)</p> 
-          </div> 
-         </div> 
-         <div class="price-card-body"> 
-          <ul class="price-list-info"> 
-           <li>2 natural voices included</li> 
-           <li>All features of Free Version included</li> 
-           <li>Text to downloadable audio files</li> 
-          </ul> 
-         </div> 
-         <div class="price-card-footer"> 
-          <a href="#" class="price-card-btn" id="personal_checkout">Order Now</a> 
-         </div> 
-        </div> 
-       </div> 
-       <div class="col-12 col-md-6 col-lg-5"> 
-        <div class="price-card-container"> 
-         <div class="price-card-header d-flex justify-content-start align-items-center"> 
-          <div class="price-card-icon-container"> 
-           <img id="pro_version_icon" src="" alt="" class="price-card-icon"> 
-          </div> 
-          <div class="price-container"> 
-           <h3 class="price-card-title">Professional</h3> 
-           <span class="price">$129.50</span> 
-           <p class="mo">(One-time payment)</p> 
-          </div> 
-         </div> 
-         <div class="price-card-body"> 
-          <ul class="price-list-info"> 
-           <li>4 natural voices included</li> 
-           <li>All features of Personal Version included</li> 
-           <li>500 pages for OCR to read from images &amp; scanned PDFs</li> 
-          </ul> 
-         </div> 
-         <div class="price-card-footer"> 
-          <a href="#" class="price-card-btn" id="professional_checkout">Order Now</a> 
-         </div> 
-        </div> 
-       </div> 
-       <div class="col-12 col-md-6 col-lg-5"> 
-        <div class="price-card-container"> 
-         <div class="price-card-header d-flex justify-content-start align-items-center"> 
-          <div class="price-card-icon-container"> 
-           <img id="ultimate_version_icon" src="" alt="" class="price-card-icon"> 
-          </div> 
-          <div class="price-container"> 
-           <h3 class="price-card-title">Ultimate</h3> 
-           <span class="price">$199.50</span> 
-           <p class="mo">(One-time payment)</p> 
-          </div> 
-         </div> 
-         <div class="price-card-body"> 
-          <ul class="price-list-info"> 
-           <li>6 natural voices included</li> 
-           <li>All features of Professional Version included</li> 
-           <li>Unlimited OCR to read from images &amp; scanned PDFs</li> 
-          </ul> 
-         </div> 
-         <div class="price-card-footer"> 
-          <a href="#" class="price-card-btn" id="ultimate_checkout">Order Now</a> 
-         </div> 
-        </div> 
-       </div> 
-      </div> 
-     </div> 
-    </section> 
-    <section class="mainFeatures"> 
-     <div class="title-section">
-      Main Features
-     </div> 
-     <div class="container"> 
-      <div class="row"> 
-       <div class="col-12 col-lg-4"> 
-        <div class="features-block"> 
-         <div class="features-btn"> 
-          <div class="img-container"> 
-           <img src="data:image/svg+xml;utf8,<svg width='48px' height='48px' viewBox='0 0 48 48' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'> <g id='Page-1' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'> <g id='Personal-Software' transform='translate(-150.000000, -2646.000000)'> <g id='Group-12' transform='translate(150.000000, 2646.000000)'> <circle id='Oval-3' fill-opacity='0.2' fill='%231B7DF9' cx='24' cy='24' r='24'></circle> <g id='Group' transform='translate(12.000000, 14.000000)' stroke='%231B7DF9' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5'> <g id='audio-book-volume-high'> <path d='M12,21 C11.493,19.333 8.082,17.382 2.157,17.113 C1.36200148,17.0636361 0.74422074,16.4015087 0.75,15.605 L0.75,2.254 C0.74893741,1.83692301 0.921574434,1.43823462 1.22646913,1.15364093 C1.53136383,0.869047248 1.94098425,0.724247058 2.357,0.754 C3.35122789,0.802949287 4.3416523,0.9111413 5.323,1.078' id='Shape'></path> <path d='M12,21 C12.507,19.333 15.918,17.382 21.843,17.113 C22.6376103,17.0636565 23.2552459,16.4021236 23.25,15.606 L23.25,2.254 C23.2510626,1.83692301 23.0784256,1.43823462 22.7735309,1.15364093 C22.4686362,0.869047248 22.0590158,0.724247058 21.643,0.754 C20.6907407,0.79997975 19.7418717,0.900141846 18.801,1.054' id='Shape'></path> <path d='M12,14.978 L12,20.999' id='Shape'></path> <path d='M9.993,4.573 C9.68200574,4.42107126 9.31246126,4.45379134 9.033,4.658 L6.5,6.728 L4.667,6.728 C4.42600826,6.72560195 4.19394935,6.81910983 4.02194713,6.98792335 C3.84994491,7.15673688 3.75211145,7.38700558 3.75,7.628 L3.75,8.828 C3.75211145,9.06899442 3.84994491,9.29926312 4.02194713,9.46807665 C4.19394935,9.63689017 4.42600826,9.73039805 4.667,9.728 L6.5,9.728 L9.033,11.8 C9.31213186,12.0050829 9.6821764,12.0378473 9.993,11.885 C10.2999955,11.7360124 10.4963274,11.4262185 10.5,11.085 L10.5,5.385 C10.5008975,5.03944637 10.3038697,4.7238911 9.993,4.573 Z' id='Shape'></path> <path d='M14.25,6.3 C15.209887,7.3030162 15.209887,8.8839838 14.25,9.887' id='Shape'></path> <path d='M17.6,5.228 C19.0869068,6.84591327 19.0925476,9.3313542 17.613,10.956' id='Shape'></path> </g> </g> </g> </g> </g> </svg> " alt="" class="icon-btn"> 
-          </div> 
-          <span class="title">Text to Speech</span> 
-         </div> 
-         <div class="features-content"> 
-          <p>Convert any text or document into natural-sounding voices.</p> 
-         </div> 
-        </div> 
-       </div> 
-       <div class="col-12 col-lg-4"> 
-        <div class="features-block"> 
-         <div class="features-btn"> 
-          <div class="img-container"> 
-           <img src="data:image/svg+xml;utf8,<svg width='48px' height='48px' viewBox='0 0 48 48' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'> <g id='Page-1' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'> <g id='Personal-Software' transform='translate(-548.000000, -2646.000000)'> <g id='Group-13' transform='translate(548.000000, 2646.000000)'> <circle id='Oval-3' fill-opacity='0.2' fill='%231B7DF9' cx='24' cy='24' r='24'></circle> <g id='Group' transform='translate(15.000000, 11.000000)' stroke='%231B7DF9' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5'> <g id='common-file-double-2'> <path d='M13.5,21.75 C13.5,22.5784271 12.8284271,23.25 12,23.25 L1.5,23.25 C0.671572875,23.25 0,22.5784271 0,21.75 L0,8.25 C0,7.42157288 0.671572875,6.75 1.5,6.75 L9.129,6.75 C9.52654721,6.75008488 9.90780161,6.90798175 10.189,7.189 L13.061,10.061 C13.3420182,10.3421984 13.4999151,10.7234528 13.5,11.121 L13.5,21.75 Z' id='Shape'></path> <path d='M4.5,6.75 L4.5,2.25 C4.5,1.42157288 5.17157288,0.75 6,0.75 L13.629,0.75 C14.0265472,0.750084881 14.4078016,0.907981752 14.689,1.189 L17.561,4.061 C17.8420182,4.34219839 17.9999151,4.72345279 18,5.121 L18,15.75 C18,16.5784271 17.3284271,17.25 16.5,17.25 L13.5,17.25' id='Shape'></path> </g> </g> </g> </g> </g> </svg> " alt="" class="icon-btn"> 
-          </div> 
-          <span class="title">Various Document Formats</span> 
-         </div> 
-         <div class="features-content"> 
-          <p>Supports PDF, Docx, and text documents.</p> 
-         </div> 
-        </div> 
-       </div> 
-       <div class="col-12 col-lg-4"> 
-        <div class="features-block"> 
-         <div class="features-btn"> 
-          <div class="img-container"> 
-           <img src="data:image/svg+xml;utf8,<svg width='24px' height='24px' viewBox='0 0 24 24' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'><g id='Page-1' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd' stroke-linecap='round' stroke-linejoin='round'><g id='Personal-Online' transform='translate(-962.000000, -4185.000000)' stroke='%231B7DF9' stroke-width='1.5'><g id='pronunciation' transform='translate(962.000000, 4185.000000)'><g id='study-book'><path d='M8.173,18.219 C6.23031245,17.5760191 4.20444992,17.2189499 2.159,17.159 C1.36618239,17.1153386 0.746668504,16.458012 0.75,15.664 L0.75,2.3 C0.748997585,1.88348276 0.921227635,1.48530238 1.22544798,1.20080704 C1.52966833,0.916311705 1.93848397,0.771120181 2.354,0.8 C8.678,1.131 12,3.388 12,5.114 C12,3.4 15.715,1.157 21.641,0.806 C22.0573485,0.775663676 22.4675061,0.920202292 22.7728508,1.20486175 C23.0781955,1.48952121 23.2511037,1.88854919 23.25,2.306 L23.25,14.906' id='Shape'></path><path d='M12,5.114 L12,9.001' id='Shape'></path><path d='M9.342,6.548 C7.54135007,5.89777844 5.67051585,5.46145183 3.768,5.248' id='Shape'></path><path d='M19.414,9.221 C19.76,9.165 20.1143333,9.11333333 20.477,9.066' id='Shape'></path><path d='M9.342,10.363 C7.53986499,9.71780735 5.66962298,9.28161887 3.768,9.063' id='Shape'></path><path d='M9.342,14.406 C7.52287666,13.7590075 5.63554028,13.3228231 3.717,13.106' id='Shape'></path><path d='M14.9,6.555 C16.720024,5.90756408 18.6084052,5.47137083 20.528,5.255' id='Shape'></path><path d='M23.136,23.251 L23.236,22.129 C23.3725013,20.6264286 22.3718414,19.2562482 20.899,18.929 L17.248,18.118 L17.248,12.376 C17.248,11.3404661 16.4085339,10.501 15.373,10.501 C14.3374661,10.501 13.498,11.3404661 13.498,12.376 L13.498,21.581 L12.021,20.473 C11.410687,20.0158856 10.5571861,20.0768212 10.0180037,20.6160037 C9.47882122,21.1551861 9.41788563,22.008687 9.875,22.619 L10.349,23.251' id='Shape'></path></g></g></g></g></svg>" alt="" class="icon-btn"> 
-          </div> 
-          <span class="title">OCR with Printed Documents</span> 
-         </div> 
-         <div class="features-content"> 
-          <p>OCR function can convert printed characters into digital text. This allows you to listen to your printed files or edit it in a word-processing program.</p> 
-         </div> 
-        </div> 
-       </div> 
-       <div class="col-12 col-lg-4"> 
-        <div class="features-block"> 
-         <div class="features-btn"> 
-          <div class="img-container"> 
-           <img src="data:image/svg+xml;utf8,<svg width='24px' height='22px' viewBox='0 0 24 22' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'><g id='Page-1' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd' stroke-linecap='round' stroke-linejoin='round'><g id='Personal-Online' transform='translate(-162.000000, -4322.000000)' stroke='%231B7DF9' stroke-width='1.5'><g id='dyslexia' transform='translate(162.000000, 4321.000000)'><g id='font-size'><path d='M0.75,12.749 L11.25,12.749' id='Shape'></path><path d='M15.75,17.249 L23.25,17.249' id='Shape'></path><path d='M15.75,21.749 L15.75,13.5 C15.75,11.4289322 17.4289322,9.75 19.5,9.75 C21.5710678,9.75 23.25,11.4289322 23.25,13.5 L23.25,21.75' id='Shape'></path><path d='M0.75,21.749 L0.75,7.5 C0.75,4.60050506 3.10050506,2.25 6,2.25 C8.89949494,2.25 11.25,4.60050506 11.25,7.5 L11.25,21.75' id='Shape'></path></g></g></g></g></svg>" alt="" class="icon-btn"> 
-          </div> 
-          <span class="title">OCR with eBooks</span> 
-         </div> 
-         <div class="features-content"> 
-          <p>OCR can be used to convert screenshots of text from eBook desktop apps, such as Kindle, into speech and audio files.</p> 
-         </div> 
-        </div> 
-       </div> 
-       <div class="col-12 col-lg-4"> 
-        <div class="features-block"> 
-         <div class="features-btn"> 
-          <div class="img-container"> 
-           <img src="data:image/svg+xml;utf8,<svg width='48px' height='48px' viewBox='0 0 48 48' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'> <g id='Page-1' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'> <g id='Personal-Software' transform='translate(-548.000000, -2866.000000)'> <g id='Group-mp3' transform='translate(548.000000, 2866.000000)'> <g id='audio-file-download' transform='translate(12.000000, 12.000000)' stroke='%231B7DF9' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5'> <circle id='Oval' cx='17.25' cy='17.25' r='6'></circle> <path d='M17.25,14.25 L17.25,20.25' id='Shape'></path> <path d='M17.25,20.25 L15,18' id='Shape'></path> <path d='M17.25,20.25 L19.5,18' id='Shape'></path> <path d='M8.25,20.25 L2.25,20.25 C1.42157288,20.25 0.75,19.5784271 0.75,18.75 L0.75,2.25 C0.75,1.42157288 1.42157288,0.75 2.25,0.75 L12.879,0.75 C13.2765472,0.750084881 13.6578016,0.907981752 13.939,1.189 L16.811,4.061 C17.0920182,4.34219839 17.2499151,4.72345279 17.25,5.121 L17.25,8.25' id='Shape'></path> <ellipse id='Oval' cx='6' cy='12.75' rx='2.25' ry='1.5'></ellipse> <path d='M8.25,12.75 L7.955,6.821 L9.017,6.708 C10.053895,6.59750146 11.0609918,7.0973459 11.6,7.99' id='Shape'></path> </g> <circle id='Oval-3' fill-opacity='0.2' fill='%231B7DF9' cx='24' cy='24' r='24'></circle> </g> </g> </g> </svg> " alt="" class="icon-btn"> 
-          </div> 
-          <span class="title">Text to Audio Files</span> 
-         </div> 
-         <div class="features-content"> 
-          <p>Converts text into mp3 files for Windows or aiff files for Mac.</p> 
-         </div> 
-        </div> 
-       </div> 
-       <div class="col-12 col-lg-4"> 
-        <div class="features-block"> 
-         <div class="features-btn"> 
-          <div class="img-container"> 
-           <img src="data:image/svg+xml;utf8,<svg width='48px' height='48px' viewBox='0 0 48 48' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'> <g id='Page-1' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'> <g id='Personal-Software' transform='translate(-950.000000, -2866.000000)'> <g id='Group' transform='translate(950.000000, 2866.000000)'> <g id='office-file-pdf'> <path d='M16.3268197,32.0634754 L16.3268197,24.194623' id='Shape' stroke='%231B7DF9' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'></path> <path d='M16.3278689,24.1967213 L17.1147541,24.1967213 C18.4185083,24.1967213 19.4754098,25.2536229 19.4754098,26.557377 C19.4754098,27.8611312 18.4185083,28.9180328 17.1147541,28.9180328 L16.3278689,28.9180328' id='Shape' stroke='%231B7DF9' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'></path> <path d='M22.6229508,32.0655738 C24.3612897,32.0655738 25.7704918,30.6563717 25.7704918,28.9180328 L25.7704918,27.3442623 C25.7704918,25.6059234 24.3612897,24.1967213 22.6229508,24.1967213 L22.6229508,32.0655738 Z' id='Shape' stroke='%231B7DF9' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'></path> <path d='M28.9180328,32.0655738 L28.9180328,25.7704918 C28.9180328,24.9013224 29.6226338,24.1967213 30.4918033,24.1967213 L32.0655738,24.1967213' id='Shape' stroke='%231B7DF9' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'></path> <path d='M28.9169836,28.9159344 L31.2776393,28.9159344' id='Shape' stroke='%231B7DF9' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'></path> <path d='M35.5373115,17.4389508 C35.8325351,17.7338069 35.9985835,18.1338327 35.9989508,18.551082 L35.9989508,33.6393443 C35.9977931,34.9418693 34.9418697,35.9973233 33.6393443,35.9979016 L14.7540984,35.9979016 C13.4507536,35.9984814 12.3935518,34.9426887 12.3923934,33.6393443 L12.3923934,14.7540984 C12.3918364,14.1274682 12.6404457,13.5263278 13.0834419,13.0831348 C13.5264381,12.6399418 14.127468,12.3910655 14.7540984,12.3913443 L29.8381639,12.3913443 C30.2556262,12.3911551 30.6560593,12.5568386 30.9513443,12.8519344 L35.5373115,17.4389508 Z' id='Shape' stroke='%231B7DF9' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'></path> <path d='M29.7038689,12.3913443 L29.7038689,17.1126557 C29.7038689,17.9818252 30.4084699,18.6864262 31.2776393,18.6864262 L35.9989508,18.6864262' id='Shape' stroke='%231B7DF9' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'></path> <circle id='Oval-3' fill-opacity='0.2' fill='%231B7DF9' cx='24' cy='24' r='24'></circle> </g> </g> </g> </g> </svg> " alt="" class="icon-btn"> 
-          </div> 
-          <span class="title">PDF</span> 
-         </div> 
-         <div class="features-content"> 
-          <p>Preserves the original formatting of PDF files </p> 
-         </div> 
-        </div> 
-       </div> 
-       <div class="col-12 col-lg-4"> 
-        <div class="features-block"> 
-         <div class="features-btn"> 
-          <div class="img-container"> 
-           <img src="data:image/svg+xml;utf8,<svg width='48px' height='48px' viewBox='0 0 48 48' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'> <g id='Page-1' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'> <g id='Personal-Software' transform='translate(-150.000000, -3086.000000)'> <g id='Group' transform='translate(150.000000, 3086.000000)'> <g id='network-www'> <path d='M15,18.25 C17.1250977,15.4179347 20.4592891,13.7513328 24,13.7513328 C27.5407109,13.7513328 30.8749023,15.4179347 33,18.25' id='Shape' stroke='%231B7DF9' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'></path> <path d='M19.8,18.25 C20.758,15.518 22.282,13.75 24,13.75 C25.718,13.75 27.243,15.518 28.2,18.25' id='Shape' stroke='%231B7DF9' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'></path> <path d='M35.25,31.75 L12.75,31.75' id='Shape' stroke='%231B7DF9' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'></path> <path d='M12.75,18.25 L35.25,18.25' id='Shape' stroke='%231B7DF9' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'></path> <path d='M33,31.75 C30.8749023,34.5820653 27.5407109,36.2486672 24,36.2486672 C20.4592891,36.2486672 17.1250977,34.5820653 15,31.75' id='Shape' stroke='%231B7DF9' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'></path> <path d='M28.2,31.75 C27.243,34.483 25.718,36.25 24,36.25 C22.282,36.25 20.758,34.483 19.8,31.75' id='Shape' stroke='%231B7DF9' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'></path> <path d='M14.25,21.25 L14.25,24.109 C14.2501686,24.7016557 14.3087856,25.2928502 14.425,25.874 L15,28.75 L16.5,24.25 L18,28.75 L18.575,25.874 C18.6917078,25.292924 18.7503297,24.7016803 18.75,24.109 L18.75,21.25' id='Shape' stroke='%231B7DF9' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'></path> <path d='M21.75,21.25 L21.75,24.109 C21.7501686,24.7016557 21.8087856,25.2928502 21.925,25.874 L22.5,28.75 L24,24.25 L25.5,28.75 L26.075,25.874 C26.1917078,25.292924 26.2503297,24.7016803 26.25,24.109 L26.25,21.25' id='Shape' stroke='%231B7DF9' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'></path> <path d='M29.25,21.25 L29.25,24.109 C29.2501686,24.7016557 29.3087856,25.2928502 29.425,25.874 L30,28.75 L31.5,24.25 L33,28.75 L33.575,25.874 C33.6917078,25.292924 33.7503297,24.7016803 33.75,24.109 L33.75,21.25' id='Shape' stroke='%231B7DF9' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'></path> <circle id='Oval-3' fill-opacity='0.2' fill='%231B7DF9' cx='24' cy='24' r='24'></circle> </g> </g> </g> </g> </svg> " alt="" class="icon-btn"> 
-          </div> 
-          <span class="title">Listen to Webpages</span> 
-         </div> 
-         <div class="features-content"> 
-          <p>Listen to webpages with built-in browser.</p> 
-         </div> 
-        </div> 
-       </div> 
-       <div class="col-12 col-lg-4"> 
-        <div class="features-block"> 
-         <div class="features-btn"> 
-          <div class="img-container"> 
-           <img src="data:image/svg+xml;utf8,<svg width='20px' height='24px' viewBox='0 0 20 24' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'><g id='Page-1' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd' stroke-linecap='round' stroke-linejoin='round'><g id='Personal-Online' transform='translate(-564.000000, -4321.000000)' stroke='%231B7DF9' stroke-width='1.5'><g id='bookmark' transform='translate(562.000000, 4321.000000)'><g id='book-close-bookmark-1'><path d='M21,23.25 L5.25,23.25 C4.00735931,23.25 3,22.2426407 3,21' id='Shape'></path><path d='M12,2.25 L6,2.25 C4.34314575,2.25 3,3.59314575 3,5.25 L3,21 C3,19.7573593 4.00735931,18.75 5.25,18.75 L20.25,18.75 C20.6642136,18.75 21,18.4142136 21,18 L21,3 C21,2.58578644 20.6642136,2.25 20.25,2.25 L18,2.25' id='Shape'></path><path d='M19.5,23.25 L19.5,18.75' id='Shape'></path><path d='M18,12.75 L15,9.75 L12,12.75 L12,2.25 C12,1.42157288 12.6715729,0.75 13.5,0.75 L16.5,0.75 C17.3284271,0.75 18,1.42157288 18,2.25 L18,12.75 Z' id='Shape'></path></g></g></g></g></svg>" alt="" class="icon-btn"> 
-          </div> 
-          <span class="title">Miniboard</span> 
-         </div> 
-         <div class="features-content"> 
-          <p>Offers a simple way of reading text directly on the page </p> 
-         </div> 
-        </div> 
-       </div> 
-       <div class="col-12 col-lg-4"> 
-        <div class="features-block"> 
-         <div class="features-btn"> 
-          <div class="img-container"> 
-           <img src="data:image/svg+xml;utf8,<svg width='24px' height='24px' viewBox='0 0 24 24' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'><g id='Page-1' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd' stroke-linecap='round' stroke-linejoin='round'><g id='Personal-Online' transform='translate(-962.000000, -4321.000000)' stroke='%231B7DF9' stroke-width='1.5'><g id='footer' transform='translate(962.000000, 4321.000000)'><g id='artboard-add'><path d='M4.5,0.75 L4.5,1.5' id='Shape'></path><path d='M1.5,4.5 L0.75,4.5' id='Shape'></path><path d='M4.5,23.25 L4.5,22.5' id='Shape'></path><path d='M1.5,19.5 L0.75,19.5' id='Shape'></path><path d='M19.5,0.75 L19.5,1.5' id='Shape'></path><path d='M22.5,4.5 L23.25,4.5' id='Shape'></path><path d='M19.5,23.25 L19.5,22.5' id='Shape'></path><path d='M22.5,19.5 L23.25,19.5' id='Shape'></path><rect id='Rectangle-path' x='4.5' y='4.5' width='15.1455078' height='14.9423828'></rect><g id='Group' transform='translate(7.572754, 4.971191)'><g id='shrink-vertical'><path d='M6.500625,8.5488 L6.500625,13.9488' id='Shape'></path><polyline id='Shape' points='8.844375 10.7988 6.500625 8.5488 4.156875 10.7988'></polyline><polyline id='Shape' points='4.844375 3.5988 2.500625 5.8488 0.156875 3.5988'></polyline><path d='M2.500625,0.4488 L2.500625,5.8488' id='Shape'></path></g></g></g></g></g></g></svg>" alt="" class="icon-btn"> 
-          </div> 
-          <span class="title">Pronounciation Editor</span> 
-         </div> 
-         <div class="features-content"> 
-          <p>You can manually modify the pronunciation of a certain word. </p> 
-         </div> 
-        </div> 
-       </div> 
-      </div> 
-     </div> 
-    </section> 
+    <div class="login-div">
+     <input class="login-input" type="text" id="signupEmail" placeholder="Email">
+    </div> 
+    <div class="login-div" style="padding: 2px; color: red; display: none" id="emailError">
+     Invalid email
+    </div> 
+    <div class="login-div">
+     <input class="login-input" type="password" id="signupPw1" placeholder="Password">
+    </div> 
+    <div class="login-div">
+     <input class="login-input" type="password" id="signupPw2" placeholder="Confirm Password">
+    </div> 
+    <div class="login-div" style="padding: 2px; color: red; display: none" id="passwordError">
+     Type the password again
+    </div> 
+    <div class="login-div" style="padding: 2px; color: red; display: none" id="emptyError">
+     Please fill all the fields
+    </div> 
+    <div class="login-div">
+     <button class="btn btn-default login-input" id="register">Register</button>
+    </div> 
    </div> 
   </div> 
-  <section class="additionalVoices"> 
-   <div class="container"> 
-    <div class="title-section">
-     Additional Voices
+  <div id="loginModal" class="modal"> 
+   <div class="modal-content" style="width: 340px; height: 500px"> 
+    <span class="close">×</span> 
+    <div class="login-div" style="font-family: 'Amita'; font-size: 24px; padding: 30px">
+     Welcome to Melodize
     </div> 
-    <div class="voice-box"> 
-     <div class="box-header"> 
-      <p class="subtitle-section">*Additional voices and other languages below are available for separate purchase; However the voices cannot stand alone, they only work with paid versions.</p> 
-     </div> 
-     <div class="box-content"> 
-      <label for="exampleFormControlSelect1">Please choose one voice: </label> 
-      <a href="https://www.naturalreaders.com/voicelist.html" id="team6_6">(Voice Demo)</a> 
-      <select class="form-control" id="voicelist"> </select> 
-     </div> 
-     <div class="box-footer"> 
-      <div class="d-flex justify-content-between align-items-center"> 
-       <h3>$39.50 USD per voice</h3> 
-       <button class="button" id="voice_buy">Purchase Now</button> 
-      </div> 
-     </div> 
+    <div class="login-div" style="font-family: 'Amita'">
+     Sign in
     </div> 
-   </div> 
-  </section> 
-  <section class="updateAndUpgrade"> 
-   <div class="container"> 
-    <div class="row update"> 
-     <div class="col-12 col-lg-6 bg-blue"> 
-      <div class="update-card d-flex flex-column justify-content-between"> 
-       <div class="update-title"> 
-        <div class="d-flex align-items-center justify-content-between"> 
-         <div>
-          Update
-         </div> 
-         <div class="horizontal-line flex-fill"></div> 
-        </div> 
-       </div> 
-       <div class="update-content"> 
-        <p><b>(Updates during the first six months after purchase are free! )</b></p> 
-        <p>We encourage you to update to this powerful new release for only $49.50. As an added incentive, you will receive free access to OCR function for 500 images and an additional bonus voice of your choice. Latest version + OCR for 500 images + one natural voice.</p> 
-       </div> 
-       <div class="update-footer"> 
-        <div class="d-flex align-items-center justify-content-start"> 
-         <a class="button btn-white" href="https://www.naturalreaders.com/myaccount.html" id="team6_7">Check Updates</a> 
-         <a class="button" href="https://www.naturalreaders.com/myaccount.html" id="team6_8">Existing Customer Login</a> 
-        </div> 
-       </div> 
-      </div> 
-     </div> 
-     <div class="col-12 col-lg-6 bg-img"> 
-      <img src="comfiles/software/img/updateCard.png"> 
-     </div> 
+    <div class="login-div">
+     <input class="login-input" type="text" id="id" placeholder="ID">
     </div> 
-    <div class="row upgrade"> 
-     <div class="col-12 col-lg-6 bg-img"> 
-      <img src="comfiles/software/img/upgradeCard.png"> 
-     </div> 
-     <div class="col-12 col-lg-6 bg-blue"> 
-      <div class="update-card d-flex flex-column justify-content-between"> 
-       <div class="update-title"> 
-        <div class="d-flex align-items-center justify-content-between"> 
-         <div>
-          Upgrade
-         </div> 
-         <div class="horizontal-line flex-fill"></div> 
-        </div> 
-       </div> 
-       <div class="update-content"> 
-        <p>Upgrade from lower versions to higher versions</p> 
-        <p>(e.g. from Personal to Ultimate version).</p> 
-       </div> 
-       <div class="update-footer"> 
-        <a class="button btn-white" href="https://www.naturalreaders.com/snkey.php" id="team6_9">Upgrade Now</a> 
-       </div> 
-      </div> 
-     </div> 
+    <div class="login-div">
+     <input class="login-input" type="password" id="pw" placeholder="Password">
+    </div> 
+    <div class="login-div" style="padding: 2px; color: red; display: none" id="warning_msg">
+     Wrong ID or Password
+    </div> 
+    <div class="login-div">
+     <button class="btn btn-default login-input" id="loginBtn">Login</button>
+    </div> 
+    <div class="login-div" style="padding: 2px">
+     Don't have an account? 
+     <a href="./signup.html">Sign up here</a>
     </div> 
    </div> 
-  </section> 
-  <section class="difference"> 
-   <div class="container"> 
-    <div class="title-section">
-     Differences between NaturalReader Online and NaturalReader Software
-    </div> 
-    <div class="row align-items-center justify-content-center"> 
-     <div class="col-xl-6 table-box online"> 
-      <div class="webSoftware"> 
-       <table> 
-        <thead> 
-         <tr> 
-          <td>NaturalReader Online</td> 
-         </tr> 
-        </thead> 
-        <tbody> 
-         <tr> 
-          <td> Can be accessed from any computer. </td> 
-         </tr> 
-         <tr> 
-          <td> Access to all Premium Voices. </td> 
-         </tr> 
-         <tr> 
-          <td> Subscription pricing. </td> 
-         </tr> 
-         <tr> 
-          <td> Always up to date. </td> 
-         </tr> 
-        </tbody> 
-       </table> 
-      </div> 
-     </div> 
-     <div class="col-xl-6 table-box software"> 
-      <div class="webSoftware"> 
-       <table> 
-        <thead> 
-         <tr> 
-          <td>NaturalReader Software</td> 
-         </tr> 
-        </thead> 
-        <tbody> 
-         <tr> 
-          <td> Each license allowed for installation and use on one computer only. </td> 
-         </tr> 
-         <tr> 
-          <td> Access to 2-6 Premium voices, additional voices are $39.50 each. </td> 
-         </tr> 
-         <tr> 
-          <td> One-time payment. </td> 
-         </tr> 
-         <tr> 
-          <td> After 180 days, updating to the latest version requires $49.50. </td> 
-         </tr> 
-        </tbody> 
-       </table> 
-      </div> 
-     </div> 
-    </div> 
-   </div> 
-  </section> 
-  <section class="questions-section"> 
-   <div class="title-section">
-    Frequently Asked Questions
-   </div> 
-   <div class="container"> 
-    <div class="row"> 
-     <div class="col-12"> 
-      <div id="accordion"> 
-       <div class="questions-card"> 
-        <div class="questions-header" id="headingOne"> 
-         <h5 class="mb-0"> <button class="btn-link" data-toggle="collapse" data-target="#questionsCollapseOne" aria-expanded="true" aria-controls="questionsCollapseOne"> Will my license expire? <i class="fas fa-chevron-down"></i> </button> </h5> 
-        </div> 
-        <div id="questionsCollapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion"> 
-         <div class="card-body">
-          NaturalReader licenses never expire but you will be charged a fee should you require new download links after 180 days. 
-         </div> 
-        </div> 
-       </div> 
-       <div class="questions-card"> 
-        <div class="questions-header" id="headingTwo"> 
-         <h5 class="mb-0"> <button class="btn-link collapsed" data-toggle="collapse" data-target="#questionsCollapseTwo" aria-expanded="false" aria-controls="questionsCollapseTwo"> What types of files can NaturalReader convert to mp3? <i class="fas fa-chevron-down"></i> </button> </h5> 
-        </div> 
-        <div id="questionsCollapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion"> 
-         <div class="card-body">
-           NaturalReader supports .pdf, .doc(x), .epub, .txt and .rtf files. 
-         </div> 
-        </div> 
-       </div> 
-       <div class="questions-card"> 
-        <div class="questions-header" id="headingThree"> 
-         <h5 class="mb-0"> <button class="btn-link collapsed" data-toggle="collapse" data-target="#questionsCollapseThree" aria-expanded="false" aria-controls="questionsCollapseThree"> How to listen to PDF files? <i class="fas fa-chevron-down"></i> </button> </h5> 
-        </div> 
-        <div id="questionsCollapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion"> 
-         <div class="card-body"> 
-          <p>There are three ways to read the pdf files:</p> 
-          <p>1. Open NaturalReader -&gt; click "open" button to open the file;</p> 
-          <p>2. Click the floating bar button of NaturalReader to go to the floating bar, select the text in the pdf file and click \"play\" button to listen to;</p> 
-          <p>3. If the pdf file is a scanned file or it is protected by the copyright, please use the floating bar, click “Add New” -&gt; capture to capture the text to read. </p> 
-         </div> 
-        </div> 
-       </div> 
-       <div class="questions-card"> 
-        <div class="questions-header" id="headingFour"> 
-         <h5 class="mb-0"> <button class="btn-link collapsed" data-toggle="collapse" data-target="#questionsCollapseFour" aria-expanded="false" aria-controls="questionsCollapseFour"> What are the minimum system requirements for Mac and PC? <i class="fas fa-chevron-down"></i> </button> </h5> 
-        </div> 
-        <div id="questionsCollapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion"> 
-         <div class="card-body">
-           NaturalReader for Windows: Operation system: Windows7, Win8, Win8.1 and Win10; Processor: 500Mhz Memory: 64 MB (128 recommended); Free Disk Space: 500MB (Natural Voices may require 600MB free space). NaturalReader for Mac supports Mac OS X 10.10 or later. 
-         </div> 
-        </div> 
-       </div> 
-      </div> 
-     </div> 
-    </div> 
-   </div> 
-  </section> 
-  <footer> 
-   <div class="container"> 
-    <div class="row"> 
-     <div class="col-12 d-flex justify-content-between wrapper-for-list"> 
-      <div class="img-wrapper"> 
-       <img src="comfiles/software/img/logo.png" alt=""> 
-      </div> 
-      <div class="bottom-menu"> 
-       <ul>
-        Products 
-        <li><a href="./webapp.html" id="team6_10">Online</a></li> 
-        <li><a href="./software.html" id="team6_11">Software</a></li> 
-        <li><a href="./commercial.html" id="team6_12">Commercial</a></li> 
-        <li><a href="https://s3.amazonaws.com/naturalsoft-ca/web/chrome/index.html">Chrome Extension</a></li> 
-       </ul> 
-       <ul>
-        About Us 
-        <li><a href="./exploring.html" id="team6_13">Testimonials</a></li> 
-        <li><a href="./exploring.html?index=1&amp;info=faq#" id="team6_14">FAQ</a></li> 
-        <li><a href="./exploring.html?index=2&amp;info=contactus" id="team6_15">Contact Us</a></li> 
-        <li></li> 
-       </ul> 
-       <ul>
-        Policies 
-        <li><a href="./exploring.html?index=3&amp;info=polices" id="team6_16">Refund</a> </li> 
-        <li><a href="./exploring.html?index=3&amp;info=polices" id="team6_17">Privacy &amp; Terms</a></li> 
-        <li><a href="./exploring.html?index=3&amp;info=polices" id="team6_18">User Agreement</a></li> 
-       </ul> 
-      </div> 
-     </div> 
-    </div> 
-   </div> 
-   <div class="copyright"> 
-    <div class="container"> 
-     <div class="row"> 
-      <div class="col-12 wrapper-copyright"> 
-       <span>© NaturalSoft Ltd. All rights reserved.</span> 
-      </div> 
-     </div> 
-    </div> 
-   </div> 
-  </footer> 
-  <!-- Здесь пишем код --> 
-  <!-- <div class="hidden"></div>
-
-	<div class="loader">
-		<div class="loader_inner"></div>
-	</div> --> 
-  <!--[if lt IE 9]>
-	<script src="libs/html5shiv/es5-shim.min.js"></script>
-	<script src="libs/html5shiv/html5shiv.min.js"></script>
-	<script src="libs/html5shiv/html5shiv-printshiv.min.js"></script>
-	<script src="libs/respond/respond.min.js"></script>
-	<![endif]--> 
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> 
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script> 
-  <script src="comfiles/software/js/software.js?v=0.1"></script>  
+  </div> 
+  <script src="scripts/jquery/js/jquery-1.9.0.min.js"></script> 
+  <script src="scripts/jquery/js/jquery-ui-1.10.0.custom.min.js"></script> 
+  <script src="https://www.gstatic.com/firebasejs/3.6.2/firebase.js"></script> 
+  <script src="scripts/signup.js"></script> 
+  <script src="scripts/login.js"></script>  
  </body>
 </html>

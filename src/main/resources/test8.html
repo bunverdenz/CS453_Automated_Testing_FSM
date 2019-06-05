@@ -1,438 +1,109 @@
 <!doctype html>
-<html lang="en">
+<html>
  <head> 
   <meta charset="UTF-8"> 
-  <title>FAQ - NaturalReader Online</title> 
-  <meta name="Description" content="FAQ for NaturalReader Text to Speech Online."> 
-  <meta name="Keywords" content="text to speech, text to voice, text speak, text reader, voice reader, text to voice, tts, free text to speech, read text, speech engine,"> 
-  <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"> 
-  <link rel="shortcut icon" href="./favicon.ico" id="team6_0"> 
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700" rel="stylesheet" type="text/css"> 
-  <!-- Bootstrap  --> 
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"> 
-  <link rel="stylesheet" href="comfiles/faq/css/reset.css"> 
-  <!-- CSS reset --> 
-  <link rel="stylesheet" href="comfiles/faq/css/style.css?ver=1.2"> 
-  <!-- Resource style --> 
-  <link rel="stylesheet" href="comfiles/faq/css/faq.css?ver=1.2"> 
-  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> --> 
-  <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> --> 
-  <!-- Modernizr --> 
-  <script>
-        (function (w, d, s, l, i) {
-            w[l] = w[l] || []; w[l].push({
-                'gtm.start':
-                    new Date().getTime(), event: 'gtm.js'
-            }); var f = d.getElementsByTagName(s)[0],
-                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-TW36FBH');
-    </script> 
+  <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"> 
+  <link rel="icon" href="./img/icon.png"> 
+  <title>Melodize - Gallery</title> 
+  <link href="scripts/jquery/css/ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet"> 
+  <link href="css/general.css" rel="stylesheet"> 
+  <link href="css/gallery.css" rel="stylesheet"> 
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> 
+  <link href="https://fonts.googleapis.com/css?family=Amita" rel="stylesheet"> 
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> 
  </head> 
  <body> 
-  <!-- Fixed navbar --> 
-  <nav class="navbar navbar-default navbar-fixed-top"> 
-   <div class="navbar-header"> 
-    <a class="navbar-brand" href="./index.html" id="team6_0"> <i class="glyphicon glyphicon-arrow-left"></i> <span>NaturalReader</span> </a> 
+  <ul class="nav-ul"> 
+   <li class="nav-li">
+    <div onclick="window.location='./index.html';">
+     Melodize
+    </div></li> 
+   <li class="nav-li"><a id="loginTab">Sign In</a></li> 
+   <li class="nav-li"><a id="profileTab" href="./profile.html" style="display: none">Profile</a></li> 
+   <li class="nav-li"><a href="./gallery.html" id="team6_0">Gallery</a></li> 
+   <li class="nav-li"><a href="./index.html" id="team6_1">Home</a></li> 
+  </ul> 
+  <dir id="loader"></dir> 
+  <div id="mainDiv" style="display: none;" class="animate-bottom container"> 
+   <!--<div class="statBoard">
+        <div class="title">Total Users: </div><div class="info" id="totalUsers">0 users</div>
+        <div class="title">Requests: </div><div class="info" id="requests">0 lyrics</div>
+        <div class="title">Completed: </div><div class="info" id="completed"> 0 songs</div>
+      </div>--> 
+   <div class="col-sm-5"> 
+    <table id="leaderboard" class="leaderboard" style="width: 100%;"> 
+     <tbody>
+      <tr> 
+       <th class="list-tag">RANK</th> 
+       <th>USER</th> 
+       <th>SCORE</th> 
+      </tr> 
+     </tbody>
+    </table> 
+    <center>
+     <div id="showMore" class="showMore">
+      <i class="material-icons"></i> Show More
+     </div>
+    </center> 
    </div> 
-  </nav> 
-  <header> 
-   <h1 id="pro_title">FAQ - NaturalReader Online</h1> 
-  </header> 
-  <!-- Begin page content --> 
-  <div class="bodyContainer"> 
-   <div class="col-sm-12"> 
-    <section class="cd-faq"> 
-     <ul class="cd-faq-categories"> 
-      <li> <a href="#sales" id="salelink">Sales</a> </li> 
-      <li> <a href="#tech">Technical Support</a> </li> 
-      <li> <a href="#" onclick="messenger('showNewMessage')">Contact Us</a> </li> 
-     </ul> 
-     <!-- cd-faq-categories --> 
-     <div class="cd-faq-items"> 
-      <ul id="sales" class="cd-faq-group"> 
-       <li class="cd-faq-title"> <h2>Sales</h2> </li> 
-       <li id="subscription"> <a class="cd-faq-trigger" href="#0">How do I access or download NaturalReader Online?</a> 
-        <div class="cd-faq-content"> 
-         <p>NR Online is a web-based application so you don’t need to worry about downloading anything. Simply login through our website from your browser from your desktop or mobile device to use the service.</p> 
-         <p>You can bookmark the direct link for <a href="./online/" id="team6_1">https://www.naturalreaders.com/online/</a> or visit our website at <a href="./index.html" id="team6_2">www.naturalreaders.com/</a> and click on the ‘Online Reader’ button to get redirected to the application.</p> 
-         <p>To login on a desktop computer, click on 'More' in the top-right corner to open the user menu, then 'Login'. If accessing from a mobile device, tap on the ☰ button in the top-left corner to open the user menu. </p> 
-        </div> </li> 
-       <li id="access"> <a class="cd-faq-trigger" href="#0">What is NaturalReader Online's supported operating systems and browsers?</a> 
-        <div class="cd-faq-content"> 
-         <p>NR Online can be used from Windows or Mac desktop computers and from iOS or Android mobile devices.</p> 
-         <p>Supported browsers are Chrome, Firefox, Safari, and Edge. It's always best to make sure you're using the latest browser version available. Older browser versions may be unsupported or unstable, but generally the minimum browser requirements are:</p> 
-         <p>Chrome: 73</p> 
-         <p>Firefox: 64</p> 
-         <p>Safari: 11</p> 
-         <p>Edge: 44</p> 
-        </div> </li> 
-       <li id="credit-card"> <a class="cd-faq-trigger" href="#0">What files are supported in NaturalReader Online?</a> 
-        <div class="cd-faq-content"> 
-         <p>Pdf, txt, doc(x), pages, odt, ppt(x), ods, non-DRM epub, jpeg, and png. </p> 
-         <p>The OCR feature is required to read from image files (jpeg or png), scanned documents, inaccessible PDFs, or screenshots. OCR is included with a paid subscription only. </p> 
-        </div> </li> 
-       <li id="single-user"> <a class="cd-faq-trigger" href="#0">How many users per account?</a> 
-        <div class="cd-faq-content"> 
-         <p>Each account with NR Online allows single user access only. Site licenses or multi-user access is not available at the moment. NaturalReader Online only offers single user licenses. Each account permits only one active user at a time.</p> 
-        </div> </li> 
-       <li id="personal-use"> <a class="cd-faq-trigger" href="#0">What languages are supported?</a> 
-        <div class="cd-faq-content"> 
-         <p>This depends on what kind of device you're using as well as your subscription plan. Specific Free Voices available will vary depending on whether you're using a Windows or Mac computer. Free users can also use the Premium Voices for 20 minutes per day. </p> 
-         <p>Premium subscribers have unlimited access to both the Free Voices and Premium Voices. No access to Plus Voices is included. </p> 
-         <p>Plus subscribers have unlimited access to the Free Voices, Premium Voices, and Plus Voices. </p> 
-         <p>Premium Voices support the following languages:</p> 
-         <p>English (US, UK); Dutch; French (European, Canadian); German; Italian; Portuguese (European, Brazilian); Spanish (European, Mexican, US); and Swedish.</p> 
-         <p>Plus Voices support the following languages:</p> 
-         <p>English (US, UK, Australian, Indian, Welsh); Danish; Dutch; French (European, Canadian); German; Icelandic; Italian; Norwegian; Polish; Portuguese (European, Brazilian); Romanian; Russian; Spanish (European, US); Swedish; Turkish; and Welsh. </p> 
-        </div> </li> 
-       <li id="compare"> <a class="cd-faq-trigger" href="#0">Can I use NaturalReader Online to read from webpages?</a> 
-        <div class="cd-faq-content"> 
-         <p>Yes, you can download the NaturalReader Chrome Extension from the Chrome Web Store in the link below so you can read from webpages or GoogleDocs:</p> 
-         <p><a href="https://chrome.google.com/webstore/detail/natural-reader-text-to-sp/kohfgcgbkjodfcfkcackpagifgbcmimk?hl=en-US">https://chrome.google.com/webstore/detail/natural-reader-text-to-sp/kohfgcgbkjodfcfkcackpagifgbcmimk?hl=en-US</a> </p> 
-         <p>Like the main NR Online application, free users can use the Free Voices unlimitedly, the Premium Voices for 20 minutes per day, and the Plus Voices for 5 minutes per day.</p> 
-         <p>Unlimited use of the Plus Voices come with a Plus subscription only. Plus Voices are now also available to use in the NaturalReader Chrome Extension.</p> 
-        </div> </li> 
-       <li id="character-limit"> <a class="cd-faq-trigger" href="#0">What voices are available to use with the Chrome Extension?</a> 
-        <div class="cd-faq-content"> 
-         <p>Just like the main NR Online application, the Chrome Extension offers Free Voices, Premium Voices, and Plus Voices. The amount of daily access to the voice lists will also depend on your user status.</p> 
-         <p>You can download the NR Chrome Extension from the Chrome Web Store here:</p> 
-         <p><a href="https://chrome.google.com/webstore/detail/natural-reader-text-to-sp/kohfgcgbkjodfcfkcackpagifgbcmimk?hl=en-US">https://chrome.google.com/webstore/detail/natural-reader-text-to-sp/kohfgcgbkjodfcfkcackpagifgbcmimk?hl=en-US</a> </p> 
-        </div> </li> 
-       <li> <a class="cd-faq-trigger" href="#0">What is the cost of NaturalReader Online?</a> 
-        <div class="cd-faq-content"> 
-         <p>NR Online is available through subscription only with both yearly and monthly plans available:</p> 
-         <p>Premium (monthly): $9.99 USD/ month </p> 
-         <p>Premium (yearly): $59.88 USD/ year </p> 
-         <p>Plus (monthly): $19 USD/ month </p> 
-         <p>Plus (yearly): $110 USD/ year </p> 
-         <p>Free users may also use the basic text-to-speech functions unlimitedly with the Free Voices and use the Premium Voices for up to 20 minutes per day. Free and Premium users may sample the Plus Voices for up to 5 minutes per day. </p> 
-        </div> </li> 
-       <li id="discount"> <a class="cd-faq-trigger" href="#0">What's the difference between the free and paid versions? </a> 
-        <div class="cd-faq-content"> 
-         <p>Free users, whether registered or not, can use the basic text-to-speech function by typing in or uploading a supported accessible document using Free Voices unlimitedly. Premium Voices may be sampled for 20 minutes per day and Plus Voices for 5 minutes per day.</p> 
-         <p>Free users can also download the NR Chrome Extension from the Chrome Web Store to use the Free Voices unlimitedly or the Premium Voices for 20 minutes per day.</p> 
-         <p>Upgrading to a paid subscription with the Premium plan allows you unlimited use of the Premium Voices for both the main application as well as the Chrome Extension, 1 million characters for mp3 conversion per month of the subscription, and access to the OCR feature to read from inaccessible PDFs, scanned documents, images, or screenshots.</p> 
-         <p>The Plus plan includes all the same features as Premium, but also unlimited access to the Plus Voices. Plus Voices include a selection of high-quality text-to-speech voices with an additional languages that are not available to use with free or Premium plans.</p> 
-        </div> </li> 
-       <li id="commercial"> <a class="cd-faq-trigger" href="#0">What's the difference between Premium and Plus?</a> 
-        <div class="cd-faq-content"> 
-         <p>Plus includes all the same features as Premium, which are: unlimited access to Free Voices and Premium Voices, OCR, mp3 conversion for 1 million characters per month, Pronunciation Editor, Document History, Audio List, and unlimited use of Free and Premium Voices with the NR Chrome Extension.</p> 
-         <p>What's different about Plus is that it offers exclusive access to the Plus Voices, a list of high-fidelity, accuese voices which support the following languages:</p> 
-         <p>English (US, UK, Australian, Indian, Welsh); Danish; Dutch; French (European, Canadian); German; Icelandic; Italian; Norwegian; Polish; Portuguese (European, Brazilian); Romanian; Russian; Spanish (European, US); Swedish; Turkish; and Welsh.</p> 
-         <p>You can sample Plus Voices for up to 5 minutes per day directly from the application. You can also listen to additional samples from the demo page here:</p> 
-         <p><a href="./plusvoicedemo.html" id="team6_3">https://www.naturalreaders.com/plusvoicedemo.html</a> </p> 
-         <p>By upgrading from Premium to Plus, you instantly double the voices you have access to! Plus' additional voices include 3 more regional English accents and 8 more languages, giving you a total of 100+ natural high-quality voices.</p> 
-        </div> </li> 
-       <li id="purchase-order"> <a class="cd-faq-trigger" href="#0">I'm not interested in a subscription. Why should I register for a free account?</a> 
-        <div class="cd-faq-content"> 
-         <p>Even if you're not looking to upgrade to a paid account, registering would allow you access to the Pronunciation Editor and the Document History features. The Document History is where you can find all your past uploads so you can easily re-open and continue reading from your documents without having to find the original file to re-upload to the application. This is great if you use multiple devices too–if you switch to mobile or login from a different computer, you can simply continue to read by opening the document from your account's Document History.</p> 
-        </div> </li> 
-       <li id="cancellation-refunds"> <a class="cd-faq-trigger" href="#0"> How can I order a subscription? What payment methods are available?</a> 
-        <div class="cd-faq-content"> 
-         <p>You can purchase a subscription from the NR Online's product page here:</p> 
-         <p> <a href="./webapp.html" id="team6_4">https://www.naturalreaders.com/webapp.html</a> </p> 
-         <p>We partner with Stripe to provide secure invoicing and payments processing. We accept Visa, MasterCard and American Express payments, debit or credit. We do not accept PayPal or wire transfer for subscription services. </p> 
-        </div> </li> 
-       <li> <a class="cd-faq-trigger" href="#0">How do I upgrade from Premium to Plus?</a> 
-        <div class="cd-faq-content"> 
-         <p>First, be sure you're logged into the NR Online application then click on ‘More’ in the top right corner (or tap ☰ in the top left if using mobile). Select 'Billing Information' and on this page, click on 'Upgrade to Plus'. </p> 
-         <p>You can upgrade from Monthly Premium to Monthly Plus or from Yearly Premium to Yearly Plus. The cost to upgrade is just the different in price, then subsequent billing cycles will be charged the normal subscription rates. If you’ve already used up some time on your subscription before upgrading, we will calculate a prorated price for your upgrade.</p> 
-         <p>Premium (monthly): $9.99 USD/ month <br> Premium (yearly): $59.88 USD/ year </p> 
-         <p>Plus (monthly): $19 USD/ month <br> Plus (yearly): $110 USD/ year </p> 
-         <p>For example, you can upgrade from Monthly Premium to Monthly Plus for $9.01, then your next billing cycle will be charged at the regular price of $19/ month.</p> 
-        </div> </li> 
-       <li> <a class="cd-faq-trigger" href="#0">Can I buy this through a purchase order?</a> 
-        <div class="cd-faq-content"> 
-         <p>No, we cannot accept purchase orders for any of the NaturalReader subscription products. We strongly encourage our customers to purchase our subscription products directly from our website whenever possible. Our automatic management system is best suited to handle new registrations for the online NaturalReader products. Unlike the software products wstoch can easily be delivered and paid through various options in a one-off transaction, NaturalReader Online, as a subscription service, requires much more complex management. For this reason, we cannot accept any purchase orders for this version.</p> 
-        </div> </li> 
-       <li> <a class="cd-faq-trigger" href="#0">Can this translate text?</a> 
-        <div class="cd-faq-content"> 
-         <p>No, the application only functions as a text-to-speech tool. The way synthetic text-to-speech voices work is that a specific voice is programmed to emulate the pronunciation conventions of a specific language. So when you're using the application, you have to select a voice to read that corresponds with the language of the text being entered. </p> 
-         <p>The voices by themselves are not able to identify what language the text is actually in–so you can use, for example, a French voice to read English text and the effect would simply be that it will read aloud that English text using French language pronunciation.</p> 
-        </div> </li> 
-       <li> <a class="cd-faq-trigger" href="#0">Are there other languages or voices available with a paid subscription?</a> 
-        <div class="cd-faq-content"> 
-         <p>Free Voices avialable to you will vary depending on whether you're using a Windows or Mac computer.</p> 
-         <p>If you do also use Chrome, some of the voices in the Premium list are Google voices only available to you if you're using a Chrome browser. These voices aren't available for mp3 conversion. </p> 
-         <p>We now also offer a new subscription tier 'Plus' that includes access to an additional exclusive list of Plus Voices what also includes languages not available with a Premium subscription.</p> 
-         <p>Additional language support with Plus Voices include:</p> 
-         <p>English (US, UK, Australian, Indian, Welsh); Danish; Dutch; French (European, Canadian); German; Icelandic; Italian; Norwegian; Polish; Portuguese (European, Brazilian); Romanian; Russian; Spanish (European, US); Swedish; Turkish; and Welsh.</p> 
-         <p>All the Premium Voices and Plus Voices are already embedded in the application for you to try out. Free users can sample the Premium voices for up to 20 minutes per day and the Plus Voices for 5 minutes per day. Premium users can also sample the Plus Voices for 5 minutes per day.</p> 
-         <p>You can also visit the demo page for more audio samples of the Plus Voices here:</p> 
-         <p><a href="./plusvoicedemo.html" id="team6_5">https://www.naturalreaders.com/plusvoicedemo.html</a> </p> 
-         <p>Aside from these voice lists, there are no additional 'hidden' voices available with a paid subscription.</p> 
-        </div> </li> 
-       <li> <a class="cd-faq-trigger" href="#0"> Will NaturalReader Online work with Kindle or iBooks? </a> 
-        <div class="cd-faq-content"> 
-         <p>No. DRM-protected files such as eBooks from iBooks or Kindle cannot be opened in NaturalReader. The app is capable of reading eBook .epub files, but only if the file is not DRM-protected.</p> 
-         <p>DRM “Digital Rights Manage” is a security measure intended to prevent the unauthorized redistribution of digital media. This prevents any third party programs from directly opening DRM-protected content.</p> 
-        </div> </li> 
-       <li> <a class="cd-faq-trigger" href="#0"> Can I read from scanned PDFs or images? </a> 
-        <div class="cd-faq-content"> 
-         <p>Yes, if you have a subscription. Paid users (Premium or Plus) have access to the OCR feature that converts scanned (inaccessible) PDFs, pictures, images, or screenshots of text into a readible format. OCR is now available with all subscription plans, so if you upload a file needing OCR, the application will do it automatically. Just upload and press play to read.</p> 
-        </div> </li> 
-       <li> <a class="cd-faq-trigger" href="#0"> What is OCR? </a> 
-        <div class="cd-faq-content"> 
-         <p>OCR (optical character recognition) is the electronic conversion of printed text into machine-encoded text, such as a scanned document or picture-like image, into a format that would allow NR Online to then extract and read aloud the text in that image. This feature is available with a paid subscription only.</p> 
-        </div> </li> 
-       <li> <a class="cd-faq-trigger" href="#0"> Can I convert to mp3 files? </a> 
-        <div class="cd-faq-content"> 
-         <p>Yes, <b>for personal use only</b> and if you are a paid user. A paid subscription allows you to convert up to 1 million characters per month for mp3 conversion. This limitation only applies when converting text to mp3 files, not for basic text-to-speech when reading directly from the application. This limit applies for both monthly and yearly subscription users and resets the same day the subscription renews. </p> 
-         <p>For non-personal use of the mp3 files, please check out the NaturalReader Commercial version, which is a separate platform.</p> 
-        </div> </li> 
-       <li> <a class="cd-faq-trigger" href="#0"> What voices can I use to convert to mp3? </a> 
-        <div class="cd-faq-content"> 
-         <p>If you use Chrome to use NR Online, some of the voices in the list are Google voices that are accessible only from a Chrome browser. Unfortunately, the Google voices aren't licensed to allow mp3 conversion.</p> 
-         <p>Voices not available for mp3 conversion are: US Gabriella, UK Gabriel, UK Grace, SP Anna, SP Mariana, FR Sophia, GR Mia, IT Sofia, PT Carolina, and DT Margreet. </p> 
-         <p>All other voices in NR Online may be used for mp3 conversion and are permitted for personal use only. Free users cannot convert to mp3. </p> 
-        </div> </li> 
-       <li> <a class="cd-faq-trigger" href="#0"> What is personal use? </a> 
-        <div class="cd-faq-content"> 
-         <p>The NR Online application allows you to convert text to downloadable mp3 files for personal use only. </p> 
-         <p>Personal use means that only you the individual purchaser may use the application and any generated audio content for your own private use. </p> 
-         <p>Audio files created with the personal-use versions cannot be used publicly (including on the internet such as YouTube videos), commercially, <b>or otherwise redistributed in any way.</b></p> 
-         <p>Only you may create the audio files for yourself to use privately and not utilized by any other systems or people. </p> 
-         <p>Please keep in mind that ‘internal use’ (such as for messaging systems or training videos) or non-profit use nonetheless requires a commercial license to allow <b>redistribution of the audio content.</b> </p> 
-         <p>For non-personal use, please see our NaturalReader Commercial version, which is a separate product and platform. </p> 
-        </div> </li> 
-       <li> <a class="cd-faq-trigger" href="#0"> What is the renewal, cancellation, and refund policies? </a> 
-        <div class="cd-faq-content"> 
-         <p>We strongly recommend that you try before you buy. You can try out all the voices available in the application and some of the basic functions by clicking on the 'Online Reader' button from our homepage or by going to <a href="./online/" id="team6_6">www.naturalreaders.com/online/</a>.</p> 
-         <p>Personal use means that only you the individual purchaser may use the application and any generated audio content for your own private use.By default, all subscriptions (Premium or Plus) are set to auto-renew at the end of the billing period. You can turn this off at any time from your account' Billing Information page. After you click on 'Cancel Subscription', paid service will continue until the end of the current billing period without renewal.</p> 
-         <p> <b> Cancelling your subscription will not automatically initiate a refund, which is done manually by request only.</b> </p> 
-         <p>If you're on a monthly plan, you can request a full refund for up to 14 days after the subscription start/renewal date, or up to 30 days if you have a yearly plan. To request a refund, please <a href="./personalwebfaq.html" id="team6_7">contact us through our website’s help system</a> (click on the blue chat icon in the bottom right corner) and be sure to let us know what email address your subscription is registered with if you're contacting us from a different address.</p> 
-         <p>If you're also subscribed to NaturalReader Commercial and wish to cancel subscription that as well, please be sure to login to that version to cancel. Cancelling from NR Online applies to your NR Online subscription only, and vice-versa.</p> 
-         <p>You can also visit our Policies page here to review the refund policies for all other NaturalReader products: </p> 
-         <p><a href="./exploring.html?index=3&amp;info=polices" id="team6_8">https://naturalreaders.com/exploring.html?index=3&amp;info=polices</a> </p> 
-        </div> </li> 
-       <li> <a class="cd-faq-trigger" href="#0"> Can I use this for YouTube, IVR, training videos, or to post on my website? </a> 
-        <div class="cd-faq-content"> 
-         <p>No, NR Online allows only personal use. Personal use does not permit the mp3 files to be redistributed in any way and only allows the individual purchaser private use of such audio files. </p> 
-         <p>A commercial license is required for non-profit or internal use as well because personal use does not permit any redistribution of the audio files. For non-personal use, please checkout the NaturalReader Commercial version.</p> 
-        </div> </li> 
-       <li> <a class="cd-faq-trigger" href="#0"> Do you have an API available? </a> 
-        <div class="cd-faq-content"> 
-         <p>No, we do not provide API services at this time and unauthorized access to our API or other hidden components of our website, software, and applications is strictly prohibited. </p> 
-         <p>You can visit our Policies page in the link below to review the user agreement for the NaturalReader platforms: </p> 
-         <p> <a href="./exploring.html?index=3&amp;info=polices" id="team6_9"> https://www.naturalreaders.com/exploring.html?index=3&amp;info=polices </a> </p> 
-        </div> </li> 
-       <li> <a class="cd-faq-trigger" href="#0"> I already own a software version (Personal, Professional, or Ultimate) or the NaturalReader Pro app for iOS. Does this give me access to NR Online? </a> 
-        <div class="cd-faq-content"> 
-         <p>No, these are separate platforms and discounts or access to NR Online is not included with the purchase of a software version or the NR Pro iOS app from the Apple Store.</p> 
-        </div> </li> 
-       <li> <a class="cd-faq-trigger" href="#0"> Is my data secure? </a> 
-        <div class="cd-faq-content"> 
-         <p>Yes! We understand that security and privacy is a concern, so the application is set up so that the contents of your upload are encrypted and removed from our servers soon after the conversion completes. If you are a registered user, uploads are saved to your account only for your convenience. But we do not have access to these uploads and no content of any text being converted is ever saved permanently in any way.</p> 
-         <p>We respect our customers' right to privacy and we do not sell or compromise your information to other marketers--never have and never will!</p> 
-         <p>We are also GDPR compliant and you can read more about our privacy policy here:</p> 
-         <p><a href="./media/privacy2.pdf" id="team6_10">https://www.naturalreaders.com/media/privacy2.pdf</a> </p> 
-        </div> </li> 
-      </ul> 
-      <ul id="tech" class="cd-faq-group"> 
-       <li class="cd-faq-title"> <h2>Technical Support</h2> </li> 
-       <li id="email-verification"> <a class="cd-faq-trigger" href="#0"> How do I use NaturalReader Online? </a> 
-        <div class="cd-faq-content"> 
-         <p>It's easy! Type or paste in the text, or drag &amp; drop a text file to read from. From the top toolbar, select a voice that corresponds to the language of the text in the document and you can also select a speed. When you're ready, just press play to have it read aloud to you.</p> 
-        </div> </li> 
-       <li id="personal-login"> <a class="cd-faq-trigger" href="#0"> How do I access the application from desktop and mobile devices? </a> 
-        <div class="cd-faq-content"> 
-         <p>NR Online can be used from Windows or Mac desktop computers and from iOS or Android mobile devices directly from the browser. No need for downloading!</p> 
-         <p>You can bookmark the direct link for <a href="./online/" id="team6_10">www.naturalreaders.com/online/</a> or visit our website at <a href="./index.html" id="team6_11">www.naturalreaders.com</a> and click on the ‘Online Reader’ button to get redirected to the application.</p> 
-         <p>Supported browsers are Chrome, Firefox, Safari, and Edge. <b>It's always best to make sure you're using the latest browser version available. Older browser versions may be unsupported or unstable.</b> Recommend minimum browser versions are:</p> 
-         <p>Chrome: 73</p> 
-         <p>Firefox: 64</p> 
-         <p>Safari: 11</p> 
-         <p>Edge: 44</p> 
-         <p>For the best experience, we recommend that you use Chrome.</p> 
-        </div> </li> 
-       <li id="file-types"> <a class="cd-faq-trigger" href="#0"> How do I install NaturalReader Online to my desktop or mobile homescreen? </a> 
-        <div class="cd-faq-content"> 
-         <p>If you use Chrome from a Windows, Mac, or Android device, you can also save NR Online to your desktop or mobile’s home screen for quick and easy access.</p> 
-         <p>Here’s how:</p> 
-         <ol> 
-          <li>While using Chrome from a Windows, Mac, or Android device, login to NR Online. </li> 
-          <li>If you’re accessing it from the desktop, open the user menu by clicking on ‘More’ in the top right corner or if you’re using Android, open the user menu by tapping the ☰ button in the top left.</li> 
-          <li>From the user menu, select ‘Install Application’. A prompt will ask you to confirm, then will install to your device.</li> 
-         </ol> 
-         <p>If you’re using Android, the app will be saved to your homescreen as an icon just like any other native app.</p> 
-         <p>If you’re using a Mac computer, the application will be saved to your Chrome Apps folder, which you can then pin to your Dock for easy access.</p> 
-         <p>If you’re using a Windows computer, the application will save automatically to your desktop screen. </p> 
-         <p>To delete the app:</p> 
-         <p>You can delete it from your Android just like any other native app by holding down on the icon and tapping the 'x' to delete.</p> 
-         <p>From either Windows or Mac, open up the NR Online app and click on the ⋮ button in the top right corner, then select ‘Uninstall NaturalReader PWA’.</p> 
-         <p>NR Online is a progressive web app, which is still a very new technology so unfortunately the save to homescreen function isn't supported on all kinds of devices or browsers quite yet. </p> 
-        </div> </li> 
-       <li id="ebooks"> <a class="cd-faq-trigger" href="#0">I'm having problems verifying my email address or resetting my password.</a> 
-        <div class="cd-faq-content"> 
-         <p>First, please check if the verification code email was sent to your junk/spam folder. If the email is not received after 20 minutes, please contact us through our website’s help system (click on the blue chat icon in the bottom right corner) with your purchase email and we will help you complete the verification process. </p> 
-        </div> </li> 
-       <li id="read-pdf"> <a class="cd-faq-trigger" href="#0">How do I turn off the auto-renewal, cancel my subscription, or get a refund?</a> 
-        <div class="cd-faq-content"> 
-         <p>While logged in from the desktop, click on 'More' in the top-right corner to open the user menu (or if on mobile tap ☰ in the top-left), then 'Billing Information'. On this page, select 'Cancel Subscription'. After cancelling, paid service will continue until the end of the current billing period, then will expire without renewal.</p> 
-         <p><b>Cancelling your subscription will not automatically initiate a refund, which is done manually by request only.</b></p> 
-         <p>If you're on a monthly plan, you can request a full refund for up to 14 days after the subscription start/renewal date, or up to 30 days if you have a yearly plan. To request a refund, please <a href="./personalwebfaq.html" id="team6_12">contact us through our website’s help system</a> (click on the blue chat icon in the bottom right corner) and be sure to let us know what email address your subscription is registered with if you're contacting us from a different address.</p> 
-         <p>If you're also subscribed to NaturalReader Commercial and wish to cancel subscription that as well, please be sure to login to that version to cancel. Cancelling from NR Online applies to your NR Online subscription only, and vice-versa.</p> 
-         <p>You can also visit our Policies page here to review the refund policies for all other NaturalReader products: </p> 
-         <p><a href="./exploring.html?index=3&amp;info=polices" id="team6_13">https://naturalreaders.com/exploring.html?index=3&amp;info=polices</a> </p> 
-        </div> </li> 
-       <li id="voice-convert"> <a class="cd-faq-trigger" href="#0">How do I update my payment information?</a> 
-        <div class="cd-faq-content"> 
-         <p>While logged in from the desktop, click on 'More' in the top-right corner to open the user menu (or if on mobile tap ☰ in the top-left), then 'Billing Information'. On this page, you can select 'Update Card' to enter the new payment information. </p> 
-        </div> </li> 
-       <li id="web-pdf"> <a class="cd-faq-trigger" href="#0">My renewal failed so I updated my payment information. How do I make sure my subscription continues?</a> 
-        <div class="cd-faq-content"> 
-         <p>If your subscription's renewal payment fails, your subscription will not terminate right away and you will still have paid access for a short time in case you need to update your payment information. After the first failed payment, it will try again after 3 days. If you update the payment information within this time, the next renewal attempt will then use the new billing information on file. If this second renewal attempt fails, your subscription will then cancel and terminate. </p> 
-        </div> </li> 
-       <li> <a class="cd-faq-trigger" href="#0">Why was my transaction declined?</a> 
-        <div class="cd-faq-content"> 
-         <p>When a charge is submitted to your bank or card issuer, they have automated systems that determine whether or not to authorize it. These systems take various signals into account, such as your spending habits, account balance, and card information like the expiration date and CVC.</p> 
-         <p>If all of the card information seems correct, it is best to contact your bank and ask for more information. For privacy and security, banks and card issuers can only discuss the specifics of a declined payment with their cardholders–-they cannot discuss this with us.</p> 
-        </div> </li> 
-       <li> <a class="cd-faq-trigger" href="#0">Where can I get my invoice?</a> 
-        <div class="cd-faq-content"> 
-         <p>To retrieve your invoices, please look for your original order information email. You can click the link under "Your Invoice(s)" to retrieve all your invoices for a specific billing period.</p> 
-        </div> </li> 
-       <li> <a class="cd-faq-trigger" href="#0">I've just upgraded to a paid subscription but my user status says free or I can't access paid features?</a> 
-        <div class="cd-faq-content"> 
-         <p>This is likely just a caching issue where your browser has not yet gotten the new data about your user status after you upgraded. Try opening the user menu by clicking on 'More' in the top-right corner (or tap ☰ in the top-left if you're using mobile) then 'Reset Reader'. After the application refreshes, login and open your Billing Information to see if the status has been updated. If it still hasn't, please let us know by contacting us through our website's help system (look for the blue chat icon). </p> 
-        </div> </li> 
-       <li> <a class="cd-faq-trigger" href="#0">What are Plus Voices and why can't I access them?</a> 
-        <div class="cd-faq-content"> 
-         <p>We now also offer a new subscription tier 'Plus' that includes access to an additional exclusive list of Plus Voices that include some of the latest hi-fidelity, accurate text-to-speech voices available in the market today. </p> 
-         <p>Compared with the Premium Voices, Plus offers an additional 3 regional English voices as well as an additional 50 voices, giving you a total of 16 different languages. </p> 
-         <p>Additional language support with Plus Voices include:</p> 
-         <p>English (US, UK, Australian, Indian, Welsh); Danish; Dutch; French (European, Canadian); German; Icelandic; Italian; Norwegian; Polish; Portuguese (European, Brazilian); Romanian; Russian; Spanish (European, US); Swedish; Turkish; and Welsh.</p> 
-         <p>Access to Plus Voices is included with a Plus subscription only. You can sample the Plus Voices for 5 minutes per day from the application or visit the demo page below for more audio samples: </p> 
-         <p><a href="./plusvoicedemo.html" id="team6_14">https://www.naturalreaders.com/plusvoicedemo.html</a> </p> 
-        </div> </li> 
-       <li> <a class="cd-faq-trigger" href="#0">How do I sync my documents between desktop and mobile?</a> 
-        <div class="cd-faq-content"> 
-         <p>As long as you're a registered user (either free or paid), all uploads are saved automatically to your account's Document History. Your Document History is accessible from the user menu (clicking 'More' if you're using desktop or tap on ☰ if you're on mobile). </p> 
-         <p>If you login from a different computer, change devices (desktop to mobile or mobile to desktop), or simply wish to continue reading a past upload, you can just re-open the file from your Document History without having to find the original file to upload. </p> 
-         <p>To make sure your documents sync across your devices especially if you have spotty internet connection on mobile, on the Document History page click on the refresh icon in the top-right corner. You can also delete files from the Document History just by clicking on the 'x' next to the file name. </p> 
-        </div> </li> 
-       <li> <a class="cd-faq-trigger" href="#0">How can I insert pauses in my text?</a> 
-        <div class="cd-faq-content"> 
-         <p>Sorry, this feature is not available in NR Online. It will pause automatically on certain grammatical markings, like periods or commas, but manual pauses cannot be inserted nor can the automatic pauses be lengthened. </p> 
-        </div> </li> 
-       <li> <a class="cd-faq-trigger" href="#0">How do I use the Pronunciation Editor?</a> 
-        <div class="cd-faq-content"> 
-         <p>This feature is available for registered users only and helps you fine-tune pronunciation issues using word substitution or phonetic spelling. </p> 
-         <p>The Pronunciation Editor can be accessed from the user menu (click on 'More' if using desktop or tap on ☰ if using mobile). Click on '+ Add New Words', then enter the word or acronym you wish to edit under 'Source Word'. Under 'Substitute Word(s)', enter either the word you're like to replace it with or spell the pronunciation out phonetically. When you're done, click 'Save' and the edits will apply whenever the word appears in your text. </p> 
-         <p>The Pronunciation Editor is case-sensitive, so be sure to add an additional entry if needed so that the edit applies to both capitalized and non-capitalized versions of the given word. </p> 
-         <p>You can come back to that page to review, edit, or add more entries. </p> 
-        </div> </li> 
-       <li> <a class="cd-faq-trigger" href="#0">How do I convert to mp3?</a> 
-        <div class="cd-faq-content"> 
-         <p>Converting to mp3 is available with a paid subscription (for personal use only), which allows up to 1 million characters per month to convert to mp3. </p> 
-         <p>Type in the text to the application or upload the document, select your voice and speed, then click on the 'mp3' icon along the top toolbar. </p> 
-         <p>First be sure to review your conversion settings in the window that pops up. You can also check how many characters you have available to convert and if converting from a multi-page document, you can select a page range to convert from. </p> 
-         <p>When you're ready, click on 'Convert' and it will download in the background, letting you resume reading if you wish. You will be notified when it's ready to download, or you can download/ check on the status from the Audio History page. </p> 
-         <p>Voices not available for mp3 conversion are: US Gabriella, UK Gabriel, UK Grace, SP Anna, SP Mariana, FR Sophia, GR Mia, IT Sofia, PT Carolina, and DT Margreet.</p> 
-        </div> </li> 
-       <li> <a class="cd-faq-trigger" href="#0">Are there limitations for mp3 conversion? Why can't I convert with some voices?</a> 
-        <div class="cd-faq-content"> 
-         <p>Yes, mp3 converting is available for paid users only who may use up to 1 million characters per month for mp3 conversion. This limit applies only when converting to mp3, not for basic text-to-speech when reading directly from the application. </p> 
-         <p>If you use Chrome to us NR Online, some of the voices in the list aren't licensed to allow mp3 conversion. </p> 
-         <p>Voices not available for mp3 conversion are: US Gabriella, UK Gabriel, UK Grace, SP Anna, SP Mariana, FR Sophia, GR Mia, IT Sofia, PT Carolina, and DT Margreet.</p> 
-         <p>All other voices in NR Online may be used for mp3 conversion <b>for personal use only.</b> </p> 
-        </div> </li> 
-       <li> <a class="cd-faq-trigger" href="#0">How do I re-download my past mp3 conversions?</a> 
-        <div class="cd-faq-content"> 
-         <p>Your past mp3 conversions are saved to your account's Audio History where you can re-download them. Past mp3s are saved here for up to 1 year only, then will be erased. </p> 
-         <p>Open the Audio History from the user menu (click on 'More' if on dekstop or tap ☰ if on mobile). Click on 'x' to delete a file or click on the download (cloud) icon to download.</p> 
-        </div> </li> 
-       <li> <a class="cd-faq-trigger" href="#0">I'm getting and error for mp3 conversion or it's taking too long. What do I do?</a> 
-        <div class="cd-faq-content"> 
-         <p>Please first deleting the pending conversion. Then from the main application, open the user menu (click on 'More' if using desktop or tap on ☰ if using mobile) and select 'Reset Reader'. After it refreshes, login and try again. </p> 
-         <p>Conversion issues may also be caused by special or non-standard characters in the text. To better help identify conversion failures, please send us copy of the document you're converting and let us know what voice(s) you're using when it happened. You can contact us through the help system on our website (look for the blue chat icon in the lower right corner). </p> 
-        </div> </li> 
-       <li> <a class="cd-faq-trigger" href="#0">Why won't NaturalReader Online read my PDF / Why doesn't it read my PDF correctly?</a> 
-        <div class="cd-faq-content"> 
-         <p>PDF 'portable document format' files were originally developed by Adobe in order for users to exchange documents without having formatting problems so that the document and contents look the same no matter what system it's opened with. </p> 
-         <p>Because of this, PDFs have a lot of compressed metadata and special encoding that can make it difficult to read from in contrast to other text documents like doc(x). Though the text may look normal to you on the screen, some PDFs may be 'unsearchable' or 'inaccessible'. This means that there's no metadata in the file for what text is actually in the document itself. Instead, it's shown to you as a flat image so for applications like NaturalReader, there's no actual text in the document for the application to extract and read from. </p> 
-         <p>Similarly, some PDFs may have 'messy' metadata where the PDF may not have been properly formatted so the effect is inconsistent reading where the voice may read aloud letters or pause in incorrect places. This often occurs with older PDF files. Like with inaccessible PDFs, though the text might look normal on the screen, the text data itself that NR is extracting from the document is not properly formatted in order to allow fluid reading. </p> 
-         <p>As of April 2019, the OCR feature is now available with all paid NR Online subscription plans. Now if you upload a scanned document, inaccessible PDF file, or png or jpeg image, the OCR feature will convert it automatically for you after you upload it to the application. You just need to press play to begin reading! </p> 
-        </div> </li> 
-       <li> <a class="cd-faq-trigger" href="#0">I'm getting a 'Something went wrong' error when trying to read from the application. What do I do? </a> 
-        <div class="cd-faq-content"> 
-         <p>This might occur during temporary server issues. Please wait a few minutes, refresh, and try again. If the problem occurs for more than 20 minutes, please contact us to let us know the problem, in what situation it occurs, and with which voice(s). </p> 
-        </div> </li> 
-       <li> <a class="cd-faq-trigger" href="#0">Some sentences at the end of the page in my document are not being read aloud. How do I fix that?</a> 
-        <div class="cd-faq-content"> 
-         <p>It's likely that some of the text in the document is outside of the default reading area. To fix this, you'll need to adjust the reading margins. </p> 
-         <p>When you have a document opened in the application, there are icons to the let of the page with additional document settings. Click on the 'Adjust Reading Area' button. Here, you can click and drag the margin settings to increase or decrease the reading area at the top and bottom edges on the page. Lowering the value will increase the area and raising the value will decrease the area. A visual of your document is included in this settings window to help you visualize these changes. </p> 
-         <p>When you're done, click on 'Back and Save' and your edits will apply to all of the document's pages. </p> 
-        </div> </li> 
-       <li> <a class="cd-faq-trigger" href="#0">Why does my text pause at different places when reading directly from the application compared with the mp3 I've converted?</a> 
-        <div class="cd-faq-content"> 
-         <p>The application processes the text a little bit differently depending on whether you're reading directly from the application or if you're converting to mp3. When the text is converted, it's not able to recognize the paragraph breaks in the same way. So for a sentence that looks like this:</p> 
-         <p>Hello! <br> How are you? </p> 
-         <p>In the application, it will correctly pause between the lines. But when it is converted to mp3, the spaces aren't able to be registered in the same way and the line break is removed. So the text is that is received for conversion actually looks like this:</p> 
-         <p> Hello!How are you? </p> 
-         <p>So if you're converting to mp3, please be sure that all periods or commas are followed by a space in this format:</p> 
-         <p>Hello! How are you?</p> 
-         <p>Rather than using paragraph breaks for pausing.</p> 
-        </div> </li> 
-       <li> <a class="cd-faq-trigger" href="#0">I'm a software user, why can't I sign in?</a> 
-        <div class="cd-faq-content"> 
-         <p>The software versions (Personal, Professional, and Ultimate) are separate platforms and are not connected to the NR Online application. Purchasing a software version does not include discounts or access to NR Online. </p> 
-         <p>If you purchased a software version prior to 2018, you might be looking for the old login system, which is no longer available. The current logins on our website is for users of the NR Online and NR Commercial applications only. So if you've only purchased a software version in the past, then these platforms will not recognize your email address if you try to login. If you are interested in NR Online, feel free to sign-up for an account!</p> 
-        </div> </li> 
-       <li> <a class="cd-faq-trigger" href="#0">I don't see my question here and I need help!</a> 
-        <div class="cd-faq-content"> 
-         <p>Please <a href="./personalwebfaq.html" id="team6_15">contact us through our website’s help system</a> (click on the blue chat icon in the bottom right corner). Be sure to specify what NR product you're using (eg. the main application or the extension) and tell us in detail what situation the error occurs in and with which voice(s). Please also let u know what email address your subscription is registered with if you contact us from an alternative email address. </p> 
-        </div> </li> 
-      </ul> 
-     </div> 
-     <a href="#0" class="cd-close-panel">Close</a> 
-    </section> 
-    <!-- </div> --> 
-   </div> 
-  </div> 
-  <footer class="footer"> 
-   <div class="container-fluid"> 
-    <div class="text-muted contactDiv">
-     Didn't find the answer you're looking for? 
-     <a href="#" style="color: #1A7DF9;" onclick="messenger('showNewMessage')">Contact us</a> and please leave a detailed description of your inquiry.
+   <div id="board" class="col-sm-7"> 
+    <div class="inBox"> 
+     <div style="font-family: 'Amita'; font-size: 24px;">
+      Statistics
+     </div>
+     <br> 
+     <div class="title">
+      Total Users: 
+     </div>
+     <statnum id="totalUsers">
+      0
+     </statnum>
+     <span class="info"> users</span> 
+     <div class="title">
+      Requests: 
+     </div>
+     <statnum id="requests">
+      0
+     </statnum>
+     <span class="info"> lyrics</span> 
+     <div class="title">
+      Completed: 
+     </div>
+     <statnum id="completed">
+      0
+     </statnum>
+     <span class="info"> songs</span> 
     </div> 
    </div> 
-  </footer> 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
-  <script>
-
-        function GetQueryString(name) {
-            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
-            var r = window.location.search.substr(1).match(reg);
-            if (r != null) return unescape(r[2]); return null;
-        }
-        var product = 'personalweb';
-        // var machinecode = 'unknow';
-        // var sn = 'unknow'
-
-        function messenger(display) {
-            Intercom(display)
-            return (true)
-        }
-
-        $(document).ready(function () {
-            product = GetQueryString('pro');
-            sn = GetQueryString('sn');
-            machinecode = GetQueryString('machinecode');
-
-            window.intercomSettings = {
-                app_id: "vccymf6u",
-                "sourcepage": "personalwebfaq",
-                "product": "personalweb",
-                // "sn" : sn,
-                // "machinecode": machinecode
-            };
-        });
-    </script> 
-  <script>(function () { var w = window; var ic = w.Intercom; if (typeof ic === "function") { ic('reattach_activator'); ic('update', intercomSettings); } else { var d = document; var i = function () { i.c(arguments) }; i.q = []; i.c = function (args) { i.q.push(args) }; w.Intercom = i; function l() { var s = d.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = 'https://widget.intercom.io/widget/vccymf6u'; var x = d.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x); } if (w.attachEvent) { w.attachEvent('onload', l); } else { w.addEventListener('load', l, false); } } })()</script> 
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
-  <!-- <script src=" https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script> --> 
-  <script src="comfiles/faq/js/main.js?ver=1.1"></script>  
+  </div> 
+  <div id="loginModal" class="modal"> 
+   <div class="modal-content" style="width: 340px; height: 500px"> 
+    <span class="close">×</span> 
+    <div class="login-div" style="font-family: 'Amita'; font-size: 24px; padding: 40px">
+     Welcome to Melodize
+    </div> 
+    <div class="login-div">
+     <input class="login-input" type="text" id="id" placeholder="ID">
+    </div> 
+    <div class="login-div">
+     <input class="login-input" type="password" id="pw" placeholder="Password">
+    </div> 
+    <div class="login-div" style="padding: 2px; color: red; display: none" id="warning_msg">
+     Wrong ID or Password
+    </div> 
+    <div class="login-div">
+     <button class="btn btn-default login-input" id="loginBtn">Sign in</button>
+    </div> 
+    <div class="login-div" style="padding: 2px">
+     Don't have an account? 
+     <a href="./signup.html">Sign up here</a>
+    </div> 
+   </div> 
+  </div> 
+  <script src="scripts/jquery/js/jquery-1.9.0.min.js"></script> 
+  <script src="scripts/jquery/js/jquery-ui-1.10.0.custom.min.js"></script> 
+  <script src="https://www.gstatic.com/firebasejs/3.6.2/firebase.js"></script> 
+  <script src="scripts/login.js"></script> 
+  <script src="scripts/gallery.js"></script>  
  </body>
 </html>

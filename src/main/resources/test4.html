@@ -1,299 +1,113 @@
 <!doctype html>
-<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
-<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
-<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!-->
-<html lang="en">
- <!--<![endif]-->
+<html>
  <head> 
-  <meta charset="utf-8"> 
-  <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
-  <title>Free Text to Speech: Online, App, Software &amp; Commercial license with Natural Sounding Voices.</title> 
-  <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"> 
-  <meta name="description" content="Free text to speech online app with natural voices, convert text to audio and mp3, for personal and commercial use"> 
-  <meta name="keywords" content="text to speech, text to voice, text speak, text reader, voice reader, text to voice, tts, free text to speech, read text, speech engine,"> 
-  <!-- Facebook and Twitter integration --> 
-  <meta property="og:title" content="text to speech online"> 
-  <meta property="og:image" content="https://www.naturalreaders.com/images/share_preview2.jpg"> 
-  <!-- <meta property="og:url" content=""/>
-	<meta property="og:site_name" content=""/> --> 
-  <meta property="og:description" content="text to speech online"> 
-  <meta name="twitter:title" content="text to speech online"> 
-  <meta name="twitter:image" content="https://www.naturalreaders.com/images/share_preview2.jpg"> 
-  <!-- <meta name="twitter:url" content="" />
-	<meta name="twitter:card" content="" /> --> 
-  <!-- Place favicon.ico and apple-touch-icon.png in the root directory --> 
-  <link rel="shortcut icon" href="favicon.ico"> 
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"> 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"> 
-  <!-- <link rel="stylesheet" href="libs/owlcarousel/assets/owl.carousel.min.css"> --> 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"> 
-  <!-- <link rel="stylesheet" href="libs/owlcarousel/assets/owl.theme.default.min.css"> --> 
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css" integrity="sha384-PDle/QlgIONtM1aqA2Qemk5gPOE7wFq8+Em+G/hmo5Iq0CCmYZLv3fVRDJ4MMwEA" crossorigin="anonymous"> 
-  <!--<link rel="stylesheet" href="css/fonts.css">--> 
-  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700,900" rel="stylesheet"> 
-  <link rel="stylesheet" href="comfiles/indexfiles/css/main.css?v=2019022603"> 
-  <!-- <link rel="stylesheet" href="css/media.css"> --> 
-  <!-- <script src="libs/modernizr/modernizr.js"></script> --> 
-  <!-- Global site tag (gtag.js) - Google Analytics --> 
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-466667-1"></script> 
-  <script>
-		window.dataLayer = window.dataLayer || [];
-		function gtag() { dataLayer.push(arguments); }
-		gtag('js', new Date());
-
-		gtag('config', 'UA-466667-1');
-		function getparastr(strname) {
-			paramValue = "";
-			isFound = false;
-			if (window.location.href.indexOf("?") > 0 && window.location.href.indexOf("=") > 0) {
-				arrSource = unescape(window.location.href).substring(window.location.href.indexOf("?") + 1, window.location.href.length).split("&");
-				i = 0;
-				while (i < arrSource.length && !isFound) {
-					if (arrSource[i].indexOf("=") > 0) {
-						if (arrSource[i].split("=")[0].toLowerCase() == strname.toLowerCase()) {
-							paramValue = arrSource[i].split("=")[1];
-							isFound = true;
-						}
-					}
-					i++;
-				}
-			}
-			return paramValue;
-		}
-
-		var url = getparastr('url');
-		if (url != null && url != '') {
-			window.location.href = 'online/index.html?url=' + url;
-		}
-	</script> 
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"> 
+  <link rel="icon" href="./img/icon.png"> 
+  <title>Melodize - Request</title> 
+  <link href="scripts/jquery/css/ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet"> 
+  <link href="css/request.css" rel="stylesheet"> 
+  <link href="css/general.css" rel="stylesheet"> 
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> 
+  <link href="https://fonts.googleapis.com/css?family=Amita" rel="stylesheet"> 
  </head> 
  <body> 
-  <header> 
-   <div class="container"> 
-    <div class="row"> 
-     <div class="col navigation"> 
-      <a href="#" class="logo-wrapper"> <img src="comfiles/indexfiles/img/logo.png" alt=""> <span>NaturalReader</span> </a> 
-      <a aria-label="mobile menu" class="nav-toggle"> <span class="top"></span> <span></span> <span class="bottom"></span> </a> 
-      <ul class="menu-left"> 
-       <li class="el"><a href="./webapp.html" id="team6_0">Online</a></li> 
-       <li class="el"><a href="./software.html" id="team6_1">Software</a></li> 
-       <li class="el"><a href="./commercial.html" id="team6_2">Commercial</a></li> 
-       <li class="el"><a href="./exploring.html?index=2&amp;info=contactus" id="team6_3">About</a> </li> 
-       <li><a href="./online/" class="button" id="team6_4">Online Reader</a></li> 
-      </ul> 
+  <ul class="nav-ul"> 
+   <li class="nav-li">
+    <div onclick="window.location='./index.html';">
+     Melodize
+    </div></li> 
+   <li class="nav-li"><a id="loginTab">Sign In</a></li> 
+   <li class="nav-li"><a id="profileTab" href="./profile.html" style="display: none">Profile</a></li> 
+   <li class="nav-li"><a href="./gallery.html" id="team6_0">Gallery</a></li> 
+   <li class="nav-li"><a href="./index.html" id="team6_1">Home</a></li> 
+  </ul> 
+  <div style="padding: 14px; font-size: 18px" class="animate-bottom"> 
+   <div class="col-sm-4" id="lyricsFeedback"> 
+    <h3 class="">1. YOUR LYRICS.</h3> 
+    <textarea class="form-control" style="width: 100%" rows="25" placeholder="Your lyrics here" id="lyrics"></textarea> 
+   </div> 
+   <div class="col-sm-4"> 
+    <div style="padding-bottom: 20px"> 
+     <h3>2. INSTRUMENT</h3> 
+     <form id="instrument"> 
+      <input type="radio" name="instrument" value="piano" checked> Piano
+      <br> 
+      <input type="radio" name="instrument" value="violin"> Violin
+      <br> 
+      <!--<input type="radio" name="instrument" value="flute" disabled> Flute<br>--> 
+      <input type="radio" name="instrument" value="guitar"> Guitar
+      <br> 
+     </form> 
+    </div> 
+    <div style="padding-bottom: 20px"> 
+     <h3>3. ALBUM COVER</h3> 
+     <input class="form-control" type="textarea" style="width: 80%" id="imgURL" placeholder="Give the URL of the image"> 
+     <div style="width: 80%"> 
+      <img id="cover-preview" style="width: 100%" onerror="this.src = './img/default-cover-art.png'" src="./img/default-cover-art.png"> 
      </div> 
     </div> 
    </div> 
-  </header> 
-  <section class="speech"> 
-   <div class="container"> 
-    <div class="wrapper-stick-image"> 
-     <img src="comfiles/indexfiles/img/logo-speeach.png" class="right-photo"> 
+   <div class="col-sm-4"> 
+    <div style="padding-bottom: 20px" id="titleFeedback"> 
+     <h3>4. TITLE</h3> 
+     <input class="form-control" id="title" type="textarea" style="width: 80%;" placeholder="Your song title"> 
     </div> 
-    <div class="row"> 
-     <div class="col-12 col-lg-6"> 
-      <h1>Powerful Text-to-Speech for at home, work, or on the go.</h1> 
-      <p>Upload text and documents or convert to mp3 to listen to anywhere anytime.</p> 
-      <div class="button-wrapper"> 
-       <a href="./online/" class="button blue" id="team6_5">Go To Online Reader</a> 
-       <a href="" class="button transparent video-btn" data-toggle="modal" data-src="https://player.vimeo.com/video/222434433?badge=0" data-target="#myModal">Watch Video</a> 
-      </div> 
-     </div> 
-     <div class="offset-md-6"> 
-     </div> 
+    <div style="padding-bottom: 20px" id="descriptionFeedback"> 
+     <h3>5. DESCRIPTION</h3> 
+     <input class="form-control" id="description" type="textarea" style="width: 80%" placeholder="Describe your purpose, intuition, etc."> 
     </div> 
-   </div> 
-  </section> 
-  <section class="oval-group"> 
-   <div class="container"> 
-    <div class="row"> 
-     <div class="col ovals-body"> 
-      <div class="oval-item"> 
-       <div class="oval icon-voice"></div> 
-       <h1>Natural Sounding Voices</h1> 
-       <p>High quality, crystal-clear reading</p> 
-      </div> 
-      <div class="oval-item"> 
-       <div class="oval icon-eyes"></div> 
-       <h1>OCR Technology</h1> 
-       <p>Read from scanned documents or images</p> 
-      </div> 
-      <div class="oval-item"> 
-       <div class="oval headphone-icon"></div> 
-       <h1>Listen On The Go</h1> 
-       <p>Listen to past uploads or convert to mp3</p> 
-      </div> 
-     </div> 
+    <div style="padding-bottom: 20px"> 
+     <h3>6. MOOD/TONE</h3> 
+     <input class="form-control" id="preference" type="textarea" style="width: 80%" placeholder="Describe the song you want"> 
     </div> 
-   </div> 
-  </section> 
-  <section class="listen-recommendations"> 
-   <div class="container"> 
-    <div class="wrapper-stick-image"> 
-     <img src="comfiles/indexfiles/img/logo-listen-recommendations.png" alt="" class="img-left"> 
-    </div> 
-    <div class="row"> 
-     <div class="col-12 col-lg-7 offset-lg-5 right-section"> 
-      <p style="font-size:24px; color: #1B7DF9;">Personal Online &amp; Personal Software</p> 
-      <h1>Listen on your own time at your own pace. </h1> 
-      <div class="button-wrapper"> 
-       <a href="./online/" class="button blue" id="team6_6">Personal Online</a> 
-       <a href="./software.html" class="button transparent" id="team6_7">Personal Software</a> 
-      </div> 
-      <p>For personal use and recommended for:</p> 
-      <div class="tiles-body"> 
-       <div class="tiles-row"> 
-        <div class="tiles student"> 
-         <span>Students</span> 
-        </div> 
-        <div class="tiles pro"> 
-         <span>Working Professionals</span> 
-        </div> 
-       </div> 
-       <div class="tiles-row"> 
-        <div class="tiles dyslexia"> 
-         <span>Dyslexic Readers</span> 
-        </div> 
-        <div class="tiles foreign mb-0"> 
-         <span>Foreign Language Learners</span> 
-        </div> 
-       </div> 
-      </div> 
-     </div> 
-    </div> 
-   </div> 
-  </section> 
-  <section class="create-audio"> 
-   <div class="container"> 
-    <div class="wrapper-stick-image"> 
-     <img src="comfiles/indexfiles/img/audio-create.png" alt="" class="img-right"> 
-    </div> 
-    <div class="row"> 
-     <div class="col-12 col-lg-6 left-section"> 
-      <p style="font-size:24px; color: #1B7DF9;">NaturalReader Commercial</p> 
-      <h1>Create audio files more easily for commercial use.</h1> 
-      <ul class="list-for-create-audio"> 
-       <li>Create narration for YouTube videos.</li> 
-       <li>Generate audio for eLearning material</li> 
-       <li>Public use, broadcasting, or IVR systems</li> 
-       <li>Latest and most intelligent AI voices</li> 
-      </ul> 
-      <div class="button-wrapper"> 
-       <a href="./commercial.html" class="button" id="team6_8">Go To NaturalReader Commercial</a> 
-       <a href="" class="button transparent video-btn" data-toggle="modal" data-src="https://player.vimeo.com/video/250860051?badge=0" data-target="#myModal">Watch Video</a> 
-      </div> 
-     </div> 
-     <div class="offset-lg-6"></div> 
-    </div> 
-   </div> 
-  </section> 
-  <section class="section-for-carousel"> 
-   <div class="container"> 
-    <div class="row"> 
-     <div class="col-12"> 
-      <h1>What users say about our products</h1> 
-      <div class="owl-carousel"> 
-       <div class="element"> 
-        <p>“As a parent of a struggling Middle School student with Dyslexia, reading has always been a challenge. We use NaturalReader Software and the MP3 export feature almost daily to help him get through lengthy reading assignments. NaturalReader has been instrumental in helping him to excel in school!.”</p> 
-        <span>- Mary Hardin</span> 
-       </div> 
-       <div class="element"> 
-        <p>“I no longer strain my eyes trying to read tiny fonts in e-mails or web pages or spend time recording my own voice for teaching purposes. I have a "bilingual" NaturalReader and it has become a very useful tool. By the way, my students haven't noticed that my "friend" Kate, who reads lessons so nicely, is a computer..”</p> 
-        <span>- Ariel Miranda</span> 
-       </div> 
-       <div class="element"> 
-        <p>“As an assistive technology advocate for an Independent Living Center for Riverside County California, I think Nature Reader is a wonderful and affordable software for children with learning disability and dyslexia. I have cerebral palsy myself and this software has increased my productivity more than I had imagined. What I like the most about the software is the interface, because of my bad eyesight I had to increase the font, it makes reading more fun and pleasurable.”</p> 
-        <span>- Chi-Hung Luke Hsieh</span> 
-       </div> 
-       <div class="element"> 
-        <p>“This software helps me pronounce words that I cannot and it helps me avoid making grammatical errors when writing my case briefs and my essays. I enjoy the fact that I can convert my online textbooks into MP3’s and listen to them on my smart phone or while driving in my car. ”</p> 
-        <span>- Danita Moses</span> 
-       </div> 
-       <div class="element"> 
-        <p>“I use NaturalReader to read aloud passages from ebooks I have bought, PDF documents, webpages with lots of text, and to read back to me things I have typed to 'hear them'. This helps me greatly as although I am a visual/kinetic learner, words are not pictures. ”</p> 
-        <span>- Ayla Duffton</span> 
-       </div> 
-       <div class="element"> 
-        <p>“NaturalReader has been a transformational and liberating product for me. As someone that suffers from a learning disability, having this product to proof my emails, presentations and contracts, has allowed me to become more independent and not have the burden to rely on someone to proof my work. ”</p> 
-        <span>- Paul Colangelo</span> 
-       </div> 
-      </div> 
-     </div> 
-    </div> 
-   </div> 
-  </section> 
-  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"> 
-   <div class="modal-dialog" role="document"> 
-    <div class="modal-content"> 
-     <div class="modal-body"> 
-      <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">×</span> </button> 
-      <!-- 16:9 aspect ratio --> 
-      <div class="embed-responsive embed-responsive-16by9"> 
-       <iframe class="embed-responsive-item" src="" id="video" allowscriptaccess="always"></iframe> 
-      </div> 
+    <div style="padding-bottom: 20px"> 
+     <h3>7. SETTING</h3> 
+     <form id="setting"> 
+      <input type="radio" name="Settings" value="public" checked> Public
+      <br> 
+      <input type="radio" name="Settings" value="private"> Private 
+      <div id="settingFeedback">
+       <input style="width: 80%" class="form-control" id="privatePW" type="textarea" placeholder="Password">
+      </div>
+      <br> 
+     </form>
+     <br> 
+     <button class="btn btn-success" style="width: 80%; font-size: 18px" id="requestSubmit">Submit</button> 
+     <div class="login-div" style="padding: 2px; color: red; display: none; text-align: center; width: 80%" id="field_msg">
+      Please fill the required fields
      </div> 
     </div> 
    </div> 
   </div> 
-  <footer> 
-   <div class="container"> 
-    <div class="row"> 
-     <div class="col-12 d-flex justify-content-between wrapper-for-list"> 
-      <div class="img-wrapper"> 
-       <img src="comfiles/indexfiles/img/logo.png" alt=""> 
-      </div> 
-      <div class="bottom-menu"> 
-       <ul>
-        Products 
-        <li><a href="./webapp.html" id="team6_9">Online</a></li> 
-        <li><a href="./software.html" id="team6_10">Software</a></li> 
-        <li><a href="./commercial.html" id="team6_11">Commercial</a></li> 
-        <li><a href="https://s3.amazonaws.com/naturalsoft-ca/web/chrome/index.html">Chrome Extension</a></li> 
-       </ul> 
-       <ul>
-        About Us 
-        <li><a href="./exploring.html" id="team6_12">Testimonials</a></li> 
-        <li><a href="./exploring.html?index=1&amp;info=faq#" id="team6_13">FAQ</a></li> 
-        <li><a href="./exploring.html?index=2&amp;info=contactus" id="team6_14">Contact Us</a></li> 
-        <li></li> 
-       </ul> 
-       <ul>
-        Policies 
-        <li><a href="./exploring.html?index=3&amp;info=polices" id="team6_15">Refund</a> </li> 
-        <li><a href="./exploring.html?index=3&amp;info=polices" id="team6_16">Privacy &amp; Terms</a></li> 
-        <li><a href="./exploring.html?index=3&amp;info=polices" id="team6_17">User Agreement</a></li> 
-       </ul> 
-      </div> 
-     </div> 
+  <div id="loginModal" class="modal"> 
+   <div class="modal-content" style="width: 340px; height: 500px"> 
+    <span class="close">×</span> 
+    <div class="login-div" style="font-family: 'Amita'; font-size: 24px; padding: 40px">
+     Welcome to Melodize
+    </div> 
+    <div class="login-div">
+     <input class="login-input" type="text" id="id" placeholder="ID">
+    </div> 
+    <div class="login-div">
+     <input class="login-input" type="password" id="pw" placeholder="Password">
+    </div> 
+    <div class="login-div" style="padding: 2px; color: red; display: none" id="warning_msg">
+     Wrong ID or Password
+    </div> 
+    <div class="login-div">
+     <button class="btn btn-default login-input" id="loginBtn">Sign in</button>
+    </div> 
+    <div class="login-div" style="padding: 2px">
+     Don't have an account? 
+     <a href="./signup.html">Sign up here</a>
     </div> 
    </div> 
-   <div class="copyright"> 
-    <div class="container"> 
-     <div class="row"> 
-      <div class="col-12 wrapper-copyright"> 
-       <span>© NaturalSoft Ltd. All rights reserved.</span> 
-      </div> 
-     </div> 
-    </div> 
-   </div> 
-  </footer> 
-  <!-- Здесь пишем код --> 
-  <!-- <div class="hidden"></div>
-
-	<div class="loader">
-		<div class="loader_inner"></div>
-	</div> --> 
-  <!--[if lt IE 9]>
-	<script src="libs/html5shiv/es5-shim.min.js"></script>
-	<script src="libs/html5shiv/html5shiv.min.js"></script>
-	<script src="libs/html5shiv/html5shiv-printshiv.min.js"></script>
-	<script src="libs/respond/respond.min.js"></script>
-	<![endif]--> 
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script> 
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script> 
-  <!-- <script src="libs/owlcarousel/owl.carousel.js"></script> --> 
-  <script src="comfiles/indexfiles/js/common.js?v=2019022202"></script>  
+  </div> 
+  <script src="scripts/jquery/js/jquery-1.9.0.min.js"></script> 
+  <script src="scripts/jquery/js/jquery-ui-1.10.0.custom.min.js"></script> 
+  <script src="https://www.gstatic.com/firebasejs/3.6.2/firebase.js"></script> 
+  <script src="scripts/login.js"></script> 
+  <script src="scripts/request.js"></script>  
  </body>
 </html>

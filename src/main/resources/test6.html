@@ -1,1330 +1,162 @@
 <!doctype html>
-<html lang="en">
+<html>
  <head> 
   <meta charset="UTF-8"> 
-  <title>Exploring New Features for Text to Speech</title> 
-  <meta name="Description" content="Reviews, FAQ, Contact Us and Policies for NaturalReader Text to Speech."> 
-  <meta name="Keywords" content="text to speech, text to voice, text speak, text reader, voice reader, text to voice, tts, free text to speech, read text, speech engine,"> 
-  <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"> 
-  <link rel="stylesheet" href="css/reset.css"> 
-  <link rel="stylesheet" href="css/main_online.css"> 
-  <link rel="stylesheet" href="css/exploring_online.css?ver=1.1"> 
-  <!-- Google Tag Manager --> 
-  <script>
-        (function (w, d, s, l, i) {
-            w[l] = w[l] || []; w[l].push({
-                'gtm.start':
-                    new Date().getTime(), event: 'gtm.js'
-            }); var f = d.getElementsByTagName(s)[0],
-                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-TW36FBH');
-    </script> 
-  <!-- End Google Tag Manager --> 
-  <script>
-        window.intercomSettings = {
-            app_id: "vccymf6u",
-            "sourcepage": "explore"
-        };
-        function messenger(display) {
-            //Insert sign out code here
-            Intercom(display)
-            return (true)
-        }
-    </script> 
-  <script>(function () { var w = window; var ic = w.Intercom; if (typeof ic === "function") { ic('reattach_activator'); ic('update', intercomSettings); } else { var d = document; var i = function () { i.c(arguments) }; i.q = []; i.c = function (args) { i.q.push(args) }; w.Intercom = i; function l() { var s = d.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = 'https://widget.intercom.io/widget/vccymf6u'; var x = d.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x); } if (w.attachEvent) { w.attachEvent('onload', l); } else { w.addEventListener('load', l, false); } } })()</script> 
+  <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"> 
+  <link rel="icon" href="./img/icon.png"> 
+  <title>Melodize - Song List</title> 
+  <link href="scripts/jquery/css/ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet"> 
+  <link href="css/general.css" rel="stylesheet"> 
+  <link href="css/songInfo.css" rel="stylesheet"> 
+  <link href="css/comment.css" rel="stylesheet"> 
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> 
+  <link href="https://fonts.googleapis.com/css?family=Amita" rel="stylesheet"> 
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> 
  </head> 
  <body> 
-  <div class="container"> 
-   <div class="headerContainer"> 
-    <div class="logo"></div> 
-    <!--<h1 class="title">HOME</h1>--> 
-    <div class="navbar"> 
-     <ul> 
-      <li> <a href="index.html" id="team6_0">HOME</a> </li> 
-      <li> <a href="webapp.html" id="team6_1">ONLINE</a> </li> 
-      <li> <a href="software.html" id="team6_2">SOFTWARE</a> </li> 
-      <li> <a href="commercial.html" id="team6_3">COMMERCIAL</a> </li> 
-      <li class="active"> <a href="exploring.html" id="team6_4">EXPLORE</a> </li> 
-     </ul> 
-    </div> 
-    <div class="btnNavbarMenu">
-     Menu 
-     <span class="caret"></span> 
-    </div> 
-   </div> 
-   <div class="bodyContainer"> 
-    <div class="subnavbar clearfix"> 
-     <ul> 
-      <li data-page="testimonialsPage" class="active">Testimonials</li> 
-      <li data-page="faqPage">FAQ</li> 
-      <li data-page="contactusPage">Contact Us</li> 
-      <li data-page="policiesPage">Policies</li> 
-     </ul> 
-    </div> 
-    <div class="exploringContent"> 
-     <div class="tabContent faqPage  hide"> 
-      <!--<div class="search clearfix">
-                    <div class="content">
-                        <div class="title">HELP CENTER</div>
-                        <div class="searchBox">
-                            <input type="text" placeholder="Have a question? Enter your keyword here.">
-                            <div class="btnSearch"></div>
-                        </div>
-                    </div>
-                    </div>--> 
-      <div class="product"> 
-       <div class="content"> 
-        <ul> 
-         <li class="active" id="SoftwareLi"> 
-          <div class="img"> 
-           <img src="images/img-software.png" alt=""> 
-          </div> <h3 class="title">Software for Windows and Mac</h3> </li> 
-         <li id="CommercialLi"> 
-          <div class="img"> 
-           <img src="images/img-commercial.png" alt=""> 
-          </div> <h3 class="title">Commercial</h3> </li> 
-         <li id="AppLi"> 
-          <div class="img"> 
-           <img src="images/img-mobile.png" alt=""> 
-          </div> <h3 class="title">Mobile App</h3> </li> 
-         <li id="WebLi"> 
-          <div class="img"> 
-           <img src="images/img-web.png" alt=""> 
-          </div> <h3 class="title">Online Reader</h3> </li> 
-        </ul> 
+  <ul class="nav-ul"> 
+   <li class="nav-li">
+    <div onclick="window.location='./index.html';">
+     Melodize
+    </div></li> 
+   <li class="nav-li"><a id="loginTab">Sign In</a></li> 
+   <li class="nav-li"><a id="profileTab" href="./profile.html" style="display: none">Profile</a></li> 
+   <li class="nav-li"><a href="./gallery.html" id="team6_0">Gallery</a></li> 
+   <li class="nav-li"><a href="./index.html" id="team6_1">Home</a></li> 
+  </ul> 
+  <div id="loader"></div> 
+  <img id="background" class="album-back" src="./img/empty.png" onerror="this.src = './img/index.png'"> 
+  <div id="mainDiv" style="display: none;" class="animate-bottom"> 
+   <div class="col-md-8"> 
+    <div class="col-md-6"> 
+     <div class="info-col"> 
+      <div class="song-box"> 
+       <img id="albumCover" class="album-cover" onerror="this.src = './img/default-cover-art.png'" src="./img/default-cover-art.png"> 
+       <div id="titleInfo" class="song-name">
+        Title
        </div> 
-      </div> 
-      <div class="question" id="SoftwareQ"> 
-       <div class="content"> 
-        <dl> 
-         <dt>
-          What are the minimum system requirements for NaturalReader for Mac and PC?
-         </dt> 
-         <dd> 
-          <p>a) NaturalReader for Windows:</p> 
-          <p>Operation system: windows7, Win8, Win8.1 and Win10</p> 
-          <p>Processor: 500Mhz&nbsp;</p> 
-          <p>Memory: 64 MB (128 recommended)</p> 
-          <p>Free Disk Space: 500MB (Natural Voices may require 600MB free space)</p> 
-          <p>b) NaturalReader for Mac supports Mac OS X 10.10 or later.</p> 
-         </dd> 
-         <dt>
-          There is no sound, how to fix it?
-         </dt> 
-         <dd> 
-          <p>If the highlighting moves forward but not sound, it is a setting issue.</p> 
-          <p>Please go to Start -&gt; control panel -&gt; ease of access -&gt; text to speech -&gt; text to speech sound output settings to select the preferred text to speech sound output device.</p> 
-          <p>If the highlighting doesn't move forward, the selected voice is corrupted. Please select a different voice to read.</p> 
-         </dd> 
-         <dt>
-          Can NaturalReader save the text to mp3 files?
-         </dt> 
-         <dd> 
-          <p>NaturalReader software for Windows paid version is able to convert the text to audio files in .wav format and .mp3 format.</p> 
-          <p>NaturalReader software for Mac paid version can convert the text to audio file in .aiff format. </p> 
-          <p>NaturalReader software free version can only turn the text to speech for sampling.</p> 
-         </dd> 
-         <dt>
-          Where is my serial number?
-         </dt> 
-         <dd> 
-          <p>Please log in your account at <a href="https://www.naturalreaders.com/login.php" id="team6_5">www.naturalreaders.com/login.php</a> to find the serial number. If you couldn’t, please send us your purchase receipt at <a href="javascript:;">support <img src="images/emailat.png" width=" 18">naturalreaders.com</a>, we will look into the record to find the serial number for you.</p> 
-          <p>NaturalReader software for Mac paid version can convert the text to audio file in .aiff format. </p> 
-          <p>NaturalReader software free version can only turn the text to speech for sampling.</p> 
-         </dd> 
-         <dt>
-          I couldn’t log in my account, please help.
-         </dt> 
-         <dd> 
-          <p>Please go to <a href="https://www.naturalreaders.com/login.php" id="team6_6">www.naturalreaders.com/login.php</a> to log in. </p> 
-          <p>If you couldn’t, please click “Forget password” to reset the password.</p> 
-          <p>If you still couldn’t login, please send us your purchase receipt at <a href="javascript:;">support <img src="images/emailat.png" width=" 18">naturalreaders.com</a>, we will help you.</p> 
-         </dd> 
-         <dt>
-          I recently purchased NaturalReader but put in the wrong email address, what should I do to get the product?
-         </dt> 
-         <dd> 
-          <p>Please send us the purchase receipt to support at <a href="javascript:;">support <img src="images/emailat.png" width=" 18">naturalreaders.com</a>, we will send you the download information manually. </p> 
-         </dd> 
-         <dt>
-          The OCR feature doesn’t work, the message says it is converting and then times out.
-         </dt> 
-         <dd> 
-          <p>The OCR feature needs the internet connection to work. Please make sure to connect the computer to the internet, the OCR will work. </p> 
-         </dd> 
-         <dt>
-          How to read a book from Kindle?
-         </dt> 
-         <dd> 
-          <p>The OCR function is able to read the books in Kindle for PC. You can watch the video for “OCR function” at <a href="software.html" id="team6_7">https://www.naturalreaders.com/software.html</a> .</p> 
-         </dd> 
-         <!--<a href="https://www.naturalreaders.com/howto.html">https://www.naturalreaders.com/howto.html</a>--> 
-         <dt>
-          “NR14.exe – No Disk” There is no disk in the drive. Please insert a disk into drive E.
-         </dt> 
-         <dd> 
-          <p>The No disk issue may be with the operating system. It mainly occurs on Win 7, Win 8 and Win10.</p> 
-          <p>Please try this solution to fix the problem:</p> 
-          <p>a) Set the registry entry "ErrorMode" to 2&nbsp;[Mine was set to “0”].</p> 
-          <p>b) Use Windows "regedit" to manually change the value “0” to “2”.</p> 
-          <p>c) The registry entry to change is:</p> 
-          <p>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Windows\ErrorMode REG_DWORD 2</p> 
-         </dd> 
-         <dt>
-          I couldn’t find the option of “Batch converter”, please help me, thank you.
-         </dt> 
-         <dd> 
-          <p>Please open NaturalReader full screen, click the three dots icon at the right side of the floating bar, you can find "Conversation control" option.</p> 
-         </dd> 
-         <dt>
-          Please help me, I have a Mac computer but I ordered NaturalReader for Windows version. 
-         </dt> 
-         <dd> 
-          <p>Please send us your purchase receipt at <a href="javascript:;">sales <img src="images/emailat.png" width=" 18">naturalreaders.com</a>, we will send you the replacement.</p> 
-         </dd> 
-         <dt>
-          I tried to update on your website but received “The serial number is not correct”. I have Ultimate version.
-         </dt> 
-         <dd> 
-          <p>Your version is the most advanced version that couldn’t upgrade. Please order “update” to update to NaturalReader14.</p> 
-         </dd> 
-         <dt>
-          Why the text being read currently is not the text that is actually being read?
-         </dt> 
-         <dd> 
-          <p>This is due to the special encoding of some special pdf file. Please try some other files with standard encoding, the problem should not occur. </p> 
-         </dd> 
-         <dt>
-          Can batch converter save the text to mp3 format?
-         </dt> 
-         <dd> 
-          <p>Sorry, currently the batch converter can save to wav format only. </p> 
-         </dd> 
-         <dt>
-          I download your free version, but only administrator can access
-         </dt> 
-         <dd> 
-          <p>NaturalReader, the other users can't run it, please help me to fix it.</p> 
-          <p>Please go to registry, change the key below to a path that all users can access.</p> 
-          <p>HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Naturalreaderfree</p> 
-         </dd> 
-         <dt>
-          There is no voice in NaturalReader, what should I do?
-         </dt> 
-         <dd> 
-          <p>Microsoft speech engine may be corrupted. Please go to Control Panel &gt;Speech &gt; Text-to-Speech to preview Microsoft voices there. To fix the problem, you may need to repair Microsoft speech engine.</p> 
-         </dd> 
-         <dt>
-          How to read pdf files?
-         </dt> 
-         <dd> 
-          <p>Software for Windows: </p> 
-          <p>There are three ways to read the pdf files: </p> 
-          <p>1. Open NaturalReader -&gt; click "Add new" button -&gt; click “Open (Existing Files)” to open the file;</p> 
-          <p>2. Open the pdf file directly in AdobeReader, click the floating bar button of NaturalReader to switch to the floating bar, select the text in the pdf file and click "play" button; </p> 
-          <p>3. If the pdf file is a scanned file or it is DRM-protected, please click “Add New” button in main screen of NaturalReader -&gt; click Capture (New Images) to capture the text from the file to read.</p> 
-          <p>Software for Mac:</p> 
-          <p>There are three ways to read the pdf files:</p> 
-          <p>1. Open NaturalReader -&gt; click "Add new" button -&gt; click “File” to open the file;</p> 
-          <p>2. Open the pdf file directly in AdobeReader, click the floating bar button of NaturalReader to switch to the floating bar, select the text in the pdf file and click "play" button;</p> 
-          <p>3. If the pdf file is a scanned file or it is DRM-protected, please click “Add New” button in main screen of NaturalReader -&gt; click Capture Images -&gt; select Capture one page or Multiple pages.</p> 
-         </dd> 
-         <dt>
-          When I press NaturalReader icon from desktop, the program open and close immediately. Why?
-         </dt> 
-         <dd> 
-          <p>This is a license issue. The issue occurs because NaturalReader has been installed on more computers than it is allowed. To fix the problem, please find those computers, open NaturalReader - &gt; click "?" button on the upper right -&gt; deactivate serial number.&nbsp;</p> 
-         </dd> 
-         <dt>
-          Why can’t NaturalReader read my PDF file?
-         </dt> 
-         <dd> 
-          <p>PDFs that are not properly tagged for accessibility cannot be accessed by speech synthesizers since there is no information embedded in the file for the program to properly interpret and read out. There are various types of PDF files, depending on where they originated. Digitally created PDFs are “accessible” because there is meta-information embedded within the file that allows a speech synthesizer like NaturalReader to extract the text and read it aloud.</p> 
-          <p>In contrast, “inaccessible PDFs,” “scanned PDFs,” or “image-only PDFs” are those that originated from something like a scanner or when image files are inserted into the PDF. These kinds of PDFs do not have the encoded meta-information of the text itself embedded in the file to allow a speech synthesizer to read it. It only shows the text as a snapshot-like image, with no way for a speech synthesizer to ‘know’ what characters are actually in the document. This is why you cannot edit certain PDF files, unlike text from word processor applications like MS Word. Speech synthesizers by themselves can only read direct text, not images of text.</p> 
-          <p>For documents that contain images, you would need the OCR (optical character recognition) feature to first convert it into a readable file. This feature is available unlimitedly with NaturalReader Online’s Web Premium plan and with the NaturalReader Ultimate version software. It is also available with limitations (up to 500 images) with NaturalReader Professional. </p> 
-         </dd> 
-        </dl> 
+       <div id="descriptionInfo">
+        Description
        </div> 
-      </div> 
-      <div class="question hide" id="CommercialQ"> 
-       <div class="content"> 
-        <dl> 
-         <dt>
-          Does the free Commercial version show all the features of the paid Commercial version? Or are there additional features in the paid one? 
-         </dt> 
-         <dd> 
-          <p>Yes, the free Commercial demo version shows all the same features as the paid version. All the voices you see there and their quality will be the exact same as in the paid version. Some of these features however are restricted in the free trial version. For example, you cannot download the mp3 files and there are some restrictions on the size of the text you are able to upload.</p> 
-         </dd> 
-         <dt>
-          Can I use the NaturalReader PC desktop software to generate audio files for commercial use if I also have a Commercial subscription?
-         </dt> 
-         <dd> 
-          <p>No, the all the non-commercial desktop software versions as well as the Personal Web applications, cannot be used for any commercial or public use or redistribution under any circumstances. The non-commercial versions and Commercial version do not contain the same voices. The voices provided in the NaturalReader Software (Personal, Professional, and Ultimate) and NaturalReader Web are licensed for personal use only. Only the audio files generated using a paid subscription to NaturalReader Commercial are licensed to allow public and commercial purposes and/or redistribution.</p> 
-         </dd> 
-         <dt>
-          What happens to the materials I’ve created using NaturalReader Commercial after I decide to end my subscription? Can I still keep the materials?
-         </dt> 
-         <dd> 
-          <p>As long as the generated audio files were created while your subscription was active, you can continue to use and display any materials already made that contain those audio files even after your subscription has ended. There are no additional requirements or fees required to do so.</p> 
-         </dd> 
-         <dt>
-          What is the difference between the commercial version and non-commercial versions?
-         </dt> 
-         <dd> 
-          <p>NaturalReader Commercial is the only one of our products that allows you to use its software and voices for commercial or public use. This includes, but is not limited, to: YouTube videos, public announcements, broadcasts, and e-Learning. The non-commercial versions (Personal, Professional, and Ultimate) are for personal use only. These versions and their voices cannot be used for any public or commercial purposes.</p> 
-         </dd> 
-         <dt>
-          Are there any restrictions for how I use the voice-generated sound files?
-         </dt> 
-         <dd> 
-          <p>No, all the voices in the Commercial version can be used for any purposes—public, commercial, corporate, etc.</p> 
-         </dd> 
-         <dt>
-          How many voices and languages? 
-         </dt> 
-         <dd> 
-          <p>The Commercial version comes with access to all available commercially-licensed voices. Languages available are: English, Japanese, Turkish, Swedish, Russian, Portuguese, Polish, Dutch, Norwegian, Italian, Icelandic, French, Spanish, German, Danish, and Welsh. </p> 
-         </dd> 
-         <dt>
-          What is the return policy for NaturalReader Commercial?
-         </dt> 
-         <dd> 
-          <p>We strongly recommend that all customers try before you buy. We provide a free 7-day trial version to let you fully evaluate our NaturalReader Commercial application before you make a purchase decision. Please take advantage of the trial version to make sure that NaturalReader Commercial meets your needs before purchasing a license. You have no obligations to purchase and you won’t be asked to provide any payment information until you decide to buy.</p> 
-          <p>If you purchase one of our plans, after your payment has cleared you will receive an email with the order information. Once this confirmation is emailed to you, no refunds will be given. We have this policy because service begins as soon as your initial payment is processed and it would be impossible for you to return your generated audio files of licensed voices.</p> 
-          <p>By placing an order for a NaturalReader Commercial subscription, you indicate that you have read this refund policy and that you agree with and fully accept the terms of this refund policy.</p> 
-          <p>If you do not agree with or fully accept the terms of this refund policy, we ask that you do not place an order with us.</p> 
-          <p>If you no longer wish to subscribe to NaturalReader Commercial, you can turn off the licensing auto-renewal from the Billing Settings. Your account will continue to be active until the end of your billing cycle.</p> 
-          <p>Please send any questions regarding our refund policy through our Help system.</p> 
-         </dd> 
-        </dl> 
-       </div> 
-      </div> 
-      <div class="question hide" id="AppQ"> 
-       <div class="content"> 
-        <dl> 
-         <dt>
-          I have a lot of articles to read, is there any way to arrange the files?
-         </dt> 
-         <dd> 
-          <p>We’ve just added a new Filter to our Library interface. Tap “All” to filter your documents by source, such as Input (anything copy and pasted or typed directly into NaturalReader), Webpage, Dropbox, OneDrive, and Google Drive. You can also filter for “Unread” documents.</p> 
-         </dd> 
-         <dt>
-          What files are supported by NaturalReader?
-         </dt> 
-         <dd> 
-          <p>NaturalReader supports PDF, eBooks (.epub), Word documents (.doc and .docx), RTF, TXT, PowerPoint and will read any webpage. Please note that DRM-protected eBooks from iBooks, Kindle, Nook, or Adobe OverDrive cannot be opened with NaturalReader.</p> 
-         </dd> 
-         <dt>
-          Is there any function to help people with poor vision?
-         </dt> 
-         <dd> 
-          <p>We have developed a new magnifying highlight function to help zoom in and follow along with small print. After opening a document, select the magnifying glass icon at the top of the page to enable the zoom view.</p> 
-         </dd> 
-         <dt>
-          How to sort documents in NaturalReader?
-         </dt> 
-         <dd> 
-          <p>A Sort button has been added which will organize your files by date, title, or size. We’ve also added a Thumbnail view option to display the covers of eBook PDF and ePUB files to make finding your documents a little bit easier.</p> 
-         </dd> 
-         <dt>
-          Can NaturalReader show the reading progress of the document?
-         </dt> 
-         <dd> 
-          <p>Yes, you can check the progress of any document through the Library interface.</p> 
-         </dd> 
-         <dt>
-          How do you adjust the font?
-         </dt> 
-         <dd> 
-          <p>Open the desired document and tap the “…” button at the bottom right of the screen to adjust font size.</p> 
-         </dd> 
-         <dt>
-          Can the background colour be changed?
-         </dt> 
-         <dd> 
-          <p>Yes, simply open a document and tap the “…” button. There, you can adjust font size, background colour, and toggle rich text and plain text formatting. Please note that all these setting may not be available when viewing certain PDF files.</p> 
-         </dd> 
-         <dt>
-          How do I download the voices?
-         </dt> 
-         <dd> 
-          <p>Open a document and tap the speaker phone icon at the top of the screen. </p> 
-          <p>Select “ADD MORE VOICES” at the bottom of the screen to view all voices for the selected language. </p> 
-          <p>To change the language, tap “Language” on the top right. Tap the “ &lt;” button on the top left to return to the previous screen to view the voices available for the newly selected language. </p> 
-          <p>You can also access the voice manager by access the Menu button on the top left of the Library screen. Select “Settings,” then “Manage My Voice”.</p> 
-         </dd> 
-         <dt>
-          How to change the language?
-         </dt> 
-         <dd> 
-          <p>Access the voice manager through Menu &gt; Settings &gt; Manage my voice or open a document and select the speaker phone icon in the top right of the screen. Select ADD MORE VOICES &gt; Language and select from the list.</p> 
-         </dd> 
-         <dt>
-          How to add bookmark?
-         </dt> 
-         <dd> 
-          <p>While viewing a document, tap the Bookmark icon at the top right of the page to add the highlighted text to your bookmarks. You can view a list of your bookmarks by tapping the button on the bottom left while viewing a document.</p> 
-         </dd> 
-         <dt>
-          How do I add documents to NaturalReader? 
-         </dt> 
-         <dd> 
-          <p>From the Library screen, tap the “+” button at the top. From there, select from Dropbox, OneDrive, or Google Drive to load documents from your accounts. Select “Input” to manually type in or paste text for NaturalReader to read. Or, select “Webpage” to launch the built-in browser.</p> 
-          <p>You can also add email attachments to NaturalReader. When opening your mail from your device, tap the attachment and select “copy to NaturalReader”.&nbsp;</p> 
-         </dd> 
-         <dt>
-          Why can’t I download any voices?
-         </dt> 
-         <dd> 
-          <p>This may be due to a slow internet connection. Please keep trying or try again later. Our voices are high quality so the file sizes are a little large and may take a little extra time to download.</p> 
-         </dd> 
-         <dt>
-          How do I access iBook and Kindle books?
-         </dt> 
-         <dd> 
-          <p>NaturalReader cannot read any DRM-protected eBooks. This includes eBooks from iBooks, Kindle, Nook, or Adobe OverDrive.</p> 
-         </dd> 
-         <dt>
-          How can I download my eBooks onto my NaturalReader app?
-         </dt> 
-         <dd> 
-          <p>Please note that NaturalReader cannot read any DRM-protected eBooks. This includes eBooks from iBooks, Kindle, Nook, or Adobe OverDrive.</p> 
-          <p>For non DRM files, there are 2 options to get your eBooks onto your iPhone/iPad:</p> 
-          <p>Upload your eBook files to your Dropbox, OneDrive, or Google Drive account. Navigate to the NaturalReader Library screen and tap “+” to select from your desired remote disk. Enter your login information and select the document you wish to import. It will then be loaded onto your Library.</p> 
-          <p>Email the eBook document to yourself as an attachment. Using your iPhone/iPad, open your email. Tap and hold on the attachment file and the mail app will present you with options. Select “copy to NaturalReader” and the file will be sent to your NaturalReader Library. </p> 
-         </dd> 
-         <dt>
-          Can NaturalReader read emails?
-         </dt> 
-         <dd> 
-          <p>Sorry, NaturalReader cannot read emails. But, you can easily download email attachments from your inbox straight to NaturalReader. When opening your mail from your device, tap the attachment and select “copy to NaturalReader”. The document can then be viewed from the Library.</p> 
-         </dd> 
-         <dt>
-          I can’t open my eBooks in NaturalReader, please help.
-         </dt> 
-         <dd> 
-          <p>NaturalReader can only open eBooks with accessible text. If the eBook is a scanned filed or is protected, NaturalReader cannot open it. NaturalReader cannot read any DRM-protected eBooks. DRM (digital rights management) is put into place on certain files to prevent unauthorized distribution of digital media. This includes eBooks from iBooks, Kindle, Nook, or Adobe OverDrive.</p> 
-         </dd> 
-         <dt>
-          How do I delete documents?
-         </dt> 
-         <dd> 
-          <p>From the Library screen, select “Edit” at the top right corner. You can then select one or multiple files to delete.</p> 
-         </dd> 
-         <!-- <dt>How do I sync my NaturalReader app with my desktop version?</dt>
-                                <dd>
-                                    <p>If you have a paid version of our NaturalReader desktop version, you can sync documents
-                                        from the desktop onto your Apple device.</p>
-                                    <p>Open the NaturalReader desktop version and select the desired document. Select the iPhone
-                                        icon on the top right of the document. A QR code (Quick Response two-dimensional
-                                        barcode) will be generated. Open your NaturalReader app from your device. Tap “+”
-                                        and select “Sync with Desktop”. The document will be instantly sent to your NaturalReader
-                                        app Library. </p>
-                                </dd> --> 
-         <dt>
-          I can’t download voices because of a ‘server error’. How can I fix this?
-         </dt> 
-         <dd> 
-          <p>At times some customers may experience disruptions in the download due to busy server. Please try downloading the voice again or at a later time. If the problem persists, please try uninstalling and reinstalling the app.</p> 
-          <p>If you already own the Pro version, please follow these steps to restore:</p> 
-          <p>iOS:</p> 
-          <p>If you first downloaded NaturalReader free and then purchased the in-app upgrade to Pro, please ensure you are signed in as the Apple ID that made the original purchase. Reinstall NaturalReader free, tap “About Pro Version” then tap “Restore”.</p> 
-          <p>If you purchased the NaturalReader Pro app directly, please sign into the Apple ID that made the purchase and navigate to your Apple Store Account information. Search for NaturalReader in the list of purchases, and tap to restore.</p> 
-          <p>Android:</p> 
-          <p>Login using the Google account that made the original purchase and open the Play Store app. Select the Menu icon and choose ‘My apps &amp; games’. Swipe left to view all your apps. Select NaturalReader from the list and tap ‘Install’.</p> 
-          <p>Ensure that you have alternative access to any important files in your Library, as this process will erase your app data. All files will have to be imported again for use. We’re sorry for the inconvenience.</p> 
-         </dd> 
-         <dt>
-          I’ve paid for the Pro update, but nothing has changed.
-         </dt> 
-         <dd> 
-          <p>After purchasing the Pro version, the app should unlock automatically. If you are unable to access Pro after upgrading, please uninstall and reinstall the app:</p> 
-          <p>iOS:</p> 
-          <p>If you first downloaded NaturalReader free and then purchased the in-app upgrade to Pro, please ensure you are signed in as the Apple ID that made the original purchase. Reinstall NaturalReader free, tap “About Pro Version” then tap “Restore”. It should then switch to the paid version.</p> 
-          <p>If you purchased the NaturalReader Pro app directly, please sign into the Apple ID that made the purchase and navigate to your Apple Store Account information. Search for NaturalReader in the list of purchases, and tap to restore.</p> 
-          <p>Android:</p> 
-          <p>Login using the Google account that made the original purchase and open the Play Store app. Select the Menu icon and choose ‘My apps &amp; games’. Swipe left to view all your apps. Select NaturalReader from the list and tap ‘Install’. You will not be charged again if you’ve already paid for the app.</p> 
-          <p>Ensure that you have alternative access to any important files in your Library, as this process will erase your app data. All files will have to be imported again for use. We’re sorry for the inconvenience.</p> 
-         </dd> 
-         <dt>
-          I’m trying to upload a document, but the app keeps crashing.
-         </dt> 
-         <dd> 
-          <p>Please double-check the file format to ensure it is compatible with NaturalReader. If it is a PDF causing the issue, it is likely because it contains images with inaccessible text. If the PDF is not embedded with accessible text for images, the app cannot access the proper information to read it.</p> 
-          <p>PDFs that are not properly tagged for accessibility cannot be accessed by speech synthesizers since there is no information embedded in the file for the program to properly interpret and read out. Speech synthesizers can only read text and not images that contain text. However our desktop version of the software comes equipped with OCR (optical character recognition), which is capable of importing such types of PDF files.</p> 
-         </dd> 
-         <dt>
-          I’m trying to read a webpage, but it’s not working.
-         </dt> 
-         <dd> 
-          <p>The web browser feature is a built-in browser for easy web viewing. For security reasons, NaturalReader may not be able to access text from online registered accounts, especially those with paid subscriptions. Websites with more complex special encoding also may not be able to function with NaturalReader.</p> 
-         </dd> 
-         <dt>
-          Why can’t NaturalReader read my PDF file?
-         </dt> 
-         <dd> 
-          <p>PDFs that are not properly tagged for accessibility cannot be accessed by speech synthesizers since there is no information embedded in the file for the program to properly interpret and read out. There are various types of PDF files, depending on where they originated. Digitally created PDFs are “accessible” because there is meta-information embedded within the file that allows a speech synthesizer like NaturalReader to extract the text and read it aloud.</p> 
-          <p>In contrast, “inaccessible PDFs,” “scanned PDFs,” or “image-only PDFs” are those that originated from something like a scanner or when image files are inserted into the PDF. These kinds of PDFs do not have the encoded meta-information of the text itself embedded in the file to allow a speech synthesizer to read it. It only shows the text as a snapshot-like image, with no way for a speech synthesizer to ‘know’ what characters are actually in the document. This is why you cannot edit certain PDF files, unlike text from word processor applications like MS Word. Speech synthesizers by themselves can only read direct text, not images of text.</p> 
-          <p>For documents that contain images, you would need the OCR (optical character recognition) feature to first convert it into a readable file. This feature is not available with NaturalReader Pro, but is available with select NaturalReader desktop versions. For more information, please visit our website at <a href="http://www.naturalreaders.com"> http://www.naturalreaders.com.</a> </p> 
-         </dd> 
-        </dl> 
-       </div> 
-      </div> 
-      <div class="question hide" id="WebQ"> 
-       <div class="content"> 
-        <dl> 
-         <dt>
-          It’s mispronouncing a word. How can I fix this?
-         </dt> 
-         <dd> 
-          <p>The Pronunciation Editor can help fix minor pronunciation issues. To access the PE settings, click ‘More’ in the top right and then ‘Pronunciation Editor’.</p> 
-          <p>You can replace the mispronounced word with the phonetic spelling of how it should read.</p> 
-         </dd> 
-         <dt>
-          Why are the voices spelling out some words instead of reading them?
-         </dt> 
-         <dd> 
-          <p>This issue is most likely caused by the special encoding of the file. Though the words as they appear on the page might look normal, sometimes the hidden encoding of the file itself contains various complicated and hidden encoding that affects the reading of the document. However most files with standard encoding are supported and will be read correctly.</p> 
-         </dd> 
-         <dt>
-          What is the refund policy for NaturalReader Online?
-         </dt> 
-         <dd> 
-          <p>We strongly recommend that all customers try before you buy. You can try the application for free from this page or by clicking on the 'Online Reader' link from our website: <a href="../online/" id="team6_8">https://www.naturalreaders.com/online/</a></p> 
-          <p><b>By default, all subscriptions are set to auto-renew at the end of the billing period but you can turn this off at any time by selecting 'Cancel Subscription' from your account's Billing Information.</b> After you cancel, paid service will continue until the end of the current billing period without renewal.</p> 
-          <p><b>Cancelling your subscription will not automatically initiate a refund, which is done by request only.</b> </p> 
-          <p><b>Yearly subscribers of NaturalReader Online may request a refund for up to 30 days after the subscription start/renewal date and monthly subscribers may request a refund for up to 14 days.</b> To request a refund, please contact us through our website's help system (click on the blue chat icon in the bottom right corner). </p> 
-          <p>*Cancelling from the NaturalReader Online platform will have no effect on your NaturalReader Commercial subscription if you are subscribed to both versions. To cancel your Commercial subscription, please do so from your Billing Settings by logging in directly to NaturalReader Commercial. </p> 
-          <p>**The above policy applies to NaturalReader Online only. For cancellation policies for NaturalReader Commercial, please see that product page or our website's Policies section for more information.</p> 
-          <!-- <p>After purchasing a subscription, you can cancel the auto-renewal at anytime through your
-                                        Billing Settings. Your account will continue to be active until the end of your billing
-                                        cycle.</p>
-                                    <p>You have up to 30 days after purchase to request a refund for your subscription. If you
-                                        encounter any problems with the application or have a question about your billing,
-                                        please contact us through our website or send an email to
-                                        <a href="javascript:;">sales
-                                            <img src="images/emailat.png" width=" 18">naturalreaders.com</a>
-                                    </p> --> 
-         </dd> 
-         <dt>
-          Why can’t NaturalReader read my PDF file?
-         </dt> 
-         <dd> 
-          <p>PDFs that are not properly tagged for accessibility cannot be accessed by speech synthesizers since there is no information embedded in the file for the program to properly interpret and read out. There are various types of PDF files, depending on where they originated. Digitally created PDFs are “accessible” because there is meta-information embedded within the file that allows a speech synthesizer like NaturalReader to extract the text and read it aloud.</p> 
-          <p>In contrast, “inaccessible PDFs,” “scanned PDFs,” or “image-only PDFs” are those that originated from something like a scanner or when image files are inserted into the PDF. These kinds of PDFs do not have the encoded meta-information of the text itself embedded in the file to allow a speech synthesizer to read it. It only shows the text as a snapshot-like image, with no way for a speech synthesizer to ‘know’ what characters are actually in the document. This is why you cannot edit certain PDF files, unlike text from word processor applications like MS Word. Speech synthesizers by themselves can only read direct text, not images of text.</p> 
-          <p>Scanned documents or image-embedded documents need the OCR (optical character recognition) feature to first convert it to a readable file. OCR is now included in all paid NaturalReader Online subscription plans.</p> 
-         </dd> 
-         <dt>
-          <a style="color:#0176FF;" href="./personalwebfaq.html" id="team6_8">More FAQs</a>
-         </dt> 
-        </dl> 
-       </div> 
-      </div> 
-      <!-- <div class="contactDiv">Didn’t find the answer you’re looking for? <a href="#" onclick="messenger('showNewMessage')">Contact us</a> if you have any further questions.</div> --> 
-     </div> 
-     <div class="tabContent contactusPage hide"> 
-      <div class="contactus aboutus"> 
-       <div class="content"> 
-        <h2 class="title">About us</h2> 
-        <div class="txt"> 
-         <p>NaturalSoft Ltd. was founded in Vancouver, BC Canada. Our mission is to deliver superior speech solutions for software, web and mobile applications.</p> 
-         <p>Our staff members work hard not only to meet your standards, but also to exceed your expectations. We keep improving our products and service in every aspect to best customize our naturalreaders.com products to fulfill your needs. Currently, our focus is on text-to-speech technologies and applications.</p> 
-         <p>Thanks for visiting our website! Your feedback is extremely important to us in continuing to improve the products and services that we provide. Please send an email to <a href="javascript:;">support <img src="images/emailat.png" width=" 18">naturalreaders.com</a> to let us know how we are doing and what we need to do to improve. Your suggestions are valued and appreciated.</p> 
+       <div class="song-subbox"> 
+        <div id="instrumentInfo">
+         Instrument: 
+        </div> 
+        <div id="preferenceInfo">
+         Mood: 
+        </div> 
+        <div id="participantsInfo">
+         No. of participants: 
+        </div> 
+        <div id="requesterInfo">
+         Requester: 
         </div> 
        </div> 
-      </div> 
-      <div class="contactus own"> 
-       <div class="content"> 
-        <h2 class="title">Contact us</h2> 
-        <p> <a href="#" onclick="messenger('showNewMessage')">Contact us</a> and please leave a detailed description of your inquiry. </p> 
-        <br> 
-        <div class="txt"> 
-         <p>You can also send your questions, suggestions or comments to:</p> 
-         <p>Sales: <a href="javascript:;">sales <img src="images/emailat.png" width=" 18">naturalreaders.com</a> </p> 
-         <p>Support: <a href="javascript:;">support <img src="images/emailat.png" width=" 18">naturalreaders.com</a> </p> 
-         <p>Fax: 1 - 604 - 608 - 9708</p> 
-         <p>Address: NaturalSoft Ltd., 703 - 6081 NO. 3 RD RICHMOND BC V6Y 2B2, Canada</p> 
+       <div class="song-subbox"> 
+        <button id="playSong" class="btn btn-default" disabled>►</button> 
+        <button id="stopSong" class="btn btn-default">◾</button> 
+        <div style="display: inline;" id="songLength">
+         (0 sec)
         </div> 
-       </div> 
-      </div> 
-      <!-- <div class="sendMessage" name="sendMessage" id="sendMessage">
-                        <div class="content">
-                            <div id="message"></div>
-                            <div class="form">
-                                <form method="post" action="contact.php" name="contactform" id="contactform">
-                                    <div class="title">Please fill in the following form to contact us</div>
-                                    <div class="item">
-                                        <p class="tit">Email</p>
-                                        <div>
-                                            <input class="ipt" id="email" type="text" placeholder="Your email address">
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <p class="tit">Subject</p>
-                                        <select class="chooseSubject" id="subject">
-                                            <option value="Support" selected="selected">Technical Support</option>
-                                            <option value="Sales">Sales and billing</option>
-                                            <option value="Complaints">Others and complains</option>
-                                        </select>
-                                    </div>
-                                    <div class="item">
-                                        <p class="tit">Content</p>
-                                        <div>
-                                            <textarea id="comments" rows=4 class="ipt" type="text" placeholder="Please leave your comments or question"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <p class="tit">Are you human?</p>
-                                        <div for="verify" accesskey="V">
-                                            3 + 1 =
-                                            <input name="verify" id="verify" class="ipt iptAns" type="text">
-                                        </div>
-                                    </div>
-                                    <input type="submit" class="btnSendMessage" id="submit" value="Send Your Message" />
-
-                            </div>
-                            </form>
-                        </div>
-                    </div> --> 
-     </div> 
-     <div class="tabContent policiesPage hide"> 
-      <div class="content"> 
-       <h2 class="title">Policies</h2> 
-       <div class="item"> 
-        <h3 class="subtit">Refund Policy</h3> 
-        <div class="item1"> 
-         <h3 class="subtit1">NaturalReader Software (Personal, Professional, and Ultimate)</h3> 
-         <p>NaturalReader software products may be returned within 30-days after the date of purchase for a full refund.</p> 
-         <p>Once your returned item is received by us, a credit will be issued back to the credit card used to purchase the software.</p> 
-         <p>Return authorizations are valid within 30-days after the date of purchase. Original shipping charges are non-refundable.</p> 
-         <p>To request a refund, please email us at <a href="javascript:;">sales <img src="images/emailat.png" width=" 18">naturalreaders.com</a> with your purchase information.</p> 
-        </div> 
-        <!-- <div class="item1">
-                                <h3 class="subtit1">NaturalReader Web Premium</h3>
-                                <p>NaturalReader Web Premium subscriptions are non-refundable. Please visit our homepage at
-                                    <a href="https://www.naturalreaders.com/"> http://www.naturalreaders.com </a> demo the application prior to making a purchase.</p>
-                                <p>After purchasing a subscription, you can cancel the auto-renewal at any time through your
-                                    Billing Settings. Your account will continue to be active until the end of your billing
-                                    cycle. We do not provide any refunds or credits for the cancellation of a NaturalReader
-                                    Personal Web subscription.</p>
-                            </div> --> 
-        <div class="item1"> 
-         <h3 class="subtit1">NaturalReader Online</h3> 
-         <p>We strongly recommend that all customers try before you buy. You can try the application for free by clicking on the ‘Online Reader’ link from our website: <a href="https://www.naturalreaders.com/" id="team6_9"> https://www.naturalreaders.com </a> </p> 
-         <p>You can cancel the auto-renewal for your subscription at any time through your account’s Billing Information. Your paid access will continue to be active until the end of your billing cycle.</p> 
-         <p>Refunds are issued by request only. Monthly plans may be refunded for up to 14 days after the start/renewal date and yearly plans for up to 30 days.</p> 
-         <p>If you encounter any problems with the application or have questions about your billing, please contact us through our website or at <a href="javascript:;">sales <img src="images/emailat.png" width=" 18">naturalreaders.com</a> </p> 
-        </div> 
-        <div class="item1"> 
-         <h3 class="subtit1">NaturalReader Commercial Web Application</h3> 
-         <p>We strongly recommend that all customers try before you buy. We provide a free 7-day trial version to let you fully evaluate our NaturalReader Commercial application before you make a purchase decision. Please take advantage of the trial version to make sure that NaturalReader Commercial meets your needs before purchasing a license. You have no obligations to purchase and you won’t be asked to provide any payment information until you decide to buy.</p> 
-         <p>If you purchase one of our plans, after your payment has cleared you will receive an email with the order information. Once this confirmation is emailed to you, no refunds will be given. We have this policy because service begins as soon as your initial payment is processed and it would be impossible for you to return your generated audio files of licensed voices.</p> 
-         <p>By placing an order for a NaturalReader Commercial subscription, you indicate that you have read this refund policy and that you agree with and fully accept the terms of this refund policy. </p> 
-         <p>If you do not agree with or fully accept the terms of this refund policy, we ask that you do not place an order with us.</p> 
-         <p>If you no longer wish to subscribe to NaturalReader Commercial, you can turn off the licensing auto-renewal from the Billing Settings. Your account will continue to be active until the end of your billing cycle.</p> 
-         <p>Please send any questions regarding our refund policy through our Help system.</p> 
-        </div> 
-       </div> 
-       <div class="item"> 
-        <h3 class="subtit">Privacy Policy</h3> 
-        <p>Naturalsoft is committed to protect your privacy. We collect information about our customers to enable us to process orders, improve our site, and provide better services. We do not sell or compromise your information to other marketers -- never have and never will!</p> 
-        <p>To process and ship your order, we need your name, phone number, billing address, shipping address, and e-mail address. This information is stored on a secure server to allow us to process orders. On occasion, we may notify you about special promotions.</p> 
-        <p><a href="media/privacy2.pdf" id="team6_10">(PDF)</a></p> 
-       </div> 
-       <div class="item"> 
-        <h3 class="subtit">User agreement</h3> 
-        <p>Please download the user agreement <a href="media/LICENSE.pdf" id="team6_10">here</a> </p> 
-       </div> 
-       <div class="item"> 
-        <!-- <h3 class="subtit">Update &amp; Re-Download Policy</h3> --> 
-        <h3 class="subtit"> <b>Update</b> </h3> 
-        <p>As an online application, NaturalReader Online is always up to date.</p> 
-        <p>Regarding our policies for the software, please keep in mind that our customers are responsible for creating their own backup files for reinstallation, if needed. As NaturalReader continues to release updates to the software, older versions are no longer made available to purchase/re-download. For security reasons, the download links we provide to you after purchase expire after 180 days.</p> 
-        <p>Customers who require new download links after they expire and do not have a backup means to reinstall from must purchase the $49.50 update to receive new links. This update includes the most recent version of the software as well as one complimentary voice of your choosing.</p> 
-        <p>Back-ups can easily be created by saving your software and voice downloads (the downloaded files themselves, not the links) onto any external storage system, such as a flash-drive, cloud storage, or burnt to a CD.</p> 
-        <!-- <p>Please note that it is your responsibility to download the software immediately and back-up all
-                                purchases. For security reasons, the download links provided to you upon purchase expire
-                                after 180 days. NaturalSoft Ltd. is not liable for any loss or damage to the product after
-                                download.
-                            </p>
-                            <p>As NaturalSoft continues to introduce new product solutions, older products that have reached
-                                the end of their product lifecycle are no longer made available for sale/re-download. We
-                                are only ableto provide for the most recent version of the software to download.</p>
-                            <p>You have the option at the time of purchase to order a CD copy of your software for an additional
-                                $9.95 shipping fee for reinstallation when you need it. If you choose not to purchase a back-up
-                                CD, it is your responsibility to create your own back-up file for re-installation.</p> --> 
        </div> 
       </div> 
      </div> 
-     <div class="tabContent testimonialsPage"> 
-      <div class="content"> 
-       <h2 class="title">Testimonials</h2> 
-       <div class="itemGroup"> 
-        <div class="item"> 
-         <div class="personInfo clearfix"> 
-          <div class="phpto"> 
-           <img src="images/e_pic01.png" alt=""> 
-          </div> 
-          <div class="txt"> 
-           <p class="name">Mary Hardin – Parent</p> 
-           <p class="country">Fleming Island, FL</p> 
-          </div> 
-         </div> 
-         <div class="explain">
-           As a parent of a struggling Middle School student with Dyslexia, reading has always been a challenge. We use Natural Reader software and the MP3 export feature almost daily to help him get through lengthy reading assignments and to help create study material he can listen to on his IPOD. Natural Reader has been instrumental in helping him to excel in school! While reading to learn, he can now focus on learning the material at hand rather than being distracted by his reading challenges. He is now an Honor Roll student who has made tremendous progress since utilizing Natural Reader. We highly recommend Natural Reader for any student who has difficulties with reading. 
-         </div> 
-        </div> 
-        <!-- tabsInfo 01 END --> 
-        <div class="item"> 
-         <div class="personInfo clearfix"> 
-          <div class="phpto"> 
-           <img src="images/e_pic02.png" alt=""> 
-          </div> 
-          <div class="txt"> 
-           <p class="name">am ReederBA Business Studies at Charles Sturt University</p> 
-           <p class="country">Bathurst, NSW, Australia</p> 
-          </div> 
-         </div> 
-         <div class="explain">
-           Just wanted to say a quick thank you for developing your natural reader software! Im 23yr old Australian student and I have struggled with dyslexia for as long as I remember and I am currently in my final year of a communications degree.. so you can imagine how frustrating my studies have been! anyway I recently found your software online and it has made my life 5 million times better!!! I can actually get to the end of my readings without bursting a blood vessel due to frustration! And my assignments and grades are actually on the increase! 
-         </div> 
-        </div> 
-        <!-- tabsInfo 02 END --> 
-        <div class="item"> 
-         <div class="personInfo clearfix"> 
-          <div class="phpto"> 
-           <img src="images/e_pic03.png" alt=""> 
-          </div> 
-          <div class="txt"> 
-           <p class="name">Svetoslav ChavdarovComputer Science and Engineering Student</p> 
-           <p class="country">Hamburg University of Technology (TUHH)</p> 
-          </div> 
-         </div> 
-         <div class="explain">
-           As Computer Science and Engineering student I have to spend most of my time in front of the PC programming or reading slides full of formulas. This makes my eyes totally tired and I simply do not feel like reading afterwards. On the other hand, at the end of the day I long for diversity e.g. by a great novel or some motivational material. With NaturalReader I easily turn inspirational and self-improvement literature into mp3s and listen to them on the long way back home from the university. This helps me keep the balance between professional and soft skills.The multiple voices support is an amazing feature and the German language starts to sound really nice when spoken by Sarah. 
-         </div> 
-        </div> 
-        <!-- tabsInfo 03 END --> 
-        <div class="item"> 
-         <div class="personInfo clearfix"> 
-          <div class="phpto"> 
-           <img src="images/e_pic04.png" alt=""> 
-          </div> 
-          <div class="txt"> 
-           <p class="name">Ariel Miranda Teacher</p> 
-           <p class="country">Valdepenas, Ciudad Rea</p> 
-          </div> 
-         </div> 
-         <div class="explain">
-           I no longer strain my eyes trying to read tiny fonts in e-mails or web pages or spend time recording my own voice for teaching purposes. I have a "bilingual" Natural Reader and it has become a very useful tool. By the way, my students haven't noticed that my "friend" Kate, who reads lessons so nicely, is a computer. 
-         </div> 
-        </div> 
-        <!-- tabsInfo 04 END --> 
-        <div class="item"> 
-         <div class="personInfo clearfix"> 
-          <div class="phpto"> 
-           <img src="images/e_pic05.png" alt=""> 
-          </div> 
-          <div class="txt"> 
-           <p class="name">Jeannette BennicelliKirby Center for Molecular Ophthalmology</p> 
-           <p class="country">University of Pennsylvania</p> 
-          </div> 
-         </div> 
-         <div class="explain">
-           I purchased Natural Reader for my daughter many years ago. The program is a great aid for children with language-based learning disabilities and helped my daughter immensely in preparing the myriad written assignments that were part of her education in her specialized school. She has now taken the program to college with her where she continues to use it. Recently I purchased a program upgrade which I am sharing with my elderly father who has age-related macular degeneration. He enjoys using his computer and has been struggling with low vision. Natural Reader is allowing him to listen to pages on the internet, alleviating his struggles trying to read from the computer screen with a magnifying glass. 
-         </div> 
-        </div> 
-        <!-- tabsInfo 05 END --> 
-        <div class="item"> 
-         <div class="personInfo clearfix"> 
-          <div class="phpto"> 
-           <img src="images/e_pic06.png" alt=""> 
-          </div> 
-          <div class="txt"> 
-           <p class="name">Chi-Hung Luke Hsieh</p> 
-           <p class="country">Riverside, CA 92506</p> 
-          </div> 
-         </div> 
-         <div class="explain">
-           As an assistive technology advocate for an Independent Living Center for Riverside County California, I think Nature Reader is a wonderful and affordable software for children with learning disability and dyslexia. I have cerebral palsy myself and this software has increased my productivity more than I had imagined. What I like the most about the software is the interface, because of my bad eyesight I had to increase the font, it makes reading more fun and pleasurable 
-         </div> 
-        </div> 
-        <!-- tabsInfo 06 END --> 
-        <div class="item"> 
-         <div class="personInfo clearfix"> 
-          <div class="phpto"> 
-           <img src="images/e_pic07.png" alt=""> 
-          </div> 
-          <div class="txt"> 
-           <p class="name">Ayla Duffton,Student/Self Employed</p> 
-           <p class="country">Aberdeenshire, UK.</p> 
-          </div> 
-         </div> 
-         <div class="explain">
-           "I discovered NaturalReader after hearing that it was possible to have text from the computer read aloud to you. I have Aspergers' Syndrome, which is an autistic spectrum learning difficulty. I love to gather information, learn and research things on the internet, with current technology more and more information is digital rather than in a book, I use NaturalReader to read aloud passages from ebooks I have bought, PDF documents, webpages with lots of text, and to read back to me things I have typed to 'hear them'. This helps me greatly as although I am a visual/kinetic learner, words are not pictures. NaturalReader allows me to hear all the text I would otherwise have had to read on the screen, allowing me to create a mental image of what I am hearing, this helps me process and have a better retainment of information. The quality of the voices available, the ability to adjust the speed of speech is brilliant. I have three voices installed on the computer but my favourite by far is 'US - Heather', it is pleasant to listen to and is really easy to understand. Natural Reader helps me to learn and listen to texts of interest without having eyestrain or eye discomfort from reading the words. It is also really nice to have someone read to you, it uses a lot less energy and focus. The ability to copy text from places online and create audio files to listen to on an MP3 player or music player is fantastic, it allows me to go anywhere and do anything instead of sitting in front of a computer screen. The feature that allows you type your own text and have that read to is a great way to check accuracy or how it 'sounds'. All in all I would have to say that NaturalReader is one of the best pieces of software I have ever bought, and stands alone in quality and value for money. 
-         </div> 
-        </div> 
-        <!-- tabsInfo 07 END --> 
-        <div class="item"> 
-         <div class="personInfo clearfix"> 
-          <div class="phpto"> 
-           <img src="images/e_pic08.png" alt=""> 
-          </div> 
-          <div class="txt"> 
-           <p class="name">Danita Moses American Public University</p> 
-           <p class="country">Atlanta, Georgia</p> 
-          </div> 
-         </div> 
-         <div class="explain">
-           I am a full-time student taking classes to earn my bachelor's degree in pre-law or as they call it today, “Legal Studies”; I am planning to become a lawyer. I love using this software because it helps me read numerous cases in a matter of hours not days. 
-          <br> This software helps me pronounce words that I cannot and it helps me avoid making grammatical errors when writing my case briefs and my essays. I enjoy the fact that I can convert my online textbooks into MP3’s and listen to them on my smart phone or while driving in my car. 
-          <br> I love this software and I do not know where I would be without it, (Oh yeah, I would be making numerous grammatical errors on my case briefs and essays). Thank you for creating this incredible software, in my opinion; it is the best thing since sliced bread. 
-         </div> 
-        </div> 
-        <!-- tabsInfo 08 END --> 
-        <div class="item"> 
-         <div class="personInfo clearfix"> 
-          <div class="phpto"> 
-           <img src="images/e_pic09.png" alt=""> 
-          </div> 
-          <div class="txt"> 
-           <p class="name">Paul Colangelo Management Consultant</p> 
-           <p class="country">Conifer Co, which is 35 miles southwest of Denver</p> 
-          </div> 
-         </div> 
-         <div class="explain">
-           NaturalReader has been a transformational and liberating product for me. As someone that suffers from a learning disability, having this product to proof my emails, presentations and contracts, has allowed me to become more independent and not have the burden to rely on someone to proof my work. I now create my document, and have NaturalReader read back the contents of what I wrote, thus it allows me to listen to what I actually wrote, and not what I think I wrote. It has given me additional confidence and generated increased capacity, as I am more secure in my work products and have the ability to get work done faster. There have been a few times since purchasing this product where I had to switch laptops, and for brief periods of time where I did not have access to the product, I was completely lost without the product on my laptop. I really have to say thank you and I cannot express enough the impact this product has had on my life. 
-         </div> 
-        </div> 
-        <!-- tabsInfo 09 END --> 
-        <div class="item"> 
-         <div class="personInfo clearfix"> 
-          <div class="phpto"> 
-           <img src="images/e_pic10.png" alt=""> 
-          </div> 
-          <div class="txt"> 
-           <p class="name">Herschel Knapp, Ph.D.</p> 
-           <p class="country">1426 Armacost Avenue #2 Los Angeles, CA 90025</p> 
-          </div> 
-         </div> 
-         <div class="explain">
-           I’ve been using Natural Reader for years; it is invaluable when it comes to proofreading my work. I’ve had multiple papers published in medical journals and I write academic textbooks; on one textbook, Natural Reader enabled me to catch more than 80 typos that eluded copy editors and proofreaders. Thanks to Natural Reader, the typos, which would have distracted the reader who is trying to comprehend a concept, are gone. 
-          <br> Natural Reader also helps with my dyslexia; if I invert, misplace, or leave out a word, it would be difficult for me to visually proofread that, however, when Natural Reader speaks, my typos stand out, and virtually scream for correction. 
-          <br> I also find Natural Reader useful for reading lengthy papers and e-mails. This is among the finest piece of software I own. 
-          <br> Herschel Knapp, Ph.D. 
-         </div> 
-        </div> 
-        <!-- tabsInfo 10 END --> 
-        <div class="item"> 
-         <div class="personInfo clearfix"> 
-          <div class="phpto"> 
-           <img src="images/e_pic11.png" alt=""> 
-          </div> 
-          <div class="txt"> 
-           <p class="name">Jim Bell Boise, Idaho.</p> 
-           <p class="country"></p> 
-          </div> 
-         </div> 
-         <div class="explain">
-           I am 72 year-old, a retired Animal Nutritionist and Farm Loan Adviser in the Financial Market. I live in Boise, Idaho. 
-          <br> After comparing to other products, I prefer to read and comprehend materials using NaturalReader for it is the only one that provide the functionality and capability that suits my needs. I have attended the Idaho State University Speech and Language Clinic for 10 consecutive semesters for treatment of expressive aphasia and apraxia following a leftbrain stroke. Auditory comprehension goals have been established to increase functional abilities which are enhanced by independently utilizing Natural Reader to access and promote understanding of selected reading materials through increased complexity of reading material and response tasks. 
-          <br> Further individual and group therapy is recommended to continue this progress. Therapy includes increasing complexity of reading material and auditory comprehension response modes. The use of Natural Reader software has been positive to assist in auditory comprehension, and to further my progress. 
-          <br> Portions of these endorsements and testimonial content have been taken from a Fall, 2012 progress report prepared by a graduate student in training at Idaho State University and approved by the Clinical Supervisor Beth Guryan, MS-CCC, SLP, LPC. 
-         </div> 
-        </div> 
-        <!-- tabsInfo 11 END --> 
-        <div class="item"> 
-         <div class="personInfo clearfix"> 
-          <div class="phpto"> 
-           <img src="images/e_pic12.png" alt=""> 
-          </div> 
-          <div class="txt"> 
-           <p class="name">Mohammed Y. Abu-Risha ATN-APTS Vice President for Education and Training</p> 
-           <p class="country"></p> 
-          </div> 
-         </div> 
-         <div class="explain">
-           Natural Reader software has made a great difference for my work as a freelance translator and editor. Before getting your software, I was always in trouble when trying to cross-check my translation with the original work. Natural Reader allows me to listen and concentrate on the written material and spared me the trouble of reading texts sentence by sentence, which is a very tedious and inefficient way of editing. But now it is different. I am at ease in detecting and correcting inaccuracies, which will render good translation pieces that meet the best of my clients' satisfaction. I strongly recommend translators to use your invaluable software. 
-         </div> 
-        </div> 
-        <!-- tabsInfo 12 END --> 
-        <div class="item"> 
-         <div class="personInfo clearfix"> 
-          <div class="phpto"> 
-           <img src="images/e_pic13.png" alt=""> 
-          </div> 
-          <div class="txt"> 
-           <p class="name">Anne Macnaughtan Astrologer, creator of Forecasters</p> 
-           <p class="country">Auckland, New Zealand</p> 
-          </div> 
-         </div> 
-         <div class="explain">
-           I heard about Natural Reader from a friend who uses it to proof read her Reports before sending them out. I downloaded a trial version and then almost immediately realised I had found one of the most valuable tools I had come across. I am an author, writing books as well as newspaper and website Horoscopes content for companies around the world and quality is essential for my business. While I have a proof reader who proof reads my content, I now use Natural Reader as the final step in the proofing process. There is nothing like hearing what you have written out loud and reading it myself I tend to see or read what I expect to see, missing mistakes. With Natural Reader I not only pick up any mistakes that have been missed, it gives me a good sense of the natural flow of what I have written. I can't recommend this highly enough. My son is a motoring journalist and I have even converted him to Natural Reader. 
-         </div> 
-        </div> 
-        <!-- tabsInfo 13 END --> 
-        <div class="item"> 
-         <div class="personInfo clearfix"> 
-          <div class="phpto"> 
-           <img src="images/e_pic14.png" alt=""> 
-          </div> 
-          <div class="txt"> 
-           <p class="name">Marcos Caceres</p> 
-           <p class="country">Brisbane, Australia</p> 
-          </div> 
-         </div> 
-         <div class="explain">
-           As a PhD student, I constantly use Natural Reader to read over my own writings, journal articles, websites, email, and even e-books. I've been using Natural Reader Software every day for almost two months. It is undoubtedly the most useful software I own. As a PhD student, I constantly use Natural Reader to read over my own writings, journal articles, websites, email, and even e-books. Natural Readers' voice-speed controls allow me to listen to written material much quicker than reading on my own, allowing me to get through more material per hour. 
-         </div> 
-        </div> 
-        <!-- tabsInfo 14 END --> 
-        <div class="item"> 
-         <div class="personInfo clearfix"> 
-          <div class="phpto"> 
-           <img src="images/e_pic15.png" alt=""> 
-          </div> 
-          <div class="txt"> 
-           <p class="name">Donna Brown Publicist</p> 
-           <p class="country">West Yorkshire, UK</p> 
-          </div> 
-         </div> 
-         <div class="explain">
-           Almost all of my work is online and in addition to that I run two websites. Some days my eyes just feel exhausted. I devour audiobooks but I'm also sent a lot of ebooks as I'm a reviewer. NaturalReader allows me to enjoy them without being glued to the screen or an eReader. I can enjoy the story and rest my eyes. I upgraded to a paid version because I was so impressed with the voices - it's made my reading experience so much easier. If I have a deadline for a review and I've been glued to a screen all day, I can still get a break this way. It's ideal. 
-         </div> 
-        </div> 
-        <!-- tabsInfo 15 END --> 
-        <div class="item"> 
-         <div class="personInfo clearfix"> 
-          <div class="phpto"> 
-           <img src="images/e_pic16.png" alt=""> 
-          </div> 
-          <div class="txt"> 
-           <p class="name">Joe Cardiff - Retired</p> 
-           <p class="country">Malvern UK Midlands</p> 
-          </div> 
-         </div> 
-         <div class="explain">
-           I am a 77 old retired Spinning Wheel Maker, with lots of big floaters in my left eye, making reading a problem. I now find that by using NaturalReader I can "Listen" to lots of ebooks, including the Thousands of free ebooks on Gutenberg. Which I can burn to a CD as an MP3 using your brilliant software.It allows you to listen while you are getting on with your gardening, walking, odd jobs, anything, one thing I forgot, The speech Quality is very good. Thank you NaturalReader and all your great staff. 
-         </div> 
-        </div> 
-        <!-- tabsInfo 16 END --> 
-        <div class="item"> 
-         <div class="personInfo clearfix"> 
-          <div class="phpto"> 
-           <img src="images/e_pic16.png" alt=""> 
-          </div> 
-          <div class="txt"> 
-           <p class="name">Andrew ShugyoDaijoBonnici, Ph.D.</p> 
-           <p class="country">Kamuela, Hawaii</p> 
-          </div> 
-         </div> 
-         <div class="explain">
-           I am a Core-Self Embodiment Trainer and Counselor with a Ph.D in Humanistic Psychology. 
-          <br> I have been using natural reader since 2007 and I would highly recommend it to anyone who works with writing, proofreading, editing, teaching, and publishing academic and empirical research. If you write novels or other works of fiction or non-fiction, natural reader would definitely help your craft. It would be tremendously helpful for students of any ages who can use a computer to express themselves and hear their written expression spoken back to them. It improves spelling, grammar, punctuation etc. Any professional who writes and publishes articles (research or otherwise) can benefit by employing natural reader. On top of all of these benefits, you can also turn all your text documents into audio mp3 files to play back when and where you wish. 
-          <br> with blessings and gratitude 
-          <br> 
-         </div> 
-        </div> 
-        <!-- tabsInfo 17 END --> 
-        <div class="item"> 
-         <div class="personInfo clearfix"> 
-          <div class="phpto"> 
-           <img src="images/e_pic18.png" alt=""> 
-          </div> 
-          <div class="txt"> 
-           <p class="name">Dees Retired Teacher/Tutor</p> 
-           <p class="country">Wilson, NC</p> 
-          </div> 
-         </div> 
-         <div class="explain">
-           When I first read something I have written, I always need to proof it to see if it reads the way I thought I had written it. Knowing this, I must read and reread several times to make sure I have written my thoughts correctly. My computer crashed and I have not yet been able to reinstall NaturalReader, my old standby. Since I correspond with some Japanese students I tutor in English, I always want my grammar to be accurate and NaturalReader makes me feel confident it is. 
-         </div> 
-        </div> 
-        <!-- tabsInfo 18 END --> 
-        <div class="item"> 
-         <div class="personInfo clearfix"> 
-          <div class="phpto"> 
-           <img src="images/e_pic19.png" alt=""> 
-          </div> 
-          <div class="txt"> 
-           <p class="name">Helen Anderson - Production Coordinator Embry-Riddle Aeronautical University —Worldwide</p> 
-           <p class="country">Daytona Beach, Fl</p> 
-          </div> 
-         </div> 
-         <div class="explain">
-           A friend told me about Natural Reader about five years ago and I became hooked. I LOVE NaturalReader. I help edit and sometimes co-author online courses developed by hundreds of professors. NaturalReader has cut my editing time in half! Now when I edit, I read as NaturalReader recites to me what is on the webpages. Mistakes are easily caught. Hearing NaturalReader enables me to listen for activities worded awkwardly so re-writes can be accomplished before publication. The reader also helps me to keep up with all the educational articles that are forwarded to me by colleagues. When will the NaturalReader IPAD app be coming out? 
-         </div> 
-        </div> 
-        <!-- tabsInfo 19 END --> 
-        <div class="item"> 
-         <div class="personInfo clearfix"> 
-          <div class="phpto"> 
-           <img src="images/e_pic20.png" alt=""> 
-          </div> 
-          <div class="txt"> 
-           <p class="name">Henrik Jensen Window Cleaner</p> 
-           <p class="country">Copenhagen, Denmark.</p> 
-          </div> 
-         </div> 
-         <div class="explain">
-           I cannot “live” without Natural Reader, the voices are so great and the product is super value to – something a normal income can handle. I use Natural Reader for my daily readings of: artikels, books, and webcontent. I have a simple work as a window cleaner, so Natural Reader help med educate my self while I work. No more bordom and tons of great stories, rigth into my ears, every day. I highly recommend this software to all who has a job thats not that interesting. 
-         </div> 
-        </div> 
-        <!-- tabsInfo 20 END --> 
-        <div class="item"> 
-         <div class="personInfo clearfix"> 
-          <div class="phpto"> 
-           <img src="images/e_pic21.png" alt=""> 
-          </div> 
-          <div class="txt"> 
-           <p class="name">Nasrin Beyraghdar PhD Graduate student</p> 
-           <p class="country">Santa Barbara, California</p> 
-          </div> 
-         </div> 
-         <div class="explain">
-           I am a bi-lingual graduate student. I found Natural Reader a great tool in helping me with my courses. Natural Reader allows me to make sure how correctly pronounce the words and enunciation. Certainly it has proven to be a great help for me. I also enjoy listening to the same text in American as well as British accented English. I highly recommend this product 
-         </div> 
-        </div> 
-        <!-- tabsInfo 21 END --> 
-        <div class="item"> 
-         <div class="personInfo clearfix"> 
-          <div class="phpto"> 
-           <img src="images/e_pic22.png" alt=""> 
-          </div> 
-          <div class="txt"> 
-           <p class="name">Rainer Autenrieth Event Manager TuaregRallye</p> 
-           <p class="country">Stuttgart, Germany</p> 
-          </div> 
-         </div> 
-         <div class="explain">
-           Normally it is not my way to spend my time to support any commercial product. But with NaturalReader I am so satisfied that I will do it for this Software. Organizing Rallye Events in Africa there is very less time each day. Normally no possibility to make actual Videos of the day. With NaturalReader it is possible. The software can be used very fast for comments on Videos. I save a lot of time and the result. Most people don’t record nice that this is a computer voice. With natural reader it is great fun to cut videos. 
-         </div> 
-        </div> 
-        <!-- tabsInfo 22 END --> 
-        <div class="item"> 
-         <div class="personInfo clearfix"> 
-          <div class="phpto"> 
-           <img src="images/e_pic23.png" alt=""> 
-          </div> 
-          <div class="txt"> 
-           <p class="name">Jean-Paul Déry</p> 
-           <p class="country">Chula Vista, CA</p> 
-          </div> 
-         </div> 
-         <div class="explain"> 
-          <p>My name is Jean-Paul Déry, I am a retired Computer Graphics Engineer with a huge mailing list. I live in Chula Vista, CA, and After the spell check, I always use the Natural Reader to “play back” my letters. The program clearly points out all of the words which may have been spelled correctly but are not appropriate. Such as the word, me, in place of the correct word, my, or them, instead of they, or words with missing letters like the instead of them or these, etc... The natural reader never fails to catch these errors which I myself may have over looked as well as my spell checker.</p> 
-          <p>Regards,</p> 
-         </div> 
-        </div> 
-        <!-- tabsInfo 23 END --> 
-        <div class="item"> 
-         <div class="personInfo clearfix"> 
-          <div class="phpto"> 
-           <img src="images/e_pic24.png" alt=""> 
-          </div> 
-          <div class="txt"> 
-           <p class="name">Victor Sanchez - Insurance Employee</p> 
-           <p class="country">Berlin , Germany</p> 
-          </div> 
-         </div> 
-         <div class="explain">
-           NATURAL READER is a great Software solution for many reasons. I use it with internet explorer to read over websites, journals articles, emails, blogs and ebooks in german, english and french. My wife and my daughter like to use it for school issues. We are really happy to have this software because is a nice tool for our life. 
-         </div> 
-        </div> 
-        <!-- tabsInfo 24 END --> 
-        <div class="item"> 
-         <div class="personInfo clearfix"> 
-          <div class="phpto"> 
-           <img src="images/e_pic25.png" alt=""> 
-          </div> 
-          <div class="txt"> 
-           <p class="name">Hamdi Nurcet Kalkan International trade adviser</p> 
-           <p class="country">Ankara / Turkey</p> 
-          </div> 
-         </div> 
-         <div class="explain"> 
-          <p>Hi, I am from Turkey. As an International trade adviser , so I developed my English by Naturalreader. </p> 
-          <p>I am able to listen and understand all English messages and news.</p> 
-          <p>Now I'm trying to develop my Arabic and Italian languages by NaturalReader.</p> 
-          <p>Thanks Naturalreader.</p> 
-         </div> 
-        </div> 
-        <!-- tabsInfo 25 END --> 
-        <div class="item"> 
-         <div class="personInfo clearfix"> 
-          <div class="phpto"> 
-           <img src="images/e_pic26.png" alt=""> 
-          </div> 
-          <div class="txt"> 
-           <p class="name">Ekmel Moran, Retired Space Planner,</p> 
-           <p class="country">Southampton, NY</p> 
-          </div> 
-         </div> 
-         <div class="explain">
-           Several years ago, I developed Macular Degeneration, which made reading very difficult, and then almost impossible. My son guided me to the software, which has opened up a whole new world for me as I can choose what I need to read, and let Natural Reader read it to me. It’s been an invaluable tool and I highly recommend it to anyone with vision issues. 
-         </div> 
-        </div> 
-        <!-- tabsInfo 26 END --> 
-        <div class="item"> 
-         <div class="personInfo clearfix"> 
-          <div class="phpto"> 
-           <img src="images/e_pic27.png" alt=""> 
-          </div> 
-          <div class="txt"> 
-           <p class="name">Sylvia Davidson Admin Assistant</p> 
-           <p class="country">Scottsdale, AZ</p> 
-          </div> 
-         </div> 
-         <div class="explain">
-           NaturalReader has been a tremendous help for me. I am not good a proof reading so I use NaturalReader throughout the day to help proof read my work. Also, sometimes it takes hearing what you have written from someone else, to know if it sounds right, NaturalReader is the perfect assistant for that. This has been my best buy of the year! 
-         </div> 
-        </div> 
-        <!-- tabsInfo 27 END --> 
-        <div class="item"> 
-         <div class="personInfo clearfix"> 
-          <div class="phpto"> 
-           <img src="images/e_pic28.png" alt=""> 
-          </div> 
-          <div class="txt"> 
-           <p class="name">Clifton TungateJr HVAC Service Technician</p> 
-           <p class="country">North Vernon</p> 
-          </div> 
-         </div> 
-         <div class="explain"> 
-          <p>I spent a lot of time looking for a text to speech program and I chose NaturalReader.</p> 
-          <p>Although I have been a HVAC service tech for 30 years I am also a webmaster of 4 sitesand currently working on animation with voice using NaturalReader and its working out great.It has many features I like.</p> 
-          <p>Sometimes I will highlight a text story or a new article and let NaturalReader read it to me.</p> 
-          <p>I simply love NaturalReader.I would recommend it to everyone looking for a text to speech program. </p> 
-         </div> 
-        </div> 
-        <!-- tabsInfo 28 END --> 
-        <div class="item"> 
-         <div class="personInfo clearfix"> 
-          <div class="phpto"> 
-           <img src="images/e_pic29.png" alt=""> 
-          </div> 
-          <div class="txt"> 
-           <p class="name">Robert Hauck, mathematician, developer of the new mathematical subject called Geonometry</p> 
-           <p class="country">San Martin CA</p> 
-          </div> 
-         </div> 
-         <div class="explain">
-           The achievement of Natural Speak is quite amazing. You have come a long way in making narration a reality. 
-         </div> 
-        </div> 
-        <!-- tabsInfo 29 END --> 
-        <div class="item"> 
-         <div class="personInfo clearfix"> 
-          <div class="phpto"> 
-           <img src="images/e_pic30.png" alt=""> 
-          </div> 
-          <div class="txt"> 
-           <p class="name">Akihiro Ryuka Japanese Patent Attorney</p> 
-           <p class="country">Tokyo, Japan</p> 
-          </div> 
-         </div> 
-         <div class="explain">
-           Natural reader is an excellent tool for memorizing key phrases of laws. By repeatedly listening to the phrases while gradually making it faster, I memorized various phrases on my way to work. Natural reader has changed my style of legal study. 
-         </div> 
-        </div> 
-        <!-- tabsInfo 30 END --> 
-        <div class="item"> 
-         <div class="personInfo clearfix"> 
-          <div class="phpto"> 
-           <img src="images/e_pic31.png" alt=""> 
-          </div> 
-          <div class="txt"> 
-           <p class="name">Gerardo Murillo Technical Consultant</p> 
-           <p class="country">Valbonne, France</p> 
-          </div> 
-         </div> 
-         <div class="explain"> 
-          <p>Natural reader has an amazing natural speaking quality. It is not just that the voice is not robotic: There are no disturbing clic and pop artifacts and intonation is such, that it is difficult to tell it is not a human speaking. Listening this speech is pleasant and relaxing. I don't even need to make any modification into the written text that in input to Natural Reader to get this astonishing quality.</p> 
-          <p>I convert my eBooks to MP3 (using Natural Reader) and then listen at night, when I close my eyes. Or whenever I can free my attention, but not my hands and my eyes.</p> 
-          <p>I have the English and French voice modules and have tested Spanish. I've found excellent voices from the large supplementary choice provided for each language. Gerardo Murillo Technical Consultant, Valbonne, France</p> 
-         </div> 
-        </div> 
-        <!-- tabsInfo 31 END --> 
-        <div class="item"> 
-         <div class="personInfo clearfix"> 
-          <div class="phpto"> 
-           <img src="images/e_pic32.png" alt=""> 
-          </div> 
-          <div class="txt"> 
-           <p class="name">Mick Snyder</p> 
-           <p class="country">Independence, MO</p> 
-          </div> 
-         </div> 
-         <div class="explain">
-           I am extremely pleased with my purchase of Natural Reader. I work nights and find it important to keep my mind occupied so I listen to audio books. I find the voices very listenable and "natural". The software itself is very easy to understand and use and the pronunciation editor is a great tool. Thanks so much I am seldom so enthusiastic about a software purchase. 
-         </div> 
-        </div> 
-        <!-- tabsInfo 32 END --> 
-        <div class="item"> 
-         <div class="personInfo clearfix"> 
-          <div class="phpto"> 
-           <img src="images/e_pic33.png" alt=""> 
-          </div> 
-          <div class="txt"> 
-           <p class="name">David Lim</p> 
-           <p class="country">Simgapore</p> 
-          </div> 
-         </div> 
-         <div class="explain">
-           NaturalReader has given another dimension in our business presentation and making it more professional and personal feel to our customers. Thanks to NaturalReader for making this possible and furthermore, it is so easy to use. 
-         </div> 
-        </div> 
-        <!-- tabsInfo 33 END --> 
-        <div class="item"> 
-         <div class="personInfo clearfix"> 
-          <div class="phpto"> 
-           <img src="images/e_pic34.png" alt=""> 
-          </div> 
-          <div class="txt"> 
-           <p class="name">Chuck Rollason</p> 
-           <p class="country">Dauphin, Pennsylvania</p> 
-          </div> 
-         </div> 
-         <div class="explain"> 
-          <p>Natural Reader is one of the best investments I've made this year! NaturalReader works great for my long commute. I can listen to many lengthy PDF files while I drive, much safer then reading them!! I use it with everything, my email, by browser, and online ebooks... I'm on one of my computers every day just about all day and my eyes gets very tired. Natural Reader is one of the best investments I've made this year!</p> 
-          <p>Thanks much.</p> 
-         </div> 
-        </div> 
-        <!-- tabsInfo 34 END --> 
-        <div class="item"> 
-         <div class="personInfo clearfix"> 
-          <div class="phpto"> 
-           <img src="images/e_pic35.png" alt=""> 
-          </div> 
-          <div class="txt"> 
-           <p class="name">Anne Croft</p> 
-           <p class="country">Peterborough UK</p> 
-          </div> 
-         </div> 
-         <div class="explain"> 
-          <p>I use it every day after work when I bring home a stack of word files to read Now I just relax on my sofa and listen to them read to me while I rest my eyes! Thanks.</p> 
-          <p>Natural Reader is great. No awful robotic voices anymore. I use it every day after work when I bring home a stack of word files to read Now I just relax on my sofa and listen to them read to me while I rest my eyes! Thanks</p> 
-         </div> 
-        </div> 
-        <!-- tabsInfo 35 END --> 
-        <div class="item"> 
-         <div class="personInfo clearfix"> 
-          <div class="phpto"> 
-           <img src="images/e_pic36.png" alt=""> 
-          </div> 
-          <div class="txt"> 
-           <p class="name">Ron Charron</p> 
-           <p class="country"></p> 
-          </div> 
-         </div> 
-         <div class="explain"> 
-          <p>With NaturalReader, I can now get through much of the material I had trouble finding time getting around to reading.</p> 
-          <p>My work requires that I go through many technical papers and books every week. After a full-day in front of a screen, my eyes get very tired. With NaturalReader, I can now get through much of the material I had trouble finding time getting around to reading. NaturalReader is having a significant impact on my professional readiness, and even reduces stress as I feel I'm being productive listening to books while sitting in traffic during my daily commute!"</p> 
-         </div> 
-        </div> 
-        <!-- tabsInfo 36 END --> 
-        <div class="item"> 
-         <div class="personInfo clearfix"> 
-          <div class="phpto"> 
-           <img src="images/e_pic37.png" alt=""> 
-          </div> 
-          <div class="txt"> 
-           <p class="name">Peter Grosvenor</p> 
-           <p class="country">Tasmania, Australia</p> 
-          </div> 
-         </div> 
-         <div class="explain"> 
-          <p>It was dead easy to install and it even works in Outlook Express (great for listening to emails)</p> 
-          <p>What an absolute pearler of a programme is Natural Reader.</p> 
-          <p>I have been searching for something exactly like this for over a year.</p> 
-         </div> 
-        </div> 
-        <!-- tabsInfo 37 END --> 
-        <div class="item"> 
-         <div class="personInfo clearfix"> 
-          <div class="phpto"> 
-           <img src="images/e_pic38.png" alt=""> 
-          </div> 
-          <div class="txt"> 
-           <p class="name">Lawrence Pang</p> 
-           <p class="country">PerthWestern Australia</p> 
-          </div> 
-         </div> 
-         <div class="explain">
-           It has helped me to spot mistakes that grammar and spell-check overlooked. I have gone back to full time studies and I use NaturalReader to proofread my essays. It has helped me to spot mistakes that grammar and spell-check overlooked. It also overcome the problem of reading it myself and unconsciously reading a word right when it should be wrong. I am happy with the product. 
-         </div> 
-        </div> 
-        <!-- tabsInfo 38 END --> 
-        <div class="item"> 
-         <div class="personInfo clearfix"> 
-          <div class="phpto"> 
-           <img src="images/e_pic39.png" alt=""> 
-          </div> 
-          <div class="txt"> 
-           <p class="name">Iain Stephen</p> 
-           <p class="country">Elgin</p> 
-          </div> 
-         </div> 
-         <div class="explain"> 
-          <p>It is also great for reading essays back to me, so I can hear what I wrote and my grammar.</p> 
-          <p>I am a student with a lot of reading and natural reader is great as it means I don't get eye strain and am not so tried as I was. It is also great for reading essays back to me, so I can hear what I wrote and my grammar.</p> 
-         </div> 
-        </div> 
-        <!-- tabsInfo 39 END --> 
-       </div> 
+    </div> 
+    <div class="col-md-6"> 
+     <div class="info-col"> 
+      <div class="list-tag">
+       LYRICS
+      </div> 
+      <div id="lyricBox" class="lyric-box"></div>
+      <br> 
+      <center>
+       <button style="width: 100%" class="btn btn-success" id="joinBtn">COMPOSE MELODY</button>
+      </center> 
+     </div> 
+    </div> 
+    <div class="col-md-12"> 
+     <div class="comment-section"> 
+      <div class="comment-tag">
+       <statnum id="commentCount">
+        0
+       </statnum> Comments
+      </div> 
+      <textarea class="form-control" id="commentContent" placeholder="add a comment"></textarea> 
+      <div style="text-align: right">
+       <button class="blue-btn" id="addComment">Comment</button>
+      </div> 
+      <div id="comments"></div> 
+      <div id="showMore" class="showMore">
+       <i class="material-icons"></i> Show More
       </div> 
      </div> 
     </div> 
    </div> 
-   <div class="footerContainer"> 
-    <div class="navbar"> 
-     <ul> 
-      <li> 
-       <div class="contactDiv hide">
-        Didn’t find the answer you’re looking for? 
-        <a href="#" onclick="messenger('showNewMessage')">Contact us</a> if you have any further questions.
-       </div> </li> 
-      <li> <a href="#" id="contactlink">Contact Us</a> </li> 
-      <li> <a href="#" id="policeslink">Polices</a> </li> 
-      <li> <a href="#" id="faqlink">FAQ</a> </li> 
-      <li> <a class="mobileHide" href="webreader.html" id="team6_10">Web Reader</a> </li> 
-     </ul> 
+   <div class="col-md-4"> 
+    <div class="list-tag">
+     <statnum id="totalSongs">
+      0
+     </statnum> OTHER SONGS
+    </div> 
+    <div class="sort-tag">
+      Sort by: 
+     <select id="sortingSelect"> <option value="2">participants (dec)</option> <option value="3">participants (inc)</option> <option value="1">title (dec)</option> <option value="0">title (inc)</option> <option value="4">completion (dec)</option> <option value="5">completion (inc)</option> </select> 
+    </div> 
+    <div id="songList" class="song-list"></div>
+    <br> 
+    <center>
+     <div id="songList-showMore" class="showMore">
+      <i class="material-icons"></i> Show More
+     </div>
+    </center> 
+   </div> 
+  </div> 
+  <div id="loginModal" class="modal"> 
+   <div class="modal-content" style="width: 340px; height: 500px"> 
+    <span class="close">×</span> 
+    <div class="login-div" style="font-family: 'Amita'; font-size: 24px; padding: 40px">
+     Welcome to Melodize
+    </div> 
+    <div class="login-div">
+     <input class="login-input" type="text" id="id" placeholder="ID">
+    </div> 
+    <div class="login-div">
+     <input class="login-input" type="password" id="pw" placeholder="Password">
+    </div> 
+    <div class="login-div" style="padding: 2px; color: red; display: none" id="warning_msg">
+     Wrong ID or Password
+    </div> 
+    <div class="login-div">
+     <button class="btn btn-default login-input" id="loginBtn">Sign in</button>
+    </div> 
+    <div class="login-div" style="padding: 2px">
+     Don't have an account? 
+     <a href="./signup.html">Sign up here</a>
     </div> 
    </div> 
   </div> 
-  <script src="js/jquery-1.12.3.min.js"></script> 
-  <script src="js/masonry.js"></script> 
-  <script src="js/jquery.jigowatt.js"></script> 
-  <script src="js/main-1.1.js"></script> 
-  <script src="js/exploring1.1.js?ver=1.3"></script> 
-  <script>
-        $(function () {
-            var thisId = window.location.hash;
-            var anchorVideo = $("#sendMessage");
-            if (thisId = "#sendMessage") {
-                var pos = anchorVideo.offset().top;
-                $("html, body").animate({ scrollTop: pos }, 3000);
-            }
-        });
-    </script> 
-  <script>
-        function IsPC() {
-            var userAgentInfo = navigator.userAgent;
-            var Agents = ["Android", "iPhone", "SymbianOS", "Windows Phone", "iPad", "iPod"];
-            var flag = true;
-            for (var v = 0; v < Agents.length; v++) {
-                if (userAgentInfo.indexOf(Agents[v]) > 0) {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
-
-        if (!IsPC()) {
-            $('.mobileHide').addClass('hide');
-        }
-    </script>  
+  <div id="passwordModal" class="modal"> 
+   <div class="modal-content" style="width: 340px; height: 200px"> 
+    <span class="close" id="close">×</span>
+    <br> 
+    <div class="login-div">
+     <input class="login-input" type="password" id="privatePw" placeholder="Password">
+    </div> 
+    <div class="login-div" id="warning_msg" style="padding: 2px; color: red; display: none">
+     Wrong Password
+    </div> 
+    <div class="login-div">
+     <button class="btn btn-default login-input" id="passwordBtn">Join</button>
+    </div> 
+   </div> 
+  </div> 
+  <script src="scripts/jquery/js/jquery-1.9.0.min.js"></script> 
+  <script src="scripts/jquery/js/jquery-ui-1.10.0.custom.min.js"></script> 
+  <script src="scripts/jquery/js/jquery-plugin.js"></script> 
+  <script src="https://www.gstatic.com/firebasejs/3.6.2/firebase.js"></script> 
+  <script src="scripts/login.js"></script> 
+  <script src="scripts/sound.js"></script> 
+  <script src="scripts/comment.js"></script> 
+  <script src="scripts/songInfo.js"></script>  
  </body>
 </html>
