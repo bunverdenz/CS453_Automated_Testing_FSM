@@ -23,6 +23,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.net.URL;
 import java.util.*;
 
@@ -40,60 +41,142 @@ public class Team6 {
      
      static ArrayList<String> drawStringList;
      
-     static String root = "https://melodize.github.io/";
+     public static String resource_folder_path = "C:/Users/aerol/OneDrive/Desktop/CS453_Automated_Testing_FSM/src/main/resources/";
+     
+     static String root = "";
      static String baseid = "team6_";
-     static int countid = 0; 
      static int nodeid = 0;
      
+     public static boolean mid1_done = false;
+     public static boolean mid2_done = false;
+     public static boolean mid3_done = false;
+     public static boolean done = false;
+     
     public static void main(String[] args) throws IOException, InterruptedException {
-       
-       //java.util.logging.Logger.getLogger("com.gargoylesoftware.htmlunit").setLevel(Level.OFF);
-       
-        // Reference for events: https://www.w3schools.com/tags/ref_eventattributes.asp
+       mainFunc("", "", "", "", "use");
+    }
+    
+    public static void mainFunc(String rootin, String idin, String pwin, String loginPagein, String console) throws IOException, InterruptedException {
+    	String use_console = console;
+    	
+    	root = rootin;
+    	String id = idin;
+    	String pwd = pwin;
+    	String loginpage = loginPagein;
+    	
+    	boolean auth = false;
+    	if(console.contentEquals("use")) {
+    		System.out.println("Please enter the address of your homepage.");
+            Scanner scanner = new Scanner(System.in);
+            root = scanner.nextLine();
 
-        final Collection<String> EVENTS = Arrays.asList(
-                "onchange","onfocus","onselect","onsubmit",
-                "onclick", "onmouseover", "ondbclick", "onwheel",
-                "onkeydown", "onkeypress", "onkeyup",
-                "ondrag","ondragend","ondrop","onscroll","ondragstart",
-                "onload","alert");
+            System.out.println("Do you have any log-in information?");
+            String Y = scanner.nextLine();
+            
+            id = "";
+            pwd = "";
+            loginpage = "";
+            if(Y.contentEquals("Y")) {
+               System.out.println("Please enter the address of the login page.");
+               loginpage = scanner.nextLine();
+               System.out.println("Please enter your username.");
+               id = scanner.nextLine();
+               System.out.println("Please enter your password.");
+               pwd = scanner.nextLine();
+               auth = true;
+            }
+    	}
+    	
+        
+         // Reference for events: https://www.w3schools.com/tags/ref_eventattributes.asp
 
-        //Document doc = Jsoup.parse(new File("C:/Users/chaec/Documents/GitHub/CS453_Automated_Testing_FSM/src/main/resources/test_base.html"), "utf-8", "https://www.example.com/");
-        //File file = new File("C:/Users/chaec/Documents/GitHub/CS453_Automated_Testing_FSM/src/main/resources/test_base.html");
-        //root = file.toURI().toURL().toString();
-        Document doc = (Document) Jsoup.connect(root).get();
-        Node home = new Node(doc.title(), doc.location());
-        fsm.add(home);
-        ArrayList<ArrayList> result = preprocess(doc);
-        ArrayList<String> elements = result.get(0);
-        ArrayList<ArrayList> edgeelements = result.get(1);
-        System.out.println(home.old);
-        java.util.logging.Logger.getLogger("com.gargoylesoftware.htmlunit").setLevel(Level.OFF);
-      
-        
-        addHTML(home);
-        WebClient webClient = new WebClient(BrowserVersion.CHROME);
-         webClient.getOptions().setThrowExceptionOnScriptError(false);
-        webClient.getOptions().setJavaScriptEnabled(true);
-        String url = home.getDoc(); 
-        
-        
-        
-        Node.printgraph(home);
-        Node.listPrintGraph(home);
-        
-        Node.graphreset(home);
-        //Node.getFile(root, fsm);
-        HtmlPage page = webClient.getPage(root);
-        //page = loginTest.processLogin("aerolane0302@gmail.com", "software123", page);
-        ArrayList<String> path = new ArrayList<String>();
-        Node.graphtraverse(home, home, page, path);
-        webClient.close();
-        Node.prereset(home);
-        Node.graphreset(home);
-        Node.printgraphafter(home);
-        
-        java.lang.System.exit(0);
+         final Collection<String> EVENTS = Arrays.asList(
+                 "onchange","onfocus","onselect","onsubmit",
+                 "onclick", "onmouseover", "ondbclick", "onwheel",
+                 "onkeydown", "onkeypress", "onkeyup",
+                 "ondrag","ondragend","ondrop","onscroll","ondragstart",
+                 "onload","alert");
+         
+         Document doc = (Document) Jsoup.connect(root).get();
+         Node home = new Node(doc.title(), doc.location());
+         fsm.add(home);
+         ArrayList<ArrayList> result = preprocess(doc);
+         ArrayList<String> elements = result.get(0);
+         ArrayList<ArrayList> edgeelements = result.get(1);
+         System.out.println(home.old);
+         java.util.logging.Logger.getLogger("com.gargoylesoftware.htmlunit").setLevel(Level.OFF);
+       
+         
+         addHTML(home);
+         WebClient webClient = new WebClient(BrowserVersion.CHROME);
+          webClient.getOptions().setThrowExceptionOnScriptError(false);
+         webClient.getOptions().setJavaScriptEnabled(true);
+         String url = home.getDoc(); 
+         
+         
+         
+         Node.printgraphstore(home);
+         
+         mid1_done = true;
+         
+         Node.listPrintGraph(home);
+         
+         Node.graphreset(home);
+         HtmlPage page = webClient.getPage(root);
+         if(auth) {
+            page = webClient.getPage(loginpage);
+            page = loginTest.processLogin(id, pwd, page);
+         }
+         ArrayList<String> path = new ArrayList<String>();
+         Node.graphtraverse(home, home, page, path);
+         webClient.close();
+         
+         mid2_done = true;
+         
+         Node.prereset(home);
+         Node.graphreset(home);
+         //Node.printgraphafterstore(home);
+         
+         mid3_done = true;
+         
+         Node.prereset(home);
+         Node.graphreset(home);
+         
+         
+         PrintWriter pw2 = new PrintWriter(resource_folder_path + "fsmPathDrawText.txt");
+  	    pw2.close();
+  	    pw2 = new PrintWriter(resource_folder_path + "fsmPathDrawText.txt");
+  	    
+  	    
+  	    
+  	    
+         int everyother = 0;
+         ArrayList<ArrayList<ArrayList<String>>> population = GA_Search.ga_search(home);
+         for(ArrayList<ArrayList<String>> a : population) {
+            for(ArrayList<String> b : a) {
+         	   everyother++;
+         	   if(everyother % 2 == 0) {
+         		   System.out.println("fedges");
+             	   pw2.print("\n");
+             	   pw2.print("fedges\n");
+         	   }else {
+         		   System.out.println("sedges");
+             	   pw2.print("\n");
+             	   pw2.print("sedges\n");
+         	   }
+         	   
+                for(String s : b) {
+             	   System.out.println(s);
+                    pw2.print(s + "\n");
+                }
+            }
+         }
+         //Greedy.greedy(home, fsm);
+         pw2.close();
+         
+         done = true;
+         
+         //java.lang.System.exit(0);
     }
     
     static <E> ArrayList<ArrayList> preprocess(Document doc) throws IOException, InterruptedException {
@@ -152,14 +235,18 @@ public class Team6 {
                    jses.add(att.getValue());
                    continue;
                 }
-                jses.add(root + att.getValue());
+                String temp = att.getValue();
+                if(temp.charAt(0) == '/') {
+                   temp = temp.substring(1);
+                }
+                jses.add(root + temp);
              }
           }
        }
        
        
        for(String js : jses) {
-          ArrayList<ArrayList> result = readJSTester.getJSInfo(js, "C:/Users/aerol/OneDrive/Desktop/CS453_Automated_Testing_FSM/src/main/resources/output.txt", modals);
+          ArrayList<ArrayList> result = readJSTester.getJSInfo(js, resource_folder_path + "output.txt", modals);
           
           //System.out.println(js);
           buttons.addAll(result.get(0));
@@ -246,10 +333,10 @@ public class Team6 {
                 int n = 0;
                 ArrayList<String[]> edges = new ArrayList<String[]>();
                 if(home.edges.size() > 0) {
-                	edges = home.edges.get(0);
+                   edges = home.edges.get(0);
                 }
                 for(int j = 0; j < edges.size(); j++) {
-                	  String[] edge1 = edges.get(j);
+                     String[] edge1 = edges.get(j);
 
                       Node node = home.out.get(n);
                       if(edge1[0].equals(button) &&node.getDoc().equals(out.getDoc()) || node.getTitle().contentEquals(out.getTitle())) {
@@ -267,7 +354,7 @@ public class Team6 {
                     fsm.add(out);
                  }
               }else if(arr[1].contains("show")){
-            	 System.out.println("what?");
+                System.out.println("what?");
                  if(arr[1].contentEquals("showc")){
                     edge[1] = "bc";
                  }
@@ -285,10 +372,10 @@ public class Team6 {
                 int n = 0;
                 ArrayList<String[]> edges = new ArrayList<String[]>();
                 if(home.edges.size() > 0) {
-                	edges = home.edges.get(0);
+                   edges = home.edges.get(0);
                 }
                 for(int j = 0; j < edges.size(); j++) {
-                	  String[] edge1 = edges.get(j);
+                     String[] edge1 = edges.get(j);
                       Node node = home.out.get(n);
                       if(edge1[0].equals(button) && node.getDoc().equals(out.getDoc()) || node.getTitle().contentEquals(out.getTitle())) {
                          found = true;
@@ -358,10 +445,10 @@ public class Team6 {
                 int n = 0;
                 ArrayList<String[]> edges = new ArrayList<String[]>();
                 if(home.edges.size() > 0) {
-                	edges = home.edges.get(0);
+                   edges = home.edges.get(0);
                 }
                 for(int k = 0; k < edges.size(); k++) {
-                	  String[] edge1 = edges.get(k);
+                     String[] edge1 = edges.get(k);
                       Node node = home.out.get(n);
                       if(edge1[0].equals(button) && node.getDoc().equals(out.getDoc()) || node.getTitle().contentEquals(out.getTitle())) {
                          found = true;
@@ -394,10 +481,10 @@ public class Team6 {
                 int n = 0;
                 ArrayList<String[]> edges = new ArrayList<String[]>();
                 if(home.edges.size() > 0) {
-                	edges = home.edges.get(0);
+                   edges = home.edges.get(0);
                 }
                 for(int k = 0; k < edges.size(); k++) {
-                	  String[] edge1 = edges.get(k);
+                     String[] edge1 = edges.get(k);
                       Node node = home.out.get(n);
                       if(edge1[0].equals(button) && node.getDoc().equals(out.getDoc()) || node.getTitle().contentEquals(out.getTitle())) {
                          found = true;
@@ -422,7 +509,6 @@ public class Team6 {
     static void getHTMLElements(Document doc, ArrayList<String> elements, ArrayList<String> compare, ArrayList<ArrayList> edgeelements, Node home) throws IOException {
        for(int i = 0; i < elements.size(); i++) {
            String button = elements.get(i);
-           System.out.println(button);
            String[] edge = {button, "bh"};
            if(edgeelements.size() == 0) {
               return;
@@ -471,10 +557,10 @@ public class Team6 {
                 int n = 0;
                 ArrayList<String[]> edges = new ArrayList<String[]>();
                 if(home.edges.size() > 0) {
-                	edges = home.edges.get(0);
+                   edges = home.edges.get(0);
                 }
                 for(int k = 0; k < edges.size(); k++) {
-                	  String[] edge1 = edges.get(k);
+                     String[] edge1 = edges.get(k);
                       Node node = home.out.get(n);
                       if(edge1[0].equals(button) &&node.getDoc().equals(out.getDoc()) || node.getTitle().contentEquals(out.getTitle())) {
                          found = true;
@@ -505,10 +591,10 @@ public class Team6 {
                 int n = 0;
                 ArrayList<String[]> edges = new ArrayList<String[]>();
                 if(home.edges.size() > 0) {
-                	edges = home.edges.get(0);
+                   edges = home.edges.get(0);
                 }
                 for(int k = 0; k < edges.size(); k++) {
-                	  String[] edge1 = edges.get(k);
+                     String[] edge1 = edges.get(k);
                       
                       Node node = home.out.get(n);
                       if(edge1[0].equals(button) && node.getDoc().equals(out.getDoc()) || node.getTitle().contentEquals(out.getTitle())) {
@@ -540,10 +626,10 @@ public class Team6 {
                 int n = 0;
                 ArrayList<String[]> edges = new ArrayList<String[]>();
                 if(home.edges.size() > 0) {
-                	edges = home.edges.get(0);
+                   edges = home.edges.get(0);
                 }
                 for(int k = 0; k < edges.size(); k++) {
-                	  String[] edge1 = edges.get(k);
+                     String[] edge1 = edges.get(k);
 
                       Node node = home.out.get(n);
                       if(edge1[0].equals(button) && node.getDoc().equals(out.getDoc()) || node.getTitle().contentEquals(out.getTitle())) {
@@ -570,7 +656,7 @@ public class Team6 {
             return;
          }
        node.old = true;
-       countid = 0;
+       int countid = 0;
        System.out.println("");
        System.out.println(node.getDoc());
          String url = node.getDoc();
@@ -620,7 +706,7 @@ public class Team6 {
            outputname = outputname.substring(0, ind) + nodeid;
         }
         
-        String fileName = "C:/Users/aerol/OneDrive/Desktop/CS453_Automated_Testing_FSM/src/main/resources/test" + nodeid + ".html";
+        String fileName = resource_folder_path + "test" + nodeid + ".html";
         BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(fileName), "utf-8"));
         
         int mod = 0;
@@ -648,8 +734,8 @@ public class Team6 {
                       continue;
                    }
                    if(e.id().contentEquals("")) {
-                      e.attr("id",baseid + "" + countid);
-                     countid++;
+                      e.attr("id",baseid + "" + nodeid + "_" + countid);
+                      countid++;
                   }
                    
                    Document doc2; 
@@ -670,10 +756,10 @@ public class Team6 {
                     int n = 0;
                     ArrayList<String[]> edges = new ArrayList<String[]>();
                     if(node.edges.size() > 0) {
-                    	edges = node.edges.get(0);
+                       edges = node.edges.get(0);
                     }
                     for(int j = 0; j < edges.size(); j++) {
-                    	  String[] edge1 = edges.get(j);
+                         String[] edge1 = edges.get(j);
                       Node node1 = node.out.get(n);
                       if(edge1[0].equals(e.id()) && node.getDoc().equals(out.getDoc()) || node.getTitle().contentEquals(out.getTitle())) {
                          dont = true;
@@ -727,7 +813,7 @@ public class Team6 {
        if(node.old) {
           return;
        }
-       countid = 0;
+       int countid = 0;
        System.out.println("");
        node.old = true;
        String url = node.getDoc();
@@ -767,7 +853,7 @@ public class Team6 {
         }
         getModalElements(doc, elements, compare, edgeelements, node);
         getHTMLElements(doc, elements1, compare, edgeelements1, node);
-        String fileName = "C:/Users/aerol/OneDrive/Desktop/CS453_Automated_Testing_FSM/src/main/resources/test" + nodeid + ".html";
+        String fileName = resource_folder_path + "test" + nodeid + ".html";
         BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(fileName), "utf-8"));
         for(Element e : modale.getAllElements()){
            boolean dont = false;
@@ -801,10 +887,10 @@ public class Team6 {
                  int n = 0;
                  ArrayList<String[]> edges = new ArrayList<String[]>();
                  if(node.edges.size() > 0) {
-                 	edges = node.edges.get(0);
+                    edges = node.edges.get(0);
                  }
                  for(int j = 0; j < edges.size(); j++) {
-                 	  String[] edge1 = edges.get(j);
+                      String[] edge1 = edges.get(j);
                       Node node1 = node.out.get(n);
                       if(edge1[0].equals(e.id()) && node.getDoc().equals(out.getDoc()) || node.getTitle().contentEquals(out.getTitle())) {
                          dont = true;

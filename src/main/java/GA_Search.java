@@ -5,7 +5,6 @@ import java.util.*;
     Population: {{'workBtn','e'},{'learnBtn','dud'},{'id','b'}}
     CreateRandomPop -> randomly swap the currentPop
     create numPopulation size of random pop
-
  */
 public class GA_Search {
     public static ArrayList<ArrayList<ArrayList<String>>> allPaths = new ArrayList<ArrayList<ArrayList<String>>>();
@@ -58,11 +57,8 @@ public class GA_Search {
             hierarchy :
             we should be able to follow the events (hierarchy), we can't click page 2 first be4 clicking page 1 which
             goes to page 2
-
             find fault by: search for bad list of events, i.e
-
             test coverage is : node 1 -> node 2 by edge 1. Does edge 1 actually bring us from node 1 -> node 2?
-
             we extract fsm by ourselves, we say this fsm is correct for sure
         ----------------------------------------------------------------------
             FITNESS = #of paths cover in this sequence of edges / # total paths
@@ -95,35 +91,7 @@ public class GA_Search {
 
         fitness = countPathTouch / allPathSize;
         return fitness;
-//        int countNodeTouch = 1, countEdgeTouch = 0;
-//        WebClient webClient = new WebClient((BrowserVersion.CHROME));
-//        webClient.getOptions().setThrowExceptionOnScriptError(false);
-//        webClient.getOptions().setJavaScriptEnabled(true);
-////        java.net.URL url = file.toURI().toURL();
-//        HtmlPage page = webClient.getPage("https://melodize.github.io/");
-//        HashSet<String> storeEdgeId = new HashSet<>();
-//        HashSet<String> storeNodeTitle = new HashSet<>();
-//        for (String[] edge: Population){
-////            .click.
-//            if(page.getElementById(edge[0]) != null) {
-//                HtmlPage pageResult = page.getElementById(edge[0]).click();
-//                System.out.println("CLICK SUCCESS");
-//                System.out.println(pageResult);
-//                String title = pageResult.getTitleText();
-//                if (!title.equals(page.getTitleText())) {
-//                    if(!storeEdgeId.contains(edge[0])){
-//                        countEdgeTouch++;
-//                        storeEdgeId.add(edge[0]);
-//                    }
-//                    if(!storeNodeTitle.contains(title)){
-//                        countNodeTouch++;
-//                        storeNodeTitle.add(title);
-//                    }
-//
-//                }
-//                page = pageResult;
-//            }
-//        }
+
 
     }
     public static void recur(Node node, ArrayList<ArrayList<String>> edges){

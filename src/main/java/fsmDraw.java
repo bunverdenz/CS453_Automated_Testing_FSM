@@ -3,7 +3,9 @@ import processing.data.*;
 import processing.event.*; 
 import processing.opengl.*; 
 
-import java.util.HashMap; 
+import java.util.HashMap;
+
+
 import java.util.ArrayList; 
 import java.io.File; 
 import java.io.BufferedReader; 
@@ -15,287 +17,466 @@ import java.io.IOException;
 public class fsmDraw extends PApplet {
 	
 	DirectedGraph g = new DirectedGraph();
-	ArrayList<String> graphStringList;
+	ArrayList<String> edgeStringList;
+	ArrayList<String> pathTextList;
+	ArrayList<Path> pathList;
+	ArrayList<GraphNode> nl;
 	
 	int NODE_RADIUS = 30;
 	int NODE_PADDING = 20;
 	
 	GraphNode fromClicked;
 	GraphNode toClicked;
+	GraphNode rootNode;
 	
+	int path_index = 0;
+	int timer = 0;
 	int clickCount = 0;
 	String printEdge = "no link";
 	int node_rad = 30;
 	
+	boolean info_input = false;
+	boolean running_main = false;
+	boolean running_ui = false;
+	
+	boolean explore_mode = true;
+	boolean path_toggle_mode = false;
+	boolean timer_mode = false;
+	
+	boolean ran_func = false;
+	
+	boolean edit_root = true;
+	boolean edit_id = false;
+	boolean edit_pw = false;
+	boolean edit_loginpage = false;
+	
+	String root = "";
+	String id = "";
+	String pw = "";
+	String loginPage = "";
 	
 	public void setup(){
-		graphStringList = new ArrayList<String>();
-		makeGraph();
+		info_input = true;
+		edgeStringList = new ArrayList<String>();
+		pathList = new ArrayList<Path>();
+		pathTextList = new ArrayList<String>();
+		
+		running_main = false;
+		running_ui = false;
+		
 	}
 	
 	public void draw(){
 		background(255);
 		
-		g.draw();
-		
-		textSize(24);
-		textAlign(CENTER, CENTER);
-		fill(255, 0, 100);
-		text(printEdge, width/2, 19*height/20);
-	}
-	
-	public void mousePressed(){
-		if(clickCount == 0){
-			for(int i = 0; i < g.getNodes().size(); i++){
-				if(g.getNodes().get(i).isOver(mouseX, mouseY)){
-					g.getNodes().get(i).firstClick();
-					fromClicked = g.getNodes().get(i);
-					
-					ArrayList<Edge> out = getOutGoingEdges(g, g.getNodes().get(i));
-					
-					for(Edge e: out){
-						e.click();
-					}
-					
-					clickCount++;
+		if(info_input) {
+			textSize(24);
+			textAlign(CENTER, CENTER);
+			
+			fill(0);
+			text("If no login info, leave blank", width/2, height/5);
+			
+			fill(0);
+			if(edit_root) fill(255, 0, 100);
+			text("root: ", width/3, 11*height/20);
+			fill(0);
+			text(root, width*2/3, 11*height/20);
+			
+			fill(0);
+			if(edit_id) fill(255, 0, 100);
+			text("id: ", width/3, 13*height/20);
+			fill(0);
+			text(id, width*2/3, 13*height/20);
+			
+			fill(0);
+			if(edit_pw) fill(255, 0, 100);
+			text("pw: ", width/3, 15*height/20);
+			fill(0);
+			text(pw, width*2/3, 15*height/20);
+			
+			fill(0);
+			if(edit_loginpage) fill(255, 0, 100);
+			text("login page: ", width/3, 17*height/20);
+			fill(0);
+			text(loginPage, width*2/3, 17*height/20);
+			
+		}else if(running_main) {
+			textSize(24);
+			textAlign(CENTER, CENTER);
+			fill(0);
+			
+			if(Team6.mid1_done) text("static parsing done", width/2, 13*height/20);
+			if(Team6.mid2_done) text("graph traverse done", width/2, 14*height/20);
+			if(Team6.mid3_done) text("graph reset-1 done", width/2, 15*height/20);
+			
+			text("building FSM please wait", width/2, 19*height/20);
+			
+			
+			if(ran_func == false) {
+				ran_func = true;
+				try {
+					Team6.mainFunc(root, id, pw, loginPage, "");
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
 			}
-		}else if(clickCount == 1){
-			for(int i = 0; i < g.getNodes().size(); i++){
-				if(g.getNodes().get(i).isOver(mouseX, mouseY)){
+			
+			if(Team6.done) {
+				running_main = false;
+				makeGraph();
+				running_ui = true;
+			}
+			
+			
+			
+			
+			/*
+			running_main = false;
+			makeGraph();
+			running_ui = true;
+			*/
+			
+		}else {
+			
+			if(explore_mode) {
+				g.draw();
+				
+				textSize(24);
+				textAlign(CENTER, CENTER);
+				fill(255, 0, 100);
+				text(printEdge, width/2, 19*height/20);
+			}else if(path_toggle_mode) {
+				g.draw();
+				
+				if(timer_mode) {
+					for(GraphNode n: g.getNodes()){
+						n.unclick();
+					}
 					
 					for(Edge e: g.getEdges()){
 						e.unclick();
 					}
 					
-					g.getNodes().get(i).secondClick();
-					toClicked = g.getNodes().get(i);
+					//GraphNode currentFrom = rootNode;
+					ArrayList<String> ndl = pathList.get(clickCount).getNDList();
+					ArrayList<String> edl = pathList.get(clickCount).getEDList();
 					
-					clickCount++;
-					
-					Edge fromEdgeList = getEdgeFromList(g, fromClicked, toClicked);
-					if(fromEdgeList != null){
-						fromEdgeList.click();
-						printEdge = fromEdgeList.getLabel();
+					if(ndl.size() > 0) {
+						if(millis() - timer > 500) {
+							timer = millis();
+							path_index++;
+							if(path_index >= ndl.size()-1) path_index = 0;
+						}
+						
+						for(Edge e: g.getEdges()){
+							if(e.getToNode().getLabel().equals(ndl.get(path_index)) && e.getLabel().equals(edl.get(path_index))){
+								e.click();
+								break;
+							}
+						}
 					}
-					
+				}
+				
+				
+				
+				
+				
+			}
+			
+		}
+		
+	}
+	
+	public void keyPressed() {
+		if(keyCode == CONTROL && path_toggle_mode) {
+			timer_mode = !timer_mode;
+		}
+		
+		if(keyCode == ALT) {
+			if(explore_mode) {
+				clickCount = 0;
+				
+				for(GraphNode n: g.getNodes()){
+					n.unclick();
+				}
+				
+				for(Edge e: g.getEdges()){
+					e.unclick();
+				}
+				
+				timer = millis();
+				
+				printEdge = "no link";
+				explore_mode = false;
+				path_toggle_mode = true;
+			}else if(path_toggle_mode) {
+				clickCount = 0;
+				
+				for(GraphNode n: g.getNodes()){
+					n.unclick();
+				}
+				
+				for(Edge e: g.getEdges()){
+					e.unclick();
+				}
+				
+				printEdge = "no link";
+				explore_mode = true;
+				path_toggle_mode = false;
+			}
+		}
+		
+		if(info_input) {
+			
+			if(key == CODED){
+				if (keyCode == UP){
+					if(edit_root) {
+						edit_root = true;
+					}else if (edit_id) {
+						edit_id = false;
+						edit_root = true;
+					}else if (edit_pw) {
+						edit_pw = false;
+						edit_id = true;
+					}else if (edit_loginpage) {
+						edit_loginpage = false;
+						edit_pw = true;
+					}
+				}	
+				if(keyCode == DOWN){
+					if (edit_root) {
+						edit_root = false;
+						edit_id = true;
+					}else if (edit_id) {
+						edit_id = false;
+						edit_pw = true;
+					}else if (edit_pw) {
+						edit_pw = false;
+						edit_loginpage = true;
+					}else if(edit_loginpage) {
+						edit_loginpage = true;
+					}
+				}
+			
+			}else {
+
+				if(edit_root) {
+					if(keyCode == BACKSPACE) {
+						if(root.length() > 0) {
+							root = root.substring(0, root.length()-1);
+						}
+					}else if(keyCode == ENTER) {
+						background(255);
+						textSize(24);
+						textAlign(CENTER, CENTER);
+						fill(255, 0, 100);
+						text("building FSM please wait", width/2, 19*height/20);
+						
+						info_input = false;
+						running_main = true;
+					}else if(keyCode != SHIFT && keyCode != CONTROL && keyCode != ALT) {
+						root = root + key;
+					}
+				}else if(edit_id) {
+					if(keyCode == BACKSPACE) {
+						if(id.length() > 0) {
+							id = id.substring(0, id.length()-1);
+						}
+					}else if(keyCode == ENTER) {
+						background(255);
+						textSize(24);
+						textAlign(CENTER, CENTER);
+						fill(255, 0, 100);
+						text("building FSM please wait", width/2, 19*height/20);
+						
+						info_input = false;
+						running_main = true;
+					}else if(keyCode != SHIFT && keyCode != CONTROL && keyCode != ALT) {
+						id = id + key;
+					}
+				}else if(edit_pw) {
+					if(keyCode == BACKSPACE) {
+						if(pw.length() > 0) {
+							pw = pw.substring(0, pw.length()-1);
+						}
+					}else if(keyCode == ENTER) {
+						background(255);
+						textSize(24);
+						textAlign(CENTER, CENTER);
+						fill(255, 0, 100);
+						text("building FSM please wait", width/2, 19*height/20);
+						
+						info_input = false;
+						running_main = true;
+					}else if(keyCode != SHIFT && keyCode != CONTROL && keyCode != ALT) {
+						pw = pw + key;
+					}
+				}else if(edit_loginpage) {
+					if(keyCode == BACKSPACE) {
+						if(loginPage.length() > 0) {
+							loginPage = loginPage.substring(0, loginPage.length()-1);
+						}
+					}else if(keyCode == ENTER) {
+						background(255);
+						textSize(24);
+						textAlign(CENTER, CENTER);
+						fill(255, 0, 100);
+						text("building FSM please wait", width/2, 19*height/20);
+						
+						info_input = false;
+						running_main = true;
+					}else if(keyCode != SHIFT && keyCode != CONTROL && keyCode != ALT) {
+						loginPage = loginPage + key;
+					}
 				}
 			}
-		}else{
-			for(GraphNode n: g.getNodes()){
-				n.unclick();
-			}
 			
-			for(Edge e: g.getEdges()){
-				e.unclick();
-			}
 			
-			printEdge = "no link";
-			clickCount = 0;
+			
 		}
 	}
 	
-	public void makeGraph(){
-		/*
-		GraphNode n1 = new GraphNode("1", NODE_RADIUS);
-		GraphNode n2 = new GraphNode("2", NODE_RADIUS);
-		GraphNode n3 = new GraphNode("3", NODE_RADIUS);
-		g.addNode(n1);
-		g.addNode(n2);
-		g.addNode(n3);
-		g.addEdge(new Edge(n1,n2, "n1 -> n2"));
-		g.addEdge(new Edge(n2,n3, "n2 -> n3"));
-		g.addEdge(new Edge(n1,n3, "n1 -> n3"));
-		*/
-		
-		//
-		//
-		/*
-		graphStringList = Team6.drawStringList; 
-		for(String s: graphStringList) {
-			System.out.println(s);
+	public void mousePressed(){
+		if(explore_mode) {
+			if(clickCount == 0){
+				for(int i = 0; i < g.getNodes().size(); i++){
+					if(g.getNodes().get(i).isOver(mouseX, mouseY)){
+						g.getNodes().get(i).firstClick();
+						fromClicked = g.getNodes().get(i);
+						
+						ArrayList<Edge> out = getOutGoingEdges(g, g.getNodes().get(i));
+						
+						for(Edge e: out){
+							e.click();
+						}
+						
+						clickCount++;
+					}
+				}
+			}else if(clickCount == 1){
+				for(int i = 0; i < g.getNodes().size(); i++){
+					if(g.getNodes().get(i).isOver(mouseX, mouseY)){
+						
+						for(Edge e: g.getEdges()){
+							e.unclick();
+						}
+						
+						g.getNodes().get(i).secondClick();
+						toClicked = g.getNodes().get(i);
+						
+						clickCount++;
+						
+						Edge fromEdgeList = getEdgeFromList(g, fromClicked, toClicked);
+						if(fromEdgeList != null){
+							fromEdgeList.click();
+							printEdge = fromEdgeList.getLabel();
+						}
+						
+					}
+				}
+			}else{
+				for(GraphNode n: g.getNodes()){
+					n.unclick();
+				}
+				
+				for(Edge e: g.getEdges()){
+					e.unclick();
+				}
+				
+				printEdge = "no link";
+				clickCount = 0;
+			}
+		}else if(path_toggle_mode) {
+			
+			if(clickCount >= pathList.size() - 2) clickCount = 0;
+			
+			path_index = 0;
+			timer = millis();
+			
+			if(!timer_mode) {
+				for(GraphNode n: g.getNodes()){
+					n.unclick();
+				}
+				
+				for(Edge e: g.getEdges()){
+					e.unclick();
+				}
+				
+				//GraphNode currentFrom = rootNode;
+				ArrayList<String> ndl = pathList.get(clickCount).getNDList();
+				ArrayList<String> edl = pathList.get(clickCount).getEDList();
+				for(int i = 0; i < ndl.size(); i++) {
+					
+					for(Edge e: g.getEdges()){
+						if(e.getToNode().getLabel().equals(ndl.get(i)) && e.getLabel().equals(edl.get(i))){
+							e.click();
+						}
+					}
+					
+					//if(getEdgeFromOutGoingEdges(g, currentFrom, s) != null) {
+					//	getEdgeFromOutGoingEdges(g, currentFrom, s).click();
+					//}
+					//if(getOutGoingNode(currentFrom, s) != null) {
+					//	currentFrom = getOutGoingNode(currentFrom, s);
+					//}
+					
+				}
+			}
+			
+			
+			
+			clickCount++;
 		}
-		*/
-		//
-		//
 		
-		//
-		//
-		//
-		graphStringList.add("fn: Melodize - Home");
-		graphStringList.add("ed: loginTab");
-		graphStringList.add("tn: loginModal");
-		graphStringList.add("ed: loginTab");
-		graphStringList.add("tn: Melodize - Home");
-		graphStringList.add("ed: requesterBtn");
-		graphStringList.add("tn: Melodize - Request");
-		graphStringList.add("ed: requesterBtn");
-		graphStringList.add("tn: loginModal");
-		graphStringList.add("ed: workerBtn");
-		graphStringList.add("tn: Melodize - Song List");
-		graphStringList.add("ed: learnBtn");
-		graphStringList.add("tn: Melodize - About");
-		graphStringList.add("ed: profileTab");
-		graphStringList.add("tn: Melodize - Profile");
-		graphStringList.add("ed: team6_0");
-		graphStringList.add("tn: Melodize - Gallery");
-		graphStringList.add("ed: team6_1");
-		graphStringList.add("tn: Melodize - Home");
+	}
+	
+	public void makeGraph(){
 		
-		graphStringList.add("fn: loginModal");
-		graphStringList.add("ed: loginBtn");
-		graphStringList.add("tn: Melodize - Home");
-		graphStringList.add("ed: team6_2");
-		graphStringList.add("tn: Melodize - Sign Up");
 		
-		graphStringList.add("fn: Melodize - Sign Up");
-		graphStringList.add("ed: loginTab");
-		graphStringList.add("tn: loginModal");
-		graphStringList.add("ed: loginTab");
-		graphStringList.add("tn: Melodize - Home");
-		graphStringList.add("ed: profileTab");
-		graphStringList.add("tn: Melodize - Profile");
-		graphStringList.add("ed: team6_3");
-		graphStringList.add("tn: Melodize - Gallery");
-		graphStringList.add("ed: team6_4");
-		graphStringList.add("tn: Melodize - Home");
-		
-		graphStringList.add("fn: Melodize - Home");
-		graphStringList.add("ed: loginTab");
-		graphStringList.add("tn: loginModal");
-		graphStringList.add("ed: loginTab");
-		graphStringList.add("tn: Melodize - Home");
-		graphStringList.add("ed: requesterBtn");
-		graphStringList.add("tn: Melodize - Request");
-		graphStringList.add("ed: requesterBtn");
-		graphStringList.add("tn: loginModal");
-		graphStringList.add("ed: workerBtn");
-		graphStringList.add("tn: Melodize - Song List");
-		graphStringList.add("ed: learnBtn");
-		graphStringList.add("tn: Melodize - About");
-		graphStringList.add("ed: profileTab");
-		graphStringList.add("tn: Melodize - Profile");
-		graphStringList.add("ed: team6_5");
-		graphStringList.add("tn: Melodize - Gallery");
-		graphStringList.add("ed: team6_6");
-		graphStringList.add("tn: Melodize - Home");
-		
-		graphStringList.add("fn: Melodize - Request");
-		graphStringList.add("ed: loginTab");
-		graphStringList.add("tn: loginModal");
-		graphStringList.add("ed: loginTab");
-		graphStringList.add("tn: Melodize - Home");
-		graphStringList.add("ed: profileTab");
-		graphStringList.add("tn: Melodize - Profile");
-		graphStringList.add("ed: team6_7");
-		graphStringList.add("tn: Melodize - Gallery");
-		graphStringList.add("ed: team6_8");
-		graphStringList.add("tn: Melodize - Home");
-		
-		graphStringList.add("fn: Melodize - Profile");
-		graphStringList.add("ed: loginTab");
-		graphStringList.add("tn: loginModal");
-		graphStringList.add("ed: loginTab");
-		graphStringList.add("tn: Melodize - Home");
-		graphStringList.add("ed: requesterBtn");
-		graphStringList.add("tn: Melodize - Request");
-		graphStringList.add("ed: workerBtn");
-		graphStringList.add("tn: Melodize - Song List");
-		graphStringList.add("ed: profileTab");
-		graphStringList.add("tn: Melodize - Profile");
-		graphStringList.add("ed: team6_9");
-		graphStringList.add("tn: Melodize - Gallery");
-		graphStringList.add("ed: team6_10");
-		graphStringList.add("tn: Melodize - Home");
-		
-		graphStringList.add("fn: Melodize - Song List");
-		graphStringList.add("ed: loginTab");
-		graphStringList.add("tn: loginModal");
-		graphStringList.add("ed: loginTab");
-		graphStringList.add("tn: Melodize - Home");
-		graphStringList.add("ed: addComment");
-		graphStringList.add("tn: loginModal");
-		graphStringList.add("ed: joinBtn");
-		graphStringList.add("tn: Melodize - Composing");
-		graphStringList.add("ed: joinBtn");
-		graphStringList.add("tn: passwordModal");
-		graphStringList.add("ed: joinBtn");
-		graphStringList.add("tn: loginModal");
-		graphStringList.add("ed: passwordBtn");
-		graphStringList.add("tn: Melodize - Composing");
-		graphStringList.add("ed: profileTab");
-		graphStringList.add("tn: Melodize - Profile");
-		graphStringList.add("ed: team6_11");
-		graphStringList.add("tn: Melodize - Gallery");
-		graphStringList.add("ed: team6_12");
-		graphStringList.add("tn: Melodize - Home");
-		
-		graphStringList.add("fn: Melodize - Composing");
-		graphStringList.add("ed: loginTab");
-		graphStringList.add("tn: loginModal");
-		graphStringList.add("ed: loginTab");
-		graphStringList.add("tn: Melodize - Home");
-		graphStringList.add("ed: profileTab");
-		graphStringList.add("tn: Melodize - Profile");
-		graphStringList.add("ed: team6_13");
-		graphStringList.add("tn: Melodize - Gallery");
-		graphStringList.add("ed: team6_14");
-		graphStringList.add("tn: Melodize - Home");
-		
-		graphStringList.add("fn: Melodize - Gallery");
-		graphStringList.add("ed: loginTab");
-		graphStringList.add("tn: loginModal");
-		graphStringList.add("ed: loginTab");
-		graphStringList.add("tn: Melodize - Home");
-		graphStringList.add("ed: profileTab");
-		graphStringList.add("tn: Melodize - Profile");
-		graphStringList.add("ed: team6_15");
-		graphStringList.add("tn: Melodize - Gallery");
-		graphStringList.add("ed: team6_16");
-		graphStringList.add("tn: Melodize - Home");
-		
-		graphStringList.add("fn: passwordModal");
-		graphStringList.add("ed: passwordBtn");
-		graphStringList.add("tn: Melodize - Composing");
-		graphStringList.add("ed: close");
-		graphStringList.add("tn: Melodize - Song List");
-		
-		graphStringList.add("fn: Melodize - About");
-		graphStringList.add("ed: loginTab");
-		graphStringList.add("tn: loginModal");
-		graphStringList.add("ed: loginTab");
-		graphStringList.add("tn: Melodize - Home");
-		graphStringList.add("ed: profileTab");
-		graphStringList.add("tn: Melodize - Profile");
-		graphStringList.add("ed: team6_17");
-		graphStringList.add("tn: Melodize - Gallery");
-		graphStringList.add("ed: team6_18");
-		graphStringList.add("tn: Melodize - Home");
-		//
-		//
-		//
+		String line;
+		BufferedReader reader = createReader(Team6.resource_folder_path + "fsmDrawText.txt");
+
+		try {
+		  while((line = reader.readLine()) != null) {
+			  edgeStringList.add(line);
+		  }
+		} catch (IOException e) {
+		  e.printStackTrace();
+		}
 		
 		
 		//
 		//
 		//
-		ArrayList<GraphNode> nl = new ArrayList<GraphNode>();
+		nl = new ArrayList<GraphNode>();
+		ArrayList<String> dupcheck = new ArrayList<String>();
 		
 		String from = "";
 		String to = "";
 		String edge = "";
 		
-		for(String s: graphStringList) {
+		for(String s: edgeStringList) {
+			if(s.length() == 0) continue;
 			if(s.substring(0, 3).equals("fn:")) {
-				nl.add(new GraphNode(s.substring(3), NODE_RADIUS));
+				if(!dupcheck.contains(s.substring(3))) {
+					nl.add(new GraphNode(s.substring(3), NODE_RADIUS));
+					dupcheck.add(s.substring(3));
+				}
 			}
 		}
+		
+		//rootNode = nl.get(0);
 		
 		for(GraphNode gn: nl) {
 			g.addNode(gn);
 		}
 		
-		for(String s: graphStringList) {
+		for(String s: edgeStringList) {
+			if(s.length() == 0) continue;
 			if(s.substring(0, 3).equals("fn:")) {
 				from = s.substring(3);
 				continue;
@@ -322,6 +503,78 @@ public class fsmDraw extends PApplet {
 			
 			g.getNodes().get(i).setPosition(width/2 + nc[0], height/2 + nc[1]);
 		}
+		
+		
+		
+		
+		
+		BufferedReader pathreader = createReader(Team6.resource_folder_path + "fsmPathDrawText.txt");
+		
+		try {
+		  while((line = pathreader.readLine()) != null) {
+			  pathTextList.add(line);
+		  }
+		} catch (IOException e) {
+		  e.printStackTrace();
+		}
+		
+		boolean save_to_ed = false;
+		ArrayList<String> ndl = new ArrayList<String>();
+		ArrayList<String> edl = new ArrayList<String>();
+		for(String s: pathTextList) {
+			if(s.length() == 0) continue;
+			if(s.length() == 6 && s.substring(0, 6).equals("fedges")) {
+				save_to_ed = true;
+				continue;
+			}else if(s.length() == 6 && s.substring(0, 6).equals("sedges")) {
+				save_to_ed = false;
+				pathList.add(new Path(edl, ndl));
+				ndl = new ArrayList<String>();
+				edl = new ArrayList<String>();
+				continue;
+			}else {
+				if(save_to_ed) edl.add(" " + s);
+				else ndl.add(" " + s);
+			}
+		}
+		
+		System.out.println("HERE IS THE PATHLIST");
+		
+		int n = 0;
+		
+		for(Path p: pathList) {
+			System.out.println();
+			System.out.println(n);
+			for(String s: p.getNDList()) {
+				System.out.println("node: " + s);
+			}
+			for(String s: p.getEDList()) {
+				System.out.println("edge: " + s);
+			}
+			n++;
+		}
+		
+		
+	}
+	
+
+	class Path{
+		ArrayList<String> edList;
+		ArrayList<String> ndList;
+		
+		Path(ArrayList<String> edList, ArrayList<String> ndList){
+			this.edList = edList;
+			this.ndList = ndList;
+		}
+		
+		ArrayList<String> getEDList(){
+			return edList;
+		}
+		
+		ArrayList<String> getNDList(){
+			return ndList;
+		}
+		
 	}
 	
 	class DirectedGraph{
@@ -407,7 +660,9 @@ public class fsmDraw extends PApplet {
 		
 		public void drawArrow(int x, int y, int ox, int oy){
 			strokeWeight(1);
-			if(clicked) strokeWeight(5);
+			if(clicked) {
+				strokeWeight(5);
+			}
 			
 			int dx = ox - x;
 			int dy = oy - y;
@@ -528,6 +783,16 @@ public class fsmDraw extends PApplet {
 		}
 	}
 	
+	public Edge getEdgeFromOutGoingEdges(DirectedGraph g, GraphNode from, String edgeLabel){
+		for(Edge e: g.getEdges()){
+			if(e.getFromNode().equals(from) && e.getLabel().equals(edgeLabel)){
+				return e;
+			}
+		}
+		
+		return null;
+	}
+	
 	public ArrayList<Edge> getOutGoingEdges(DirectedGraph g, GraphNode n){
 		ArrayList<Edge> result = new ArrayList<Edge>();
 		
@@ -538,6 +803,16 @@ public class fsmDraw extends PApplet {
 		}
 		
 		return result;
+	}
+	
+	public GraphNode getOutGoingNode(GraphNode node, String edgeLabel) {
+		
+		Edge e = getEdgeFromOutGoingEdges(g, node, edgeLabel);
+		
+		if(e != null) return e.getToNode();
+		
+		return null;
+		
 	}
 	
 	public ArrayList<Edge> getIncomingEdges(DirectedGraph g, GraphNode n){
@@ -599,7 +874,7 @@ public class fsmDraw extends PApplet {
 		return -1;
 	}
 	
-	public void settings() {  size(600,600); }
+	public void settings() {  size(1000,1000); }
 	static public void main(String[] passedArgs) {
 		String[] appletArgs = new String[] { "--present", "--window-color=#666666", "--stop-color=#cccccc", "fsmDraw" };
 		if (passedArgs != null) {

@@ -1,0 +1,134 @@
+
+fn: Melodize - Home
+ed: loginTab
+tn: loginModal
+ed: loginTab
+tn: Melodize - Home
+ed: requesterBtn
+tn: Melodize - Request
+ed: workerBtn
+tn: Melodize - Song List
+ed: learnBtn
+tn: Melodize - About
+ed: profileTab
+tn: Melodize - Profile
+ed: team6_0_0
+tn: Melodize - Gallery
+
+fn: loginModal
+ed: loginBtn
+tn: Melodize - Home
+ed: team6_0
+tn: Melodize - Sign Up
+
+fn: Melodize - Sign Up
+ed: loginTab
+tn: loginModal
+ed: loginTab
+tn: Melodize - Home
+ed: profileTab
+tn: Melodize - Profile
+ed: team6_2_0
+tn: Melodize - Gallery
+ed: team6_2_1
+tn: Melodize - Home
+
+fn: Melodize - Home
+ed: loginTab
+tn: loginModal
+ed: loginTab
+tn: Melodize - Home
+ed: requesterBtn
+tn: Melodize - Request
+ed: workerBtn
+tn: Melodize - Song List
+ed: learnBtn
+tn: Melodize - About
+ed: profileTab
+tn: Melodize - Profile
+ed: team6_3_0
+tn: Melodize - Gallery
+
+fn: Melodize - Request
+ed: loginTab
+tn: loginModal
+ed: loginTab
+tn: Melodize - Home
+ed: profileTab
+tn: Melodize - Profile
+ed: team6_4_0
+tn: Melodize - Gallery
+ed: team6_4_1
+tn: Melodize - Home
+
+fn: Melodize - Profile
+ed: loginTab
+tn: loginModal
+ed: loginTab
+tn: Melodize - Home
+ed: requesterBtn
+tn: Melodize - Request
+ed: workerBtn
+tn: Melodize - Song List
+ed: team6_5_0
+tn: Melodize - Gallery
+ed: team6_5_1
+tn: Melodize - Home
+
+fn: Melodize - Song List
+ed: loginTab
+tn: loginModal
+ed: loginTab
+tn: Melodize - Home
+ed: joinBtn
+tn: Melodize - Composing
+ed: joinBtn
+tn: passwordModal
+ed: passwordBtn
+tn: Melodize - Composing
+ed: profileTab
+tn: Melodize - Profile
+ed: team6_6_0
+tn: Melodize - Gallery
+ed: team6_6_1
+tn: Melodize - Home
+
+fn: Melodize - Composing
+ed: loginTab
+tn: loginModal
+ed: loginTab
+tn: Melodize - Home
+ed: profileTab
+tn: Melodize - Profile
+ed: team6_7_0
+tn: Melodize - Gallery
+ed: team6_7_1
+tn: Melodize - Home
+
+fn: Melodize - Gallery
+ed: loginTab
+tn: loginModal
+ed: loginTab
+tn: Melodize - Home
+ed: profileTab
+tn: Melodize - Profile
+ed: team6_8_1
+tn: Melodize - Home
+
+fn: passwordModal
+ed: passwordBtn
+tn: Melodize - Composing
+ed: close
+tn: Melodize - Song List
+
+fn: Melodize - About
+ed: loginTab
+tn: loginModal
+ed: loginTab
+tn: Melodize - Home
+ed: profileTab
+tn: Melodize - Profile
+ed: team6_10_0
+tn: Melodize - Gallery
+ed: team6_10_1
+tn: Melodize - Home
