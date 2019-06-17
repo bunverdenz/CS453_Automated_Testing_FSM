@@ -134,11 +134,11 @@ public class fsmDraw extends PApplet {
 			
 			
 			
-			/*
+			
 			running_main = false;
 			makeGraph();
 			running_ui = true;
-			*/
+			
 			
 		}else {
 			
@@ -169,11 +169,11 @@ public class fsmDraw extends PApplet {
 						if(millis() - timer > 500) {
 							timer = millis();
 							path_index++;
-							if(path_index >= ndl.size()-1) path_index = 0;
+							if(path_index >= ndl.size()-2) path_index = 0;
 						}
 						
 						for(Edge e: g.getEdges()){
-							if(e.getToNode().getLabel().equals(ndl.get(path_index)) && e.getLabel().equals(edl.get(path_index))){
+							if(e.getToNode().getLabel().equals(ndl.get(path_index+1)) && e.getFromNode().getLabel().equals(ndl.get(path_index))){
 								e.click();
 								break;
 							}
