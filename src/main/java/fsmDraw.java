@@ -411,9 +411,16 @@ public class fsmDraw extends PApplet {
 				ArrayList<String> edl = pathList.get(clickCount).getEDList();
 				for(int i = 0; i < ndl.size(); i++) {
 					
+					//for(Edge e: g.getEdges()){
+					//	if(e.getToNode().getLabel().equals(ndl.get(i)) && e.getLabel().equals(edl.get(i))){
+					//		e.click();
+					//	}
+					//}
+					
 					for(Edge e: g.getEdges()){
-						if(e.getToNode().getLabel().equals(ndl.get(i)) && e.getLabel().equals(edl.get(i))){
+						if(e.getToNode().getLabel().equals(ndl.get(path_index+1)) && e.getFromNode().getLabel().equals(ndl.get(path_index))){
 							e.click();
+							break;
 						}
 					}
 					
