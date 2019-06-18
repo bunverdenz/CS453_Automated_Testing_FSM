@@ -98,7 +98,7 @@ public class GA_Search {
             edges = [['title1','title2',...],['edge1','edge2',...]] means 'edge1' from 'title1' is one id of one edge
             NO SAME EDGE IN ONE PATH
          */
-    	if(limit > 10) {
+    	if(limit > 100) {
     		return;
     	}
         int i = 0;
