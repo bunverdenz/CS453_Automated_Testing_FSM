@@ -26,4 +26,3 @@ Navigating the UI:
 
 Testing of the tool done by running,
 - https://melodize.github.io/
-- https://coinse.kaist.ac.kr/
