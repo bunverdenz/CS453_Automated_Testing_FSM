@@ -9,41 +9,38 @@ import java.util.*;
 public class GA_Search {
     public static ArrayList<ArrayList<ArrayList<String>>> allPaths = new ArrayList<ArrayList<ArrayList<String>>>();
     public static ArrayList<ArrayList<String>> allEdges = new ArrayList<>();
+
     public static int maxLengthPath = -1;
-    public static void main(String[] args) throws IOException, InterruptedException {
-//        Team6 team6 = new Team6();
-        // run this somehow
-        //Team6.main();
-        System.out.println("-------------------------------------------------------------------------");
-        System.out.println("-------------------------------------------------------------------------");
-        System.out.println("-------------------------------------------------------------------------");
-        System.out.println("DONE FSM");
-        ArrayList<String[]> allEdges = new ArrayList<String[]>();
-        for(Node node: Team6.fsm){
-
-            //allEdges.addAll(node.edges);
-
-        }
-//        List<ArrayList<String[]>> result = ga_search(allEdges, Team6.fsm);
-//        System.out.println(result);
-    }
 
     public static ArrayList<ArrayList<String>> createRandomChromosome(){
         // length of chromosome == max length of path from all possible paths
         int totalSize = GA_Search.maxLengthPath;
-        ArrayList<ArrayList<String>> allEdgesList = (ArrayList<ArrayList<String>>) GA_Search.allEdges.clone();
-        ArrayList<ArrayList<String>> result = new ArrayList<>();
+        //deep copy
+        ArrayList<ArrayList<String>> allEdgesList = new ArrayList<>();
         ArrayList<String> titles = new ArrayList<>();
         ArrayList<String> edgesid = new ArrayList<>();
-        result.add(titles);
-        result.add(edgesid);
+        allEdgesList.add(titles);
+        allEdgesList.add(edgesid);
         int i;
-        for (i=0;i<totalSize;i++){
-            int randIndex = new Random().nextInt(allEdgesList.size());
+        for(i=0; i<GA_Search.allEdges.get(0).size();i++){
+            allEdgesList.get(0).add(GA_Search.allEdges.get(0).get(i));
+            allEdgesList.get(1).add(GA_Search.allEdges.get(1).get(i));
+        }
+        //finish deep copy
+        //ArrayList<ArrayList<String>> allEdgesList = (ArrayList<ArrayList<String>>) GA_Search.allEdges.clone();
+        ArrayList<ArrayList<String>> result = new ArrayList<>();
+        ArrayList<String> titles1 = new ArrayList<>();
+        ArrayList<String> edgesid1 = new ArrayList<>();
+        result.add(titles1);
+        result.add(edgesid1);
 
-            result.get(0).add(allEdgesList.get(randIndex).get(0));
-            result.get(1).add(allEdgesList.get(randIndex).get(1));
-            allEdgesList.remove(randIndex);
+        for (i=0;i<totalSize;i++){
+            int randIndex = new Random().nextInt(allEdgesList.get(0).size());
+
+            result.get(0).add(allEdgesList.get(0).get(randIndex));
+            result.get(1).add(allEdgesList.get(1).get(randIndex));
+            allEdgesList.get(0).remove(randIndex);
+            allEdgesList.get(1).remove(randIndex);
         }
 
         return result;
@@ -51,7 +48,7 @@ public class GA_Search {
 
     }
 
-    public static int findFitness(ArrayList<ArrayList<String>> chromosome) throws IOException {
+    public static double findFitness(ArrayList<ArrayList<String>> chromosome) throws IOException {
 
         /* find fault, test coverage
             hierarchy :
@@ -63,8 +60,8 @@ public class GA_Search {
         ----------------------------------------------------------------------
             FITNESS = #of paths cover in this sequence of edges / # total paths
         */
-        int countPathTouch = 0;
-        int fitness = 0;
+        double countPathTouch = 0.0;
+        double fitness = 0.0;
         int allPathSize = GA_Search.allPaths.size();
         int i;
         for (i=0; i<allPathSize;i++){
@@ -103,6 +100,18 @@ public class GA_Search {
          */
         int i = 0;
         boolean checkNoRecur = true;
+        //deep copy
+        ArrayList<ArrayList<String>> outEdge = new ArrayList<>();
+        ArrayList<String> titles = new ArrayList<>();
+        ArrayList<String> edgesid = new ArrayList<>();
+        outEdge.add(titles);
+        outEdge.add(edgesid);
+        for(i=0; i<edges.get(0).size();i++){
+            outEdge.get(0).add(edges.get(0).get(i));
+            outEdge.get(1).add(edges.get(1).get(i));
+        }
+        //finish deep copy
+        i = 0;
         for (Node n: node.out){
             ArrayList<ArrayList> edgesouts = node.edges;
             ArrayList<String[]> edgesout = edgesouts.get(i);
@@ -117,17 +126,41 @@ public class GA_Search {
             }
 
             if(!chkSameEdge){
+                //deep copy
                 ArrayList<ArrayList<String>> tempEdge = new ArrayList<>();
-                tempEdge = edges;
-                tempEdge.get(0).add(n.getTitle());
-                tempEdge.get(1).add(edgesout.get(0)[0]);
-                checkNoRecur = false;
-                ArrayList<String> oneEdge = new ArrayList<>();
-                //TODO: using Hashset might not distinguish different edge
-                oneEdge.add(n.getTitle());
-                oneEdge.add(edgesout.get(0)[0]);
-                GA_Search.allEdges.add(oneEdge);
-                recur(n,tempEdge);
+                ArrayList<String> titles1 = new ArrayList<>();
+                ArrayList<String> edgesid1 = new ArrayList<>();
+                tempEdge.add(titles1);
+                tempEdge.add(edgesid1);
+                int k = 0;
+                for(k=0; k<outEdge.get(0).size();k++){
+                    tempEdge.get(0).add(edges.get(0).get(k));
+                    tempEdge.get(1).add(edges.get(1).get(k));
+                }
+                //finish deep copy
+                if (!edgesout.get(0)[1].equals("dud")) {
+                    tempEdge.get(0).add(n.getTitle());
+                    tempEdge.get(1).add(edgesout.get(0)[0]);
+                    ArrayList<String> oneEdge = new ArrayList<>();
+//                    oneEdge.add(n.getTitle());
+//                    oneEdge.add(edgesout.get(0)[0]);
+                    boolean chkSameEdgeInAllEdges = false;
+                    int m = 0;
+                    for (String title: GA_Search.allEdges.get(0)){
+                        chkSameEdgeInAllEdges = title.equals(n.getTitle()) && GA_Search.allEdges.get(1).get(m).equals(edgesout.get(0)[0]);
+                        if(chkSameEdgeInAllEdges){
+                            break;
+                        }
+                        m++;
+                    }
+                    if(!chkSameEdgeInAllEdges){
+                        GA_Search.allEdges.get(0).add(n.getTitle());
+                        GA_Search.allEdges.get(1).add(edgesout.get(0)[0]);
+                    }
+                    checkNoRecur = false;
+                    recur(n,tempEdge);
+                }
+
             }
 
             i++;
@@ -137,7 +170,7 @@ public class GA_Search {
             if (GA_Search.maxLengthPath < edges.get(0).size()){
                 GA_Search.maxLengthPath = edges.get(0).size();
             }
-            GA_Search.allPaths.add(edges);
+            GA_Search.allPaths.add(outEdge);
         }
 
     }
@@ -147,23 +180,26 @@ public class GA_Search {
             I use Node.title as each node id
          */
 
-        int max = -1;
+        double max = -1;
         //ArrayList<String> newedges = new ArrayList<String>();
-        ArrayList<ArrayList<String>> edges = new ArrayList<>();
+        ArrayList<ArrayList<String>> Edges = new ArrayList<>();
         ArrayList<String> titles = new ArrayList<>();
         ArrayList<String> edgesid = new ArrayList<>();
-        edges.add(titles);
-        edges.add(edgesid);
-        recur(home, edges);
+        Edges.add(titles);
+        Edges.add(edgesid);
+        ArrayList<ArrayList<String>> Edges1 = new ArrayList<>();
+        ArrayList<String> titles0 = new ArrayList<>();
+        ArrayList<String> edgesid0 = new ArrayList<>();
+        GA_Search.allEdges.add(titles0);
+        GA_Search.allEdges.add(edgesid0);
+        recur(home, Edges);
         // NOW all paths will be in GA_Search.allPaths
-        //TODO: change numPop to adjust for GA_Search.allPaths.size() (the more size the more numPop)
-        // I use #of all possible paths * 10 ??
-        int numPopulation = GA_Search.allPaths.size() * 10;
+        int numPopulation = GA_Search.allPaths.size() + 200;
         int i, iter;
         Random randomGenerator = new Random();
         ArrayList<ArrayList<ArrayList<String>>> currentPopulation = new ArrayList<>();
 //        currentPopulation.add(listAllEdges);
-        for(iter = 0; iter < 100; iter++) {
+        for(iter = 0; iter < 2; iter++) {
             System.out.println("ITERATION" + iter);
             System.out.println("-------------------------------------------------------------------------");
 
@@ -172,9 +208,11 @@ public class GA_Search {
             while (currentPopulation.size() < numPopulation) {
                 currentPopulation.add(GA_Search.createRandomChromosome());
             }
+            System.out.println("BEST_FITNESS" + iter);
+            System.out.println("-------------------------------------------------------------------------");
             // Elitism find best fitness
             max = -100000000;
-            int fitness = -1, index = 0;
+            double fitness = -1, index = 0;
             ArrayList<ArrayList<String>> bestChromosome = new ArrayList<>();
             for(ArrayList<ArrayList<String>> chromosome: currentPopulation){
                 fitness = GA_Search.findFitness(chromosome);
@@ -192,7 +230,7 @@ public class GA_Search {
             // tournament selection with best rank from each 5 population -> 19 population we selected + 1 elite
             int j;
             Collections.shuffle(currentPopulation);
-            //TODO: tournament selection subtract by num all possible path ?
+            
             for(i=0; i<numPopulation; i+=5){
                 max = -100000000;
 
@@ -241,7 +279,18 @@ public class GA_Search {
             //Mutation
             System.out.println("MUTATION" + iter);
             System.out.println("-------------------------------------------------------------------------");
-            ArrayList<ArrayList<String>> allEdgesList = new ArrayList <> (GA_Search.allEdges);
+            //deep copy
+            ArrayList<ArrayList<String>> allEdgesList = new ArrayList<>();
+            ArrayList<String> titles2 = new ArrayList<>();
+            ArrayList<String> edgesid2 = new ArrayList<>();
+            allEdgesList.add(titles2);
+            allEdgesList.add(edgesid2);
+
+            for(i=0; i<GA_Search.allEdges.get(0).size();i++){
+                allEdgesList.get(0).add(GA_Search.allEdges.get(0).get(i));
+                allEdgesList.get(1).add(GA_Search.allEdges.get(1).get(i));
+            }
+            //finish deep copy
             double MutationChance = 0.02;
             for(i=0; i+1<tournamentSelection.size(); i++){
                 // Mutation rate
@@ -249,24 +298,84 @@ public class GA_Search {
                 if (randDouble > MutationChance) continue;
                 ArrayList<ArrayList<String>> parent = tournamentSelection.get(i);
 
-                int randomNum1 = randomGenerator.nextInt(allEdgesList.size());
-                int chkTitle = parent.get(0).indexOf(allEdgesList.get(randomNum1).get(0));
-                int chkEdgeId = parent.get(1).indexOf(allEdgesList.get(randomNum1).get(1));
+                int randomNum1 = randomGenerator.nextInt(allEdgesList.get(0).size());
+                int chkTitle = parent.get(0).indexOf(allEdgesList.get(0).get(randomNum1));
+                int chkEdgeId = parent.get(1).indexOf(allEdgesList.get(1).get(randomNum1));
                 // Parent already have that edge, we won't mutate into it in our parent
                 while(chkTitle==chkEdgeId){
-                    randomNum1 = randomGenerator.nextInt(allEdgesList.size());
-                    chkTitle = parent.get(0).indexOf(allEdgesList.get(randomNum1).get(0));
-                    chkEdgeId = parent.get(1).indexOf(allEdgesList.get(randomNum1).get(1));
+                    randomNum1 = randomGenerator.nextInt(allEdgesList.get(0).size());
+                    chkTitle = parent.get(0).indexOf(allEdgesList.get(0).get(randomNum1));
+                    chkEdgeId = parent.get(1).indexOf(allEdgesList.get(1).get(randomNum1));
                 }
                 int randomNum2 = randomGenerator.nextInt(parent.get(0).size());
                 ArrayList<ArrayList<String>> offspring = (ArrayList<ArrayList<String>>) parent.clone();
-                offspring.get(0).set(randomNum2, allEdgesList.get(randomNum1).get(0));
-                offspring.get(1).set(randomNum2, allEdgesList.get(randomNum1).get(1));
+                offspring.get(0).set(randomNum2, allEdgesList.get(0).get(randomNum1));
+                offspring.get(1).set(randomNum2, allEdgesList.get(1).get(randomNum1));
 //                offspring.set(randomNum1, parent2.get(randomNum2));
                 newGen.add(offspring);
             }
             currentPopulation = newGen;
         }
         return currentPopulation;
+    }
+    public static double coverage_percentage(ArrayList<ArrayList<ArrayList<String>>> currentPopulation){
+
+        double out = 0.0;
+        double countPathTouch = 0.0;
+        ArrayList<ArrayList<ArrayList<String>>> storePathFound = new ArrayList<>();
+        for(ArrayList<ArrayList<String>> chromosome: currentPopulation){
+
+            int allPathSize = GA_Search.allPaths.size();
+            int i;
+            for (i=0; i<allPathSize;i++){
+                int indexPop = 0, indexPath = 0;
+                while (indexPop < chromosome.get(0).size() && indexPath < GA_Search.allPaths.get(i).get(0).size()){
+                    // check same edge or not, then check next edge (2 pointers)
+
+                    boolean chkTitle = chromosome.get(0).get(indexPop).equals(GA_Search.allPaths.get(i).get(0).get(indexPath));
+                    boolean chkEdge = chromosome.get(1).get(indexPop).equals(GA_Search.allPaths.get(i).get(1).get(indexPath));
+                    if (chkTitle && chkEdge){
+                        // if same, move both
+                        indexPop++;
+                        indexPath++;
+                    }
+                    else {
+                        // if not same, move just Population (to check this path exist or not)
+                        indexPop++;
+                    }
+                }
+                boolean pathExist = indexPath == GA_Search.allPaths.get(i).get(0).size();
+                if (pathExist){
+
+                    //CHECK if GA_Search.allPaths.get(i) is already stored TO GET coverage percentage
+                    boolean chkNotFound = true;
+                    int countNotFound = 0;
+                    for(ArrayList<ArrayList<String>> path: storePathFound){
+                        int length = path.get(0).size();
+                        int i1;
+
+                        for(i1=0;i1<length;i1++){
+                            boolean chkTitle = path.get(0).get(i1).equals(GA_Search.allPaths.get(i).get(0).get(i1));
+                            boolean chkEdge = path.get(1).get(i1).equals(GA_Search.allPaths.get(i).get(1).get(i1));
+                            if(!(chkTitle && chkEdge)){
+                                countNotFound++;
+                                break;
+                            }
+                        }
+
+                    }
+                    if (countNotFound != storePathFound.size()){
+                        chkNotFound = false;
+                    }
+                    if(chkNotFound){
+                        countPathTouch++;
+                        //store the path we found
+                        storePathFound.add(GA_Search.allPaths.get(i));
+                    }
+                }
+            }
+        }
+        out = countPathTouch/GA_Search.allPaths.size();
+        return out;
     }
 }
