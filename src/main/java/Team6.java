@@ -39,6 +39,7 @@ public class Team6 {
     static int nodeid = 0;
     
     public static boolean done = false;
+    public static double gaRES;
     
     public static void main(String[] args) throws IOException, InterruptedException {
     	mainFunc("", "", "", "", "use");
@@ -154,6 +155,11 @@ public class Team6 {
          }
          //Greedy.greedy(home, fsm);
          pw2.close();
+         
+         System.out.println("————————————————————————");
+         System.out.println("GA Result: ");
+         gaRES = GA_Search.coverage_percentage(population);
+         System.out.println(gaRES);
          
          done = true;
          

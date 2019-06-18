@@ -163,8 +163,10 @@ public class fsmDraw extends PApplet {
 			}else if(path_toggle_mode) {
 				textSize(24);
 				textAlign(CENTER, CENTER);
+				fill(0);
+				text(Double.toString(Team6.gaRES), width/5, height/20);
 				fill(255, 0, 100);
-				text("Optimal Paths", width/2, height/20);
+				text("Optimal Paths", width*4/5, height/20);
 				
 				g.draw();
 				
@@ -200,7 +202,7 @@ public class fsmDraw extends PApplet {
 				textSize(24);
 				textAlign(CENTER, CENTER);
 				fill(255, 0, 100);
-				text("Path to Target Edges", width/2, height/20);
+				text("Path to Target Edges", width*4/5, height/20);
 				
 				g.draw();
 			}
