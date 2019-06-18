@@ -91,13 +91,16 @@ public class GA_Search {
 
 
     }
-    public static void recur(Node node, ArrayList<ArrayList<String>> edges){
+    public static void recur(Node node, ArrayList<ArrayList<String>> edges, int limit){
         /*
             I discard the case 1,8,5,3,8,... (loop, no same node in any path cuz too hard to handle all cases)
             I use edge id instead of node id
             edges = [['title1','title2',...],['edge1','edge2',...]] means 'edge1' from 'title1' is one id of one edge
             NO SAME EDGE IN ONE PATH
          */
+    	if(limit > 10) {
+    		return;
+    	}
         int i = 0;
         boolean checkNoRecur = true;
         //deep copy
@@ -158,7 +161,7 @@ public class GA_Search {
                         GA_Search.allEdges.get(1).add(edgesout.get(0)[0]);
                     }
                     checkNoRecur = false;
-                    recur(n,tempEdge);
+                    recur(n,tempEdge, i + 1);
                 }
 
             }
@@ -192,7 +195,7 @@ public class GA_Search {
         ArrayList<String> edgesid0 = new ArrayList<>();
         GA_Search.allEdges.add(titles0);
         GA_Search.allEdges.add(edgesid0);
-        recur(home, Edges);
+        recur(home, Edges, 0);
         // NOW all paths will be in GA_Search.allPaths
         int numPopulation = GA_Search.allPaths.size() + 200;
         int i, iter;
@@ -258,6 +261,7 @@ public class GA_Search {
                 ArrayList<ArrayList<String>> parent1 = tournamentSelection.get(i);
                 ArrayList<ArrayList<String>> parent2 = tournamentSelection.get(i+1);
                 // all parents have same length
+                if(parent1.size() < 1 || parent2.size() < 1) continue;
                 int Size = parent1.get(0).size();
 
                 int randomNum = randomGenerator.nextInt(Size);
@@ -297,7 +301,7 @@ public class GA_Search {
                 double randDouble = Math.random();
                 if (randDouble > MutationChance) continue;
                 ArrayList<ArrayList<String>> parent = tournamentSelection.get(i);
-
+                if(allEdgesList.size() < 1) continue;
                 int randomNum1 = randomGenerator.nextInt(allEdgesList.get(0).size());
                 int chkTitle = parent.get(0).indexOf(allEdgesList.get(0).get(randomNum1));
                 int chkEdgeId = parent.get(1).indexOf(allEdgesList.get(1).get(randomNum1));
