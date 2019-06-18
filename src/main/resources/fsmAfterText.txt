@@ -1,142 +1,331 @@
 
 fn: Melodize - Home
 ed: loginTab
+edt: bc
 tn: loginModal
+new path!
+////
 ed: loginTab
+edt: bc
 tn: Melodize - Home
+new path!
+////
 ed: requesterBtn
+edt: bc
 tn: Melodize - Request
+new path!
+////
 ed: workerBtn
+edt: b
 tn: Melodize - Song List
+new path!
+////
 ed: learnBtn
+edt: b
 tn: Melodize - About
+new path!
+////
 ed: profileTab
+edt: e
 tn: Melodize - Profile
+new path!
+////
 ed: team6_0_0
+edt: e
 tn: Melodize - Gallery
+new path!
+////
 ed: team6_0_1
+edt: e
 tn: Melodize - Home
+new path!
+////
 
 fn: loginModal
 ed: loginBtn
+edt: bc
 tn: Melodize - Home
+new path!
+////
 ed: team6_1_0
+edt: e
 tn: Melodize - Sign Up
+new path!
+////
 
 fn: Melodize - Sign Up
 ed: loginTab
+edt: bc
 tn: loginModal
+new path!
+loginTab
+////
 ed: loginTab
+edt: bc
 tn: Melodize - Home
+new path!
+////
 ed: profileTab
+edt: e
 tn: Melodize - Profile
+new path!
+////
 ed: team6_2_0
+edt: e
 tn: Melodize - Gallery
+new path!
+team6_2_0
+////
 ed: team6_2_1
+edt: e
 tn: Melodize - Home
+new path!
+team6_2_1
+////
 
 fn: Melodize - Home
 ed: loginTab
+edt: bc
 tn: loginModal
+new path!
+////
 ed: loginTab
+edt: bc
 tn: Melodize - Home
+new path!
+////
 ed: requesterBtn
+edt: bc
 tn: Melodize - Request
+new path!
+////
 ed: workerBtn
+edt: b
 tn: Melodize - Song List
+new path!
+////
 ed: learnBtn
+edt: b
 tn: Melodize - About
+new path!
+////
 ed: profileTab
+edt: e
 tn: Melodize - Profile
+new path!
+////
 ed: team6_3_0
+edt: e
 tn: Melodize - Gallery
+new path!
+////
 ed: team6_3_1
+edt: e
 tn: Melodize - Home
+new path!
+////
 
 fn: Melodize - Request
 ed: loginTab
+edt: bc
 tn: loginModal
+new path!
+////
 ed: loginTab
+edt: bc
 tn: Melodize - Home
+new path!
+////
 ed: profileTab
+edt: e
 tn: Melodize - Profile
+new path!
+////
 ed: team6_4_0
+edt: e
 tn: Melodize - Gallery
+new path!
+////
 ed: team6_4_1
+edt: e
 tn: Melodize - Home
+new path!
+////
 
 fn: Melodize - Profile
 ed: loginTab
+edt: bc
 tn: loginModal
+new path!
+////
 ed: loginTab
+edt: bc
 tn: Melodize - Home
+new path!
+////
 ed: requesterBtn
+edt: b
 tn: Melodize - Request
+new path!
+////
 ed: workerBtn
+edt: b
 tn: Melodize - Song List
+new path!
+////
 ed: profileTab
+edt: e
 tn: Melodize - Profile
+new path!
+////
 ed: team6_5_0
+edt: e
 tn: Melodize - Gallery
+new path!
+////
 ed: team6_5_1
+edt: e
 tn: Melodize - Home
+new path!
+////
 
 fn: Melodize - Song List
 ed: loginTab
+edt: bc
 tn: loginModal
+new path!
+////
 ed: loginTab
+edt: bc
 tn: Melodize - Home
+new path!
+////
 ed: joinBtn
+edt: bc
 tn: Melodize - Composing
+new path!
+////
 ed: joinBtn
+edt: bc
 tn: passwordModal
+new path!
+////
 ed: passwordBtn
+edt: b
 tn: Melodize - Composing
+new path!
+////
 ed: profileTab
+edt: e
 tn: Melodize - Profile
+new path!
+////
 ed: team6_6_0
+edt: e
 tn: Melodize - Gallery
+new path!
+////
 ed: team6_6_1
+edt: e
 tn: Melodize - Home
+new path!
+////
 
 fn: Melodize - Composing
 ed: loginTab
+edt: bc
 tn: loginModal
+new path!
+////
 ed: loginTab
+edt: bc
 tn: Melodize - Home
+new path!
+////
 ed: profileTab
+edt: e
 tn: Melodize - Profile
+new path!
+////
 ed: team6_7_0
+edt: e
 tn: Melodize - Gallery
+new path!
+////
 ed: team6_7_1
+edt: e
 tn: Melodize - Home
+new path!
+////
 
 fn: Melodize - Gallery
 ed: loginTab
+edt: bc
 tn: loginModal
+new path!
+team6_2_0
+loginTab
+////
 ed: loginTab
+edt: bc
 tn: Melodize - Home
+new path!
+////
 ed: profileTab
+edt: e
 tn: Melodize - Profile
+new path!
+////
 ed: team6_8_0
+edt: e
 tn: Melodize - Gallery
+new path!
+team6_2_0
+team6_8_0
+////
 ed: team6_8_1
+edt: e
 tn: Melodize - Home
+new path!
+team6_2_0
+team6_8_1
+////
 
 fn: passwordModal
 ed: passwordBtn
+edt: b
 tn: Melodize - Composing
+new path!
+////
 ed: close
+edt: b
 tn: Melodize - Song List
+new path!
+////
 
 fn: Melodize - About
 ed: loginTab
+edt: bc
 tn: loginModal
+new path!
+////
 ed: loginTab
+edt: bc
 tn: Melodize - Home
+new path!
+////
 ed: profileTab
+edt: e
 tn: Melodize - Profile
+new path!
+////
 ed: team6_10_0
+edt: e
 tn: Melodize - Gallery
+new path!
+////
 ed: team6_10_1
+edt: e
 tn: Melodize - Home
+new path!
+////

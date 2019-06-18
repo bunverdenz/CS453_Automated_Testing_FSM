@@ -19,18 +19,10 @@ import com.gargoylesoftware.htmlunit.html.HtmlPasswordInput;
 import com.gargoylesoftware.htmlunit.html.HtmlSubmitInput;
 import com.gargoylesoftware.htmlunit.html.HtmlTextInput;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
+import java.io.*;
 import java.net.URL;
 import java.util.*;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 
 // TODO: create new file/class for each function to organize the whole project
 public class Team6 {
@@ -47,16 +39,13 @@ public class Team6 {
      static String baseid = "team6_";
      static int nodeid = 0;
      
-     public static boolean mid1_done = false;
-     public static boolean mid2_done = false;
-     public static boolean mid3_done = false;
      public static boolean done = false;
      
     public static void main(String[] args) throws IOException, InterruptedException {
-       mainFunc("", "", "", "", "use");
+    	mainFunc("", "", "", "", "use");
     }
     
-    public static void mainFunc(String rootin, String idin, String pwin, String loginPagein, String console) throws IOException, InterruptedException {
+    public static void mainFunc(String rootin, String idin, String pwin, String loginPagein, String console) throws IOException, InterruptedException{
     	String use_console = console;
     	
     	root = rootin;
@@ -117,8 +106,6 @@ public class Team6 {
          
          Node.printgraphstore(home);
          
-         mid1_done = true;
-         
          Node.listPrintGraph(home);
          
          Node.graphreset(home);
@@ -131,25 +118,21 @@ public class Team6 {
          Node.graphtraverse(home, home, page, path);
          webClient.close();
          
-         mid2_done = true;
-         
          Node.prereset(home);
          Node.graphreset(home);
-         //Node.printgraphafterstore(home);
-         
-         mid3_done = true;
+         Node.printgraphafterstore(home);
          
          Node.prereset(home);
          Node.graphreset(home);
          
          
          PrintWriter pw2 = new PrintWriter(resource_folder_path + "fsmPathDrawText.txt");
-  	    pw2.close();
-  	    pw2 = new PrintWriter(resource_folder_path + "fsmPathDrawText.txt");
-  	    
-  	    
-  	    
-  	    
+  	     pw2.close();
+  	     pw2 = new PrintWriter(resource_folder_path + "fsmPathDrawText.txt");
+  	     
+  	     
+  	     
+  	     
          int everyother = 0;
          ArrayList<ArrayList<ArrayList<String>>> population = GA_Search.ga_search(home);
          for(ArrayList<ArrayList<String>> a : population) {
@@ -238,6 +221,9 @@ public class Team6 {
                 String temp = att.getValue();
                 if(temp.charAt(0) == '/') {
                    temp = temp.substring(1);
+                   if(temp.charAt(0) == '/') {
+                      temp = temp.substring(1);
+                   }
                 }
                 jses.add(root + temp);
              }
@@ -308,20 +294,41 @@ public class Team6 {
                  if(arr[1].contentEquals("hrefc")){
                     edge[1] = "bc";
                  }
-                 String link;
-                 if(arr[0].contains("\"")) {
-                    link = arr[0].substring(1, arr[0].length()-1);
-                    
-                 }else {
-                    link = arr[0];
+                 String alink = arr[0].substring(1, arr[0].length()-1);
+                 String blink = alink;
+                 if(alink.length() > 1 && alink.charAt(0) == '/') {
+                    alink = alink.substring(1);
+                    if(alink.length() > 1 && alink.charAt(0) == '/') {
+                        alink = alink.substring(1);
+                    }
                  }
-                 link = processhref(link);
+                 
+                 
+                 String link = processhref(blink);
                  if(link.contentEquals("-1")) {
+                    if(alink.contentEquals("#") || alink.contentEquals("")) {
+                       link = home.getDoc();
+                    }else {
+                       continue;
+                    }
+                    
+                 }
+                 Document doc2; 
+                 Node out;
+                 try {
+                   System.out.println(link);
+                    doc2 = Jsoup.connect(link).get();
+                    out = new Node(doc2.title(), link);
+                 }catch(Exception x) {
+                   try {
+                      String trylink = home.getDoc() + alink;
+                      System.out.println(trylink);
+                      doc2 = Jsoup.connect(trylink).get();
+                      out = new Node(doc2.title(), trylink);
+                   }catch(Exception y) {
                       continue;
-                   }
-                Document doc2 = Jsoup.connect(link).get();
-                Node out = new Node(doc2.title(), doc2.location());
-                                
+                   }    
+                 }
                 for(Node node : fsm) {
                      if(node.getDoc().contentEquals(out.getDoc())) {
                         out = node;
@@ -354,7 +361,6 @@ public class Team6 {
                     fsm.add(out);
                  }
               }else if(arr[1].contains("show")){
-                System.out.println("what?");
                  if(arr[1].contentEquals("showc")){
                     edge[1] = "bc";
                  }
@@ -419,20 +425,40 @@ public class Team6 {
                  if(arr[1].contentEquals("hrefc")){
                     edge[1] = "bc";
                  }
-                 String link;
-                 if(arr[0].contains("\"")) {
-                    link = arr[0].substring(1, arr[0].length()-1);
-                    
-                 }else {
-                    link = arr[0];
+                 String alink = arr[0].substring(1, arr[0].length()-1);
+                 String blink = alink;
+                 if(alink.length() > 1 && alink.charAt(0) == '/') {
+                    alink = alink.substring(1);
+                    if(alink.length() > 1 && alink.charAt(0) == '/') {
+                        alink = alink.substring(1);
+                    }
                  }
                  
-                 link = processhref(link);
+                 
+                 String link = processhref(blink);
                  if(link.contentEquals("-1")) {
+                    if(alink.contentEquals("#") || alink.contentEquals("")) {
+                       link = home.getDoc();
+                    }else {
+                       continue;
+                    }
+                    
+                 }
+                 Document doc2; 
+                 Node out;
+                 try {
+                    doc2 = Jsoup.connect(link).get();
+                    out = new Node(doc2.title(), link);
+                 }catch(Exception x) {
+                   try {
+                      String trylink = home.getDoc() + alink;
+                      System.out.println(trylink);
+                      doc2 = Jsoup.connect(trylink).get();
+                      out = new Node(doc2.title(), trylink);
+                   }catch(Exception y) {
                       continue;
-                   }
-                Document doc2 = Jsoup.connect(link).get();
-                Node out = new Node(doc2.title(), doc2.location());
+                   }    
+                 }
                             
                 for(Node node : fsm) {
                      if(node.getDoc().contentEquals(out.getDoc())) {
@@ -530,22 +556,41 @@ public class Team6 {
               String[] arr = edgeelement.get(j);
               boolean found = false;
               if(arr[1].contains("href")) {
-                 
-                 String link;
-                 if(arr[0].contains("\"")) {
-                    link = arr[0].substring(1, arr[0].length()-1);
+                    String alink = arr[0].substring(1, arr[0].length()-1);
+                    String blink = alink;
+                    if(alink.length() > 1 && alink.charAt(0) == '/') {
+                       alink = alink.substring(1);
+                       if(alink.length() > 1 && alink.charAt(0) == '/') {
+                           alink = alink.substring(1);
+                       }
+                    }
                     
-                 }else {
-                    link = arr[0];
-                 }
-                 
-                 link = processhref(link);
-                 if(link.contentEquals("-1")) {
-                      continue;
-                   }
-                Document doc2 = Jsoup.connect(link).get();
-                Node out = new Node(doc2.title(), doc2.location());
-                            
+                    
+                    String link = processhref(blink);
+                    if(link.contentEquals("-1")) {
+                       if(alink.contentEquals("#") || alink.contentEquals("")) {
+                          link = home.getDoc();
+                       }else {
+                          continue;
+                       }
+                       
+                    }
+                    Document doc2; 
+                    Node out;
+                    try {
+                       doc2 = Jsoup.connect(link).get();
+                       out = new Node(doc2.title(), link);
+                    }catch(Exception x) {
+                      try {
+                         String trylink = home.getDoc() + alink;
+                         System.out.println(trylink);
+                         doc2 = Jsoup.connect(trylink).get();
+                         out = new Node(doc2.title(), trylink);
+                      }catch(Exception y) {
+                         continue;
+                      }    
+                    }
+                           
                 for(Node node : fsm) {
                      if(node.getDoc().contentEquals(out.getDoc())) {
                         out = node;
@@ -630,7 +675,6 @@ public class Team6 {
                 }
                 for(int k = 0; k < edges.size(); k++) {
                      String[] edge1 = edges.get(k);
-
                       Node node = home.out.get(n);
                       if(edge1[0].equals(button) && node.getDoc().equals(out.getDoc()) || node.getTitle().contentEquals(out.getTitle())) {
                          found = true;
@@ -728,10 +772,28 @@ public class Team6 {
                 String attrKey = att.getKey();
                 String attrVal = att.getValue();
                 if(attrKey.contentEquals("href")) {
+                   String alink = e.attr("href");
+                   String blink = e.attr("href");
+                   if(alink.charAt(0) == '\"') {
+                      alink = alink.substring(1, alink.length()-1);
+                      blink = alink;
+                   }
+                   if(alink.length() > 1 && alink.charAt(0) == '/') {
+                      alink = alink.substring(1);
+                      if(alink.length() > 1 && alink.charAt(0) == '/') {
+                          alink = alink.substring(1);
+                      }
+                   }
                    
-                   String link = processhref(e.attr("href"));
+                   
+                   String link = processhref(blink);
                    if(link.contentEquals("-1")) {
-                      continue;
+                      if(alink.contentEquals("#") || alink.contentEquals("")) {
+                         link = node.getDoc();
+                      }else {
+                         continue;
+                      }
+                      
                    }
                    if(e.id().contentEquals("")) {
                       e.attr("id",baseid + "" + nodeid + "_" + countid);
@@ -739,16 +801,26 @@ public class Team6 {
                   }
                    
                    Document doc2; 
+                   Node out;
                    try {
+                     System.out.println(link);
                       doc2 = Jsoup.connect(link).get();
+                      out = new Node(doc2.title(), link);
                    }catch(Exception x) {
-                      countid--;
-                      continue;
+                     try {
+                        String trylink = node.getDoc() + alink;
+                        System.out.println(trylink);
+                        doc2 = Jsoup.connect(trylink).get();
+                        out = new Node(doc2.title(), trylink);
+                     }catch(Exception y) {
+                        countid--;
+                        continue;
+                     }    
                    }
                    boolean add = true;
-                    Node out = new Node(doc2.title(), link);
+                    
                     for(Node neighbors : fsm) {
-                     if(neighbors.getDoc().contentEquals(out.getDoc())) {
+                     if(neighbors.getDoc().contentEquals(out.getDoc()) || neighbors.getDoc().substring(0, neighbors.getDoc().length()-1).contentEquals(out.getDoc()) || out.getDoc().substring(0, out.getDoc().length()-1).contentEquals(neighbors.getDoc())) {
                         out = neighbors;
                         add = false;
                      }
@@ -761,7 +833,7 @@ public class Team6 {
                     for(int j = 0; j < edges.size(); j++) {
                          String[] edge1 = edges.get(j);
                       Node node1 = node.out.get(n);
-                      if(edge1[0].equals(e.id()) && node.getDoc().equals(out.getDoc()) || node.getTitle().contentEquals(out.getTitle())) {
+                      if(edge1[0].equals(e.id())) {
                          dont = true;
                       }
                       n++;
@@ -861,23 +933,57 @@ public class Team6 {
             String tag = e.tagName().toLowerCase();
             
             for(Attribute att : e.attributes().asList()){
+               dont = false;
                 String attrKey = att.getKey();
                 String attrVal = att.getValue();
                 if(attrKey.contentEquals("href")) {
                    
-                   String link = processhref(e.attr("href"));
-                   if(link.contentEquals("-1")) {
-                      continue;
-                   }
-                   if(e.id().contentEquals("")) {
-                       e.attr("id",baseid + "" + countid);
+                   String alink = e.attr("href");
+                   String blink = e.attr("href");
+                    if(alink.charAt(0) == '\"') {
+                       alink = alink.substring(1, alink.length()-1);
+                       blink = alink;
+                    }
+                    if(alink.length() > 1 && alink.charAt(0) == '/') {
+                       alink = alink.substring(1);
+                       if(alink.length() > 1 && alink.charAt(0) == '/') {
+                           alink = alink.substring(1);
+                       }
+                    }
+                    
+                    
+                    String link = processhref(blink);
+                    if(link.contentEquals("-1")) {
+                       if(alink.contentEquals("#") || alink.contentEquals("")) {
+                          link = node.getDoc();
+                       }else {
+                          continue;
+                       }
+                       
+                    }
+                    if(e.id().contentEquals("")) {
+                       e.attr("id",baseid + "" + nodeid + "_" + countid);
                        countid++;
-                  }else if(e.id().contains("team6_")) {
-                     continue;
-                  }
-                   Document doc2 = Jsoup.connect(link).get();
-                   boolean add = true;
-                    Node out = new Node(doc2.title(), link);
+                   }
+                    
+                    Document doc2; 
+                    Node out;
+                    try {
+                      System.out.println(link);
+                       doc2 = Jsoup.connect(link).get();
+                       out = new Node(doc2.title(), link);
+                    }catch(Exception x) {
+                      try {
+                         String trylink = node.getDoc() + alink;
+                         System.out.println(trylink);
+                         doc2 = Jsoup.connect(trylink).get();
+                         out = new Node(doc2.title(), trylink);
+                      }catch(Exception y) {
+                         countid--;
+                         continue;
+                      }    
+                    }
+                    boolean add = true;
                     for(Node neighbors : fsm) {
                      if(neighbors.getDoc().contentEquals(out.getDoc())) {
                         out = neighbors;
@@ -918,7 +1024,7 @@ public class Team6 {
                         fsm.add(out);
                      }
                   }
-                  dont = false;
+                  //dont = false;
                    }
                 }
             }

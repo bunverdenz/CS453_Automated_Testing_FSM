@@ -50,7 +50,9 @@ public class htmlUnitTester {
     	java.net.URL url = file.toURI().toURL();
     	HtmlPage page = webClient.getPage("https://melodize.github.io/");
     	
-    	
+    	HtmlElement learn = (HtmlElement) page.getElementById("learnBtn");
+    	HtmlPage p = learn.click();
+    	System.out.println(p);
   	    HtmlElement loginTab = (HtmlElement) page.getElementById("loginTab");
   	    HtmlPage modal = loginTab.click();
   	    HtmlTextInput id = (HtmlTextInput) modal.getByXPath("//input[@id='id']").get(0);

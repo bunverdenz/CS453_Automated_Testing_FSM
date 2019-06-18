@@ -19,7 +19,9 @@ public class fsmDraw extends PApplet {
 	DirectedGraph g = new DirectedGraph();
 	ArrayList<String> edgeStringList;
 	ArrayList<String> pathTextList;
+	ArrayList<String> targetTextList;
 	ArrayList<Path> pathList;
+	ArrayList<TargetPath> targetList;
 	ArrayList<GraphNode> nl;
 	
 	int NODE_RADIUS = 30;
@@ -40,6 +42,7 @@ public class fsmDraw extends PApplet {
 	boolean running_ui = false;
 	
 	boolean explore_mode = true;
+	boolean target_edge_mode = false;
 	boolean path_toggle_mode = false;
 	boolean timer_mode = false;
 	
@@ -60,6 +63,8 @@ public class fsmDraw extends PApplet {
 		edgeStringList = new ArrayList<String>();
 		pathList = new ArrayList<Path>();
 		pathTextList = new ArrayList<String>();
+		targetTextList = new ArrayList<String>();
+		targetList = new ArrayList<TargetPath>();
 		
 		running_main = false;
 		running_ui = false;
@@ -105,11 +110,8 @@ public class fsmDraw extends PApplet {
 			textAlign(CENTER, CENTER);
 			fill(0);
 			
-			if(Team6.mid1_done) text("static parsing done", width/2, 13*height/20);
-			if(Team6.mid2_done) text("graph traverse done", width/2, 14*height/20);
-			if(Team6.mid3_done) text("graph reset-1 done", width/2, 15*height/20);
-			
 			text("building FSM please wait", width/2, 19*height/20);
+			
 			
 			
 			if(ran_func == false) {
@@ -134,10 +136,9 @@ public class fsmDraw extends PApplet {
 			
 			
 			
-			
-			running_main = false;
-			makeGraph();
-			running_ui = true;
+			//running_main = false;
+			//makeGraph();
+			//running_ui = true;
 			
 			
 		}else {
@@ -150,6 +151,11 @@ public class fsmDraw extends PApplet {
 				fill(255, 0, 100);
 				text(printEdge, width/2, 19*height/20);
 			}else if(path_toggle_mode) {
+				textSize(24);
+				textAlign(CENTER, CENTER);
+				fill(255, 0, 100);
+				text("Optimal Paths", width/2, height/20);
+				
 				g.draw();
 				
 				if(timer_mode) {
@@ -180,13 +186,14 @@ public class fsmDraw extends PApplet {
 						}
 					}
 				}
+			}else if(target_edge_mode) {
+				textSize(24);
+				textAlign(CENTER, CENTER);
+				fill(255, 0, 100);
+				text("Path to Target Edges", width/2, height/20);
 				
-				
-				
-				
-				
+				g.draw();
 			}
-			
 		}
 		
 	}
@@ -213,7 +220,23 @@ public class fsmDraw extends PApplet {
 				printEdge = "no link";
 				explore_mode = false;
 				path_toggle_mode = true;
+				target_edge_mode = false;
 			}else if(path_toggle_mode) {
+				clickCount = 0;
+				
+				for(GraphNode n: g.getNodes()){
+					n.unclick();
+				}
+				
+				for(Edge e: g.getEdges()){
+					e.unclick();
+				}
+				
+				printEdge = "no link";
+				explore_mode = false;
+				path_toggle_mode = false;
+				target_edge_mode = true;
+			}else if(target_edge_mode) {
 				clickCount = 0;
 				
 				for(GraphNode n: g.getNodes()){
@@ -227,6 +250,7 @@ public class fsmDraw extends PApplet {
 				printEdge = "no link";
 				explore_mode = true;
 				path_toggle_mode = false;
+				target_edge_mode = false;
 			}
 		}
 		
@@ -246,7 +270,7 @@ public class fsmDraw extends PApplet {
 						edit_loginpage = false;
 						edit_pw = true;
 					}
-				}	
+				}
 				if(keyCode == DOWN){
 					if (edit_root) {
 						edit_root = false;
@@ -374,6 +398,7 @@ public class fsmDraw extends PApplet {
 						if(fromEdgeList != null){
 							fromEdgeList.click();
 							printEdge = fromEdgeList.getLabel();
+							if(fromEdgeList.isdud()) printEdge = "dud " + printEdge;
 						}
 						
 					}
@@ -406,35 +431,55 @@ public class fsmDraw extends PApplet {
 					e.unclick();
 				}
 				
-				//GraphNode currentFrom = rootNode;
 				ArrayList<String> ndl = pathList.get(clickCount).getNDList();
 				ArrayList<String> edl = pathList.get(clickCount).getEDList();
-				for(int i = 0; i < ndl.size(); i++) {
-					
-					//for(Edge e: g.getEdges()){
-					//	if(e.getToNode().getLabel().equals(ndl.get(i)) && e.getLabel().equals(edl.get(i))){
-					//		e.click();
-					//	}
-					//}
+				for(int i = 0; i < ndl.size()-1; i++) {
 					
 					for(Edge e: g.getEdges()){
-						if(e.getToNode().getLabel().equals(ndl.get(path_index+1)) && e.getFromNode().getLabel().equals(ndl.get(path_index))){
+						if(e.getToNode().getLabel().equals(ndl.get(i+1)) && e.getFromNode().getLabel().equals(ndl.get(i))){
 							e.click();
 							break;
 						}
 					}
 					
-					//if(getEdgeFromOutGoingEdges(g, currentFrom, s) != null) {
-					//	getEdgeFromOutGoingEdges(g, currentFrom, s).click();
-					//}
-					//if(getOutGoingNode(currentFrom, s) != null) {
-					//	currentFrom = getOutGoingNode(currentFrom, s);
-					//}
-					
 				}
 			}
 			
 			
+			
+			clickCount++;
+		}else if(target_edge_mode) {
+			if(clickCount > targetList.size() - 2) clickCount = 0;
+			
+			for(GraphNode n: g.getNodes()){
+				n.unclick();
+			}
+			
+			for(Edge e: g.getEdges()){
+				e.unclick();
+			}
+			
+			while(targetList.get(clickCount).getEDT().contentEquals(" dud") && clickCount <= targetList.size()) clickCount++;
+			
+			
+			GraphNode currentFrom = rootNode;
+			
+			for(String s: targetList.get(clickCount).getNewPath()) {
+				if(getEdgeFromOutGoingEdges(g, currentFrom, s) != null) {
+					getEdgeFromOutGoingEdges(g, currentFrom, s).click();
+				}
+				if(getOutGoingNode(currentFrom, s) != null) {
+					currentFrom = getOutGoingNode(currentFrom, s);
+				}
+			}
+			
+			getEdgeFromList(g, nl.get(findGraphNode(targetList.get(clickCount).getTargetFrom(), nl)), nl.get(findGraphNode(targetList.get(clickCount).getTargetTo(), nl))).click();
+			
+			for(Edge e: g.getEdges()){
+				if(e.getFromNode().equals(rootNode) && e.getLabel().equals(targetList.get(clickCount).getED())){
+					e.click();
+				}
+			}
 			
 			clickCount++;
 		}
@@ -445,7 +490,7 @@ public class fsmDraw extends PApplet {
 		
 		
 		String line;
-		BufferedReader reader = createReader(Team6.resource_folder_path + "fsmDrawText.txt");
+		BufferedReader reader = createReader(Team6.resource_folder_path + "fsmAfterText.txt");
 
 		try {
 		  while((line = reader.readLine()) != null) {
@@ -465,6 +510,7 @@ public class fsmDraw extends PApplet {
 		String from = "";
 		String to = "";
 		String edge = "";
+		boolean dud = false;
 		
 		for(String s: edgeStringList) {
 			if(s.length() == 0) continue;
@@ -476,7 +522,7 @@ public class fsmDraw extends PApplet {
 			}
 		}
 		
-		//rootNode = nl.get(0);
+		rootNode = nl.get(0);
 		
 		for(GraphNode gn: nl) {
 			g.addNode(gn);
@@ -484,18 +530,24 @@ public class fsmDraw extends PApplet {
 		
 		for(String s: edgeStringList) {
 			if(s.length() == 0) continue;
+			if(s.substring(0, 3).equals("new")) continue;
+			if(s.substring(0, 3).equals("///")) continue;
 			if(s.substring(0, 3).equals("fn:")) {
 				from = s.substring(3);
 				continue;
 			}else if(s.substring(0, 3).equals("ed:")){
 				edge = s.substring(3);
+			}else if(s.substring(0, 3).equals("edt")){
+				if(s.contains("dud")) dud = true;
+				else dud = false;
 			}else{
 				to = s.substring(3);
+				if(findGraphNode(from, nl) >= 0 && findGraphNode(to, nl) >= 0){
+					g.addEdge(new Edge(nl.get(findGraphNode(from, nl)), nl.get(findGraphNode(to, nl)), edge, dud));
+				}
 			}
 			
-			if(findGraphNode(from, nl) >= 0 && findGraphNode(to, nl) >= 0){
-				g.addEdge(new Edge(nl.get(findGraphNode(from, nl)), nl.get(findGraphNode(to, nl)), edge));
-			}
+			
 		}
 		//
 		//
@@ -562,6 +614,62 @@ public class fsmDraw extends PApplet {
 		}
 		
 		
+		
+		
+		
+		
+		
+		
+		
+		BufferedReader targetreader = createReader(Team6.resource_folder_path + "fsmAfterText.txt");
+		
+		try {
+		  while((line = targetreader.readLine()) != null) {
+			  targetTextList.add(line);
+		  }
+		} catch (IOException e) {
+		  e.printStackTrace();
+		}
+		
+		String edgeT = "";
+		ArrayList<String> newpath = new ArrayList<String>();
+		for(String s: targetTextList) {
+			if(s.length() == 0) continue;
+			if(s.substring(0, 3).equals("fn:")) {
+				from = s.substring(3);
+				continue;
+			}else if(s.substring(0, 3).equals("new")) {
+				continue;
+			}else if(s.substring(0, 3).equals("edt")) {
+				edgeT = s.substring(4);
+			}else if(s.substring(0, 3).equals("ed:")) {
+				edge = s.substring(3);
+			}else if(s.substring(0, 3).equals("tn:")){
+				to = s.substring(3);
+			}else if(s.substring(0, 3).equals("///")){
+				targetList.add(new TargetPath(newpath, from, to, edge, edgeT));
+				newpath = new ArrayList<String>();
+			}else {
+				newpath.add(s);
+			}
+		}
+		
+		System.out.println("HERE IS THE TARGETLIST");
+		
+		n = 0;
+		
+		for(TargetPath p: targetList) {
+			System.out.println();
+			System.out.println(n);
+			System.out.println("from: " + p.getTargetFrom());
+			System.out.println(" ed : " + p.getED());
+			System.out.println(" edt: " + p.getEDT());
+			System.out.println(" to : " + p.getTargetTo());
+			for(String s: p.getNewPath()) {
+				System.out.println(" np : " + s);
+			}
+			n++;
+		}
 	}
 	
 
@@ -582,6 +690,42 @@ public class fsmDraw extends PApplet {
 			return ndList;
 		}
 		
+	}
+	
+	class TargetPath{
+		ArrayList<String> newPath;
+		String targetFrom;
+		String targetTo;
+		String ed;
+		String edt;
+		
+		TargetPath(ArrayList<String> newPath, String targetFrom, String targetTo, String ed, String edt){
+			this.newPath = newPath;
+			this.targetFrom = targetFrom;
+			this.targetTo = targetTo;
+			this.ed = ed;
+			this.edt = edt;
+		}
+		
+		ArrayList<String> getNewPath(){
+			return newPath;
+		}
+		
+		String getTargetFrom() {
+			return targetFrom;
+		}
+		
+		String getTargetTo() {
+			return targetTo;
+		}
+		
+		String getED() {
+			return ed;
+		}
+		
+		String getEDT() {
+			return edt;
+		}
 	}
 	
 	class DirectedGraph{
@@ -631,14 +775,16 @@ public class fsmDraw extends PApplet {
 		GraphNode to;
 		String label;
 		boolean clicked;
+		boolean dud;
 		
 		int[] arrowhead = {0, -4, 0, 4, 7, 0};
 		
-		Edge(GraphNode from, GraphNode to, String label){
+		Edge(GraphNode from, GraphNode to, String label, boolean dud){
 			this.from = from;
 			this.to = to;
 			this.label = label;
 			clicked = false;
+			this.dud = dud;
 		}
 		
 		public GraphNode getFromNode(){
@@ -651,6 +797,10 @@ public class fsmDraw extends PApplet {
 		
 		public String getLabel(){
 			return label;
+		}
+		
+		public boolean isdud(){
+			return dud;
 		}
 		
 		public boolean isClicked(){
@@ -670,6 +820,8 @@ public class fsmDraw extends PApplet {
 			if(clicked) {
 				strokeWeight(5);
 			}
+			
+			fill(0);
 			
 			int dx = ox - x;
 			int dy = oy - y;
