@@ -4,6 +4,8 @@ This project use Jsoup library to extract HTML events and create FSM in order to
 To run the code via console, run Team6.java.
 To run the code via GUI, run fsmDraw.java.
 
+Disclaimer: when inputting your hompage URL, make sure to end your path with "/".
+
 What you will see as a result of running this program:
 1. FSM with nodes as states (web pages or modals) and edges (buttons or other clickable events) that has been dynamically tested.
 2. A path to each edge from the home node--if there is no path to the edge, it is labeled dud.
