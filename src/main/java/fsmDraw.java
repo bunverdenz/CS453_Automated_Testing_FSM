@@ -48,11 +48,13 @@ public class fsmDraw extends PApplet {
 	
 	boolean ran_func = false;
 	
+	boolean edit_path = false;
 	boolean edit_root = true;
 	boolean edit_id = false;
 	boolean edit_pw = false;
 	boolean edit_loginpage = false;
 	
+	String folder = "";
 	String root = "";
 	String id = "";
 	String pw = "";
@@ -79,29 +81,37 @@ public class fsmDraw extends PApplet {
 			textAlign(CENTER, CENTER);
 			
 			fill(0);
-			text("If no login info, leave blank", width/2, height/5);
+			text("If no login info, leave blank", width/2, height/10);
+			
+			fill(0);
+			if(edit_path) fill(255, 0, 100);
+			text("path: ", width/5, 9*height/20);
+			fill(0);
+			textSize(18);
+			text(folder, width*2/3, 9*height/20);
+			textSize(24);
 			
 			fill(0);
 			if(edit_root) fill(255, 0, 100);
-			text("root: ", width/3, 11*height/20);
+			text("root (homepage): ", width/5, 11*height/20);
 			fill(0);
 			text(root, width*2/3, 11*height/20);
 			
 			fill(0);
 			if(edit_id) fill(255, 0, 100);
-			text("id: ", width/3, 13*height/20);
+			text("id: ", width/5, 13*height/20);
 			fill(0);
 			text(id, width*2/3, 13*height/20);
 			
 			fill(0);
 			if(edit_pw) fill(255, 0, 100);
-			text("pw: ", width/3, 15*height/20);
+			text("pw: ", width/5, 15*height/20);
 			fill(0);
 			text(pw, width*2/3, 15*height/20);
 			
 			fill(0);
 			if(edit_loginpage) fill(255, 0, 100);
-			text("login page: ", width/3, 17*height/20);
+			text("login page: ", width/5, 17*height/20);
 			fill(0);
 			text(loginPage, width*2/3, 17*height/20);
 			
@@ -258,8 +268,11 @@ public class fsmDraw extends PApplet {
 			
 			if(key == CODED){
 				if (keyCode == UP){
-					if(edit_root) {
-						edit_root = true;
+					if(edit_path) {
+						edit_path = true;
+					}else if(edit_root) {
+						edit_root = false;
+						edit_path = true;
 					}else if (edit_id) {
 						edit_id = false;
 						edit_root = true;
@@ -272,7 +285,10 @@ public class fsmDraw extends PApplet {
 					}
 				}
 				if(keyCode == DOWN){
-					if (edit_root) {
+					if(edit_path){
+						edit_path = false;
+						edit_root = true;
+					}else if (edit_root) {
 						edit_root = false;
 						edit_id = true;
 					}else if (edit_id) {
@@ -287,8 +303,29 @@ public class fsmDraw extends PApplet {
 				}
 			
 			}else {
-
-				if(edit_root) {
+				
+				if(edit_path) {
+					if(keyCode == BACKSPACE) {
+						if(folder.length() > 0) {
+							folder = folder.substring(0, folder.length()-1);
+						}
+					}else if(keyCode == ENTER) {
+						background(255);
+						textSize(24);
+						textAlign(CENTER, CENTER);
+						fill(255, 0, 100);
+						text("building FSM please wait", width/2, 19*height/20);
+						
+						if(folder.length()>0) {
+							Team6.resource_folder_path = folder;
+						}
+						
+						info_input = false;
+						running_main = true;
+					}else if(keyCode != SHIFT && keyCode != CONTROL && keyCode != ALT) {
+						folder = folder + key;
+					}
+				}else if(edit_root) {
 					if(keyCode == BACKSPACE) {
 						if(root.length() > 0) {
 							root = root.substring(0, root.length()-1);
@@ -299,6 +336,10 @@ public class fsmDraw extends PApplet {
 						textAlign(CENTER, CENTER);
 						fill(255, 0, 100);
 						text("building FSM please wait", width/2, 19*height/20);
+						
+						if(folder.length()>0) {
+							Team6.resource_folder_path = folder;
+						}
 						
 						info_input = false;
 						running_main = true;
@@ -317,6 +358,10 @@ public class fsmDraw extends PApplet {
 						fill(255, 0, 100);
 						text("building FSM please wait", width/2, 19*height/20);
 						
+						if(folder.length()>0) {
+							Team6.resource_folder_path = folder;
+						}
+						
 						info_input = false;
 						running_main = true;
 					}else if(keyCode != SHIFT && keyCode != CONTROL && keyCode != ALT) {
@@ -334,6 +379,10 @@ public class fsmDraw extends PApplet {
 						fill(255, 0, 100);
 						text("building FSM please wait", width/2, 19*height/20);
 						
+						if(folder.length()>0) {
+							Team6.resource_folder_path = folder;
+						}
+						
 						info_input = false;
 						running_main = true;
 					}else if(keyCode != SHIFT && keyCode != CONTROL && keyCode != ALT) {
@@ -350,6 +399,10 @@ public class fsmDraw extends PApplet {
 						textAlign(CENTER, CENTER);
 						fill(255, 0, 100);
 						text("building FSM please wait", width/2, 19*height/20);
+						
+						if(folder.length()>0) {
+							Team6.resource_folder_path = folder;
+						}
 						
 						info_input = false;
 						running_main = true;

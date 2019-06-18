@@ -23,28 +23,26 @@ import java.io.*;
 import java.net.URL;
 import java.util.*;
 
-
 // TODO: create new file/class for each function to organize the whole project
 public class Team6 {
     static List<String> tags = new ArrayList<String>(); //record tags
-     static List<String> attrs = new ArrayList<String>(); //record attributes
-     static List<Element> elements = new ArrayList<Element>();
-     static List<Node> fsm = new ArrayList<Node>();
-     
-     static ArrayList<String> drawStringList;
-     
-     public static String resource_folder_path = "C:/Users/aerol/OneDrive/Desktop/CS453_Automated_Testing_FSM/src/main/resources/";
-     
-     static String root = "";
-     static String baseid = "team6_";
-     static int nodeid = 0;
-     
-     public static boolean done = false;
-     
+    static List<String> attrs = new ArrayList<String>(); //record attributes
+    static List<Element> elements = new ArrayList<Element>();
+    static List<Node> fsm = new ArrayList<Node>();
+    
+    static ArrayList<String> drawStringList;
+    
+    public static String resource_folder_path = "C:/Users/aerol/OneDrive/Desktop/CS453_Automated_Testing_FSM/src/main/resources/";
+    
+    static String root = "";
+    static String baseid = "team6_";
+    static int nodeid = 0;
+    
+    public static boolean done = false;
+    
     public static void main(String[] args) throws IOException, InterruptedException {
     	mainFunc("", "", "", "", "use");
     }
-    
     public static void mainFunc(String rootin, String idin, String pwin, String loginPagein, String console) throws IOException, InterruptedException{
     	String use_console = console;
     	
@@ -219,9 +217,9 @@ public class Team6 {
                    continue;
                 }
                 String temp = att.getValue();
-                if(temp.charAt(0) == '/') {
+                if(temp.length() > 1 && temp.charAt(0) == '/') {
                    temp = temp.substring(1);
-                   if(temp.charAt(0) == '/') {
+                   if(temp.length() > 1 && temp.charAt(0) == '/') {
                       temp = temp.substring(1);
                    }
                 }
@@ -321,10 +319,35 @@ public class Team6 {
                     out = new Node(doc2.title(), link);
                  }catch(Exception x) {
                    try {
-                      String trylink = home.getDoc() + alink;
-                      System.out.println(trylink);
-                      doc2 = Jsoup.connect(trylink).get();
-                      out = new Node(doc2.title(), trylink);
+                    int dir = 0;
+                     if(alink.length() > 1 && alink.charAt(0) == '.') {
+                        while(alink.length() > 1 && alink.charAt(0) == '.') {
+                           alink = alink.substring(1);
+                           dir++;
+                        }
+                     }
+                     if(alink.length() > 1 && alink.charAt(0) == '/') {
+                        alink = alink.substring(1);
+                     }
+                     String docurl = home.getDoc();
+                     String[] dirs = docurl.split("/");
+                     int ind = 0;
+                     String trylink = "";
+                     for(String s : dirs) {
+                        trylink += s + "/";
+                        ind++;
+                        if(ind == dirs.length - dir + 1) {
+                           break;
+                        }
+                        
+                     }
+                     if(trylink.contains(alink)) {
+                        continue;
+                     }
+                     trylink = trylink + alink;
+                     System.out.println("try: " + trylink);
+                     doc2 = Jsoup.connect(trylink).get();
+                     out = new Node(doc2.title(), trylink);
                    }catch(Exception y) {
                       continue;
                    }    
@@ -582,10 +605,35 @@ public class Team6 {
                        out = new Node(doc2.title(), link);
                     }catch(Exception x) {
                       try {
-                         String trylink = home.getDoc() + alink;
-                         System.out.println(trylink);
-                         doc2 = Jsoup.connect(trylink).get();
-                         out = new Node(doc2.title(), trylink);
+                        int dir = 0;
+                          if(alink.length() > 1 && alink.charAt(0) == '.') {
+                             while(alink.length() > 1 && alink.charAt(0) == '.') {
+                                alink = alink.substring(1);
+                                dir++;
+                             }
+                          }
+                          if(alink.length() > 1 && alink.charAt(0) == '/') {
+                             alink = alink.substring(1);
+                          }
+                          String docurl = home.getDoc();
+                          String[] dirs = docurl.split("/");
+                          int ind = 0;
+                          String trylink = "";
+                          for(String s : dirs) {
+                             trylink += s + "/";
+                             ind++;
+                             if(ind == dirs.length - dir + 1) {
+                                break;
+                             }
+                             
+                          }
+                          if(trylink.contains(alink)) {
+                             continue;
+                          }
+                          trylink = trylink + alink;
+                          System.out.println("try: " + trylink);
+                          doc2 = Jsoup.connect(trylink).get();
+                          out = new Node(doc2.title(), trylink);
                       }catch(Exception y) {
                          continue;
                       }    
@@ -774,7 +822,7 @@ public class Team6 {
                 if(attrKey.contentEquals("href")) {
                    String alink = e.attr("href");
                    String blink = e.attr("href");
-                   if(alink.charAt(0) == '\"') {
+                   if(alink.length() > 1 && alink.charAt(0) == '\"') {
                       alink = alink.substring(1, alink.length()-1);
                       blink = alink;
                    }
@@ -808,8 +856,33 @@ public class Team6 {
                       out = new Node(doc2.title(), link);
                    }catch(Exception x) {
                      try {
-                        String trylink = node.getDoc() + alink;
-                        System.out.println(trylink);
+                        int dir = 0;
+                        if(alink.length() > 1 && alink.charAt(0) == '.') {
+                           while(alink.length() > 1 && alink.charAt(0) == '.') {
+                              alink = alink.substring(1);
+                              dir++;
+                           }
+                        }
+                        if(alink.length() > 1 && alink.charAt(0) == '/') {
+                           alink = alink.substring(1);
+                        }
+                        String docurl = node.getDoc();
+                        String[] dirs = docurl.split("/");
+                        int ind = 0;
+                        String trylink = "";
+                        for(String s : dirs) {
+                           trylink += s + "/";
+                           ind++;
+                           if(ind == dirs.length - dir + 1) {
+                              break;
+                           }
+                           
+                        }
+                        if(trylink.contains(alink)) {
+                           continue;
+                        }
+                        trylink = trylink + alink;
+                        System.out.println("try: " + trylink);
                         doc2 = Jsoup.connect(trylink).get();
                         out = new Node(doc2.title(), trylink);
                      }catch(Exception y) {
@@ -940,7 +1013,7 @@ public class Team6 {
                    
                    String alink = e.attr("href");
                    String blink = e.attr("href");
-                    if(alink.charAt(0) == '\"') {
+                    if(alink.length() > 1 && alink.charAt(0) == '\"') {
                        alink = alink.substring(1, alink.length()-1);
                        blink = alink;
                     }
@@ -974,10 +1047,35 @@ public class Team6 {
                        out = new Node(doc2.title(), link);
                     }catch(Exception x) {
                       try {
-                         String trylink = node.getDoc() + alink;
-                         System.out.println(trylink);
-                         doc2 = Jsoup.connect(trylink).get();
-                         out = new Node(doc2.title(), trylink);
+                        int dir = 0;
+                          if(alink.length() > 1 && alink.charAt(0) == '.') {
+                             while(alink.length() > 1 && alink.charAt(0) == '.') {
+                                alink = alink.substring(1);
+                                dir++;
+                             }
+                          }
+                          if(alink.length() > 1 && alink.charAt(0) == '/') {
+                             alink = alink.substring(1);
+                          }
+                          String docurl = node.getDoc();
+                          String[] dirs = docurl.split("/");
+                          int ind = 0;
+                          String trylink = "";
+                          for(String s : dirs) {
+                             trylink += s + "/";
+                             ind++;
+                             if(ind == dirs.length - dir + 1) {
+                                break;
+                             }
+                             
+                          }
+                          if(trylink.contains(alink)) {
+                             continue;
+                          }
+                          trylink = trylink + alink;
+                          System.out.println("try: " + trylink);
+                          doc2 = Jsoup.connect(trylink).get();
+                          out = new Node(doc2.title(), trylink);
                       }catch(Exception y) {
                          countid--;
                          continue;

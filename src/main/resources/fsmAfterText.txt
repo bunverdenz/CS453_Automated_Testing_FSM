@@ -4,41 +4,45 @@ ed: loginTab
 edt: bc
 tn: loginModal
 new path!
+loginTab
 ////
 ed: loginTab
 edt: bc
 tn: Melodize - Home
 new path!
+loginTab
 ////
 ed: requesterBtn
-edt: bc
+edt: dud
 tn: Melodize - Request
-new path!
 ////
 ed: workerBtn
 edt: b
 tn: Melodize - Song List
 new path!
+workerBtn
 ////
 ed: learnBtn
 edt: b
 tn: Melodize - About
 new path!
+learnBtn
 ////
 ed: profileTab
-edt: e
+edt: dud
 tn: Melodize - Profile
-new path!
 ////
 ed: team6_0_0
 edt: e
 tn: Melodize - Gallery
 new path!
+team6_0_0
 ////
 ed: team6_0_1
 edt: e
 tn: Melodize - Home
 new path!
+team6_0_1
 ////
 
 fn: loginModal
@@ -46,40 +50,48 @@ ed: loginBtn
 edt: bc
 tn: Melodize - Home
 new path!
+loginTab
+loginBtn
 ////
 ed: team6_1_0
 edt: e
 tn: Melodize - Sign Up
 new path!
+loginTab
+team6_1_0
 ////
 
 fn: Melodize - Sign Up
 ed: loginTab
-edt: bc
+edt: b
 tn: loginModal
 new path!
 loginTab
+team6_1_0
+loginTab
 ////
 ed: loginTab
-edt: bc
+edt: dud
 tn: Melodize - Home
-new path!
 ////
 ed: profileTab
-edt: e
+edt: dud
 tn: Melodize - Profile
-new path!
 ////
 ed: team6_2_0
 edt: e
 tn: Melodize - Gallery
 new path!
+loginTab
+team6_1_0
 team6_2_0
 ////
 ed: team6_2_1
 edt: e
 tn: Melodize - Home
 new path!
+loginTab
+team6_1_0
 team6_2_1
 ////
 
@@ -88,105 +100,97 @@ ed: loginTab
 edt: bc
 tn: loginModal
 new path!
+loginTab
 ////
 ed: loginTab
 edt: bc
 tn: Melodize - Home
 new path!
+loginTab
 ////
 ed: requesterBtn
-edt: bc
+edt: dud
 tn: Melodize - Request
-new path!
 ////
 ed: workerBtn
 edt: b
 tn: Melodize - Song List
 new path!
+workerBtn
 ////
 ed: learnBtn
 edt: b
 tn: Melodize - About
 new path!
+learnBtn
 ////
 ed: profileTab
-edt: e
+edt: dud
 tn: Melodize - Profile
-new path!
 ////
 ed: team6_3_0
 edt: e
 tn: Melodize - Gallery
 new path!
+team6_3_0
 ////
 ed: team6_3_1
 edt: e
 tn: Melodize - Home
 new path!
+team6_3_1
 ////
 
 fn: Melodize - Request
 ed: loginTab
-edt: bc
+edt: dud
 tn: loginModal
-new path!
 ////
 ed: loginTab
-edt: bc
+edt: dud
 tn: Melodize - Home
-new path!
 ////
 ed: profileTab
-edt: e
+edt: dud
 tn: Melodize - Profile
-new path!
 ////
 ed: team6_4_0
-edt: e
+edt: dud
 tn: Melodize - Gallery
-new path!
 ////
 ed: team6_4_1
-edt: e
+edt: dud
 tn: Melodize - Home
-new path!
 ////
 
 fn: Melodize - Profile
 ed: loginTab
-edt: bc
+edt: dud
 tn: loginModal
-new path!
 ////
 ed: loginTab
-edt: bc
+edt: dud
 tn: Melodize - Home
-new path!
 ////
 ed: requesterBtn
-edt: b
+edt: dud
 tn: Melodize - Request
-new path!
 ////
 ed: workerBtn
-edt: b
+edt: dud
 tn: Melodize - Song List
-new path!
 ////
 ed: profileTab
-edt: e
+edt: dud
 tn: Melodize - Profile
-new path!
 ////
 ed: team6_5_0
-edt: e
+edt: dud
 tn: Melodize - Gallery
-new path!
 ////
 ed: team6_5_1
-edt: e
+edt: dud
 tn: Melodize - Home
-new path!
 ////
 
 fn: Melodize - Song List
@@ -194,92 +198,90 @@ ed: loginTab
 edt: bc
 tn: loginModal
 new path!
+workerBtn
+loginTab
 ////
 ed: loginTab
-edt: bc
+edt: dud
 tn: Melodize - Home
-new path!
 ////
 ed: joinBtn
-edt: bc
+edt: dud
 tn: Melodize - Composing
-new path!
 ////
 ed: joinBtn
-edt: bc
+edt: dud
 tn: passwordModal
-new path!
 ////
 ed: passwordBtn
-edt: b
+edt: dud
 tn: Melodize - Composing
-new path!
 ////
 ed: profileTab
-edt: e
+edt: dud
 tn: Melodize - Profile
-new path!
 ////
 ed: team6_6_0
 edt: e
 tn: Melodize - Gallery
 new path!
+workerBtn
+team6_6_0
 ////
 ed: team6_6_1
 edt: e
 tn: Melodize - Home
 new path!
+workerBtn
+team6_6_1
 ////
 
 fn: Melodize - Composing
 ed: loginTab
-edt: bc
+edt: dud
 tn: loginModal
-new path!
 ////
 ed: loginTab
-edt: bc
+edt: dud
 tn: Melodize - Home
-new path!
 ////
 ed: profileTab
-edt: e
+edt: dud
 tn: Melodize - Profile
-new path!
 ////
 ed: team6_7_0
-edt: e
+edt: dud
 tn: Melodize - Gallery
-new path!
 ////
 ed: team6_7_1
-edt: e
+edt: dud
 tn: Melodize - Home
-new path!
 ////
 
 fn: Melodize - Gallery
 ed: loginTab
-edt: bc
+edt: b
 tn: loginModal
 new path!
+loginTab
+team6_1_0
 team6_2_0
 loginTab
 ////
 ed: loginTab
-edt: bc
+edt: dud
 tn: Melodize - Home
-new path!
 ////
 ed: profileTab
-edt: e
+edt: dud
 tn: Melodize - Profile
-new path!
 ////
 ed: team6_8_0
 edt: e
 tn: Melodize - Gallery
 new path!
+loginTab
+team6_1_0
 team6_2_0
 team6_8_0
 ////
@@ -287,45 +289,49 @@ ed: team6_8_1
 edt: e
 tn: Melodize - Home
 new path!
+loginTab
+team6_1_0
 team6_2_0
 team6_8_1
 ////
 
 fn: passwordModal
 ed: passwordBtn
-edt: b
+edt: dud
 tn: Melodize - Composing
-new path!
 ////
 ed: close
-edt: b
+edt: dud
 tn: Melodize - Song List
-new path!
 ////
 
 fn: Melodize - About
 ed: loginTab
-edt: bc
+edt: b
 tn: loginModal
 new path!
+learnBtn
+loginTab
 ////
 ed: loginTab
-edt: bc
+edt: dud
 tn: Melodize - Home
-new path!
 ////
 ed: profileTab
-edt: e
+edt: dud
 tn: Melodize - Profile
-new path!
 ////
 ed: team6_10_0
 edt: e
 tn: Melodize - Gallery
 new path!
+learnBtn
+team6_10_0
 ////
 ed: team6_10_1
 edt: e
 tn: Melodize - Home
 new path!
+learnBtn
+team6_10_1
 ////

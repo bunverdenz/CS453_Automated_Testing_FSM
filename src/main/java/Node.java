@@ -112,7 +112,7 @@ public class Node{
       }
        
    }
-   
+
    static void printgraphstore(Node node) throws FileNotFoundException {
 	   PrintWriter pw = new PrintWriter(Team6.resource_folder_path + "fsmDrawText.txt");
 	   pw.close();
@@ -158,42 +158,51 @@ public class Node{
    }
    
    static void printgraphafter(Node node, PrintWriter pw) {
-      if(node.trav) {
-         
-         return;
-      }
-      System.out.print("\n");
-      pw.print("\n");
-      node.trav = true;
-      System.out.println("from node: " + node.getTitle());
-      pw.print("fn: " + node.getTitle() + "\n");
-      int i = 0;
-      for(Node n : node.out) {
-         ArrayList<String[]> edges = node.edges.get(i);
-         System.out.println("edge: " + edges.get(0)[0]);
-         pw.print("ed: " + edges.get(0)[0] + "\n");
-         System.out.println("edge: " + edges.get(0)[1]);
-         pw.print("edt: " + edges.get(0)[1] + "\n");
-         System.out.println("to node: " + n.getTitle());
-         pw.print("tn: " + n.getTitle() + "\n");
-         if(!edges.get(0)[0].contentEquals("dud")) {
-            System.out.println("new path!");
-            pw.print("new path!\n");
-            for(String[] edge : edges) {
-               for(int j = 2; j < edge.length; j++) {
-                  System.out.println(edge[j]);
-                  pw.print(edge[j] + "\n");
-               }
-            }
-            
-            System.out.println("////");
-            pw.print("////" + "\n");
-         }
-         i++;
-      }
-      for(Node n : node.out) {
-         printgraphafter(n, pw);
-      }
+	   if(node.trav) {
+	         
+	         return;
+	      }
+	      System.out.print("\n");
+		  pw.print("\n");
+	      node.trav = true;
+	      System.out.println("from node: " + node.getTitle());
+		  pw.print("fn: " + node.getTitle() + "\n");
+	      int i = 0;
+	      for(Node n : node.out) {
+	         ArrayList<String[]> edges = node.edges.get(i);
+	         if(edges.size() <= 1) {
+	            edges.get(0)[1] = "dud";
+	         }else {
+	            if(edges.size() > 1 && edges.get(0)[1].contentEquals("dud")) {
+	               if(edges.get(0)[0].contains("team6")) {
+	                  edges.get(0)[1] = "e";
+	               }else {
+	                  edges.get(0)[1] = "b";
+	               }
+	            }
+	         }
+	         System.out.println("edge: " + edges.get(0)[0]);
+			 pw.print("ed: " + edges.get(0)[0] + "\n");
+	         System.out.println("edge: " + edges.get(0)[1]);
+			 pw.print("edt: " + edges.get(0)[1] + "\n");
+	         System.out.println("to node: " + n.getTitle());
+			 pw.print("tn: " + n.getTitle() + "\n");
+	         if(!edges.get(0)[1].contentEquals("dud") || edges.size() > 1) {
+	            System.out.println("path");
+				pw.print("new path!\n");
+	             String[] edge = edges.get(1);
+	               for(int j = 0; j < edge.length; j++) {
+	                  System.out.println(edge[j]);
+					  pw.print(edge[j] + "\n");
+	               }
+	         }
+	         System.out.println("////////");
+			 pw.print("////" + "\n");
+	         i++;
+	      }
+	      for(Node n : node.out) {
+	         printgraphafter(n, pw);
+	      }
    }
    
    static void listPrintGraph(Node node) {
@@ -251,7 +260,7 @@ public class Node{
       }
    }
    
-   static boolean checkhref(String href, String roothref) {
+   static boolean checkhref(String href, String roothref, String nodehref) {
        boolean result = true;
        int slash = href.indexOf("/");
        if(href.equals("#") || href.contentEquals("")) {
@@ -259,16 +268,57 @@ public class Node{
        }
        
        if(!(href.contains("/") || href.contains("html"))) {
-          return false;
+          result = false;
        }
        
        if(href.contains("http") || href.contains("css") || href.contains("www.") || href.contains(".org") || href.contains(".com") || href.contains(".net") || href.contains(".jpg") || href.contains(".png")){
           if(href.contains(roothref)) {
-             return result;
+             return true;
           }
-          return false;
-       }
-       return true;
+          result = false;
+          }else if(slash >= 0 && slash < 2) {
+           return true;
+        }else if(href.contains("html")) {
+           return true;
+        }else if(href.contentEquals("/")) {
+           return true;
+        }
+        
+       try {
+           int dir = 0;
+           System.out.println(nodehref);
+             if(href.length() > 1 && href.charAt(0) == '.') {
+                while(href.length() > 1 && href.charAt(0) == '.') {
+                   href = href.substring(1);
+                   dir++;
+                }
+             }
+             if(href.length() > 1 && href.charAt(0) == '/') {
+                href = href.substring(1);
+             }
+             
+             String[] dirs = nodehref.split("/");
+             int ind = 0;
+             String trylink = "";
+             for(String s : dirs) {
+                trylink += s + "/";
+                ind++;
+                if(ind == dirs.length - dir + 1) {
+                   System.out.println(dir);
+                   System.out.println(trylink);
+                   break;
+                }
+             }
+             if(trylink.contains(href)) {
+                return false;
+             }
+             trylink = trylink + href;
+             System.out.println("try: " + trylink);
+             Document doc2 = Jsoup.connect(trylink).get();
+             return true;
+       }catch(Exception y) {
+             return false;
+          }    
     }
    
    static void graphtraverse(Node root, Node node, HtmlPage p, ArrayList<String> path) throws IOException, InterruptedException{
@@ -350,7 +400,7 @@ public class Node{
                         }
                      }
                      String comp = button.getAttribute("href");
-                     if(checkhref(comp, root.getDoc()) && button.getId().contentEquals("")) {
+                     if(checkhref(comp, root.getDoc(), node.getDoc()) && button.getId().contentEquals("")) {
                         compare++;
                      }
                      if(compare == index) {
@@ -426,7 +476,7 @@ public class Node{
                         if(button.hasAttribute("onclick")) {
                            continue;
                         }
-                        if(checkhref(comp, root.getDoc()) && button.getId().contentEquals("")) {
+                        if(checkhref(comp, root.getDoc(), node.getDoc()) && button.getId().contentEquals("")) {
                            compare++;
                         }
                         if(compare == index) {
@@ -554,7 +604,7 @@ public class Node{
                
                
             }
-             if(!found && !node.getDoc().contentEquals(n.getDoc()) && node.edges.get(i).size() <= 0) {
+             if(!found && !node.getDoc().contentEquals(n.getDoc())) {
                 WebClient webClient = new WebClient(BrowserVersion.CHROME);
                 webClient.getOptions().setThrowExceptionOnScriptError(false);
                 webClient.getOptions().setJavaScriptEnabled(true);
@@ -573,13 +623,13 @@ public class Node{
                   }
                 }
                //boolean c = false;
-               if(node.numin <= 0) {
+               if(node.numin <= 0 && !found) {
                  ArrayList<Object> newedge = checkloops(root, node, i, path);
                  boolean yesfound = (boolean) newedge.get(0);
                  if(yesfound) {
                     HtmlPage htmlPage = (HtmlPage) newedge.get(1);
                     String newedgefound = (String) newedge.get(2);
-                    path.add(newedgefound);
+                    path.add(path.size()-1, newedgefound);
                     System.out.println("it works!");
                      String[] arraypath = convertarray(path);
                      node.edges.get(i).add(arraypath);
@@ -591,7 +641,7 @@ public class Node{
                      continue;
                  }
                  
-                  if(i < node.edges.size() - 1) {
+                  if(i < node.edges.size() - 1 && node.edges.get(i).size() <= 1) {
                      ArrayList<String[]> edges1 = node.edges.get(i+1);
                      String temp = edges1.get(0)[1];
                      edges.get(0)[1] = "dud";
@@ -733,7 +783,7 @@ public class Node{
              }
           }
           String comp = button.getAttribute("href");
-          if(checkhref(comp, root.getDoc()) && button.getId().contentEquals("")) {
+          if(checkhref(comp, root.getDoc(), node.getDoc()) && button.getId().contentEquals("")) {
              compare++;
           }
           if(compare == index) {
@@ -787,8 +837,6 @@ public class Node{
                      String href = edge1.attr("href");
                      for(DomElement button : buttons) {
                         String comp = button.getAttribute("href");
-                        System.out.println(comp);
-                        System.out.println(href);
                         if(href.equals(comp)) {
                            found = true;
                            break;
