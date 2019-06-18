@@ -6,7 +6,7 @@
   <meta http-equiv="CACHE-CONTROL" content="NO-CACHE"> 
   <meta name="keywords" content="coinse, sbse, shin yoo"> 
   <meta name="viewport" content="width=device-width, initial-scale=1"> 
-  <title>Amortised Deep Parameter Optimisation of GPGPU Work Group Size for OpenCV</title> 
+  <title>FLUCCS - Using Code and Change Metrics to Improve Fault Localization</title> 
   <meta name="description" content="COINSE Lab,<br/> <a href='http://cs.kaist.ac.kr'>School of Computing</a>,<br/> <a href='http://www.kaist.ac.kr'>Korea Advanced Institute of Science and Technology</a>,<br/> 291 Daehak Ro, Yuseong Gu,<br/> Daejeon, 34141,<br/> Republic of Korea"> 
   <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"> 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"> 
@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="/css/jquery.lightbox-0.5.css"> 
   <link rel="stylesheet" href="/css/colorbox.css"> 
   <link rel="stylesheet" href="/css/main.css"> 
-  <link rel="canonical" href="https://coinse.kaist.ac.kr/projects/adpoopencv/" id="team6_14_0"> 
+  <link rel="canonical" href="https://coinse.kaist.ac.kr/projects/fluccs/" id="team6_14_0"> 
   <link rel="alternate" type="application/rss+xml" title="COINSE" href="https://coinse.kaist.ac.kr/feed.xml" id="team6_14_1"> 
   <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> 
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script> 
@@ -60,18 +60,18 @@
      <a class="site-title" href="/" id="team6_14_2">COINSE</a> 
     </div> 
     <nav class="site-nav"> 
-     <a href="#" class="menu-icon"> 
+     <a href="#" class="menu-icon" id="team6_14_3"> 
       <svg viewbox="0 0 18 15"> 
        <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z" /> 
        <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z" /> 
        <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z" /> 
       </svg> </a> 
      <div class="trigger"> 
-      <a class="page-link" href="/research" id="team6_14_3">Research</a> 
-      <a class="page-link" href="/members" id="team6_14_4">Members</a> 
-      <a class="page-link" href="/publications" id="team6_14_5">Publications</a> 
-      <a class="page-link" href="/projects" id="team6_14_6">Projects</a> 
-      <a class="page-link" href="/teaching" id="team6_14_7">Teaching</a> 
+      <a class="page-link" href="/research" id="team6_14_4">Research</a> 
+      <a class="page-link" href="/members" id="team6_14_5">Members</a> 
+      <a class="page-link" href="/publications" id="team6_14_6">Publications</a> 
+      <a class="page-link" href="/projects" id="team6_14_7">Projects</a> 
+      <a class="page-link" href="/teaching" id="team6_14_8">Teaching</a> 
       <!-- <a class="page-link" href="/blog">Blog</a> --> 
       <!-- <a class="page-link" href="/contact">Contact</a> --> 
      </div> 
@@ -81,445 +81,777 @@
   <div class="page-content"> 
    <!-- <div class="parallax">
         <div class="bg_foo">
-          <h2>Amortised Deep Parameter Optimisation of GPGPU Work Group Size for OpenCV</h2>
+          <h2>FLUCCS - Using Code and Change Metrics to Improve Fault Localization</h2>
         </div>
       </div> --> 
    <div class="wrapper"> 
     <article class="post"> 
      <header class="post-header"> 
-      <h2>Amortised Deep Parameter Optimisation of GPGPU Work Group Size for OpenCV</h2> 
+      <h2>FLUCCS - Using Code and Change Metrics to Improve Fault Localization</h2> 
      </header> 
      <div class="page-content"> 
-      <p> This page is supplementary to the paper entitled "Amortised Deep Parameter Optimisation of GPGPU Work Group Size for OpenCV", which has been presented at the <a href="http://ssbse.org/2016">International Symposium on Search-Based Software Engineering 2016</a>. This page contains additional results that could not be reported in the paper due to page limits. The data used in the paper is also made available here to enable replication and further research on the topic. </p> 
-      <h3>Background</h3> 
-      <p> General purpose computing on graphics processing units, also known as GPGPU, enables massive parallelism by taking advantage of the Single Instruction Multiple Data (SIMD) architecture of the large number of cores found on modern graphics cards. A parameter critical to the performance of a GPGPU application is the local work group size, which controls how many work items are executed on a single compute unit. The ideal value minimises the memory access time by sharing (the slowest) access to the same area of global memory. While GPGPU vendors suggest default work group sizes based on generic benchmarks, finding the optimal local work group size for a given computation essentially remains as a trial-and-error task. This paper applies amortised optimisation to the (hidden) local work group size parameter in the GPGPU module of OpenCV. With repetitive use of OpenCV features, the amortised optimisation will guide the user to the local work group size best suited for the combination of user's graphics processing unit and the given GPGPU task. </p> 
-      <h3>Full Results</h3> 
-      <p> Our objective is to reduce the execution time. We used getTickCount and getTickFrequency, which are provided by OpenCV, to calculate execution time for each matching process. We counted the number of clock cycles had been passed during matching process and divided the number of clock cycles by clock tick frequency. This gives us execution time in seconds. </p> 
-      <p> Boxplots show the results of 20 runs with OpenCV default setting, 80 runs with Amortised optimisation, and 20 runs with the best finding parameter values. </p> 
+      <p> This page is supplementary to the paper entitled "FLUCCS: Using Code and Change Metrics to Improve Fault Localization", which has been presented at the <a href="http://conf.researchr.org/home/issta-2017">International Symposium on Software Testing and Analysis 2017</a>. This page contains additional results that could not be reported in the paper due to page limits. </p> 
+      <h3><b>Background</b></h3> 
+      <p> Fault localization aims to support the debugging activities of human developers by highlighting the program elements that are suspected to be responsible for the observed failure. Spectrum Based Fault Localization (SBFL), an existing localization technique that only relies on the coverage and pass/fail results of executed test cases, has been widely studied but also criticized for the lack of precision and limited effort reduction. To overcome restrictions of techniques based purely on coverage, we extend SBFL with code and change metrics that have been studied in the context of defect prediction, such as size, age and code churn. Using suspiciousness values from existing SBFL formulas and these source code metrics as features, we apply two learn-to-rank techniques, Genetic Programming (GP) and linear rank Support Vector Machines (SVMs). We evaluate our approach with a ten-fold cross validation of method level fault localization, using 386 real world faults from the Defects4J repository. GP with additional source code metrics ranks the faulty method at the top for 144 faults, and within the top ten for 304 faults. This is a significant improvement over the state-of-the-art SBFL formulas, the best of which can rank 65 and 212 faults at the top and within the top ten, respectively. </p> 
+      <h3><b>Distribution of Wasted Effort</b></h3> 
+      <p> Our objective is to minimize the effort wasted looking at the non-faulty program elements. We use wasted effort (wef), the absolute count version of the traditional Expense metric. Following histograms describe the overall distribution of wef. </p> 
+      <p> These histograms show the distribution of wef values per project. Distribution of wef values for both median and the best performance GP-generated ranking models, denoted as 'med' and 'min' respectively, are shown side by side in these histograms. </p> 
+      <p> Main idea of FLUCCS, our new fault localization tool, is using code and change metrics, which have been widely used in defect prediction. Two types of histograms, one with code and change metrics and one without them, are shown in below to clarify promising improvement of exploiting code and change metrics in fault localization using FLUCCS with GP as the learning mechanism. </p> 
       <p> </p>
       <table style="width:60%;"> 
        <tbody>
         <tr> 
-         <td><a href="#plot01" class="inline">Pair 01</a></td> 
-         <td><a href="#plot02" class="inline">Pair 02</a></td> 
-         <td><a href="#plot03" class="inline">Pair 03</a></td> 
-         <td><a href="#plot04" class="inline">Pair 04</a></td> 
-         <td><a href="#plot05" class="inline">Pair 05</a></td> 
+         <td><a href="#hist_GP_Lang" class="inline">Lang</a></td> 
         </tr> 
         <tr> 
-         <td><a href="#plot06" class="inline">Pair 06</a></td> 
-         <td><a href="#plot07" class="inline">Pair 07</a></td> 
-         <td><a href="#plot08" class="inline">Pair 08</a></td> 
-         <td><a href="#plot09" class="inline">Pair 09</a></td> 
-         <td><a href="#plot10" class="inline">Pair 10</a></td> 
+         <td><a href="#hist_GP_Math" class="inline">Math</a></td> 
         </tr> 
         <tr> 
-         <td><a href="#plot11" class="inline">Pair 11</a></td> 
-         <td><a href="#plot12" class="inline">Pair 12</a></td> 
-         <td><a href="#plot13" class="inline">Pair 13</a></td> 
-         <td><a href="#plot14" class="inline">Pair 14</a></td> 
-         <td><a href="#plot15" class="inline">Pair 15</a></td> 
+         <td><a href="#hist_GP_Time" class="inline">Time</a></td> 
         </tr> 
         <tr> 
-         <td><a href="#plot16" class="inline">Pair 16</a></td> 
-         <td><a href="#plot17" class="inline">Pair 17</a></td> 
-         <td><a href="#plot18" class="inline">Pair 18</a></td> 
-         <td><a href="#plot19" class="inline">Pair 19</a></td> 
-         <td><a href="#plot20" class="inline">Pair 20</a></td> 
+         <td><a href="#hist_GP_Closure" class="inline">Closure</a></td> 
+        </tr> 
+        <tr> 
+         <td><a href="#hist_GP_Chart" class="inline">Chart</a></td> 
+        </tr> 
+        <tr> 
+         <td><a href="#hist_GP_Mockito" class="inline">Mockito</a></td> 
         </tr> 
        </tbody>
       </table> 
       <p></p> 
-      <p><a href="#plot_wgs" class="inline">Best work group size per test case plot</a></p> 
+      <p> To further clarify the effect of employing code and change metrics in fault localization, we compare the results of three other learning mechanisms (Gaussian Process, Linear rankingSVM, Random Forest) with and without code and change metrics. From these comparisions, we insist that the benefit of using code and change metrics is not limited to GP. </p> 
+      <table style="width:60%;"> 
+       <tbody>
+        <tr> 
+         <td><a href="#hist_GausPrc" class="inline">Gaussian Process</a></td> 
+        </tr> 
+        <tr> 
+         <td><a href="#hist_LrankSVM" class="inline">Linear ranking SVM</a></td> 
+        </tr> 
+        <tr> 
+         <td><a href="#hist_RF" class="inline">Random Forest</a></td> 
+        </tr> 
+       </tbody>
+      </table> 
+      <p> FLUCCS uses Method Level Aggregation on SBFL suspiciousness scores to further imporve the accuracy of fault localization. Impact of using Method Level Aggregation (or Method Aggregation) is shown in following histograms of wef for baseline formulas; two cases, with and without Method Aggregation, are described in the histograms side by side. </p> 
+      <p> </p>
+      <table style="width:60%;"> 
+       <tbody>
+        <tr> 
+         <td><a href="#hist_ER1a" class="inline">ER1a</a></td> 
+         <td><a href="#hist_ER1b" class="inline">ER1b</a></td> 
+         <td><a href="#hist_ER5a" class="inline">ER5a</a></td> 
+         <td><a href="#hist_ER5b" class="inline">ER5b</a></td> 
+         <td><a href="#hist_ER5c" class="inline">ER5c</a></td> 
+        </tr> 
+        <tr> 
+         <td><a href="#hist_gp02" class="inline">gp02</a></td> 
+         <td><a href="#hist_gp03" class="inline">gp03</a></td> 
+         <td><a href="#hist_gp13" class="inline">gp13</a></td> 
+         <td><a href="#hist_gp19" class="inline">gp19</a></td> 
+        </tr> 
+        <tr> 
+         <td><a href="#hist_ochiai" class="inline">ochiai</a></td> 
+         <td><a href="#hist_jaccard" class="inline">jaccard</a></td> 
+        </tr> 
+       </tbody>
+      </table> 
+      <p></p> 
+      <p> Above results have been obtained by using the data set which composes of fault data from six different projects (Lang, Math, Time, Closure, Chart, Mockito). Here, we show the cross-project validity for these projects using four different learning mechanisms. </p> 
+      <table style="width:60%;"> 
+       <tbody>
+        <tr> 
+         <td><a href="#hist_CP_Lang" class="inline">Lang</a></td> 
+        </tr> 
+        <tr> 
+         <td><a href="#hist_CP_Math" class="inline">Math</a></td> 
+        </tr> 
+        <tr> 
+         <td><a href="#hist_CP_Time" class="inline">Time</a></td> 
+        </tr> 
+        <tr> 
+         <td><a href="#hist_CP_Closure" class="inline">Closure</a></td> 
+        </tr> 
+        <tr> 
+         <td><a href="#hist_CP_Chart" class="inline">Chart</a></td> 
+        </tr> 
+        <tr> 
+         <td><a href="#hist_CP_Mockito" class="inline">Mockito</a></td> 
+        </tr> 
+       </tbody>
+      </table> 
+      <p> All of these histograms are limited to wef values which are smaller or equal to 200 due to hardness of visualization when including large values. If the technique failed to localize any faults within top 200, no histograms are appeared in the figure. </p> 
+      <h3><b>Artifact</b></h3> 
+      <p> An artifact of FLUCCS, named *defects4j-fluccs*, contains the implementation of FLUCCS as well as the dataset used to evaluate it in the accompanying paper. Data sets generated by FLUCCS consist of suspiciousness scores from existing SBFL formulas as well as code and change metric values (age, churn, and complexity). This artifact is uploaded at <a href="https://bitbucket.org/teamcoinse/fluccs">here</a>. </p> 
+      <h3><b>FLUCCS Extension</b></h3> 
+      <p> Full results of additional experiments on FLUCCS, i.e., cross-project, gradual cross-project, and feature importance analysis, are uploaded <a href="journal_extension/index.html" id="team6_14_9">here</a> </p> 
       <div style="display:none"> 
-       <div id="plot01" class="formula"> 
-        <h2>Pair 01</h2> 
+       <div id="hist_GP_Lang" class="formula"> 
+        <h2>Lang</h2> 
         <div class="tabs"> 
          <ul> 
-          <li><a href="#plot01_table">Table</a></li> 
-          <li><a href="#plot01_graph1">Overall execution graph</a></li> 
-          <li><a href="#plot01_graph2">Best work group size graph</a></li> 
+          <li><a href="#min">Minimum (best)</a></li> 
+          <li><a href="#med">Median</a></li> 
          </ul> 
-         <div id="plot01_table" class="results"> 
+         <div id="min" class="scatterplots"> 
+          <p><img src="plots/hist_gp_comp/hist.gp.min.Lang.wef.hist.png"></p> 
          </div> 
-         <div id="plot01_graph1" class="scatterplots"> 
-          <p><img src="plots/plot_1.png" width="750"></p> 
-         </div> 
-         <div id="plot01_graph2" class="scatterplots"> 
-          <p><img src="plots/best_wgs_scatter_plot1.png" width="750"></p> 
+         <div id="med" class="scatterplots"> 
+          <p><img src="plots/hist_gp_comp/hist.gp.med.Lang.wef.hist.png"></p> 
          </div> 
         </div> 
        </div> 
-       <div id="plot02" class="formula"> 
-        <h2>Pair 02</h2> 
+       <div id="hist_GP_Math" class="formula"> 
+        <h2>Math</h2> 
         <div class="tabs"> 
          <ul> 
-          <li><a href="#plot02_table">Table</a></li> 
-          <li><a href="#plot02_graph1">Overall execution graph</a></li> 
-          <li><a href="#plot02_graph2">Best work group size graph</a></li> 
+          <li><a href="#min">Minimum (best)</a></li> 
+          <li><a href="#med">Median</a></li> 
          </ul> 
-         <div id="plot02_table" class="results"> 
+         <div id="min" class="scatterplots"> 
+          <p><img src="plots/hist_gp_comp/hist.gp.min.Math.wef.hist.png"></p> 
          </div> 
-         <div id="plot02_graph1" class="scatterplots"> 
-          <p><img src="plots/plot_2.png" width="750"></p> 
-         </div> 
-         <div id="plot02_graph2" class="scatterplots"> 
-          <p><img src="plots/best_wgs_scatter_plot2.png" width="750"></p> 
+         <div id="med" class="scatterplots"> 
+          <p><img src="plots/hist_gp_comp/hist.gp.med.Math.wef.hist.png"></p> 
          </div> 
         </div> 
        </div> 
-       <div id="plot03" class="formula"> 
-        <h2>Pair 03</h2> 
+       <div id="hist_GP_Time" class="formula"> 
+        <h2>Time</h2> 
         <div class="tabs"> 
          <ul> 
-          <li><a href="#plot03_table">Table</a></li> 
-          <li><a href="#plot03_graph1">Overall execution graph</a></li> 
-          <li><a href="#plot03_graph2">Best work group size graph</a></li> 
+          <li><a href="#min">Minimum (best)</a></li> 
+          <li><a href="#med">Median</a></li> 
          </ul> 
-         <div id="plot03_table" class="results"> 
+         <div id="min" class="scatterplots"> 
+          <p><img src="plots/hist_gp_comp/hist.gp.min.Time.wef.hist.png"></p> 
          </div> 
-         <div id="plot03_graph1" class="scatterplots"> 
-          <p><img src="plots/plot_3.png" width="750"></p> 
-         </div> 
-         <div id="plot03_graph2" class="scatterplots"> 
-          <p><img src="plots/best_wgs_scatter_plot3.png" width="750"></p> 
+         <div id="med" class="scatterplots"> 
+          <p><img src="plots/hist_gp_comp/hist.gp.med.Time.wef.hist.png"></p> 
          </div> 
         </div> 
        </div> 
-       <div id="plot04" class="formula"> 
-        <h2>Pair 04</h2> 
+       <div id="hist_GP_Closure" class="formula"> 
+        <h2>Closure</h2> 
         <div class="tabs"> 
          <ul> 
-          <li><a href="#plot04_table">Table</a></li> 
-          <li><a href="#plot04_graph1">Overall execution graph</a></li> 
-          <li><a href="#plot04_graph2">Best work group size graph</a></li> 
+          <li><a href="#min">Minimum (best)</a></li> 
+          <li><a href="#med">Median</a></li> 
          </ul> 
-         <div id="plot04_table" class="results"> 
+         <div id="min" class="scatterplots"> 
+          <p><img src="plots/hist_gp_comp/hist.gp.min.Closure.wef.hist.png"></p> 
          </div> 
-         <div id="plot04_graph1" class="scatterplots"> 
-          <p><img src="plots/plot_4.png" width="750"></p> 
-         </div> 
-         <div id="plot04_graph2" class="scatterplots"> 
-          <p><img src="plots/best_wgs_scatter_plot4.png" width="750"></p> 
+         <div id="med" class="scatterplots"> 
+          <p><img src="plots/hist_gp_comp/hist.gp.med.Closure.wef.hist.png"></p> 
          </div> 
         </div> 
        </div> 
-       <div id="plot05" class="formula"> 
-        <h2>Pair 05</h2> 
+       <div id="hist_GP_Chart" class="formula"> 
+        <h2>Chart</h2> 
         <div class="tabs"> 
          <ul> 
-          <li><a href="#plot05_table">Table</a></li> 
-          <li><a href="#plot05_graph1">Overall execution graph</a></li> 
-          <li><a href="#plot05_graph2">Best work group size graph</a></li> 
+          <li><a href="#min">Minimum (best)</a></li> 
+          <li><a href="#med">Median</a></li> 
          </ul> 
-         <div id="plot05_table" class="results"> 
+         <div id="min" class="scatterplots"> 
+          <p><img src="plots/hist_gp_comp/hist.gp.min.Chart.wef.hist.png"></p> 
          </div> 
-         <div id="plot05_graph1" class="scatterplots"> 
-          <p><img src="plots/plot_5.png" width="750"></p> 
-         </div> 
-         <div id="plot05_graph2" class="scatterplots"> 
-          <p><img src="plots/best_wgs_scatter_plot5.png" width="750"></p> 
+         <div id="med" class="scatterplots"> 
+          <p><img src="plots/hist_gp_comp/hist.gp.med.Chart.wef.hist.png"></p> 
          </div> 
         </div> 
        </div> 
-       <div id="plot06" class="formula"> 
-        <h2>Pair 06</h2> 
+       <div id="hist_GP_Mockito" class="formula"> 
+        <h2>Mockito</h2> 
         <div class="tabs"> 
          <ul> 
-          <li><a href="#plot06_table">Table</a></li> 
-          <li><a href="#plot06_graph1">Overall execution graph</a></li> 
-          <li><a href="#plot06_graph2">Best work group size graph</a></li> 
+          <li><a href="#min">Minimum (best)</a></li> 
+          <li><a href="#med">Median</a></li> 
          </ul> 
-         <div id="plot06_table" class="results"> 
+         <div id="min" class="scatterplots"> 
+          <p><img src="plots/hist_gp_comp/hist.gp.min.Chart.wef.hist.png"></p> 
          </div> 
-         <div id="plot06_graph1" class="scatterplots"> 
-          <p><img src="plots/plot_6.png" width="750"></p> 
-         </div> 
-         <div id="plot06_graph2" class="scatterplots"> 
-          <p><img src="plots/best_wgs_scatter_plot6.png" width="750"></p> 
+         <div id="med" class="scatterplots"> 
+          <p><img src="plots/hist_gp_comp/hist.gp.med.Chart.wef.hist.png"></p> 
          </div> 
         </div> 
        </div> 
-       <div id="plot07" class="formula"> 
-        <h2>Pair 07</h2> 
+       <div id="hist_ER1a" class="formula"> 
+        <h2>ER1a</h2> 
         <div class="tabs"> 
          <ul> 
-          <li><a href="#plot07_table">Table</a></li> 
-          <li><a href="#plot07_graph1">Overall execution graph</a></li> 
-          <li><a href="#plot07_graph2">Best work group size graph</a></li> 
+          <li><a href="#ER1a_Lang">Lang</a></li> 
+          <li><a href="#ER1a_Math">Math</a></li> 
+          <li><a href="#ER1a_Time">Time</a></li> 
+          <li><a href="#ER1a_Closure">Closure</a></li> 
+          <li><a href="#ER1a_Chart">Chart</a></li> 
+          <li><a href="#ER1a_Mockito">Mockito</a></li> 
          </ul> 
-         <div id="plot07_table" class="results"> 
+         <div id="ER1a_Lang" class="scatterplots"> 
+          <p><img src="plots/hist_baseline_comp/hist.baseline.ER1a.Lang.wef.hist.png"></p> 
          </div> 
-         <div id="plot07_graph1" class="scatterplots"> 
-          <p><img src="plots/plot_7.png" width="750"></p> 
+         <div id="ER1a_Math" class="scatterplots"> 
+          <p><img src="plots/hist_baseline_comp/hist.baseline.ER1a.Math.wef.hist.png"></p> 
          </div> 
-         <div id="plot07_graph2" class="scatterplots"> 
-          <p><img src="plots/best_wgs_scatter_plot7.png" width="750"></p> 
+         <div id="ER1a_Time" class="scatterplots"> 
+          <p><img src="plots/hist_baseline_comp/hist.baseline.ER1a.Time.wef.hist.png"></p> 
+         </div> 
+         <div id="ER1a_Closure" class="scatterplots"> 
+          <p><img src="plots/hist_baseline_comp/hist.baseline.ER1a.Closure.wef.hist.png"></p> 
+         </div> 
+         <div id="ER1a_Chart" class="scatterplots"> 
+          <p><img src="plots/hist_baseline_comp/hist.baseline.ER1a.Chart.wef.hist.png"></p> 
+         </div> 
+         <div id="ER1a_Mockito" class="scatterplots"> 
+          <p><img src="plots/hist_baseline_comp/hist.baseline.ER1a.Mockito.wef.hist.png"></p> 
          </div> 
         </div> 
        </div> 
-       <div id="plot08" class="formula"> 
-        <h2>Pair 08</h2> 
+       <div id="hist_ER1b" class="formula"> 
+        <h2>ER1b</h2> 
         <div class="tabs"> 
          <ul> 
-          <li><a href="#plot08_table">Table</a></li> 
-          <li><a href="#plot08_graph1">Overall execution graph</a></li> 
-          <li><a href="#plot08_graph2">Best work group size graph</a></li> 
+          <li><a href="#ER1b_Lang">Lang</a></li> 
+          <li><a href="#ER1b_Math">Math</a></li> 
+          <li><a href="#ER1b_Time">Time</a></li> 
+          <li><a href="#ER1b_Closure">Closure</a></li> 
+          <li><a href="#ER1b_Chart">Chart</a></li>
+          <li> </li>
+          <li><a href="#ER1b_Mockito">Mockito</a></li> 
          </ul> 
-         <div id="plot08_table" class="results"> 
+         <div id="ER1b_Lang" class="scatterplots"> 
+          <p><img src="plots/hist_baseline_comp/hist.baseline.ER1b.Lang.wef.hist.png"></p> 
          </div> 
-         <div id="plot08_graph1" class="scatterplots"> 
-          <p><img src="plots/plot_8.png" width="750"></p> 
+         <div id="ER1b_Math" class="scatterplots"> 
+          <p><img src="plots/hist_baseline_comp/hist.baseline.ER1b.Math.wef.hist.png"></p> 
          </div> 
-         <div id="plot08_graph2" class="scatterplots"> 
-          <p><img src="plots/best_wgs_scatter_plot8.png" width="750"></p> 
+         <div id="ER1b_Time" class="scatterplots"> 
+          <p><img src="plots/hist_baseline_comp/hist.baseline.ER1b.Time.wef.hist.png"></p> 
+         </div> 
+         <div id="ER1b_Closure" class="scatterplots"> 
+          <p><img src="plots/hist_baseline_comp/hist.baseline.ER1b.Closure.wef.hist.png"></p> 
+         </div> 
+         <div id="ER1b_Chart" class="scatterplots"> 
+          <p><img src="plots/hist_baseline_comp/hist.baseline.ER1b.Chart.wef.hist.png"></p> 
+         </div> 
+         <div id="ER1b_Mockito" class="scatterplots"> 
+          <p><img src="plots/hist_baseline_comp/hist.baseline.ER1b.Mockito.wef.hist.png"></p> 
          </div> 
         </div> 
        </div> 
-       <div id="plot09" class="formula"> 
-        <h2>Pair 09</h2> 
+       <div id="hist_ER5a" class="formula"> 
+        <h2>ER5a</h2> 
         <div class="tabs"> 
          <ul> 
-          <li><a href="#plot09_table">Table</a></li> 
-          <li><a href="#plot09_graph1">Overall execution graph</a></li> 
-          <li><a href="#plot09_graph2">Best work group size graph</a></li> 
+          <li><a href="#ER5a_Lang">Lang</a></li> 
+          <li><a href="#ER5a_Math">Math</a></li> 
+          <li><a href="#ER5a_Time">Time</a></li> 
+          <li><a href="#ER5a_Closure">Closure</a></li> 
+          <li><a href="#ER5a_Chart">Chart</a></li> 
+          <li><a href="#ER5a_Mockito">Mockito</a></li> 
          </ul> 
-         <div id="plot09_table" class="results"> 
+         <div id="ER5a_Lang" class="scatterplots"> 
+          <p><img src="plots/hist_baseline_comp/hist.baseline.ER5a.Lang.wef.hist.png"></p> 
          </div> 
-         <div id="plot09_graph1" class="scatterplots"> 
-          <p><img src="plots/plot_9.png" width="750"></p> 
+         <div id="ER5a_Math" class="scatterplots"> 
+          <p><img src="plots/hist_baseline_comp/hist.baseline.ER5a.Math.wef.hist.png"></p> 
          </div> 
-         <div id="plot09_graph2" class="scatterplots"> 
-          <p><img src="plots/best_wgs_scatter_plot9.png" width="750"></p> 
+         <div id="ER5a_Time" class="scatterplots"> 
+          <p><img src="plots/hist_baseline_comp/hist.baseline.ER5a.Time.wef.hist.png"></p> 
+         </div> 
+         <div id="ER5a_Closure" class="scatterplots"> 
+          <p><img src="plots/hist_baseline_comp/hist.baseline.ER5a.Closure.wef.hist.png"></p> 
+         </div> 
+         <div id="ER5a_Chart" class="scatterplots"> 
+          <p><img src="plots/hist_baseline_comp/hist.baseline.ER5a.Chart.wef.hist.png"></p> 
+         </div> 
+         <div id="ER5a_Mockito" class="scatterplots"> 
+          <p><img src="plots/hist_baseline_comp/hist.baseline.ER5a.Mockito.wef.hist.png"></p> 
          </div> 
         </div> 
        </div> 
-       <div id="plot10" class="formula"> 
-        <h2>Pair 10</h2> 
+       <div id="hist_ER5b" class="formula"> 
+        <h2>ER5b</h2> 
         <div class="tabs"> 
          <ul> 
-          <li><a href="#plot10_table">Table</a></li> 
-          <li><a href="#plot10_graph1">Overall execution graph</a></li> 
-          <li><a href="#plot10_graph2">Best work group size graph</a></li> 
+          <li><a href="#ER5b_Lang">Lang</a></li> 
+          <li><a href="#ER5b_Math">Math</a></li> 
+          <li><a href="#ER5b_Time">Time</a></li> 
+          <li><a href="#ER5b_Closure">Closure</a></li> 
+          <li><a href="#ER5b_Chart">Chart</a></li> 
+          <li><a href="#ER5b_Mockito">Mockito</a></li> 
          </ul> 
-         <div id="plot10_table" class="results"> 
+         <div id="ER5b_Lang" class="scatterplots"> 
+          <p><img src="plots/hist_baseline_comp/hist.baseline.ER5b.Lang.wef.hist.png"></p> 
          </div> 
-         <div id="plot10_graph1" class="scatterplots"> 
-          <p><img src="plots/plot_10.png" width="750"></p> 
+         <div id="ER5b_Math" class="scatterplots"> 
+          <p><img src="plots/hist_baseline_comp/hist.baseline.ER5b.Math.wef.hist.png"></p> 
          </div> 
-         <div id="plot10_graph2" class="scatterplots"> 
-          <p><img src="plots/best_wgs_scatter_plot10.png" width="750"></p> 
+         <div id="ER5b_Time" class="scatterplots"> 
+          <p><img src="plots/hist_baseline_comp/hist.baseline.ER5b.Time.wef.hist.png"></p> 
+         </div> 
+         <div id="ER5b_Closure" class="scatterplots"> 
+          <p><img src="plots/hist_baseline_comp/hist.baseline.ER5b.Closure.wef.hist.png"></p> 
+         </div> 
+         <div id="ER5b_Chart" class="scatterplots"> 
+          <p><img src="plots/hist_baseline_comp/hist.baseline.ER5b.Chart.wef.hist.png"></p> 
+         </div> 
+         <div id="ER5b_Mockito" class="scatterplots"> 
+          <p><img src="plots/hist_baseline_comp/hist.baseline.ER5b.Mockito.wef.hist.png"></p> 
          </div> 
         </div> 
        </div> 
-       <div id="plot11" class="formula"> 
-        <h2>Pair 11</h2> 
+       <div id="hist_ER5c" class="formula"> 
+        <h2>ER5c</h2> 
         <div class="tabs"> 
          <ul> 
-          <li><a href="#plot11_table">Table</a></li> 
-          <li><a href="#plot11_graph1">Overall execution graph</a></li> 
-          <li><a href="#plot11_graph2">Best work group size graph</a></li> 
+          <li><a href="#ER5c_Lang">Lang</a></li> 
+          <li><a href="#ER5c_Math">Math</a></li> 
+          <li><a href="#ER5c_Time">Time</a></li> 
+          <li><a href="#ER5c_Closure">Closure</a></li> 
+          <li><a href="#ER5c_Chart">Chart</a></li> 
+          <li><a href="#ER5c_Mockito">Mockito</a></li> 
          </ul> 
-         <div id="plot11_table" class="results"> 
+         <div id="ER5c_Lang" class="scatterplots"> 
+          <p><img src="plots/hist_baseline_comp/hist.baseline.ER5c.Lang.wef.hist.png"></p> 
          </div> 
-         <div id="plot11_graph1" class="scatterplots"> 
-          <p><img src="plots/plot_11.png" width="750"></p> 
+         <div id="ER5c_Math" class="scatterplots"> 
+          <p><img src="plots/hist_baseline_comp/hist.baseline.ER5c.Math.wef.hist.png"></p> 
          </div> 
-         <div id="plot11_graph2" class="scatterplots"> 
-          <p><img src="plots/best_wgs_scatter_plot11.png" width="750"></p> 
+         <div id="ER5c_Time" class="scatterplots"> 
+          <p><img src="plots/hist_baseline_comp/hist.baseline.ER5c.Time.wef.hist.png"></p> 
+         </div> 
+         <div id="ER5c_Closure" class="scatterplots"> 
+          <p><img src="plots/hist_baseline_comp/hist.baseline.ER5c.Closure.wef.hist.png"></p> 
+         </div> 
+         <div id="ER5c_Chart" class="scatterplots"> 
+          <p><img src="plots/hist_baseline_comp/hist.baseline.ER5c.Chart.wef.hist.png"></p> 
+         </div> 
+         <div id="ER5c_Mockito" class="scatterplots"> 
+          <p><img src="plots/hist_baseline_comp/hist.baseline.ER5c.Mockito.wef.hist.png"></p> 
          </div> 
         </div> 
        </div> 
-       <div id="plot12" class="formula"> 
-        <h2>Pair 12</h2> 
+       <div id="hist_gp02" class="formula"> 
+        <h2>gp02</h2> 
         <div class="tabs"> 
          <ul> 
-          <li><a href="#plot12_table">Table</a></li> 
-          <li><a href="#plot12_graph1">Overall execution graph</a></li> 
-          <li><a href="#plot12_graph2">Best work group size graph</a></li> 
+          <li><a href="#gp02_Lang">Lang</a></li> 
+          <li><a href="#gp02_Math">Math</a></li> 
+          <li><a href="#gp02_Time">Time</a></li> 
+          <li><a href="#gp02_Closure">Closure</a></li> 
+          <li><a href="#gp02_Chart">Chart</a></li> 
+          <li><a href="#gp02_Mockito">Mockito</a></li> 
          </ul> 
-         <div id="plot12_table" class="results"> 
+         <div id="gp02_Lang" class="scatterplots"> 
+          <p><img src="plots/hist_baseline_comp/hist.baseline.gp02.Lang.wef.hist.png"></p> 
          </div> 
-         <div id="plot12_graph1" class="scatterplots"> 
-          <p><img src="plots/plot_12.png" width="750"></p> 
+         <div id="gp02_Math" class="scatterplots"> 
+          <p><img src="plots/hist_baseline_comp/hist.baseline.gp02.Math.wef.hist.png"></p> 
          </div> 
-         <div id="plot12_graph2" class="scatterplots"> 
-          <p><img src="plots/best_wgs_scatter_plot12.png" width="750"></p> 
+         <div id="gp02_Time" class="scatterplots"> 
+          <p><img src="plots/hist_baseline_comp/hist.baseline.gp02.Time.wef.hist.png"></p> 
+         </div> 
+         <div id="gp02_Closure" class="scatterplots"> 
+          <p><img src="plots/hist_baseline_comp/hist.baseline.gp02.Closure.wef.hist.png"></p> 
+         </div> 
+         <div id="gp02_Chart" class="scatterplots"> 
+          <p><img src="plots/hist_baseline_comp/hist.baseline.gp02.Chart.wef.hist.png"></p> 
+         </div> 
+         <div id="gp02_Mockito" class="scatterplots"> 
+          <p><img src="plots/hist_baseline_comp/hist.baseline.gp02.Mockito.wef.hist.png"></p> 
          </div> 
         </div> 
        </div> 
-       <div id="plot13" class="formula"> 
-        <h2>Pair 13</h2> 
+       <div id="hist_gp03" class="formula"> 
+        <h2>gp03</h2> 
         <div class="tabs"> 
          <ul> 
-          <li><a href="#plot13_table">Table</a></li> 
-          <li><a href="#plot13_graph1">Overall execution graph</a></li> 
-          <li><a href="#plot13_graph2">Best work group size graph</a></li> 
+          <li><a href="#gp03_Lang">Lang</a></li> 
+          <li><a href="#gp03_Math">Math</a></li> 
+          <li><a href="#gp03_Time">Time</a></li> 
+          <li><a href="#gp03_Closure">Closure</a></li> 
+          <li><a href="#gp03_Chart">Chart</a></li> 
+          <li><a href="#gp03_Mockito">Mockito</a></li> 
          </ul> 
-         <div id="plot13_table" class="results"> 
+         <div id="gp03_Lang" class="scatterplots"> 
+          <p><img src="plots/hist_baseline_comp/hist.baseline.gp03.Lang.wef.hist.png"></p> 
          </div> 
-         <div id="plot13_graph1" class="scatterplots"> 
-          <p><img src="plots/plot_13.png" width="750"></p> 
+         <div id="gp03_Math" class="scatterplots"> 
+          <p><img src="plots/hist_baseline_comp/hist.baseline.gp03.Math.wef.hist.png"></p> 
          </div> 
-         <div id="plot13_graph2" class="scatterplots"> 
-          <p><img src="plots/best_wgs_scatter_plot13.png" width="750"></p> 
+         <div id="gp03_Time" class="scatterplots"> 
+          <p><img src="plots/hist_baseline_comp/hist.baseline.gp03.Time.wef.hist.png"></p> 
+         </div> 
+         <div id="gp03_Closure" class="scatterplots"> 
+          <p><img src="plots/hist_baseline_comp/hist.baseline.gp03.Closure.wef.hist.png"></p> 
+         </div> 
+         <div id="gp03_Chart" class="scatterplots"> 
+          <p><img src="plots/hist_baseline_comp/hist.baseline.gp03.Chart.wef.hist.png"></p> 
+         </div> 
+         <div id="gp03_Mockito" class="scatterplots"> 
+          <p><img src="plots/hist_baseline_comp/hist.baseline.gp03.Mockito.wef.hist.png"></p> 
          </div> 
         </div> 
        </div> 
-       <div id="plot14" class="formula"> 
-        <h2>Pair 14</h2> 
+       <div id="hist_gp13" class="formula"> 
+        <h2>gp13</h2> 
         <div class="tabs"> 
          <ul> 
-          <li><a href="#plot14_table">Table</a></li> 
-          <li><a href="#plot14_graph1">Overall execution graph</a></li> 
-          <li><a href="#plot14_graph2">Best work group size graph</a></li> 
+          <li><a href="#gp13_Lang">Lang</a></li> 
+          <li><a href="#gp13_Math">Math</a></li> 
+          <li><a href="#gp13_Time">Time</a></li> 
+          <li><a href="#gp13_Closure">Closure</a></li> 
+          <li><a href="#gp13_Chart">Chart</a></li> 
+          <li><a href="#gp13_Mockito">Mockito</a></li> 
          </ul> 
-         <div id="plot14_table" class="results"> 
+         <div id="gp13_Lang" class="scatterplots"> 
+          <p><img src="plots/hist_baseline_comp/hist.baseline.gp13.Lang.wef.hist.png"></p> 
          </div> 
-         <div id="plot14_graph1" class="scatterplots"> 
-          <p><img src="plots/plot_14.png" width="750"></p> 
+         <div id="gp13_Math" class="scatterplots"> 
+          <p><img src="plots/hist_baseline_comp/hist.baseline.gp13.Math.wef.hist.png"></p> 
          </div> 
-         <div id="plot14_graph2" class="scatterplots"> 
-          <p><img src="plots/best_wgs_scatter_plot14.png" width="750"></p> 
+         <div id="gp13_Time" class="scatterplots"> 
+          <p><img src="plots/hist_baseline_comp/hist.baseline.gp13.Time.wef.hist.png"></p> 
+         </div> 
+         <div id="gp13_Closure" class="scatterplots"> 
+          <p><img src="plots/hist_baseline_comp/hist.baseline.gp13.Closure.wef.hist.png"></p> 
+         </div> 
+         <div id="gp13_Chart" class="scatterplots"> 
+          <p><img src="plots/hist_baseline_comp/hist.baseline.gp13.Chart.wef.hist.png"></p> 
+         </div> 
+         <div id="gp13_Mockito" class="scatterplots"> 
+          <p><img src="plots/hist_baseline_comp/hist.baseline.gp13.Mockito.wef.hist.png"></p> 
          </div> 
         </div> 
        </div> 
-       <div id="plot15" class="formula"> 
-        <h2>Pair 15</h2> 
+       <div id="hist_gp19" class="formula"> 
+        <h2>gp19</h2> 
         <div class="tabs"> 
          <ul> 
-          <li><a href="#plot15_table">Table</a></li> 
-          <li><a href="#plot15_graph1">Overall execution graph</a></li> 
-          <li><a href="#plot15_graph2">Best work group size graph</a></li> 
+          <li><a href="#gp19_Lang">Lang</a></li> 
+          <li><a href="#gp19_Math">Math</a></li> 
+          <li><a href="#gp19_Time">Time</a></li> 
+          <li><a href="#gp19_Closure">Closure</a></li> 
+          <li><a href="#gp19_Chart">Chart</a></li> 
+          <li><a href="#gp19_Mockito">Mockito</a></li> 
          </ul> 
-         <div id="plot15_table" class="results"> 
+         <div id="gp19_Lang" class="scatterplots"> 
+          <p><img src="plots/hist_baseline_comp/hist.baseline.gp19.Lang.wef.hist.png"></p> 
          </div> 
-         <div id="plot15_graph1" class="scatterplots"> 
-          <p><img src="plots/plot_15.png" width="750"></p> 
+         <div id="gp19_Math" class="scatterplots"> 
+          <p><img src="plots/hist_baseline_comp/hist.baseline.gp19.Math.wef.hist.png"></p> 
          </div> 
-         <div id="plot15_graph2" class="scatterplots"> 
-          <p><img src="plots/best_wgs_scatter_plot15.png" width="750"></p> 
+         <div id="gp19_Time" class="scatterplots"> 
+          <p><img src="plots/hist_baseline_comp/hist.baseline.gp19.Time.wef.hist.png"></p> 
+         </div> 
+         <div id="gp19_Closure" class="scatterplots"> 
+          <p><img src="plots/hist_baseline_comp/hist.baseline.gp19.Closure.wef.hist.png"></p> 
+         </div> 
+         <div id="gp19_Chart" class="scatterplots"> 
+          <p><img src="plots/hist_baseline_comp/hist.baseline.gp19.Chart.wef.hist.png"></p> 
+         </div> 
+         <div id="gp19_Mockito" class="scatterplots"> 
+          <p><img src="plots/hist_baseline_comp/hist.baseline.gp19.Mockito.wef.hist.png"></p> 
          </div> 
         </div> 
        </div> 
-       <div id="plot16" class="formula"> 
-        <h2>Pair 16</h2> 
+       <div id="hist_ochiai" class="formula"> 
+        <h2>ochiai</h2> 
         <div class="tabs"> 
          <ul> 
-          <li><a href="#plot16_table">Table</a></li> 
-          <li><a href="#plot16_graph1">Overall execution graph</a></li> 
-          <li><a href="#plot16_graph2">Best work group size graph</a></li> 
+          <li><a href="#ochiai_Lang">Lang</a></li> 
+          <li><a href="#ochiai_Math">Math</a></li> 
+          <li><a href="#ochiai_Time">Time</a></li> 
+          <li><a href="#ochiai_Closure">Closure</a></li> 
+          <li><a href="#ochiai_Chart">Chart</a></li> 
+          <li><a href="#ochiai_Mockito">Mockito</a></li> 
          </ul> 
-         <div id="plot16_table" class="results"> 
+         <div id="ochiai_Lang" class="scatterplots"> 
+          <p><img src="plots/hist_baseline_comp/hist.baseline.ochiai.Lang.wef.hist.png"></p> 
          </div> 
-         <div id="plot16_graph1" class="scatterplots"> 
-          <p><img src="plots/plot_16.png" width="750"></p> 
+         <div id="ochiai_Math" class="scatterplots"> 
+          <p><img src="plots/hist_baseline_comp/hist.baseline.ochiai.Math.wef.hist.png"></p> 
          </div> 
-         <div id="plot16_graph2" class="scatterplots"> 
-          <p><img src="plots/best_wgs_scatter_plot16.png" width="750"></p> 
+         <div id="ochiai_Time" class="scatterplots"> 
+          <p><img src="plots/hist_baseline_comp/hist.baseline.ochiai.Time.wef.hist.png"></p> 
+         </div> 
+         <div id="ochiai_Closure" class="scatterplots"> 
+          <p><img src="plots/hist_baseline_comp/hist.baseline.ochiai.Closure.wef.hist.png"></p> 
+         </div> 
+         <div id="ochiai_Chart" class="scatterplots"> 
+          <p><img src="plots/hist_baseline_comp/hist.baseline.ochiai.Chart.wef.hist.png"></p> 
+         </div> 
+         <div id="ochiai_Mockito" class="scatterplots"> 
+          <p><img src="plots/hist_baseline_comp/hist.baseline.ochiai.Mockito.wef.hist.png"></p> 
          </div> 
         </div> 
        </div> 
-       <div id="plot17" class="formula"> 
-        <h2>Pair 17</h2> 
+       <div id="hist_jaccard" class="formula"> 
+        <h2>jaccard</h2> 
         <div class="tabs"> 
          <ul> 
-          <li><a href="#plot17_table">Table</a></li> 
-          <li><a href="#plot17_graph1">Overall execution graph</a></li> 
-          <li><a href="#plot17_graph2">Best work group size graph</a></li> 
+          <li><a href="#jaccard_Lang">Lang</a></li> 
+          <li><a href="#jaccard_Math">Math</a></li> 
+          <li><a href="#jaccard_Time">Time</a></li> 
+          <li><a href="#jaccard_Closure">Closure</a></li> 
+          <li><a href="#jaccard_Chart">Chart</a></li> 
+          <li><a href="#jaccard_Mockito">Mockito</a></li> 
          </ul> 
-         <div id="plot17_table" class="results"> 
+         <div id="jaccard_Lang" class="scatterplots"> 
+          <p><img src="plots/hist_baseline_comp/hist.baseline.jaccard.Lang.wef.hist.png"></p> 
          </div> 
-         <div id="plot17_graph1" class="scatterplots"> 
-          <p><img src="plots/plot_17.png" width="750"></p> 
+         <div id="jaccard_Math" class="scatterplots"> 
+          <p><img src="plots/hist_baseline_comp/hist.baseline.jaccard.Math.wef.hist.png"></p> 
          </div> 
-         <div id="plot17_graph2" class="scatterplots"> 
-          <p><img src="plots/best_wgs_scatter_plot17.png" width="750"></p> 
+         <div id="jaccard_Time" class="scatterplots"> 
+          <p><img src="plots/hist_baseline_comp/hist.baseline.jaccard.Time.wef.hist.png"></p> 
+         </div> 
+         <div id="jaccard_Closure" class="scatterplots"> 
+          <p><img src="plots/hist_baseline_comp/hist.baseline.jaccard.Closure.wef.hist.png"></p> 
+         </div> 
+         <div id="jaccard_Chart" class="scatterplots"> 
+          <p><img src="plots/hist_baseline_comp/hist.baseline.jaccard.Chart.wef.hist.png"></p> 
+         </div> 
+         <div id="jaccard_Mockito" class="scatterplots"> 
+          <p><img src="plots/hist_baseline_comp/hist.baseline.jaccard.Mockito.wef.hist.png"></p> 
          </div> 
         </div> 
        </div> 
-       <div id="plot18" class="formula"> 
-        <h2>Pair 18</h2> 
+       <div id="hist_GausPrc" class="formula"> 
+        <h2>Gaussian Process</h2> 
         <div class="tabs"> 
          <ul> 
-          <li><a href="#plot18_table">Table</a></li> 
-          <li><a href="#plot18_graph1">Overall execution graph</a></li> 
-          <li><a href="#plot18_graph2">Best work group size graph</a></li> 
+          <li><a href="#Lang">Lang (best)</a></li> 
+          <li><a href="#Math">Math (best)</a></li> 
+          <li><a href="#Time">Time (best)</a></li> 
+          <li><a href="#Closure">Closure (best)</a></li> 
+          <li><a href="#Chart">Chart (best)</a></li> 
+          <li><a href="#Mockito">Mockito (best)</a></li> 
          </ul> 
-         <div id="plot18_table" class="results"> 
+         <div id="Lang" class="scatterplots"> 
+          <p><img src="plots/hist_other_algos_comp/hist.GausPrc.min.Lang.wef.hist.png"></p> 
          </div> 
-         <div id="plot18_graph1" class="scatterplots"> 
-          <p><img src="plots/plot_18.png" width="750"></p> 
+         <div id="Math" class="scatterplots"> 
+          <p><img src="plots/hist_other_algos_comp/hist.GausPrc.min.Math.wef.hist.png"></p> 
          </div> 
-         <div id="plot18_graph2" class="scatterplots"> 
-          <p><img src="plots/best_wgs_scatter_plot18.png" width="750"></p> 
+         <div id="Time" class="scatterplots"> 
+          <p><img src="plots/hist_other_algos_comp/hist.GausPrc.min.Time.wef.hist.png"></p> 
+         </div> 
+         <div id="Closure" class="scatterplots"> 
+          <p><img src="plots/hist_other_algos_comp/hist.GausPrc.min.Closure.wef.hist.png"></p> 
+         </div> 
+         <div id="Chart" class="scatterplots"> 
+          <p><img src="plots/hist_other_algos_comp/hist.GausPrc.min.Chart.wef.hist.png"></p> 
+         </div> 
+         <div id="Mockito" class="scatterplots"> 
+          <p><img src="plots/hist_other_algos_comp/hist.GausPrc.min.Mockito.wef.hist.png"></p> 
          </div> 
         </div> 
        </div> 
-       <div id="plot19" class="formula"> 
-        <h2>Pair 19</h2> 
+       <div id="hist_LrankSVM" class="formula"> 
+        <h2>Linear rankingSVM</h2> 
         <div class="tabs"> 
          <ul> 
-          <li><a href="#plot19_table">Table</a></li> 
-          <li><a href="#plot19_graph1">Overall execution graph</a></li> 
-          <li><a href="#plot19_graph2">Best work group size graph</a></li> 
+          <li><a href="#Lang">Lang (best)</a></li> 
+          <li><a href="#Math">Math (best)</a></li> 
+          <li><a href="#Time">Time (best)</a></li> 
+          <li><a href="#Closure">Closure (best)</a></li> 
+          <li><a href="#Chart">Chart (best)</a></li> 
+          <li><a href="#Mockito">Mockito (best)</a></li> 
          </ul> 
-         <div id="plot19_table" class="results"> 
+         <div id="Lang" class="scatterplots"> 
+          <p><img src="plots/hist_other_algos_comp/hist.LrankSVM.min.Lang.wef.hist.png"></p> 
          </div> 
-         <div id="plot19_graph1" class="scatterplots"> 
-          <p><img src="plots/plot_19.png" width="750"></p> 
+         <div id="Math" class="scatterplots"> 
+          <p><img src="plots/hist_other_algos_comp/hist.LrankSVM.min.Math.wef.hist.png"></p> 
          </div> 
-         <div id="plot19_graph2" class="scatterplots"> 
-          <p><img src="plots/best_wgs_scatter_plot19.png" width="750"></p> 
+         <div id="Time" class="scatterplots"> 
+          <p><img src="plots/hist_other_algos_comp/hist.LrankSVM.min.Time.wef.hist.png"></p> 
+         </div> 
+         <div id="Closure" class="scatterplots"> 
+          <p><img src="plots/hist_other_algos_comp/hist.LrankSVM.min.Closure.wef.hist.png"></p> 
+         </div> 
+         <div id="Chart" class="scatterplots"> 
+          <p><img src="plots/hist_other_algos_comp/hist.LrankSVM.min.Chart.wef.hist.png"></p> 
+         </div> 
+         <div id="Mockito" class="scatterplots"> 
+          <p><img src="plots/hist_other_algos_comp/hist.LrankSVM.min.Mockito.wef.hist.png"></p> 
          </div> 
         </div> 
        </div> 
-       <div id="plot20" class="formula"> 
-        <h2>Pair 20</h2> 
+       <div id="hist_RF" class="formula"> 
+        <h2>Random Forest</h2> 
         <div class="tabs"> 
          <ul> 
-          <li><a href="#plot20_table">Table</a></li> 
-          <li><a href="#plot20_graph1">Overall execution graph</a></li> 
-          <li><a href="#plot20_graph2">Best work group size graph</a></li> 
+          <li><a href="#Lang">Lang (best)</a></li> 
+          <li><a href="#Math">Math (best)</a></li> 
+          <li><a href="#Time">Time (best)</a></li> 
+          <li><a href="#Closure">Closure (best)</a></li> 
+          <li><a href="#Chart">Chart (best)</a></li> 
+          <li><a href="#Mockito">Mockito (best)</a></li> 
          </ul> 
-         <div id="plot20_table" class="results"> 
+         <div id="Lang" class="scatterplots"> 
+          <p><img src="plots/hist_other_algos_comp/hist.RF.min.Lang.wef.hist.png"></p> 
          </div> 
-         <div id="plot20_graph1" class="scatterplots"> 
-          <p><img src="plots/plot_20.png" width="750"></p> 
+         <div id="Math" class="scatterplots"> 
+          <p><img src="plots/hist_other_algos_comp/hist.RF.min.Math.wef.hist.png"></p> 
          </div> 
-         <div id="plot20_graph2" class="scatterplots"> 
-          <p><img src="plots/best_wgs_scatter_plot20.png" width="750"></p> 
+         <div id="Time" class="scatterplots"> 
+          <p><img src="plots/hist_other_algos_comp/hist.RF.min.Time.wef.hist.png"></p> 
+         </div> 
+         <div id="Closure" class="scatterplots"> 
+          <p><img src="plots/hist_other_algos_comp/hist.RF.min.Closure.wef.hist.png"></p> 
+         </div> 
+         <div id="Chart" class="scatterplots"> 
+          <p><img src="plots/hist_other_algos_comp/hist.RF.min.Chart.wef.hist.png"></p> 
+         </div> 
+         <div id="Mockito" class="scatterplots"> 
+          <p><img src="plots/hist_other_algos_comp/hist.RF.min.Mockito.wef.hist.png"></p> 
          </div> 
         </div> 
        </div> 
-       <div id="plot_wgs" class="formula"> 
-        <h2>Best work group size per test case plot</h2> 
-        <p><img src="plots/best_wgs_plot.png" width="750"></p> 
+       <div id="hist_CP_Lang" class="formula"> 
+        <h2>Lang</h2> 
+        <div class="tabs"> 
+         <ul> 
+          <li><a href="#GP">Genetic Programming (best)</a></li> 
+          <li><a href="#GausPrc">Gaussian Process (best)</a></li> 
+          <li><a href="#LrankSVM">Linear rankingSVM (best)</a></li> 
+          <li><a href="#RF">Random Forest (best)</a></li> 
+         </ul> 
+         <div id="GP" class="scatterplots"> 
+          <p><img src="plots/hist_cp_comp/hist.CP.GP.min.Lang.wef.hist.png"></p> 
+         </div> 
+         <div id="GausPrc" class="scatterplots"> 
+          <p><img src="plots/hist_cp_comp/hist.CP.GausPrc.min.Lang.wef.hist.png"></p> 
+         </div> 
+         <div id="LrankSVM" class="scatterplots"> 
+          <p><img src="plots/hist_cp_comp/hist.CP.LrankSVM.min.Lang.wef.hist.png"></p> 
+         </div> 
+         <div id="RF" class="scatterplots"> 
+          <p><img src="plots/hist_cp_comp/hist.CP.RF.min.Lang.wef.hist.png"></p> 
+         </div> 
+        </div> 
+       </div> 
+       <div id="hist_CP_Math" class="formula"> 
+        <h2>Math</h2> 
+        <div class="tabs"> 
+         <ul> 
+          <li><a href="#GP">Genetic Programming (best)</a></li> 
+          <li><a href="#GausPrc">Gaussian Process (best)</a></li> 
+          <li><a href="#LrankSVM">Linear rankingSVM (best)</a></li> 
+          <li><a href="#RF">Random Forest (best)</a></li> 
+         </ul> 
+         <div id="GP" class="scatterplots"> 
+          <p><img src="plots/hist_cp_comp/hist.CP.GP.min.Math.wef.hist.png"></p> 
+         </div> 
+         <div id="GausPrc" class="scatterplots"> 
+          <p><img src="plots/hist_cp_comp/hist.CP.GausPrc.min.Math.wef.hist.png"></p> 
+         </div> 
+         <div id="LrankSVM" class="scatterplots"> 
+          <p><img src="plots/hist_cp_comp/hist.CP.LrankSVM.min.Math.wef.hist.png"></p> 
+         </div> 
+         <div id="RF" class="scatterplots"> 
+          <p><img src="plots/hist_cp_comp/hist.CP.RF.min.Math.wef.hist.png"></p> 
+         </div> 
+        </div> 
+       </div> 
+       <div id="hist_CP_Time" class="formula"> 
+        <h2>Time</h2> 
+        <div class="tabs"> 
+         <ul> 
+          <li><a href="#GP">Genetic Programming (best)</a></li> 
+          <li><a href="#GausPrc">Gaussian Process (best)</a></li> 
+          <li><a href="#LrankSVM">Linear rankingSVM (best)</a></li> 
+          <li><a href="#RF">Random Forest (best)</a></li> 
+         </ul> 
+         <div id="GP" class="scatterplots"> 
+          <p><img src="plots/hist_cp_comp/hist.CP.GP.min.Time.wef.hist.png"></p> 
+         </div> 
+         <div id="GausPrc" class="scatterplots"> 
+          <p><img src="plots/hist_cp_comp/hist.CP.GausPrc.min.Time.wef.hist.png"></p> 
+         </div> 
+         <div id="LrankSVM" class="scatterplots"> 
+          <p><img src="plots/hist_cp_comp/hist.CP.LrankSVM.min.Time.wef.hist.png"></p> 
+         </div> 
+         <div id="RF" class="scatterplots"> 
+          <p><img src="plots/hist_cp_comp/hist.CP.RF.min.Time.wef.hist.png"></p> 
+         </div> 
+        </div> 
+       </div> 
+       <div id="hist_CP_Closure" class="formula"> 
+        <h2>Closure</h2> 
+        <div class="tabs"> 
+         <ul> 
+          <li><a href="#GP">Genetic Programming (best)</a></li> 
+          <li><a href="#GausPrc">Gaussian Process (best)</a></li> 
+          <li><a href="#LrankSVM">Linear rankingSVM (best)</a></li> 
+          <li><a href="#RF">Random Forest (best)</a></li> 
+         </ul> 
+         <div id="GP" class="scatterplots"> 
+          <p><img src="plots/hist_cp_comp/hist.CP.GP.min.Closure.wef.hist.png"></p> 
+         </div> 
+         <div id="GausPrc" class="scatterplots"> 
+          <p><img src="plots/hist_cp_comp/hist.CP.GausPrc.min.Closure.wef.hist.png"></p> 
+         </div> 
+         <div id="LrankSVM" class="scatterplots"> 
+          <p><img src="plots/hist_cp_comp/hist.CP.LrankSVM.min.Closure.wef.hist.png"></p> 
+         </div> 
+         <div id="RF" class="scatterplots"> 
+          <p><img src="plots/hist_cp_comp/hist.CP.RF.min.Closure.wef.hist.png"></p> 
+         </div> 
+        </div> 
+       </div> 
+       <div id="hist_CP_Chart" class="formula"> 
+        <h2>Chart</h2> 
+        <div class="tabs"> 
+         <ul> 
+          <li><a href="#GP">Genetic Programming (best)</a></li> 
+          <li><a href="#GausPrc">Gaussian Process (best)</a></li> 
+          <li><a href="#LrankSVM">Linear rankingSVM (best)</a></li> 
+          <li><a href="#RF">Random Forest (best)</a></li> 
+         </ul> 
+         <div id="GP" class="scatterplots"> 
+          <p><img src="plots/hist_cp_comp/hist.CP.GP.min.Chart.wef.hist.png"></p> 
+         </div> 
+         <div id="GausPrc" class="scatterplots"> 
+          <p><img src="plots/hist_cp_comp/hist.CP.GausPrc.min.Chart.wef.hist.png"></p> 
+         </div> 
+         <div id="LrankSVM" class="scatterplots"> 
+          <p><img src="plots/hist_cp_comp/hist.CP.LrankSVM.min.Chart.wef.hist.png"></p> 
+         </div> 
+         <div id="RF" class="scatterplots"> 
+          <p><img src="plots/hist_cp_comp/hist.CP.RF.min.Chart.wef.hist.png"></p> 
+         </div> 
+        </div> 
+       </div> 
+       <div id="hist_CP_Mockito" class="formula"> 
+        <h2>Mockito</h2> 
+        <div class="tabs"> 
+         <ul> 
+          <li><a href="#GP">Genetic Programming (best)</a></li> 
+          <li><a href="#GausPrc">Gaussian Process (best)</a></li> 
+          <li><a href="#LrankSVM">Linear rankingSVM (best)</a></li> 
+          <li><a href="#RF">Random Forest (best)</a></li> 
+         </ul> 
+         <div id="GP" class="scatterplots"> 
+          <p><img src="plots/hist_cp_comp/hist.CP.GP.min.Mockito.wef.hist.png"></p> 
+         </div> 
+         <div id="GausPrc" class="scatterplots"> 
+          <p><img src="plots/hist_cp_comp/hist.CP.GausPrc.min.Mockito.wef.hist.png"></p> 
+         </div> 
+         <div id="LrankSVM" class="scatterplots"> 
+          <p><img src="plots/hist_cp_comp/hist.CP.LrankSVM.min.Mockito.wef.hist.png"></p> 
+         </div> 
+         <div id="RF" class="scatterplots"> 
+          <p><img src="plots/hist_cp_comp/hist.CP.RF.min.Mockito.wef.hist.png"></p> 
+         </div> 
+        </div> 
        </div> 
       </div> 
-      <script src="http://d3js.org/d3.v3.min.js"></script> 
-      <script type="text/javascript" charset="utf-8">
-                        function isNumeric(n) { return !isNaN(parseFloat(n)) && isFinite(n); }
-                        for(var i=1; i<20; i++){
-				(function (i) {
-	                                d3.text("plots/result/Case " + (i < 10 ? "0" : "") + i + ".csv", function(data) {
-        	                                var parsedCSV = d3.csv.parseRows(data);
-                        	                var container = d3.select("#plot" + (i < 10 ? "0" : "") + i + "_table")
-                                	                .append("table").attr("style", "border: 1px solid #000000; border-collapse: collapse; font-size:10pt;").attr("border", "1")
-                                        	        .selectAll("tr")
-                                                	        .data(parsedCSV).enter()
-                                                        	.append("tr")
-                	                               	.selectAll("td")
-                                                       		.data(function(d) { return d; }).enter()
-	                                                        .append("td").attr("style", "font-size:10px")
-        	                                                .text(function(d) { 
-                                                                        if(isNumeric(d)) return new Number(parseFloat(d)).toExponential(2);
-                                                                        else return d; }
-                                                                        );
-                                	});
-				} (i));
-                        }
-                </script> 
      </div> 
     </article> 
    </div> 

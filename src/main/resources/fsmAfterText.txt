@@ -1,337 +1,2486 @@
 
-fn: Melodize - Home
-ed: loginTab
-edt: bc
-tn: loginModal
-new path!
-loginTab
-////
-ed: loginTab
-edt: bc
-tn: Melodize - Home
-new path!
-loginTab
-////
-ed: requesterBtn
-edt: dud
-tn: Melodize - Request
-////
-ed: workerBtn
-edt: b
-tn: Melodize - Song List
-new path!
-workerBtn
-////
-ed: learnBtn
-edt: b
-tn: Melodize - About
-new path!
-learnBtn
-////
-ed: profileTab
-edt: dud
-tn: Melodize - Profile
-////
+fn: COINSE
 ed: team6_0_0
 edt: e
-tn: Melodize - Gallery
+tn: COINSE
 new path!
 team6_0_0
 ////
 ed: team6_0_1
 edt: e
-tn: Melodize - Home
+tn: COINSE
 new path!
 team6_0_1
 ////
-
-fn: loginModal
-ed: loginBtn
-edt: bc
-tn: Melodize - Home
-new path!
-loginTab
-loginBtn
-////
-ed: team6_1_0
+ed: team6_0_2
 edt: e
-tn: Melodize - Sign Up
+tn: COINSE
 new path!
-loginTab
-team6_1_0
+team6_0_2
+////
+ed: team6_0_3
+edt: e
+tn: COINSE
+new path!
+team6_0_3
+////
+ed: team6_0_4
+edt: e
+tn: Research Interest
+new path!
+team6_0_4
+////
+ed: team6_0_5
+edt: e
+tn: Members
+new path!
+team6_0_5
+////
+ed: team6_0_6
+edt: e
+tn: Publications
+new path!
+team6_0_6
+////
+ed: team6_0_7
+edt: e
+tn: Projects
+new path!
+team6_0_7
+////
+ed: team6_0_8
+edt: e
+tn: Teaching
+new path!
+team6_0_8
 ////
 
-fn: Melodize - Sign Up
-ed: loginTab
-edt: b
-tn: loginModal
-new path!
-loginTab
-team6_1_0
-loginTab
-////
-ed: loginTab
+fn: COINSE
+ed: team6_1_0
 edt: dud
-tn: Melodize - Home
+tn: COINSE
 ////
-ed: profileTab
-edt: dud
-tn: Melodize - Profile
-////
+
+fn: Research Interest
 ed: team6_2_0
 edt: e
-tn: Melodize - Gallery
+tn: Research Interest
 new path!
-loginTab
-team6_1_0
+team6_0_4
 team6_2_0
 ////
 ed: team6_2_1
+edt: dud
+tn: COINSE
+////
+ed: team6_2_2
 edt: e
-tn: Melodize - Home
+tn: COINSE
 new path!
-loginTab
-team6_1_0
-team6_2_1
+team6_0_4
+team6_2_2
+////
+ed: team6_2_3
+edt: e
+tn: Research Interest
+new path!
+team6_0_4
+team6_2_3
+////
+ed: team6_2_4
+edt: e
+tn: Research Interest
+new path!
+team6_0_4
+team6_2_4
+////
+ed: team6_2_5
+edt: e
+tn: Members
+new path!
+team6_0_4
+team6_2_5
+////
+ed: team6_2_6
+edt: e
+tn: Publications
+new path!
+team6_0_4
+team6_2_6
+////
+ed: team6_2_7
+edt: e
+tn: Projects
+new path!
+team6_0_4
+team6_2_7
+////
+ed: team6_2_8
+edt: e
+tn: Teaching
+new path!
+team6_0_4
+team6_2_8
 ////
 
-fn: Melodize - Home
-ed: loginTab
-edt: bc
-tn: loginModal
-new path!
-loginTab
-////
-ed: loginTab
-edt: bc
-tn: Melodize - Home
-new path!
-loginTab
-////
-ed: requesterBtn
-edt: dud
-tn: Melodize - Request
-////
-ed: workerBtn
-edt: b
-tn: Melodize - Song List
-new path!
-workerBtn
-////
-ed: learnBtn
-edt: b
-tn: Melodize - About
-new path!
-learnBtn
-////
-ed: profileTab
-edt: dud
-tn: Melodize - Profile
-////
+fn: Members
 ed: team6_3_0
 edt: e
-tn: Melodize - Gallery
+tn: Members
 new path!
+team6_0_4
+team6_2_5
 team6_3_0
 ////
 ed: team6_3_1
+edt: dud
+tn: COINSE
+////
+ed: team6_3_2
 edt: e
-tn: Melodize - Home
+tn: COINSE
 new path!
-team6_3_1
+team6_0_4
+team6_2_5
+team6_3_2
+////
+ed: team6_3_3
+edt: e
+tn: Members
+new path!
+team6_0_4
+team6_2_5
+team6_3_3
+////
+ed: team6_3_4
+edt: e
+tn: Research Interest
+new path!
+team6_0_4
+team6_2_5
+team6_3_4
+////
+ed: team6_3_5
+edt: e
+tn: Members
+new path!
+team6_0_4
+team6_2_5
+team6_3_5
+////
+ed: team6_3_6
+edt: e
+tn: Publications
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+////
+ed: team6_3_7
+edt: e
+tn: Projects
+new path!
+team6_0_4
+team6_2_5
+team6_3_7
+////
+ed: team6_3_8
+edt: e
+tn: Teaching
+new path!
+team6_0_4
+team6_2_5
+team6_3_8
+////
+ed: team6_3_9
+edt: e
+tn: COINSE
+new path!
+team6_0_4
+team6_2_5
+team6_3_9
+////
+ed: team6_3_10
+edt: e
+tn: COINSE
+new path!
+team6_0_4
+team6_2_5
+team6_3_10
+////
+ed: team6_3_11
+edt: e
+tn: COINSE
+new path!
+team6_0_4
+team6_2_5
+team6_3_11
+////
+ed: team6_3_12
+edt: e
+tn: COINSE
+new path!
+team6_0_4
+team6_2_5
+team6_3_12
+////
+ed: team6_3_13
+edt: e
+tn: COINSE
+new path!
+team6_0_4
+team6_2_5
+team6_3_13
+////
+ed: team6_3_14
+edt: e
+tn: COINSE
+new path!
+team6_0_4
+team6_2_5
+team6_3_14
+////
+ed: team6_3_15
+edt: e
+tn: COINSE
+new path!
+team6_0_4
+team6_2_5
+team6_3_15
+////
+ed: team6_3_16
+edt: e
+tn: COINSE
+new path!
+team6_0_4
+team6_2_5
+team6_3_16
 ////
 
-fn: Melodize - Request
-ed: loginTab
-edt: dud
-tn: loginModal
-////
-ed: loginTab
-edt: dud
-tn: Melodize - Home
-////
-ed: profileTab
-edt: dud
-tn: Melodize - Profile
-////
+fn: Publications
 ed: team6_4_0
-edt: dud
-tn: Melodize - Gallery
+edt: e
+tn: Publications
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_0
 ////
 ed: team6_4_1
 edt: dud
-tn: Melodize - Home
+tn: COINSE
+////
+ed: team6_4_2
+edt: e
+tn: COINSE
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_2
+////
+ed: team6_4_3
+edt: e
+tn: Publications
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_3
+////
+ed: team6_4_4
+edt: e
+tn: Research Interest
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_4
+////
+ed: team6_4_5
+edt: e
+tn: Members
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_5
+////
+ed: team6_4_6
+edt: e
+tn: Publications
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_6
+////
+ed: team6_4_7
+edt: e
+tn: Projects
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+////
+ed: team6_4_8
+edt: e
+tn: Teaching
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_8
 ////
 
-fn: Melodize - Profile
-ed: loginTab
-edt: dud
-tn: loginModal
-////
-ed: loginTab
-edt: dud
-tn: Melodize - Home
-////
-ed: requesterBtn
-edt: dud
-tn: Melodize - Request
-////
-ed: workerBtn
-edt: dud
-tn: Melodize - Song List
-////
-ed: profileTab
-edt: dud
-tn: Melodize - Profile
-////
+fn: Projects
 ed: team6_5_0
-edt: dud
-tn: Melodize - Gallery
+edt: e
+tn: Projects
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_0
 ////
 ed: team6_5_1
 edt: dud
-tn: Melodize - Home
+tn: COINSE
+////
+ed: team6_5_2
+edt: e
+tn: COINSE
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_2
+////
+ed: team6_5_3
+edt: e
+tn: Projects
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_3
+////
+ed: team6_5_4
+edt: e
+tn: Research Interest
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_4
+////
+ed: team6_5_5
+edt: e
+tn: Members
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_5
+////
+ed: team6_5_6
+edt: e
+tn: Publications
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_6
+////
+ed: team6_5_7
+edt: e
+tn: Projects
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_7
+////
+ed: team6_5_8
+edt: e
+tn: Teaching
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_8
+////
+ed: team6_5_9
+edt: e
+tn: Evaluating CAVM: A New Search-Based Test Data Generation Tool for C
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_9
+////
+ed: team6_5_10
+edt: e
+tn: FLUCCS - Using Code and Change Metrics to Improve Fault Localization
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_10
+////
+ed: team6_5_11
+edt: e
+tn: Amortised Deep Parameter Optimisation of GPGPU Work Group Size for OpenCV
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_11
+////
+ed: team6_5_12
+edt: e
+tn: Field Report: Applying Monte Carlo Tree Search for Program Synthesis
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_12
+////
+ed: team6_5_13
+edt: dud
+tn: Seeing is Slicing: Observation Based Slicing of Picture Description Languages
+////
+ed: team6_5_14
+edt: e
+tn: Higher Strength Combinatorial Interaction Testing
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_14
+////
+ed: team6_5_15
+edt: e
+tn: Evolving Human Competitive Spectra-Based Fault Localisation Technique
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_15
+////
+ed: team6_5_16
+edt: e
+tn: SBFL Visualiser
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_16
 ////
 
-fn: Melodize - Song List
-ed: loginTab
-edt: bc
-tn: loginModal
-new path!
-workerBtn
-loginTab
-////
-ed: loginTab
-edt: dud
-tn: Melodize - Home
-////
-ed: joinBtn
-edt: dud
-tn: Melodize - Composing
-////
-ed: joinBtn
-edt: dud
-tn: passwordModal
-////
-ed: passwordBtn
-edt: dud
-tn: Melodize - Composing
-////
-ed: profileTab
-edt: dud
-tn: Melodize - Profile
-////
+fn: Teaching
 ed: team6_6_0
 edt: e
-tn: Melodize - Gallery
+tn: Teaching
 new path!
-workerBtn
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_8
 team6_6_0
 ////
 ed: team6_6_1
+edt: dud
+tn: COINSE
+////
+ed: team6_6_2
 edt: e
-tn: Melodize - Home
+tn: COINSE
 new path!
-workerBtn
-team6_6_1
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_8
+team6_6_2
+////
+ed: team6_6_3
+edt: e
+tn: Teaching
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_8
+team6_6_3
+////
+ed: team6_6_4
+edt: e
+tn: Research Interest
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_8
+team6_6_4
+////
+ed: team6_6_5
+edt: e
+tn: Members
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_8
+team6_6_5
+////
+ed: team6_6_6
+edt: e
+tn: Publications
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_8
+team6_6_6
+////
+ed: team6_6_7
+edt: e
+tn: Projects
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_8
+team6_6_7
+////
+ed: team6_6_8
+edt: e
+tn: Teaching
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_8
+team6_6_8
+////
+ed: team6_6_9
+edt: e
+tn: CS454 AI Based Software Engineering (Autumn 2019)
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_8
+team6_6_9
+////
+ed: team6_6_10
+edt: e
+tn: CS489 Computer Ethics and Social Issues (Autumn 2019)
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_8
+team6_6_10
+////
+ed: team6_6_11
+edt: e
+tn: CS453 Automated Software Testing, Spring 2019
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_8
+team6_6_11
+////
+ed: team6_6_12
+edt: e
+tn: CS454 AI Based Software Engineering (Autumn 2018)
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_8
+team6_6_12
 ////
 
-fn: Melodize - Composing
-ed: loginTab
-edt: dud
-tn: loginModal
-////
-ed: loginTab
-edt: dud
-tn: Melodize - Home
-////
-ed: profileTab
-edt: dud
-tn: Melodize - Profile
-////
+fn: CS454 AI Based Software Engineering (Autumn 2019)
 ed: team6_7_0
-edt: dud
-tn: Melodize - Gallery
+edt: e
+tn: CS454 AI Based Software Engineering (Autumn 2019)
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_8
+team6_6_9
+team6_7_0
 ////
 ed: team6_7_1
 edt: dud
-tn: Melodize - Home
+tn: COINSE
+////
+ed: team6_7_2
+edt: e
+tn: COINSE
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_8
+team6_6_9
+team6_7_2
+////
+ed: team6_7_3
+edt: e
+tn: CS454 AI Based Software Engineering (Autumn 2019)
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_8
+team6_6_9
+team6_7_3
+////
+ed: team6_7_4
+edt: e
+tn: Research Interest
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_8
+team6_6_9
+team6_7_4
+////
+ed: team6_7_5
+edt: e
+tn: Members
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_8
+team6_6_9
+team6_7_5
+////
+ed: team6_7_6
+edt: e
+tn: Publications
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_8
+team6_6_9
+team6_7_6
+////
+ed: team6_7_7
+edt: e
+tn: Projects
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_8
+team6_6_9
+team6_7_7
+////
+ed: team6_7_8
+edt: e
+tn: Teaching
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_8
+team6_6_9
+team6_7_8
 ////
 
-fn: Melodize - Gallery
-ed: loginTab
-edt: b
-tn: loginModal
-new path!
-loginTab
-team6_1_0
-team6_2_0
-loginTab
-////
-ed: loginTab
-edt: dud
-tn: Melodize - Home
-////
-ed: profileTab
-edt: dud
-tn: Melodize - Profile
-////
+fn: CS489 Computer Ethics and Social Issues (Autumn 2019)
 ed: team6_8_0
 edt: e
-tn: Melodize - Gallery
+tn: CS489 Computer Ethics and Social Issues (Autumn 2019)
 new path!
-loginTab
-team6_1_0
-team6_2_0
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_8
+team6_6_10
 team6_8_0
 ////
 ed: team6_8_1
+edt: dud
+tn: COINSE
+////
+ed: team6_8_2
 edt: e
-tn: Melodize - Home
+tn: COINSE
 new path!
-loginTab
-team6_1_0
-team6_2_0
-team6_8_1
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_8
+team6_6_10
+team6_8_2
+////
+ed: team6_8_3
+edt: e
+tn: CS489 Computer Ethics and Social Issues (Autumn 2019)
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_8
+team6_6_10
+team6_8_3
+////
+ed: team6_8_4
+edt: e
+tn: Research Interest
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_8
+team6_6_10
+team6_8_4
+////
+ed: team6_8_5
+edt: e
+tn: Members
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_8
+team6_6_10
+team6_8_5
+////
+ed: team6_8_6
+edt: e
+tn: Publications
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_8
+team6_6_10
+team6_8_6
+////
+ed: team6_8_7
+edt: e
+tn: Projects
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_8
+team6_6_10
+team6_8_7
+////
+ed: team6_8_8
+edt: e
+tn: Teaching
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_8
+team6_6_10
+team6_8_8
 ////
 
-fn: passwordModal
-ed: passwordBtn
-edt: dud
-tn: Melodize - Composing
+fn: CS453 Automated Software Testing, Spring 2019
+ed: team6_9_0
+edt: e
+tn: CS453 Automated Software Testing, Spring 2019
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_8
+team6_6_11
+team6_9_0
 ////
-ed: close
+ed: team6_9_1
 edt: dud
-tn: Melodize - Song List
+tn: COINSE
+////
+ed: team6_9_2
+edt: e
+tn: COINSE
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_8
+team6_6_11
+team6_9_2
+////
+ed: team6_9_3
+edt: e
+tn: CS453 Automated Software Testing, Spring 2019
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_8
+team6_6_11
+team6_9_3
+////
+ed: team6_9_4
+edt: e
+tn: Research Interest
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_8
+team6_6_11
+team6_9_4
+////
+ed: team6_9_5
+edt: e
+tn: Members
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_8
+team6_6_11
+team6_9_5
+////
+ed: team6_9_6
+edt: e
+tn: Publications
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_8
+team6_6_11
+team6_9_6
+////
+ed: team6_9_7
+edt: e
+tn: Projects
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_8
+team6_6_11
+team6_9_7
+////
+ed: team6_9_8
+edt: e
+tn: Teaching
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_8
+team6_6_11
+team6_9_8
+////
+ed: team6_9_9
+edt: e
+tn: COINSE
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_8
+team6_6_11
+team6_9_9
+////
+ed: team6_9_10
+edt: e
+tn: COINSE
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_8
+team6_6_11
+team6_9_10
 ////
 
-fn: Melodize - About
-ed: loginTab
-edt: b
-tn: loginModal
-new path!
-learnBtn
-loginTab
-////
-ed: loginTab
-edt: dud
-tn: Melodize - Home
-////
-ed: profileTab
-edt: dud
-tn: Melodize - Profile
-////
+fn: COINSE
 ed: team6_10_0
 edt: e
-tn: Melodize - Gallery
+tn: COINSE
 new path!
-learnBtn
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_8
+team6_6_11
+team6_9_9
 team6_10_0
 ////
 ed: team6_10_1
 edt: e
-tn: Melodize - Home
+tn: COINSE
 new path!
-learnBtn
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_8
+team6_6_11
+team6_9_9
 team6_10_1
+////
+ed: team6_10_2
+edt: e
+tn: COINSE
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_8
+team6_6_11
+team6_9_9
+team6_10_2
+////
+ed: team6_10_3
+edt: e
+tn: COINSE
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_8
+team6_6_11
+team6_9_9
+team6_10_3
+////
+ed: team6_10_4
+edt: e
+tn: Research Interest
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_8
+team6_6_11
+team6_9_9
+team6_10_4
+////
+ed: team6_10_5
+edt: e
+tn: Members
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_8
+team6_6_11
+team6_9_9
+team6_10_5
+////
+ed: team6_10_6
+edt: e
+tn: Publications
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_8
+team6_6_11
+team6_9_9
+team6_10_6
+////
+ed: team6_10_7
+edt: e
+tn: Projects
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_8
+team6_6_11
+team6_9_9
+team6_10_7
+////
+ed: team6_10_8
+edt: e
+tn: Teaching
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_8
+team6_6_11
+team6_9_9
+team6_10_8
+////
+
+fn: COINSE
+ed: team6_11_0
+edt: e
+tn: COINSE
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_8
+team6_6_11
+team6_9_10
+team6_11_0
+////
+ed: team6_11_1
+edt: e
+tn: COINSE
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_8
+team6_6_11
+team6_9_10
+team6_11_1
+////
+ed: team6_11_2
+edt: e
+tn: COINSE
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_8
+team6_6_11
+team6_9_10
+team6_11_2
+////
+ed: team6_11_3
+edt: e
+tn: COINSE
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_8
+team6_6_11
+team6_9_10
+team6_11_3
+////
+ed: team6_11_4
+edt: e
+tn: Research Interest
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_8
+team6_6_11
+team6_9_10
+team6_11_4
+////
+ed: team6_11_5
+edt: e
+tn: Members
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_8
+team6_6_11
+team6_9_10
+team6_11_5
+////
+ed: team6_11_6
+edt: e
+tn: Publications
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_8
+team6_6_11
+team6_9_10
+team6_11_6
+////
+ed: team6_11_7
+edt: e
+tn: Projects
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_8
+team6_6_11
+team6_9_10
+team6_11_7
+////
+ed: team6_11_8
+edt: e
+tn: Teaching
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_8
+team6_6_11
+team6_9_10
+team6_11_8
+////
+
+fn: CS454 AI Based Software Engineering (Autumn 2018)
+ed: team6_12_0
+edt: e
+tn: CS454 AI Based Software Engineering (Autumn 2018)
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_8
+team6_6_12
+team6_12_0
+////
+ed: team6_12_1
+edt: dud
+tn: COINSE
+////
+ed: team6_12_2
+edt: e
+tn: COINSE
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_8
+team6_6_12
+team6_12_2
+////
+ed: team6_12_3
+edt: e
+tn: CS454 AI Based Software Engineering (Autumn 2018)
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_8
+team6_6_12
+team6_12_3
+////
+ed: team6_12_4
+edt: e
+tn: Research Interest
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_8
+team6_6_12
+team6_12_4
+////
+ed: team6_12_5
+edt: e
+tn: Members
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_8
+team6_6_12
+team6_12_5
+////
+ed: team6_12_6
+edt: e
+tn: Publications
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_8
+team6_6_12
+team6_12_6
+////
+ed: team6_12_7
+edt: e
+tn: Projects
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_8
+team6_6_12
+team6_12_7
+////
+ed: team6_12_8
+edt: e
+tn: Teaching
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_8
+team6_6_12
+team6_12_8
+////
+
+fn: Evaluating CAVM: A New Search-Based Test Data Generation Tool for C
+ed: team6_13_0
+edt: e
+tn: Evaluating CAVM: A New Search-Based Test Data Generation Tool for C
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_9
+team6_13_0
+////
+ed: team6_13_1
+edt: dud
+tn: COINSE
+////
+ed: team6_13_2
+edt: e
+tn: COINSE
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_9
+team6_13_2
+////
+ed: team6_13_3
+edt: e
+tn: Evaluating CAVM: A New Search-Based Test Data Generation Tool for C
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_9
+team6_13_3
+////
+ed: team6_13_4
+edt: e
+tn: Research Interest
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_9
+team6_13_4
+////
+ed: team6_13_5
+edt: e
+tn: Members
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_9
+team6_13_5
+////
+ed: team6_13_6
+edt: e
+tn: Publications
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_9
+team6_13_6
+////
+ed: team6_13_7
+edt: e
+tn: Projects
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_9
+team6_13_7
+////
+ed: team6_13_8
+edt: e
+tn: Teaching
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_9
+team6_13_8
+////
+
+fn: FLUCCS - Using Code and Change Metrics to Improve Fault Localization
+ed: team6_14_0
+edt: e
+tn: FLUCCS - Using Code and Change Metrics to Improve Fault Localization
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_10
+team6_14_0
+////
+ed: team6_14_1
+edt: dud
+tn: COINSE
+////
+ed: team6_14_2
+edt: e
+tn: COINSE
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_10
+team6_14_2
+////
+ed: team6_14_3
+edt: e
+tn: FLUCCS - Using Code and Change Metrics to Improve Fault Localization
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_10
+team6_14_3
+////
+ed: team6_14_4
+edt: e
+tn: Research Interest
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_10
+team6_14_4
+////
+ed: team6_14_5
+edt: e
+tn: Members
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_10
+team6_14_5
+////
+ed: team6_14_6
+edt: e
+tn: Publications
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_10
+team6_14_6
+////
+ed: team6_14_7
+edt: e
+tn: Projects
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_10
+team6_14_7
+////
+ed: team6_14_8
+edt: e
+tn: Teaching
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_10
+team6_14_8
+////
+ed: team6_14_9
+edt: dud
+tn: Empirical Evaluation of Fault Localisation Using Code and Change Metrics
+////
+
+fn: Empirical Evaluation of Fault Localisation Using Code and Change Metrics
+ed: team6_15_0
+edt: dud
+tn: Empirical Evaluation of Fault Localisation Using Code and Change Metrics
+////
+ed: team6_15_1
+edt: dud
+tn: COINSE
+////
+ed: team6_15_2
+edt: dud
+tn: COINSE
+////
+ed: team6_15_3
+edt: dud
+tn: Empirical Evaluation of Fault Localisation Using Code and Change Metrics
+////
+ed: team6_15_4
+edt: dud
+tn: Research Interest
+////
+ed: team6_15_5
+edt: dud
+tn: Members
+////
+ed: team6_15_6
+edt: dud
+tn: Publications
+////
+ed: team6_15_7
+edt: dud
+tn: Projects
+////
+ed: team6_15_8
+edt: dud
+tn: Teaching
+////
+
+fn: Empirical Evaluation of Fault Localisation Using Code and Change Metrics
+ed: team6_16_0
+edt: dud
+tn: Empirical Evaluation of Fault Localisation Using Code and Change Metrics
+////
+ed: team6_16_1
+edt: dud
+tn: COINSE
+////
+ed: team6_16_2
+edt: dud
+tn: COINSE
+////
+ed: team6_16_3
+edt: dud
+tn: Empirical Evaluation of Fault Localisation Using Code and Change Metrics
+////
+ed: team6_16_4
+edt: dud
+tn: Research Interest
+////
+ed: team6_16_5
+edt: dud
+tn: Members
+////
+ed: team6_16_6
+edt: dud
+tn: Publications
+////
+ed: team6_16_7
+edt: dud
+tn: Projects
+////
+ed: team6_16_8
+edt: dud
+tn: Teaching
+////
+
+fn: Amortised Deep Parameter Optimisation of GPGPU Work Group Size for OpenCV
+ed: team6_17_0
+edt: e
+tn: Amortised Deep Parameter Optimisation of GPGPU Work Group Size for OpenCV
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_11
+team6_17_0
+////
+ed: team6_17_1
+edt: dud
+tn: COINSE
+////
+ed: team6_17_2
+edt: e
+tn: COINSE
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_11
+team6_17_2
+////
+ed: team6_17_3
+edt: e
+tn: Amortised Deep Parameter Optimisation of GPGPU Work Group Size for OpenCV
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_11
+team6_17_3
+////
+ed: team6_17_4
+edt: e
+tn: Research Interest
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_11
+team6_17_4
+////
+ed: team6_17_5
+edt: e
+tn: Members
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_11
+team6_17_5
+////
+ed: team6_17_6
+edt: e
+tn: Publications
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_11
+team6_17_6
+////
+ed: team6_17_7
+edt: e
+tn: Projects
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_11
+team6_17_7
+////
+ed: team6_17_8
+edt: e
+tn: Teaching
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_11
+team6_17_8
+////
+
+fn: Field Report: Applying Monte Carlo Tree Search for Program Synthesis
+ed: team6_18_0
+edt: e
+tn: Field Report: Applying Monte Carlo Tree Search for Program Synthesis
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_12
+team6_18_0
+////
+ed: team6_18_1
+edt: dud
+tn: COINSE
+////
+ed: team6_18_2
+edt: e
+tn: COINSE
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_12
+team6_18_2
+////
+ed: team6_18_3
+edt: e
+tn: Field Report: Applying Monte Carlo Tree Search for Program Synthesis
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_12
+team6_18_3
+////
+ed: team6_18_4
+edt: e
+tn: Research Interest
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_12
+team6_18_4
+////
+ed: team6_18_5
+edt: e
+tn: Members
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_12
+team6_18_5
+////
+ed: team6_18_6
+edt: e
+tn: Publications
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_12
+team6_18_6
+////
+ed: team6_18_7
+edt: e
+tn: Projects
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_12
+team6_18_7
+////
+ed: team6_18_8
+edt: e
+tn: Teaching
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_12
+team6_18_8
+////
+
+fn: Seeing is Slicing: Observation Based Slicing of Picture Description Languages
+ed: team6_19_0
+edt: dud
+tn: Seeing is Slicing: Observation Based Slicing of Picture Description Languages
+////
+ed: team6_19_1
+edt: dud
+tn: COINSE
+////
+ed: team6_19_2
+edt: dud
+tn: COINSE
+////
+ed: team6_19_3
+edt: dud
+tn: Seeing is Slicing: Observation Based Slicing of Picture Description Languages
+////
+ed: team6_19_4
+edt: dud
+tn: Research Interest
+////
+ed: team6_19_5
+edt: dud
+tn: Members
+////
+ed: team6_19_6
+edt: dud
+tn: Publications
+////
+ed: team6_19_7
+edt: dud
+tn: Projects
+////
+ed: team6_19_8
+edt: dud
+tn: Teaching
+////
+
+fn: Higher Strength Combinatorial Interaction Testing
+ed: team6_20_0
+edt: e
+tn: Higher Strength Combinatorial Interaction Testing
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_14
+team6_20_0
+////
+ed: team6_20_1
+edt: dud
+tn: COINSE
+////
+ed: team6_20_2
+edt: e
+tn: COINSE
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_14
+team6_20_2
+////
+ed: team6_20_3
+edt: e
+tn: Higher Strength Combinatorial Interaction Testing
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_14
+team6_20_3
+////
+ed: team6_20_4
+edt: e
+tn: Research Interest
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_14
+team6_20_4
+////
+ed: team6_20_5
+edt: e
+tn: Members
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_14
+team6_20_5
+////
+ed: team6_20_6
+edt: e
+tn: Publications
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_14
+team6_20_6
+////
+ed: team6_20_7
+edt: e
+tn: Projects
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_14
+team6_20_7
+////
+ed: team6_20_8
+edt: e
+tn: Teaching
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_14
+team6_20_8
+////
+
+fn: Evolving Human Competitive Spectra-Based Fault Localisation Technique
+ed: team6_21_0
+edt: e
+tn: Evolving Human Competitive Spectra-Based Fault Localisation Technique
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_15
+team6_21_0
+////
+ed: team6_21_1
+edt: dud
+tn: COINSE
+////
+ed: team6_21_2
+edt: e
+tn: COINSE
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_15
+team6_21_2
+////
+ed: team6_21_3
+edt: e
+tn: Evolving Human Competitive Spectra-Based Fault Localisation Technique
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_15
+team6_21_3
+////
+ed: team6_21_4
+edt: e
+tn: Research Interest
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_15
+team6_21_4
+////
+ed: team6_21_5
+edt: e
+tn: Members
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_15
+team6_21_5
+////
+ed: team6_21_6
+edt: e
+tn: Publications
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_15
+team6_21_6
+////
+ed: team6_21_7
+edt: e
+tn: Projects
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_15
+team6_21_7
+////
+ed: team6_21_8
+edt: e
+tn: Teaching
+new path!
+team6_0_4
+team6_2_5
+team6_3_6
+team6_4_7
+team6_5_15
+team6_21_8
+////
+
+fn: SBFL Visualiser
+
+fn: COINSE
+ed: team6_23_0
+edt: e
+tn: COINSE
+new path!
+team6_0_4
+team6_2_5
+team6_3_9
+team6_23_0
+////
+ed: team6_23_1
+edt: e
+tn: COINSE
+new path!
+team6_0_4
+team6_2_5
+team6_3_9
+team6_23_1
+////
+ed: team6_23_2
+edt: e
+tn: COINSE
+new path!
+team6_0_4
+team6_2_5
+team6_3_9
+team6_23_2
+////
+ed: team6_23_3
+edt: e
+tn: COINSE
+new path!
+team6_0_4
+team6_2_5
+team6_3_9
+team6_23_3
+////
+ed: team6_23_4
+edt: e
+tn: Research Interest
+new path!
+team6_0_4
+team6_2_5
+team6_3_9
+team6_23_4
+////
+ed: team6_23_5
+edt: e
+tn: Members
+new path!
+team6_0_4
+team6_2_5
+team6_3_9
+team6_23_5
+////
+ed: team6_23_6
+edt: e
+tn: Publications
+new path!
+team6_0_4
+team6_2_5
+team6_3_9
+team6_23_6
+////
+ed: team6_23_7
+edt: e
+tn: Projects
+new path!
+team6_0_4
+team6_2_5
+team6_3_9
+team6_23_7
+////
+ed: team6_23_8
+edt: e
+tn: Teaching
+new path!
+team6_0_4
+team6_2_5
+team6_3_9
+team6_23_8
+////
+
+fn: COINSE
+ed: team6_24_0
+edt: e
+tn: COINSE
+new path!
+team6_0_4
+team6_2_5
+team6_3_10
+team6_24_0
+////
+ed: team6_24_1
+edt: e
+tn: COINSE
+new path!
+team6_0_4
+team6_2_5
+team6_3_10
+team6_24_1
+////
+ed: team6_24_2
+edt: e
+tn: COINSE
+new path!
+team6_0_4
+team6_2_5
+team6_3_10
+team6_24_2
+////
+ed: team6_24_3
+edt: e
+tn: COINSE
+new path!
+team6_0_4
+team6_2_5
+team6_3_10
+team6_24_3
+////
+ed: team6_24_4
+edt: e
+tn: Research Interest
+new path!
+team6_0_4
+team6_2_5
+team6_3_10
+team6_24_4
+////
+ed: team6_24_5
+edt: e
+tn: Members
+new path!
+team6_0_4
+team6_2_5
+team6_3_10
+team6_24_5
+////
+ed: team6_24_6
+edt: e
+tn: Publications
+new path!
+team6_0_4
+team6_2_5
+team6_3_10
+team6_24_6
+////
+ed: team6_24_7
+edt: e
+tn: Projects
+new path!
+team6_0_4
+team6_2_5
+team6_3_10
+team6_24_7
+////
+ed: team6_24_8
+edt: e
+tn: Teaching
+new path!
+team6_0_4
+team6_2_5
+team6_3_10
+team6_24_8
+////
+
+fn: COINSE
+ed: team6_25_0
+edt: e
+tn: COINSE
+new path!
+team6_0_4
+team6_2_5
+team6_3_13
+team6_25_0
+////
+ed: team6_25_1
+edt: e
+tn: COINSE
+new path!
+team6_0_4
+team6_2_5
+team6_3_13
+team6_25_1
+////
+ed: team6_25_2
+edt: e
+tn: COINSE
+new path!
+team6_0_4
+team6_2_5
+team6_3_13
+team6_25_2
+////
+ed: team6_25_3
+edt: e
+tn: COINSE
+new path!
+team6_0_4
+team6_2_5
+team6_3_13
+team6_25_3
+////
+ed: team6_25_4
+edt: e
+tn: Research Interest
+new path!
+team6_0_4
+team6_2_5
+team6_3_13
+team6_25_4
+////
+ed: team6_25_5
+edt: e
+tn: Members
+new path!
+team6_0_4
+team6_2_5
+team6_3_13
+team6_25_5
+////
+ed: team6_25_6
+edt: e
+tn: Publications
+new path!
+team6_0_4
+team6_2_5
+team6_3_13
+team6_25_6
+////
+ed: team6_25_7
+edt: e
+tn: Projects
+new path!
+team6_0_4
+team6_2_5
+team6_3_13
+team6_25_7
+////
+ed: team6_25_8
+edt: e
+tn: Teaching
+new path!
+team6_0_4
+team6_2_5
+team6_3_13
+team6_25_8
+////
+
+fn: COINSE
+ed: team6_26_0
+edt: e
+tn: COINSE
+new path!
+team6_0_4
+team6_2_5
+team6_3_14
+team6_26_0
+////
+ed: team6_26_1
+edt: e
+tn: COINSE
+new path!
+team6_0_4
+team6_2_5
+team6_3_14
+team6_26_1
+////
+ed: team6_26_2
+edt: e
+tn: COINSE
+new path!
+team6_0_4
+team6_2_5
+team6_3_14
+team6_26_2
+////
+ed: team6_26_3
+edt: e
+tn: COINSE
+new path!
+team6_0_4
+team6_2_5
+team6_3_14
+team6_26_3
+////
+ed: team6_26_4
+edt: e
+tn: Research Interest
+new path!
+team6_0_4
+team6_2_5
+team6_3_14
+team6_26_4
+////
+ed: team6_26_5
+edt: e
+tn: Members
+new path!
+team6_0_4
+team6_2_5
+team6_3_14
+team6_26_5
+////
+ed: team6_26_6
+edt: e
+tn: Publications
+new path!
+team6_0_4
+team6_2_5
+team6_3_14
+team6_26_6
+////
+ed: team6_26_7
+edt: e
+tn: Projects
+new path!
+team6_0_4
+team6_2_5
+team6_3_14
+team6_26_7
+////
+ed: team6_26_8
+edt: e
+tn: Teaching
+new path!
+team6_0_4
+team6_2_5
+team6_3_14
+team6_26_8
+////
+
+fn: COINSE
+ed: team6_27_0
+edt: e
+tn: COINSE
+new path!
+team6_0_4
+team6_2_5
+team6_3_15
+team6_27_0
+////
+ed: team6_27_1
+edt: e
+tn: COINSE
+new path!
+team6_0_4
+team6_2_5
+team6_3_15
+team6_27_1
+////
+ed: team6_27_2
+edt: e
+tn: COINSE
+new path!
+team6_0_4
+team6_2_5
+team6_3_15
+team6_27_2
+////
+ed: team6_27_3
+edt: e
+tn: COINSE
+new path!
+team6_0_4
+team6_2_5
+team6_3_15
+team6_27_3
+////
+ed: team6_27_4
+edt: e
+tn: Research Interest
+new path!
+team6_0_4
+team6_2_5
+team6_3_15
+team6_27_4
+////
+ed: team6_27_5
+edt: e
+tn: Members
+new path!
+team6_0_4
+team6_2_5
+team6_3_15
+team6_27_5
+////
+ed: team6_27_6
+edt: e
+tn: Publications
+new path!
+team6_0_4
+team6_2_5
+team6_3_15
+team6_27_6
+////
+ed: team6_27_7
+edt: e
+tn: Projects
+new path!
+team6_0_4
+team6_2_5
+team6_3_15
+team6_27_7
+////
+ed: team6_27_8
+edt: e
+tn: Teaching
+new path!
+team6_0_4
+team6_2_5
+team6_3_15
+team6_27_8
+////
+
+fn: COINSE
+ed: team6_28_0
+edt: e
+tn: COINSE
+new path!
+team6_0_4
+team6_2_5
+team6_3_16
+team6_28_0
+////
+ed: team6_28_1
+edt: e
+tn: COINSE
+new path!
+team6_0_4
+team6_2_5
+team6_3_16
+team6_28_1
+////
+ed: team6_28_2
+edt: e
+tn: COINSE
+new path!
+team6_0_4
+team6_2_5
+team6_3_16
+team6_28_2
+////
+ed: team6_28_3
+edt: e
+tn: COINSE
+new path!
+team6_0_4
+team6_2_5
+team6_3_16
+team6_28_3
+////
+ed: team6_28_4
+edt: e
+tn: Research Interest
+new path!
+team6_0_4
+team6_2_5
+team6_3_16
+team6_28_4
+////
+ed: team6_28_5
+edt: e
+tn: Members
+new path!
+team6_0_4
+team6_2_5
+team6_3_16
+team6_28_5
+////
+ed: team6_28_6
+edt: e
+tn: Publications
+new path!
+team6_0_4
+team6_2_5
+team6_3_16
+team6_28_6
+////
+ed: team6_28_7
+edt: e
+tn: Projects
+new path!
+team6_0_4
+team6_2_5
+team6_3_16
+team6_28_7
+////
+ed: team6_28_8
+edt: e
+tn: Teaching
+new path!
+team6_0_4
+team6_2_5
+team6_3_16
+team6_28_8
 ////

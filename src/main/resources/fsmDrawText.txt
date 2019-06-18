@@ -1,142 +1,592 @@
 
-fn: Melodize - Home
-ed: loginTab
-tn: loginModal
-ed: loginTab
-tn: Melodize - Home
-ed: requesterBtn
-tn: Melodize - Request
-ed: workerBtn
-tn: Melodize - Song List
-ed: learnBtn
-tn: Melodize - About
-ed: profileTab
-tn: Melodize - Profile
+fn: COINSE
 ed: team6_0_0
-tn: Melodize - Gallery
+tn: COINSE
 ed: team6_0_1
-tn: Melodize - Home
+tn: COINSE
+ed: team6_0_2
+tn: COINSE
+ed: team6_0_3
+tn: COINSE
+ed: team6_0_4
+tn: Research Interest
+ed: team6_0_5
+tn: Members
+ed: team6_0_6
+tn: Publications
+ed: team6_0_7
+tn: Projects
+ed: team6_0_8
+tn: Teaching
 
-fn: loginModal
-ed: loginBtn
-tn: Melodize - Home
+fn: COINSE
 ed: team6_1_0
-tn: Melodize - Sign Up
+tn: COINSE
 
-fn: Melodize - Sign Up
-ed: loginTab
-tn: loginModal
-ed: loginTab
-tn: Melodize - Home
-ed: profileTab
-tn: Melodize - Profile
+fn: Research Interest
 ed: team6_2_0
-tn: Melodize - Gallery
+tn: Research Interest
 ed: team6_2_1
-tn: Melodize - Home
+tn: COINSE
+ed: team6_2_2
+tn: COINSE
+ed: team6_2_3
+tn: Research Interest
+ed: team6_2_4
+tn: Research Interest
+ed: team6_2_5
+tn: Members
+ed: team6_2_6
+tn: Publications
+ed: team6_2_7
+tn: Projects
+ed: team6_2_8
+tn: Teaching
 
-fn: Melodize - Home
-ed: loginTab
-tn: loginModal
-ed: loginTab
-tn: Melodize - Home
-ed: requesterBtn
-tn: Melodize - Request
-ed: workerBtn
-tn: Melodize - Song List
-ed: learnBtn
-tn: Melodize - About
-ed: profileTab
-tn: Melodize - Profile
+fn: Members
 ed: team6_3_0
-tn: Melodize - Gallery
+tn: Members
 ed: team6_3_1
-tn: Melodize - Home
+tn: COINSE
+ed: team6_3_2
+tn: COINSE
+ed: team6_3_3
+tn: Members
+ed: team6_3_4
+tn: Research Interest
+ed: team6_3_5
+tn: Members
+ed: team6_3_6
+tn: Publications
+ed: team6_3_7
+tn: Projects
+ed: team6_3_8
+tn: Teaching
+ed: team6_3_9
+tn: COINSE
+ed: team6_3_10
+tn: COINSE
+ed: team6_3_11
+tn: COINSE
+ed: team6_3_12
+tn: COINSE
+ed: team6_3_13
+tn: COINSE
+ed: team6_3_14
+tn: COINSE
+ed: team6_3_15
+tn: COINSE
+ed: team6_3_16
+tn: COINSE
 
-fn: Melodize - Request
-ed: loginTab
-tn: loginModal
-ed: loginTab
-tn: Melodize - Home
-ed: profileTab
-tn: Melodize - Profile
+fn: Publications
 ed: team6_4_0
-tn: Melodize - Gallery
+tn: Publications
 ed: team6_4_1
-tn: Melodize - Home
+tn: COINSE
+ed: team6_4_2
+tn: COINSE
+ed: team6_4_3
+tn: Publications
+ed: team6_4_4
+tn: Research Interest
+ed: team6_4_5
+tn: Members
+ed: team6_4_6
+tn: Publications
+ed: team6_4_7
+tn: Projects
+ed: team6_4_8
+tn: Teaching
 
-fn: Melodize - Profile
-ed: loginTab
-tn: loginModal
-ed: loginTab
-tn: Melodize - Home
-ed: requesterBtn
-tn: Melodize - Request
-ed: workerBtn
-tn: Melodize - Song List
-ed: profileTab
-tn: Melodize - Profile
+fn: Projects
 ed: team6_5_0
-tn: Melodize - Gallery
+tn: Projects
 ed: team6_5_1
-tn: Melodize - Home
+tn: COINSE
+ed: team6_5_2
+tn: COINSE
+ed: team6_5_3
+tn: Projects
+ed: team6_5_4
+tn: Research Interest
+ed: team6_5_5
+tn: Members
+ed: team6_5_6
+tn: Publications
+ed: team6_5_7
+tn: Projects
+ed: team6_5_8
+tn: Teaching
+ed: team6_5_9
+tn: Evaluating CAVM: A New Search-Based Test Data Generation Tool for C
+ed: team6_5_10
+tn: FLUCCS - Using Code and Change Metrics to Improve Fault Localization
+ed: team6_5_11
+tn: Amortised Deep Parameter Optimisation of GPGPU Work Group Size for OpenCV
+ed: team6_5_12
+tn: Field Report: Applying Monte Carlo Tree Search for Program Synthesis
+ed: team6_5_13
+tn: Seeing is Slicing: Observation Based Slicing of Picture Description Languages
+ed: team6_5_14
+tn: Higher Strength Combinatorial Interaction Testing
+ed: team6_5_15
+tn: Evolving Human Competitive Spectra-Based Fault Localisation Technique
+ed: team6_5_16
+tn: SBFL Visualiser
 
-fn: Melodize - Song List
-ed: loginTab
-tn: loginModal
-ed: loginTab
-tn: Melodize - Home
-ed: joinBtn
-tn: Melodize - Composing
-ed: joinBtn
-tn: passwordModal
-ed: passwordBtn
-tn: Melodize - Composing
-ed: profileTab
-tn: Melodize - Profile
+fn: Teaching
 ed: team6_6_0
-tn: Melodize - Gallery
+tn: Teaching
 ed: team6_6_1
-tn: Melodize - Home
+tn: COINSE
+ed: team6_6_2
+tn: COINSE
+ed: team6_6_3
+tn: Teaching
+ed: team6_6_4
+tn: Research Interest
+ed: team6_6_5
+tn: Members
+ed: team6_6_6
+tn: Publications
+ed: team6_6_7
+tn: Projects
+ed: team6_6_8
+tn: Teaching
+ed: team6_6_9
+tn: CS454 AI Based Software Engineering (Autumn 2019)
+ed: team6_6_10
+tn: CS489 Computer Ethics and Social Issues (Autumn 2019)
+ed: team6_6_11
+tn: CS453 Automated Software Testing, Spring 2019
+ed: team6_6_12
+tn: CS454 AI Based Software Engineering (Autumn 2018)
 
-fn: Melodize - Composing
-ed: loginTab
-tn: loginModal
-ed: loginTab
-tn: Melodize - Home
-ed: profileTab
-tn: Melodize - Profile
+fn: CS454 AI Based Software Engineering (Autumn 2019)
 ed: team6_7_0
-tn: Melodize - Gallery
+tn: CS454 AI Based Software Engineering (Autumn 2019)
 ed: team6_7_1
-tn: Melodize - Home
+tn: COINSE
+ed: team6_7_2
+tn: COINSE
+ed: team6_7_3
+tn: CS454 AI Based Software Engineering (Autumn 2019)
+ed: team6_7_4
+tn: Research Interest
+ed: team6_7_5
+tn: Members
+ed: team6_7_6
+tn: Publications
+ed: team6_7_7
+tn: Projects
+ed: team6_7_8
+tn: Teaching
 
-fn: Melodize - Gallery
-ed: loginTab
-tn: loginModal
-ed: loginTab
-tn: Melodize - Home
-ed: profileTab
-tn: Melodize - Profile
+fn: CS489 Computer Ethics and Social Issues (Autumn 2019)
 ed: team6_8_0
-tn: Melodize - Gallery
+tn: CS489 Computer Ethics and Social Issues (Autumn 2019)
 ed: team6_8_1
-tn: Melodize - Home
+tn: COINSE
+ed: team6_8_2
+tn: COINSE
+ed: team6_8_3
+tn: CS489 Computer Ethics and Social Issues (Autumn 2019)
+ed: team6_8_4
+tn: Research Interest
+ed: team6_8_5
+tn: Members
+ed: team6_8_6
+tn: Publications
+ed: team6_8_7
+tn: Projects
+ed: team6_8_8
+tn: Teaching
 
-fn: passwordModal
-ed: passwordBtn
-tn: Melodize - Composing
-ed: close
-tn: Melodize - Song List
+fn: CS453 Automated Software Testing, Spring 2019
+ed: team6_9_0
+tn: CS453 Automated Software Testing, Spring 2019
+ed: team6_9_1
+tn: COINSE
+ed: team6_9_2
+tn: COINSE
+ed: team6_9_3
+tn: CS453 Automated Software Testing, Spring 2019
+ed: team6_9_4
+tn: Research Interest
+ed: team6_9_5
+tn: Members
+ed: team6_9_6
+tn: Publications
+ed: team6_9_7
+tn: Projects
+ed: team6_9_8
+tn: Teaching
+ed: team6_9_9
+tn: COINSE
+ed: team6_9_10
+tn: COINSE
 
-fn: Melodize - About
-ed: loginTab
-tn: loginModal
-ed: loginTab
-tn: Melodize - Home
-ed: profileTab
-tn: Melodize - Profile
+fn: COINSE
 ed: team6_10_0
-tn: Melodize - Gallery
+tn: COINSE
 ed: team6_10_1
-tn: Melodize - Home
+tn: COINSE
+ed: team6_10_2
+tn: COINSE
+ed: team6_10_3
+tn: COINSE
+ed: team6_10_4
+tn: Research Interest
+ed: team6_10_5
+tn: Members
+ed: team6_10_6
+tn: Publications
+ed: team6_10_7
+tn: Projects
+ed: team6_10_8
+tn: Teaching
+
+fn: COINSE
+ed: team6_11_0
+tn: COINSE
+ed: team6_11_1
+tn: COINSE
+ed: team6_11_2
+tn: COINSE
+ed: team6_11_3
+tn: COINSE
+ed: team6_11_4
+tn: Research Interest
+ed: team6_11_5
+tn: Members
+ed: team6_11_6
+tn: Publications
+ed: team6_11_7
+tn: Projects
+ed: team6_11_8
+tn: Teaching
+
+fn: CS454 AI Based Software Engineering (Autumn 2018)
+ed: team6_12_0
+tn: CS454 AI Based Software Engineering (Autumn 2018)
+ed: team6_12_1
+tn: COINSE
+ed: team6_12_2
+tn: COINSE
+ed: team6_12_3
+tn: CS454 AI Based Software Engineering (Autumn 2018)
+ed: team6_12_4
+tn: Research Interest
+ed: team6_12_5
+tn: Members
+ed: team6_12_6
+tn: Publications
+ed: team6_12_7
+tn: Projects
+ed: team6_12_8
+tn: Teaching
+
+fn: Evaluating CAVM: A New Search-Based Test Data Generation Tool for C
+ed: team6_13_0
+tn: Evaluating CAVM: A New Search-Based Test Data Generation Tool for C
+ed: team6_13_1
+tn: COINSE
+ed: team6_13_2
+tn: COINSE
+ed: team6_13_3
+tn: Evaluating CAVM: A New Search-Based Test Data Generation Tool for C
+ed: team6_13_4
+tn: Research Interest
+ed: team6_13_5
+tn: Members
+ed: team6_13_6
+tn: Publications
+ed: team6_13_7
+tn: Projects
+ed: team6_13_8
+tn: Teaching
+
+fn: FLUCCS - Using Code and Change Metrics to Improve Fault Localization
+ed: team6_14_0
+tn: FLUCCS - Using Code and Change Metrics to Improve Fault Localization
+ed: team6_14_1
+tn: COINSE
+ed: team6_14_2
+tn: COINSE
+ed: team6_14_3
+tn: FLUCCS - Using Code and Change Metrics to Improve Fault Localization
+ed: team6_14_4
+tn: Research Interest
+ed: team6_14_5
+tn: Members
+ed: team6_14_6
+tn: Publications
+ed: team6_14_7
+tn: Projects
+ed: team6_14_8
+tn: Teaching
+ed: team6_14_9
+tn: Empirical Evaluation of Fault Localisation Using Code and Change Metrics
+
+fn: Empirical Evaluation of Fault Localisation Using Code and Change Metrics
+ed: team6_15_0
+tn: Empirical Evaluation of Fault Localisation Using Code and Change Metrics
+ed: team6_15_1
+tn: COINSE
+ed: team6_15_2
+tn: COINSE
+ed: team6_15_3
+tn: Empirical Evaluation of Fault Localisation Using Code and Change Metrics
+ed: team6_15_4
+tn: Research Interest
+ed: team6_15_5
+tn: Members
+ed: team6_15_6
+tn: Publications
+ed: team6_15_7
+tn: Projects
+ed: team6_15_8
+tn: Teaching
+
+fn: Empirical Evaluation of Fault Localisation Using Code and Change Metrics
+ed: team6_16_0
+tn: Empirical Evaluation of Fault Localisation Using Code and Change Metrics
+ed: team6_16_1
+tn: COINSE
+ed: team6_16_2
+tn: COINSE
+ed: team6_16_3
+tn: Empirical Evaluation of Fault Localisation Using Code and Change Metrics
+ed: team6_16_4
+tn: Research Interest
+ed: team6_16_5
+tn: Members
+ed: team6_16_6
+tn: Publications
+ed: team6_16_7
+tn: Projects
+ed: team6_16_8
+tn: Teaching
+
+fn: Amortised Deep Parameter Optimisation of GPGPU Work Group Size for OpenCV
+ed: team6_17_0
+tn: Amortised Deep Parameter Optimisation of GPGPU Work Group Size for OpenCV
+ed: team6_17_1
+tn: COINSE
+ed: team6_17_2
+tn: COINSE
+ed: team6_17_3
+tn: Amortised Deep Parameter Optimisation of GPGPU Work Group Size for OpenCV
+ed: team6_17_4
+tn: Research Interest
+ed: team6_17_5
+tn: Members
+ed: team6_17_6
+tn: Publications
+ed: team6_17_7
+tn: Projects
+ed: team6_17_8
+tn: Teaching
+
+fn: Field Report: Applying Monte Carlo Tree Search for Program Synthesis
+ed: team6_18_0
+tn: Field Report: Applying Monte Carlo Tree Search for Program Synthesis
+ed: team6_18_1
+tn: COINSE
+ed: team6_18_2
+tn: COINSE
+ed: team6_18_3
+tn: Field Report: Applying Monte Carlo Tree Search for Program Synthesis
+ed: team6_18_4
+tn: Research Interest
+ed: team6_18_5
+tn: Members
+ed: team6_18_6
+tn: Publications
+ed: team6_18_7
+tn: Projects
+ed: team6_18_8
+tn: Teaching
+
+fn: Seeing is Slicing: Observation Based Slicing of Picture Description Languages
+ed: team6_19_0
+tn: Seeing is Slicing: Observation Based Slicing of Picture Description Languages
+ed: team6_19_1
+tn: COINSE
+ed: team6_19_2
+tn: COINSE
+ed: team6_19_3
+tn: Seeing is Slicing: Observation Based Slicing of Picture Description Languages
+ed: team6_19_4
+tn: Research Interest
+ed: team6_19_5
+tn: Members
+ed: team6_19_6
+tn: Publications
+ed: team6_19_7
+tn: Projects
+ed: team6_19_8
+tn: Teaching
+
+fn: Higher Strength Combinatorial Interaction Testing
+ed: team6_20_0
+tn: Higher Strength Combinatorial Interaction Testing
+ed: team6_20_1
+tn: COINSE
+ed: team6_20_2
+tn: COINSE
+ed: team6_20_3
+tn: Higher Strength Combinatorial Interaction Testing
+ed: team6_20_4
+tn: Research Interest
+ed: team6_20_5
+tn: Members
+ed: team6_20_6
+tn: Publications
+ed: team6_20_7
+tn: Projects
+ed: team6_20_8
+tn: Teaching
+
+fn: Evolving Human Competitive Spectra-Based Fault Localisation Technique
+ed: team6_21_0
+tn: Evolving Human Competitive Spectra-Based Fault Localisation Technique
+ed: team6_21_1
+tn: COINSE
+ed: team6_21_2
+tn: COINSE
+ed: team6_21_3
+tn: Evolving Human Competitive Spectra-Based Fault Localisation Technique
+ed: team6_21_4
+tn: Research Interest
+ed: team6_21_5
+tn: Members
+ed: team6_21_6
+tn: Publications
+ed: team6_21_7
+tn: Projects
+ed: team6_21_8
+tn: Teaching
+
+fn: SBFL Visualiser
+
+fn: COINSE
+ed: team6_23_0
+tn: COINSE
+ed: team6_23_1
+tn: COINSE
+ed: team6_23_2
+tn: COINSE
+ed: team6_23_3
+tn: COINSE
+ed: team6_23_4
+tn: Research Interest
+ed: team6_23_5
+tn: Members
+ed: team6_23_6
+tn: Publications
+ed: team6_23_7
+tn: Projects
+ed: team6_23_8
+tn: Teaching
+
+fn: COINSE
+ed: team6_24_0
+tn: COINSE
+ed: team6_24_1
+tn: COINSE
+ed: team6_24_2
+tn: COINSE
+ed: team6_24_3
+tn: COINSE
+ed: team6_24_4
+tn: Research Interest
+ed: team6_24_5
+tn: Members
+ed: team6_24_6
+tn: Publications
+ed: team6_24_7
+tn: Projects
+ed: team6_24_8
+tn: Teaching
+
+fn: COINSE
+ed: team6_25_0
+tn: COINSE
+ed: team6_25_1
+tn: COINSE
+ed: team6_25_2
+tn: COINSE
+ed: team6_25_3
+tn: COINSE
+ed: team6_25_4
+tn: Research Interest
+ed: team6_25_5
+tn: Members
+ed: team6_25_6
+tn: Publications
+ed: team6_25_7
+tn: Projects
+ed: team6_25_8
+tn: Teaching
+
+fn: COINSE
+ed: team6_26_0
+tn: COINSE
+ed: team6_26_1
+tn: COINSE
+ed: team6_26_2
+tn: COINSE
+ed: team6_26_3
+tn: COINSE
+ed: team6_26_4
+tn: Research Interest
+ed: team6_26_5
+tn: Members
+ed: team6_26_6
+tn: Publications
+ed: team6_26_7
+tn: Projects
+ed: team6_26_8
+tn: Teaching
+
+fn: COINSE
+ed: team6_27_0
+tn: COINSE
+ed: team6_27_1
+tn: COINSE
+ed: team6_27_2
+tn: COINSE
+ed: team6_27_3
+tn: COINSE
+ed: team6_27_4
+tn: Research Interest
+ed: team6_27_5
+tn: Members
+ed: team6_27_6
+tn: Publications
+ed: team6_27_7
+tn: Projects
+ed: team6_27_8
+tn: Teaching
+
+fn: COINSE
+ed: team6_28_0
+tn: COINSE
+ed: team6_28_1
+tn: COINSE
+ed: team6_28_2
+tn: COINSE
+ed: team6_28_3
+tn: COINSE
+ed: team6_28_4
+tn: Research Interest
+ed: team6_28_5
+tn: Members
+ed: team6_28_6
+tn: Publications
+ed: team6_28_7
+tn: Projects
+ed: team6_28_8
+tn: Teaching

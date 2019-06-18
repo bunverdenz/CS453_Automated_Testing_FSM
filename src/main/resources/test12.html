@@ -6,7 +6,7 @@
   <meta http-equiv="CACHE-CONTROL" content="NO-CACHE"> 
   <meta name="keywords" content="coinse, sbse, shin yoo"> 
   <meta name="viewport" content="width=device-width, initial-scale=1"> 
-  <title>Evaluating CAVM: A New Search-Based Test Data Generation Tool for C</title> 
+  <title>CS454 AI Based Software Engineering (Autumn 2018)</title> 
   <meta name="description" content="COINSE Lab,<br/> <a href='http://cs.kaist.ac.kr'>School of Computing</a>,<br/> <a href='http://www.kaist.ac.kr'>Korea Advanced Institute of Science and Technology</a>,<br/> 291 Daehak Ro, Yuseong Gu,<br/> Daejeon, 34141,<br/> Republic of Korea"> 
   <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"> 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"> 
@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="/css/jquery.lightbox-0.5.css"> 
   <link rel="stylesheet" href="/css/colorbox.css"> 
   <link rel="stylesheet" href="/css/main.css"> 
-  <link rel="canonical" href="https://coinse.kaist.ac.kr/projects/cavm/" id="team6_12_0"> 
+  <link rel="canonical" href="https://coinse.kaist.ac.kr/teaching/2018/cs454/" id="team6_12_0"> 
   <link rel="alternate" type="application/rss+xml" title="COINSE" href="https://coinse.kaist.ac.kr/feed.xml" id="team6_12_1"> 
   <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> 
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script> 
@@ -51,18 +51,18 @@
      <a class="site-title" href="/" id="team6_12_2">COINSE</a> 
     </div> 
     <nav class="site-nav"> 
-     <a href="#" class="menu-icon"> 
+     <a href="#" class="menu-icon" id="team6_12_3"> 
       <svg viewbox="0 0 18 15"> 
        <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z" /> 
        <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z" /> 
        <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z" /> 
       </svg> </a> 
      <div class="trigger"> 
-      <a class="page-link" href="/research" id="team6_12_3">Research</a> 
-      <a class="page-link" href="/members" id="team6_12_4">Members</a> 
-      <a class="page-link" href="/publications" id="team6_12_5">Publications</a> 
-      <a class="page-link" href="/projects" id="team6_12_6">Projects</a> 
-      <a class="page-link" href="/teaching" id="team6_12_7">Teaching</a> 
+      <a class="page-link" href="/research" id="team6_12_4">Research</a> 
+      <a class="page-link" href="/members" id="team6_12_5">Members</a> 
+      <a class="page-link" href="/publications" id="team6_12_6">Publications</a> 
+      <a class="page-link" href="/projects" id="team6_12_7">Projects</a> 
+      <a class="page-link" href="/teaching" id="team6_12_8">Teaching</a> 
       <!-- <a class="page-link" href="/blog">Blog</a> --> 
       <!-- <a class="page-link" href="/contact">Contact</a> --> 
      </div> 
@@ -72,48 +72,243 @@
   <div class="page-content"> 
    <!-- <div class="parallax">
         <div class="bg_foo">
-          <h2>Evaluating CAVM&#58; A New Search-Based Test Data Generation Tool for C</h2>
+          <h2>CS454 AI Based Software Engineering (Autumn 2018)</h2>
         </div>
       </div> --> 
    <div class="wrapper"> 
     <article class="post"> 
      <header class="post-header"> 
-      <h2>Evaluating CAVM: A New Search-Based Test Data Generation Tool for C</h2> 
+      <h2>CS454 AI Based Software Engineering (Autumn 2018)</h2> 
      </header> 
      <div class="page-content"> 
-      <p>This page is supplementary to the paper entitled “Evaluating CAVM: A New Search-Based Test Data Generation Tool for C”, which has been presented at the <a href="http://ssbse17.github.io/">9th International Symposium on Search-Based Software Engineering</a>. This page contains additional results that could not be reported in the paper due to page limits. The data used in the paper is also made available here to enable replication and further research on the topic.</p> 
-      <p><em>Notes</em></p> 
-      <ul> 
-       <li>The dotted line in the time plot represents the maximum timeout of 300 seconds.</li> 
-       <li>If CAVM and Austin time out, the evaluation count is omitted from the plot.</li> 
-      </ul> 
-      <h3 id="full-results">Full Results</h3> 
-      <ul> 
-       <li><a href="#avmf-benchmarks">AVMf</a></li> 
-       <li><a href="#anti-patterns">Anti-patterns</a></li> 
-       <li><a href="#linked-list">Linked List</a></li> 
-       <li><a href="#tree">Tree</a></li> 
-       <li><a href="#busybox">Busybox</a></li> 
-       <li><a href="#decode">Decode</a></li> 
-      </ul> 
-      <h3 id="avmf-benchmarks">AVMf Benchmarks</h3> 
-      <p><a href="https://bitbucket.org/snippets/teamcoinse/gnzy5/cavm-avmf">Source codes</a></p> 
-      <p><a href="./plots/boxplot_cov_AVMf.png"> <img src="./plots/boxplot_cov_AVMf.png" alt="avmf coverage" style="width: 33%; float: left"> </a> <a href="./plots/boxplot_time_AVMf.png"> <img src="./plots/boxplot_time_AVMf.png" alt="avmf time" style="width: 33%; float: left"> </a> <a href="./plots/boxplot_eval_AVMf.png"> <img src="./plots/boxplot_eval_AVMf.png" alt="avmf evaluations" style="width: 33%; float: left"> </a></p> 
-      <h3 id="anti-patterns">Anti-patterns</h3> 
-      <p><a href="https://bitbucket.org/snippets/teamcoinse/GrbXK/cavm-anti-patterns">Source codes</a></p> 
-      <p><a href="./plots/boxplot_cov_antipatterns.png"> <img src="./plots/boxplot_cov_antipatterns.png" alt="anti coverage" style="width: 33%; float: left"> </a> <a href="./plots/boxplot_time_antipatterns.png"> <img src="./plots/boxplot_time_antipatterns.png" alt="anti time" style="width: 33%; float: left"> </a> <a href="./plots/boxplot_eval_antipatterns.png"> <img src="./plots/boxplot_eval_antipatterns.png" alt="anti evaluations" style="width: 33%; float: left"> </a></p> 
-      <h3 id="linked-list">Linked List</h3> 
-      <p><a href="https://bitbucket.org/snippets/teamcoinse/5LpgR/cavm-linked-list">Source code</a></p> 
-      <p><a href="./plots/boxplot_cov_linkedlist.png"> <img src="./plots/boxplot_cov_linkedlist.png" alt="linked list coverage" style="width: 33%; float: left"> </a> <a href="./plots/boxplot_time_linkedlist.png"> <img src="./plots/boxplot_time_linkedlist.png" alt="linked list time" style="width: 33%; float: left"> </a> <a href="./plots/boxplot_eval_linkedlist.png"> <img src="./plots/boxplot_eval_linkedlist.png" alt="linked list evaluations" style="width: 33%; float: left"> </a></p> 
-      <h3 id="tree">Tree</h3> 
-      <p><a href="https://bitbucket.org/snippets/teamcoinse/XL4dn/cavm-tree">Source code</a></p> 
-      <p><a href="./plots/boxplot_cov_tree.png"> <img src="./plots/boxplot_cov_tree.png" alt="tree coverage" style="width: 33%; float: left"> </a> <a href="./plots/boxplot_time_tree.png"> <img src="./plots/boxplot_time_tree.png" alt="tree time" style="width: 33%; float: left"> </a> <a href="./plots/boxplot_eval_tree.png"> <img src="./plots/boxplot_eval_tree.png" alt="tree evaluations" style="width: 33%; float: left"> </a></p> 
-      <h3 id="busybox">Busybox</h3> 
-      <p><a href="https://bitbucket.org/snippets/teamcoinse/n7XpR/cavm-busybox">Source code</a></p> 
-      <p><a href="./plots/boxplot_cov_ls.png"> <img src="./plots/boxplot_cov_ls.png" alt="ls coverage" style="width: 33%; float: left"> </a> <a href="./plots/boxplot_time_ls.png"> <img src="./plots/boxplot_time_ls.png" alt="ls time" style="width: 33%; float: left"> </a> <a href="./plots/boxplot_eval_ls.png"> <img src="./plots/boxplot_eval_ls.png" alt="ls evaluations" style="width: 33%; float: left"> </a></p> 
-      <h3 id="decode">Decode</h3> 
-      <p><a href="https://bitbucket.org/snippets/teamcoinse/jL49K/cavm-decode">Source code</a></p> 
-      <p><a href="./plots/boxplot_cov_decode.png"><img src="./plots/boxplot_cov_decode.png" alt="decode coverage"></a> <a href="./plots/boxplot_eval_decode.png"><img src="./plots/boxplot_eval_decode.png" alt="decode evaluations"></a> <a href="./plots/boxplot_time_decode.png"><img src="./plots/boxplot_time_decode.png" alt="decode time"></a></p> 
+      <div class="tab"> 
+       <button class="tablinks" onclick="openTab(event, 'Syllabus')" id="defaultOpen">Syllabus</button> 
+       <button class="tablinks" onclick="openTab(event, 'Schedule')">Schedule</button> 
+       <button class="tablinks" onclick="openTab(event, 'Assignments')">Assignments</button> 
+       <button class="tablinks" onclick="openTab(event, 'Projects')">Projects</button> 
+       <button class="tablinks" onclick="openTab(event, 'Reading List')">Reading List</button> 
+      </div> 
+      <!-- Tab content --> 
+      <div id="Syllabus" class="tabcontent"> 
+       <h3 id="syllabus">Syllabus</h3> 
+       <p>This class covers metaheuristic optimisation algorithms and their application to software engineering problems. The goal of the class is twofold: the first objective is to understand major classes of metaheuristic algorithms, including local search algorithms and population based optimisation (such as genetic algorithm and particle swarm optimisation). The second objective is to study the application of these algorithms to software engineering problems. For this, the class will introduce the fundamental concepts in so called Search Based Software Engineering, and then study various application cases across the software development lifecycle (requirements, design, planning, testing, maintenance, etc). The desired learning outcome is to be able to use metaheuristic optimisation to automate, and/or gain insights into, software engineering tasks.</p> 
+       <p>The first half of the course will be a series of lectures on metaheuristic algoithms. The second half will be a series of case studies based on paper presentations, given by students, about important and/or recent papers in the field of Search Based Software Engineering.</p> 
+       <h3 id="required-skills">Required Skills</h3> 
+       <p>The course assumes that students have the following skills. <strong>Unless you satisfy the following, you may encounter significant difficulties during courseworks and projects</strong>:</p> 
+       <ul> 
+        <li>Proficient in programming (at least one of Python, C, or Java)</li> 
+        <li>Basic Unix/Linux literacy 
+         <ul> 
+          <li>To be able to write simple shell scripts</li> 
+          <li>To be able to build and execute 3rd party software from source code</li> 
+         </ul> </li> 
+        <li>Version control through git (projects should be submitted as a git repository)</li> 
+        <li>(Optional but strongly recommended) LaTeX</li> 
+       </ul> 
+       <p>Out of these, I would understand if you have to learn how to use git during this course. But programming proficiency and *nix literacy are essential from the beginning.</p> 
+       <h3 id="evaluation">Evaluation</h3> 
+       <ul> 
+        <li>Coursework: 20%</li> 
+        <li>Project: 40%</li> 
+        <li>Final Exam: 30%</li> 
+        <li>Class Participation: 10%</li> 
+       </ul> 
+       <h3 id="teaching-assistant">Teaching Assistant</h3> 
+       <ul> 
+        <li>Seongmin Lee (<a href="emailto:nim.gnoes.eel@gmail.com">nim.gnoes.eel@gmail.com</a>)</li> 
+       </ul> 
+      </div> 
+      <div id="Schedule" class="tabcontent"> 
+       <h3 id="lectures">Lectures</h3> 
+       <p>The schedule below is <strong>tentative</strong> for now and may change, given that we do not know the exact class size yet.</p> 
+       <ul> 
+        <li>08/28: <a href="/assets/files/teaching/2018/cs454/cs454-slide01.pdf" id="team6_12_9">Introduction 1/2</a></li> 
+        <li>08/30: <a href="/assets/files/teaching/2018/cs454/cs454-slide02.pdf" id="team6_12_9">Introduction 2/2</a></li> 
+        <li>09/04: <a href="/assets/files/teaching/2018/cs454/cs454-slide03.pdf" id="team6_12_9">Fitness Landscape</a>, <a href="/assets/files/teaching/2018/cs454/cs454-slide04.pdf" id="team6_12_9">Random and Local Search Algorithms</a></li> 
+        <li>09/06: <a href="/assets/files/teaching/2018/cs454/cs454-slide05.pdf" id="team6_12_9">Evolutionary Computation 1/2</a>, <a href="/assets/files/teaching/2018/cs454/coursework2.pdf" id="team6_12_9">Coursework #2</a> 
+         <ul> 
+          <li><a href="/assets/files/teaching/2018/cs454/cs454-slide07.pdf" id="team6_12_9">TSP Example</a></li> 
+         </ul> </li> 
+        <li>09/11: No lecture (<a href="http://ssbse18.irisa.fr">SSBSE 2018</a>)</li> 
+        <li>09/13: <a href="/assets/files/teaching/2018/cs454/cs454-slide06.pdf" id="team6_12_9">Evolutionary Computation 2/2</a> 
+         <ul> 
+          <li><a href="http://rednuht.org/genetic_walkers/">Genetic Algorithm Walkers</a></li> 
+          <li><a href="http://rednuht.org/genetic_cars_2/">Genetic Algorithm 2D Car Thingy</a></li> 
+         </ul> </li> 
+        <li>09/18: <a href="/assets/files/teaching/2018/cs454/cs454-slide08.pdf" id="team6_12_9">Genetic Programming</a></li> 
+        <li>09/20: <a href="/assets/files/teaching/2018/cs454/cs454-slide10.pdf" id="team6_12_9">Multi-objective Optimisation</a></li> 
+        <li>09/25: No lecture (Chuseok Holiday)</li> 
+        <li>09/27: <a href="/assets/files/teaching/2018/cs454/cs454-slide11.pdf" id="team6_12_9">MOEA Evaluation Metrics</a>, <a href="/assets/files/teaching/2018/cs454/cs454-slide12.pdf" id="team6_12_9">Normalisation</a>,</li> 
+        <li>10/02: <a href="/assets/files/teaching/2018/cs454/cs454-slide09.pdf" id="team6_12_9">Bio-inspired Algorithms</a>, <a href="/assets/files/teaching/2018/cs454/cs454-slide13.pdf" id="team6_12_9">SBSE Overview</a></li> 
+        <li>10/04: <a href="/assets/files/teaching/2018/cs454/cs454-slide14.pdf" id="team6_12_9">Advanced Algorithms and Optimisation Tips</a></li> 
+        <li>10/09: No lecture (Korean Language Proclamation Day)</li> 
+        <li>10/11: <a href="/assets/files/teaching/2018/cs454/cs454-slide15.pdf" id="team6_12_9">Theory - Elementary Landscape Analysis</a>, <a href="/assets/files/teaching/2018/cs454/cs454-slide16.pdf" id="team6_12_9">No Free Lunch Theorem</a></li> 
+        <li>10/16: No lecture (Midterm week)</li> 
+        <li>10/18: No lecture (Midterm week)</li> 
+        <li>10/23: <strong>Project Pitch #1</strong>: Team 1, 3, 5, 7, 9, 11</li> 
+        <li>10/25: <strong>Project Pitch #2</strong>: Team 2, 4, 6, 8, 10, 12</li> 
+        <li>10/30: <a href="/assets/files/teaching/2018/cs454/cs454-slide17.pdf" id="team6_12_9">General Machine Learning for SE</a></li> 
+        <li>11/01: Paper Reading 
+         <ul> 
+          <li>Presenter: Team 1, Discussion Leader: Team 7</li> 
+          <li>Presenter: Team 2, Discussion Leader: Team 8</li> 
+         </ul> </li> 
+        <li>11/06: Paper Reading 
+         <ul> 
+          <li>Presenter: Team 3, Discussion Leader: Team 9</li> 
+          <li>Presenter: Team 4, Discussion Leader: Team 10</li> 
+         </ul> </li> 
+        <li>11/08: Paper Reading 
+         <ul> 
+          <li>Presenter: Team 5, Discussion Leader: Team 11</li> 
+          <li>Presenter: Team 6, Discussion Leader: Team 12</li> 
+         </ul> </li> 
+        <li>11/13: Project Milestone Check</li> 
+        <li>11/15: Paper Reading 
+         <ul> 
+          <li>Presenter: Team 7, Discussion Leader: Team 1</li> 
+          <li>Presenter: Team 8, Discussion Leader: Team 2</li> 
+         </ul> </li> 
+        <li>11/20: Paper Reading 
+         <ul> 
+          <li>Presenter: Team 9, Discussion Leader: Team 3</li> 
+          <li>Presenter: Team 10, Discussion Leader: Team 4</li> 
+         </ul> </li> 
+        <li>11/22: Paper Reading 
+         <ul> 
+          <li>Presenter: Team 11, Discussion Leader: Team 5</li> 
+          <li>Presenter: Team 12, Discussion Leader: Team 6</li> 
+         </ul> </li> 
+        <li>11/27: <strong>Project Presentation #1.</strong></li> 
+        <li>11/29: No lecture (undergraduate admission interview)</li> 
+        <li>12/04: <strong>Project Presentation #2.</strong></li> 
+        <li>12/06: <strong>Project Presentation #3.</strong></li> 
+        <li>12/11: <strong>Final Term Exam</strong></li> 
+       </ul> 
+      </div> 
+      <div id="Assignments" class="tabcontent"> 
+       <h3 id="assignment-1-getting-to-know-the-subject">Assignment #1: Getting to know the subject</h3> 
+       <p>Choose a paper from the reading list. Write an essay containing the following points:</p> 
+       <ul> 
+        <li>What is the software engineering problem authors are trying to solve?</li> 
+        <li>What are the technical contributions of the paper?</li> 
+        <li>Why do you like this work, or are interested in this work?</li> 
+       </ul> 
+       <p>Please submit a PDF file containing your essay. Submission should be made via <a href="http://klms.kaist.ac.kr/mod/assign/view.php?id=261489">KLMS</a>. It is due on 23:59, Tuesday 4th September. <strong>Late submission is not allowed for this coursework</strong>.</p> 
+       <h3 id="assignment-2-travelling-salesman-problem">Assignment #2: Travelling Salesman Problem</h3> 
+       <p>Your goal is to implement a solver for the <a href="https://en.wikipedia.org/wiki/Travelling_salesman_problem">Travelling Salesman Problem</a>. This is a well known NP-complete problem with lots of practical applications. Please refer to the <a href="/assets/files/teaching/2018/cs454/coursework2.pdf" id="team6_12_9">coursework document</a> for more details. It is due by 23:59:59 on 20th September 2018.</p> 
+       <p>There is a live competition leaderboard too. Solve the rl11849.tsp problem instance and upload your solution to the <a href="https://coinse.kaist.ac.kr/leaderboard/5/" id="team6_12_9">leaderboard</a> (you need to sign up and create an account). Leaderboard participation is not mandatory for this course, and your coursework grade is independent from your ranking. However, just for fun, there will be a prize for the winner.</p> 
+       <h3 id="assignment-3-critical-essay">Assignment #3: Critical Essay</h3> 
+       <p>During the paper seminar weeks, everyone should submit an essay about the paper he or she is reading as the discussion leader team member. For example, everyone in Team 7 should submit an essay about the paper Team 1 chose and presented. The <em>minimum</em> expected length is a single A4 page: write what you think is a coherent and convincing critique.</p> 
+       <p>The deadline for each team will be exactly seven days after the presentation of the paper they are writing about. There will be a submission site at KLMS, whose deadline will be set to the very last one: we will check the initial submission time for those who have early deadlines. The usualy late submission penalty applies.</p> 
+      </div> 
+      <div id="Projects" class="tabcontent"> 
+       <h2 id="group-project-outline">Group Project Outline</h2> 
+       <p>The course project requires you to identify and formulate an SBSE problem and solve it using a metaheuristic approach. Please see the <a href="/assets/files/teaching/2018/cs454/cs454-project-2018.pdf" id="team6_12_9">document</a>. Groups should prepare two talks:</p> 
+       <ul> 
+        <li> <p>Project Idea Pitch: give a 10 minute presentation about what your group plans to do. This will happen on 23th and 25th October.</p> </li> 
+        <li> <p>Project Final Presentation: present the results you obtained within 15 minutes. We are going to use the 27th November and 4th, 6th Deembe slots.</p> </li> 
+       </ul> 
+       <p>Details about the deliverables are specified in the project documentation. Submission deadline is the end of 18th December 2018.</p> 
+       <h3 id="paper-reading">Paper Reading</h3> 
+       <p>The paper reading seminars in November are led by groups. At each lecture, two groups will present one paper each, using 30 minutes. Another two groups will have read the paper, and lead the questions and discussions after the talk.</p> 
+       <p>You are free to choose any reasonably recent publication (within the last 5 years) that is clearly related to SBSE. Naturally, you may want to read something related to your group’s project, which is encouraged.</p> 
+       <h3 id="milestone-check">Milestone Check</h3> 
+       <p>On 13th November, we will do a quick project milestone check. Each team has five minutes, explaining where the project currently is, and what the expected challenge aheads are. The aim of this session is two-folds:</p> 
+       <ul> 
+        <li>To ensure that projects move along</li> 
+        <li>For me to understand what the difficulties are, and to step in appropriately for the success of the project</li> 
+       </ul> 
+       <h3 id="final-presentation">Final Presentation</h3> 
+       <p>Due to inevitable school-wide schedule on 28-29 November, one of the final presentation slot is rather early. I invite four teams to volunteer for this slot :) If you want to get early feedback, and wrap up the remaining project before the final submission deadline, this is a good chance: write to me or TA.</p> 
+       <h3 id="teams-contact-the-ta-if-your-name-is-not-here">Teams (Contact the T/A if your name is not here)</h3> 
+       <ul> 
+        <li>Team 1: 이정관, 김세아, Nick Heppert, Liu Lingjun</li> 
+        <li>Team 2: 오종훈, 홍석주, 신승철, 강현우</li> 
+        <li>Team 3: 강성민, 이형진, 김대영, 김민</li> 
+        <li>Team 4: 조민규, 고지훈, 한준호, 위재원</li> 
+        <li>Team 5: Mathias Sixten, David Budischek, Gaspard Murat, Gustav Janér, Yixuan Huang</li> 
+        <li>Team 6: 류찬영, 박찬민, 하정호, 한상우</li> 
+        <li>Team 7: 남석현, 박성호, 한동훈, 김태수</li> 
+        <li>Team 8: Peerapon Akkapusit, Zuzana Jelčicová, Zelalem Mihret, Peter Muschick</li> 
+        <li>Team 9: 김범기, 김태환, 조은호, 최민성</li> 
+        <li>Team 10: 고영록, 이하연, 전호진, 조창호, 신민규</li> 
+        <li>Team 11: 이수환, 이진우, 배영경, 임선우</li> 
+        <li>Team 12: 최재훈, 박찬수, 이은지, Phan Duy Loc</li> 
+       </ul> 
+       <h4 id="presentation-date">Presentation Date</h4> 
+       <ul> 
+        <li>11.27: Team 3, Team 7, Team 8, Team 10</li> 
+        <li>12.04: Team 1, Team 5, Team 6, Team 11</li> 
+        <li>12,06: Team 2, Team 4, Team 9, Team 12</li> 
+       </ul> 
+       <h3 id="previous-projects">Previous Projects</h3> 
+       <p>These are made available only as a reference. You cannot propose identical projects. Two of them are in Korean, because the policy was different then: apologies for those who do not read/speak Korean.</p> 
+       <ul> 
+        <li><a href="/assets/files/teaching/2018/cs454/cs454-previous-project-2016-group3.pdf" id="team6_12_9">Search-based Javascript Modelling for Static Analysis (from 2016, Korean)</a></li> 
+        <li><a href="/assets/files/teaching/2018/cs454/cs454-previous-project-2017-group2.pdf" id="team6_12_9">GUI Test Suite Generation using Ant Colony Optimization with EFG Traversal Criterion (from 2017, Korean)</a></li> 
+        <li><a href="/assets/files/teaching/2018/cs454/cs454-previous-project-2016-group6.pdf" id="team6_12_9">Improving Test Data Generation for Java Programs using Search-based Approach and d-criterion (from 2016)</a></li> 
+        <li><a href="/assets/files/teaching/2018/cs454/cs454-previous-project-2017-group1.pdf" id="team6_12_9">Sample Efficient Hyperparameter Optimization (from 2017)</a></li> 
+       </ul> 
+      </div> 
+      <div id="Reading List" class="tabcontent"> 
+       <h3 id="reading-list">Reading List</h3> 
+       <p>Here are some papers on various SBSE topics to pick from in order to prepare for the first paper presentation of your group. You can also consult the <a href="http://crestweb.cs.ucl.ac.uk/resources/sbse_repository/repository.html">SBSE Repository</a>.</p> 
+       <h4 id="requirements">Requirements</h4> 
+       <ul> 
+        <li> <p>Y. Zhang, M. Harman, and S. A. Mansouri. The Multi-Objective Next Release Problem. In GECCO ’07: Proceedings of the 2007 Genetic and Evolutionary Computation Conference, pages 1129–1136. ACM Press, 2007.</p> </li> 
+        <li> <p>Y.Xue and Y.-F. Li. Multi-objective Integer Programming Approaches for Solving Optimal Feature Selection Problem: A new perspective on Multi-objective Optimization Problems in SBSE. In Proceedings of the 40th International Conference on Software Engineering, ICSE ’18, pages 1231–1242, New York, NY, USA, 2018. ACM.</p> </li> 
+       </ul> 
+       <h4 id="project-management">Project Management</h4> 
+       <ul> 
+        <li> <p>G. Antoniol, M. D. Penta, and M. Harman. Search-based Techniques Applied to Optimization of Project Planning for a Massive Maintenance Project. In Proceedings of the 21st IEEE International Conference on Software Maintenance (ICSM ’05), pages 240–249, Los Alamitos, California, USA, 25-30 September 2005. IEEE Computer Society.</p> </li> 
+        <li> <p>F. Ferrucci, M. Harman, J. Ren, and F. Sarro. Not going to take this anymore: Multi-objective overtime planning for software engineering projects. In Proceedings of the 2013 International Conference on Software Engineering, ICSE ’13, pages 462–471, Piscataway, NJ, USA, 2013. IEEE Press.</p> </li> 
+       </ul> 
+       <h4 id="modularisation">Modularisation</h4> 
+       <ul> 
+        <li> <p>B. S. Mitchell and S. Mancoridis. On the automatic modularization of software systems using the bunch tool. IEEE Transactions on Software Engineering, 32(3):193–208, 2006.</p> </li> 
+        <li> <p>K. Praditwong, M. Harman, and X. Yao. Software module clustering as a multi-objective search problem. IEEE Transactions on Software Engineering, 37(2):264–282, March-April 2010.</p> </li> 
+       </ul> 
+       <h4 id="test-data-generation">Test Data Generation</h4> 
+       <ul> 
+        <li> <p>G. Fraser and A. Arcuri. Whole test suite generation. Software Engineering, IEEE Transactions on, 39(2):276–291, Feb 2013.</p> </li> 
+        <li> <p>R. B. Abdessalem, S. Nejati, L. C. Briand, and T. Stifter. Testing vision-based control systems using learnable evolutionary algorithms. In Proceedings of the 40th International Conference on Software Engineering, ICSE ’18, pages 1016–1026, New York, NY, USA, 2018. ACM.</p> </li> 
+        <li> <p>J. Castelein, M. Aniche, M. Soltani, A. Panichella, and A. van Deursen. Search-based test data generation for sql queries. In Proceedings of the 40th International Conference on Software Engineering, ICSE ’18, pages 1230–1230, New York, NY, USA, 2018. ACM.</p> </li> 
+       </ul> 
+       <h4 id="automated-patching">Automated Patching</h4> 
+       <ul> 
+        <li> <p>W. Weimer, T. Nguyen, C. L. Goues, and S. Forrest. Automatically finding patches using genetic programming. In Proceedings of the 31st IEEE International Conference on Software Engineering (ICSE ’09), pages 364–374, Vancouver, Canada, 16-24 May 2009. IEEE.</p> </li> 
+        <li> <p>M. Wen, J. Chen, R. Wu, D. Hao, and S.-C. Cheung. Context-aware patch generation for better au- tomated program repair. In Proceedings of the 40th International Conference on Software Engineering, ICSE ’18, pages 1–11, New York, NY, USA, 2018. ACM.</p> </li> 
+       </ul> 
+       <h4 id="regression-testing">Regression Testing</h4> 
+       <ul> 
+        <li> <p>S. Yoo and M. Harman. Pareto efficient multi-objective test case selection. In Proceedings of International Symposium on Software Testing and Analysis, pages 140–150. ACM Press, July 2007.</p> </li> 
+        <li> <p>M. G. Epitropakis, S. Yoo, M. Harman, and E. K. Burke. Empirical evaluation of pareto efficient multi- objective regression test case prioritisation. In Proceedings of the 2015 International Symposium on Software Testing and Analysis, ISSTA 2015, pages 234–245, New York, NY, USA, 2015. ACM.</p> </li> 
+       </ul> 
+       <h4 id="refactoring">Refactoring</h4> 
+       <ul> 
+        <li>M. O’Cinnéide, L. Tratt, M. Harman, S. Counsell, and I. Hemati Moghadam. Experimental assessment of software metrics using automated refactoring. In Proceedings of the ACM-IEEE international symposium on Empirical software engineering and measurement, ESEM ’12, pages 49–58, New York, NY, USA, 2012. ACM.</li> 
+       </ul> 
+       <h4 id="genetic-improvement">Genetic Improvement</h4> 
+       <ul> 
+        <li> <p>D. White, A. Arcuri, and J. Clark. Evolutionary improvement of programs. IEEE Transactions on Evolutionary Computation, 15(4):515 –538, August 2011.</p> </li> 
+        <li> <p>W. Langdon and M. Harman. Optimizing existing software with genetic programming. Transactions on Evolutionary Computation, 19(1):118–135, 2015.</p> </li> 
+        <li> <p>B. R. Bruce. Energy optimisation via genetic improvement: A SBSE technique for a new era in software development. In Proceedings of the Companion Publication of the 2015 Annual Conference on Genetic and Evolutionary Computation, GECCO Companion ’15, pages 819–820, New York, NY, USA, 2015. ACM.</p> </li> 
+       </ul> 
+       <h4 id="deep-parameter-optimisation">Deep Parameter Optimisation</h4> 
+       <ul> 
+        <li>F. Wu, W. Weimer, M. Harman, Y. Jia, and J. Krinke. Deep parameter optimisation. In Proceedings of the 2015 Annual Conference on Genetic and Evolutionary Computation, GECCO 2015, pages 1375–1382, 2015.</li> 
+       </ul> 
+       <h4 id="fault-localisation">Fault Localisation</h4> 
+       <ul> 
+        <li> <p>S. Yoo. Evolving human competitive spectra-based fault localisation techniques. In G. Fraser and J. Teixeira de Souza, editors, Search Based Software Engineering, volume 7515 of Lecture Notes in Computer Science, pages 244–258. Springer Berlin Heidelberg, 2012.</p> </li> 
+        <li> <p>J. Sohn and S. Yoo. Fluccs: Using code and change metrics to improve fault localisation. In Proceedings of the International Symposium on Software Testing and Analysis, ISSTA 2017, pages 273–283, 2017.</p> </li> 
+       </ul> 
+      </div> 
+      <script>
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script> 
      </div> 
     </article> 
    </div> 

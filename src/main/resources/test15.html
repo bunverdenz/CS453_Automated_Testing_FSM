@@ -6,7 +6,7 @@
   <meta http-equiv="CACHE-CONTROL" content="NO-CACHE"> 
   <meta name="keywords" content="coinse, sbse, shin yoo"> 
   <meta name="viewport" content="width=device-width, initial-scale=1"> 
-  <title>Field Report: Applying Monte Carlo Tree Search for Program Synthesis</title> 
+  <title>Empirical Evaluation of Fault Localisation Using Code and Change Metrics</title> 
   <meta name="description" content="COINSE Lab,<br/> <a href='http://cs.kaist.ac.kr'>School of Computing</a>,<br/> <a href='http://www.kaist.ac.kr'>Korea Advanced Institute of Science and Technology</a>,<br/> 291 Daehak Ro, Yuseong Gu,<br/> Daejeon, 34141,<br/> Republic of Korea"> 
   <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"> 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"> 
@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="/css/jquery.lightbox-0.5.css"> 
   <link rel="stylesheet" href="/css/colorbox.css"> 
   <link rel="stylesheet" href="/css/main.css"> 
-  <link rel="canonical" href="https://coinse.kaist.ac.kr/projects/mctsps/" id="team6_15_0"> 
+  <link rel="canonical" href="https://coinse.kaist.ac.kr/projects/fluccs/journal_extension/" id="team6_15_0"> 
   <link rel="alternate" type="application/rss+xml" title="COINSE" href="https://coinse.kaist.ac.kr/feed.xml" id="team6_15_1"> 
   <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> 
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script> 
@@ -60,18 +60,18 @@
      <a class="site-title" href="/" id="team6_15_2">COINSE</a> 
     </div> 
     <nav class="site-nav"> 
-     <a href="#" class="menu-icon"> 
+     <a href="#" class="menu-icon" id="team6_15_3"> 
       <svg viewbox="0 0 18 15"> 
        <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z" /> 
        <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z" /> 
        <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z" /> 
       </svg> </a> 
      <div class="trigger"> 
-      <a class="page-link" href="/research" id="team6_15_3">Research</a> 
-      <a class="page-link" href="/members" id="team6_15_4">Members</a> 
-      <a class="page-link" href="/publications" id="team6_15_5">Publications</a> 
-      <a class="page-link" href="/projects" id="team6_15_6">Projects</a> 
-      <a class="page-link" href="/teaching" id="team6_15_7">Teaching</a> 
+      <a class="page-link" href="/research" id="team6_15_4">Research</a> 
+      <a class="page-link" href="/members" id="team6_15_5">Members</a> 
+      <a class="page-link" href="/publications" id="team6_15_6">Publications</a> 
+      <a class="page-link" href="/projects" id="team6_15_7">Projects</a> 
+      <a class="page-link" href="/teaching" id="team6_15_8">Teaching</a> 
       <!-- <a class="page-link" href="/blog">Blog</a> --> 
       <!-- <a class="page-link" href="/contact">Contact</a> --> 
      </div> 
@@ -81,119 +81,295 @@
   <div class="page-content"> 
    <!-- <div class="parallax">
         <div class="bg_foo">
-          <h2>Field Report: Applying Monte Carlo Tree Search for Program Synthesis</h2>
+          <h2>Empirical Evaluation of Fault Localisation Using Code and Change Metrics</h2>
         </div>
       </div> --> 
    <div class="wrapper"> 
     <article class="post"> 
      <header class="post-header"> 
-      <h2>Field Report: Applying Monte Carlo Tree Search for Program Synthesis</h2> 
+      <h2>Empirical Evaluation of Fault Localisation Using Code and Change Metrics</h2> 
      </header> 
      <div class="page-content"> 
-      <p> This page is supplementary to the paper entitled "Field Report: Applying Monte Carlo Tree Search for Program Synthesis" (pdf <a href="mcts.pdf">here</a>), submitted to <a href="http://ssbse.org/2016">International Symposium on Search-Based Software Engineering 2016</a>. This page contains additional details and results that could not be reported in the paper due to page limits. The data used in the paper is also made available here to enable replication and further research on the topic. </p> 
-      <br> 
-      <h3>Abstract</h3> 
-      <p> Program synthesis aims to automatically generate an executable segment of code that satisfies a given set of criteria. Genetic programming has been widely studied for program synthesis. However, it has drawbacks such as code bloats and the difficulty in finer controlover the growth of programs. This paper explores the possibility of applying Monte Carlo Tree Search (MCTS) technique to general purpose program synthesis. The exploratory study applies MCTS to synthesis of six small benchmarks using Java Bytecode instructions, and compares the results to those of genetic programming. The paper discusses the major challenges and outlines the future work. </p> 
-      <br> 
-      <h3>Monte Carlo Tree Search (MCTS)</h3> 
-      <p> Monte Carlo Tree Search (MCTS) is a method of finding an optimal decision in a given domain by taking random samples in the state space and building a search tree according to the results [1]. It is ideally suited to problems for which the value of an action cannot be assessed directly, but can only be estimated by the values of sequences of actions that follow (called playouts). The intuition is that if an action <i>A</i> is better than an action <i>B</i>, then the playouts following <i>A</i> will yield higher rewards than those following <i>B</i>.</p> 
-      <p> The exploration of the search space is stored in a search tree, which consists of states (represented by the nodes) and actions (represented by the edges). Figure 1 shows the high-level overview of how MCTS grows the search tree. First, starting from the root node, it recursively selects a child node by considering two statistics: the history of rewards gained by selecting this node and the number of times it was selected (<strong>Selection</strong>). The algorithm descends through the tree until it reaches a node with an unvisited child, at which point a child node is expanded (<strong>Expansion</strong>). Second, starting from the expanded node, the algorithm samples subsequent moves (i.e. actions and consequent nodes) until it reaches a terminal state (<strong>Sampling</strong>). The sequence of actions thus far is evaluated to produce a reward. Finally, it ascends through the tree to update the statistics of each visited node (<strong>Backpropagation</strong>). This is repeated until the computational budget runs out. </p> 
-      <p><img src="plots/mcts-outline.png"></p> 
-      <p>The performance of MCTS relies heavily on selecting a <i>good</i> child node (i.e. one that will eventually yield high reward) in the Tree Policy step. Upper Confidence Bounds for Tree (UCT) [2] is a variant of MCTS that provides a heuristic for child selection: it chooses a child node that maximizes the following Upper Confidence Bounds (UCB) [3]: </p> 
-      <p><img src="plots/formula.png" style="width: 200px"></p> 
-      <p>in which <i>S<sub>c</sub></i> is the sum of rewards for the child, <i>n<sub>c</sub></i> and <i>n<sub>p</sub></i> the number of times the child and its parent nodes have been visited, and <i>K</i> is a parameter that tunes the exploration-exploitation balance. </p> 
-      <p>MCTS has been widely studied in the context of games [4, 5, 6, 7]. Recently, White et al. applied MCTS for symbolic regression, giving results competitive with those of genetic programming [13]. In this work, we aim to evaluate its application as a constructive heuristic for automated programming, traditionally an application domain of genetic programming [8, 9, 10, 11, 12]. We explain our methodology, evaluate it on six small benchmarks, and show that MCTS performs comparably to GP.</p> 
-      <br> 
-      <h3>Instruction Set</h3> 
-      <p> This section gives the detailed description of our instruction set. </p> 
-      <p><a href="#plot01" class="inline">Instructions</a></p> 
-      <br> 
-      <h3>Benchmarks</h3> 
-      <p> The following table, taken from the paper <a href="http://dl.acm.org/citation.cfm?id=2754769">General Program Synthesis Benchmark Suite,</a> gives a detailed description of the benchmarks used. </p> 
-      <p><a href="#benchmarks" class="inline">Benchmarks</a></p> 
-      <br> 
-      <h3>Results</h3> 
-      <p> The following gives the boxplots, raw results and best-fitness programs produced by UCT and GP on each of the six benchmarks. </p> 
-      <p><a href="#results" class="inline">Boxplots, Results and Best-fitness Programs</a></p> 
-      <div style="display: none"> 
-       <div id="plot01" class="formula"> 
-        <h2>Instructions</h2> 
-        <div class="tabs"> 
-         <ul> 
-          <li><a href="#table_instructions">Table</a></li> 
-         </ul> 
-         <div id="table_instructions" class="scatterplots"> 
-          <p><img src="plots/table_instructions.png"></p> 
+      <p> 
+       <!--This page includes full results of the experiments in the paper, "Empirical Evaluation of Fault Localisation Using Code and Change Metrics".--> This page includes full results of RQ5, RQ6, and RQ7 in the paper, "Empirical Evaluation of Fault Localisation Using Code and Change Metrics". </p> 
+      <h3><b>RQ5. Existence of project-specific traits that are effective for fault localisation </b></h3> 
+      <p> Performance of trained models depends on whether these models have succeeded to catch useful features for fault localisation. In RQ5, we ask: does each project have any unique traits that might affect the effectiveness of fault localisation? To answer this question, we define three different training data configurations and compare the performance of FLUCCS with them. </p>
+      <p> </p>
+      <li><i>self</i>: compose a training dataset only with the faults from a test subject</li> 
+      <li><i>other</i>: compose a training dataset only the faults from one of other subjects; e.g., denote training data set consisting only of faults from the project '<i>P&gt;</i>' as <i>other_P</i></li> 
+      <li><i>mixed</i>: compose a training dataset with both the faults from a test subject and the faults from other subjects</li> 
+      <p></p> Below are the results of this experiment for each project. The results include the tables of A12 statistic (effect size) and U-test (p-value)and the violinplots of the 
+      <i>wef</i> distribution. For the tables, the row configuration leads to better performance than the column configuration if A12 effect size is greater than 0.5 or the null hypothesis, the row configuration does not lead to better performance compared to the column configuration, is rejected with the significance level of 0.05. 
+      <p></p> 
+      <p> 
+       <!--tables & plots for all projects -> pdf--> </p>
+      <table style="width:60%;"> 
+       <tbody>
+        <tr> 
+         <td><a href="#RQ5_Lang" class="inline">Lang</a></td> 
+        </tr> 
+        <tr> 
+         <td><a href="#RQ5_Math" class="inline">Math</a></td> 
+        </tr> 
+        <tr> 
+         <td><a href="#RQ5_Time" class="inline">Time</a></td> 
+        </tr> 
+        <tr> 
+         <td><a href="#RQ5_Closure" class="inline">Closure</a></td> 
+        </tr> 
+        <tr> 
+         <td><a href="#RQ5_Chart" class="inline">Chart</a></td> 
+        </tr> 
+        <tr> 
+         <td><a href="#RQ5_Mockito" class="inline">Mockito</a></td> 
+        </tr> 
+       </tbody>
+      </table> 
+      <p></p> 
+      <h3><b>RQ6. Gradual Cross-Project Training</b></h3> 
+      <p> While there may exist project-specific traits that may improve the performance of fault localisation under the <i>self</i> configuration, learning only from the faults of a test subject may not always be a viable option. For example, if the test subject is in the early stage of development, there may not be enough faults to exploit, yet; in this case, the cross-project learning may be the only feasible option. In RQ6, we ask: when should we transit from cross-project to own configuration? To answer this question, we perform gradual cross-project learning, which varies the ratio of the faults from the subject and the faults from other projects in the training dataset. For this experiment, we define an additional configuration of the training data set, <i>others</i>. </p>
+      <p> </p>
+      <li><i>others</i>: compose a training dataset with the faults from other projects, preferably more than one project. <p></p> Below are the results of the experiment per project. The results include the tables of three evaluation metrics, <i>acc@n</i>, <i>wef</i>, and <i>MAP</i>, and the boxplots and scatterplots of the <i>wef</i> distribution. For the scatterplots (blue), the size of each datapoint is proportional to the number of datapoints having the same value. <p></p> <p> 
+        <!--tables & plots for all projects -> pdf--> </p>
+       <table style="width:60%;"> 
+        <tbody>
+         <tr> 
+          <td><a href="#RQ6_Lang" class="inline">Lang</a></td> 
+         </tr> 
+         <tr> 
+          <td><a href="#RQ6_Math" class="inline">Math</a></td> 
+         </tr> 
+         <tr> 
+          <td><a href="#RQ6_Time" class="inline">Time</a></td> 
+         </tr> 
+         <tr> 
+          <td><a href="#RQ6_Closure" class="inline">Closure</a></td> 
+         </tr> 
+         <tr> 
+          <td><a href="#RQ6_Chart" class="inline">Chart</a></td> 
+         </tr> 
+         <tr> 
+          <td><a href="#RQ6_Mockito" class="inline">Mockito</a></td> 
+         </tr> 
+        </tbody>
+       </table> <p></p> <h3><b>RQ7. Feature Importance</b></h3> <p> FLUCCS uses 33 SBFL score metrics and seven code and change metrics. To identify which features are useful in FLUCCS, we perform feature importance analysis using Random Forest and identify the top ten most effective features. For these top ten features, we directly measure their effect on the performance of fault localisation by randomly permutating each of these top ten features, one at a time. We, then, observe the performance difference in the models trained with that dataset against the performance of the models trained using the dataset before the permutation of the feature. The more severe the difference is, the more likely the feature to have more effect on fault localisation. In RQ7, we ask: which features contribute the most to ranking models? Below are the results of this experiment per project. The results include the tables of feature importance values of the top ten features in RF and the tables of a performance difference from the random permutation of these features. </p> <p> </p>
+       <table style="width:60%;"> 
+        <tbody>
+         <tr> 
+          <td><a href="#RQ7_Tables" class="inline">Feature Importance Analysis per Project</a></td> 
+         </tr> 
+        </tbody>
+       </table> <p></p> 
+       <!-- --> 
+       <div style="display:none"> 
+        <!-- RQ5 --> 
+        <div id="RQ5_Lang" class="formula"> 
+         <h2>Lang</h2> 
+         <div class="tabs"> 
+          <ul> 
+           <li><a href="#Table">A12 statistic and U-test</a></li> 
+           <li><a href="#Plot">Distribution of wef values</a></li> 
+          </ul> 
+          <div id="Table" class="scatterplots"> 
+           <p><img src="plots/RQ5/lang.png"></p> 
+          </div> 
+          <div id="Plot" class="scatterplots"> 
+           <p><img src="plots/RQ5/violin.min.mixed.own.cp.Lang.wef.plot.png"></p> 
+          </div> 
          </div> 
         </div> 
-       </div> 
-       <div id="benchmarks" class="formula"> 
-        <h2>Benchmarks</h2> 
-        <div class="tabs"> 
-         <ul> 
-          <li><a href="#table_benchmarks">Table</a></li> 
-         </ul> 
-         <div id="table_benchmarks" class="scatterplots"> 
-          <p><img src="plots/benchmarks.png"></p> 
+        <div id="RQ5_Math" class="formula"> 
+         <h2>Math</h2> 
+         <div class="tabs"> 
+          <ul> 
+           <li><a href="#Table">A12 statistic and U-test</a></li> 
+           <li><a href="#Plot">Distribution of wef values</a></li> 
+          </ul> 
+          <div id="Table" class="scatterplots"> 
+           <p><img src="plots/RQ5/math.png"></p> 
+          </div> 
+          <div id="Plot" class="scatterplots"> 
+           <p><img src="plots/RQ5/violin.min.mixed.own.cp.Math.wef.plot.png"></p> 
+          </div> 
          </div> 
         </div> 
-       </div> 
-       <div id="results" class="formula"> 
-        <h2>Results</h2> 
-        <div class="tabs"> 
-         <ul> 
-          <li><a href="#boxplots_training">Results on the Training Set</a></li> 
-          <li><a href="#boxplots_test">Results on the Test Set</a></li> 
-          <li><a href="#raw_dataset">Raw Dataset</a></li> 
-          <li><a href="#best_programs">Best-fitness Programs</a></li> 
-         </ul> 
-         <div id="boxplots_training" class="scatterplots"> 
-          <p><img src="plots/plot_train_ADD_INTEGER_AND_FLOAT%20(TRAIN).png"></p> 
-          <p><img src="plots/plot_train_SMALL_OR_LARGE%20(TRAIN).png"></p> 
-          <p><img src="plots/plot_train_COMPARE_STRING_LENGTHS%20(TRAIN).png"></p> 
-          <p><img src="plots/plot_train_GRADE%20(TRAIN).png"></p> 
-          <p><img src="plots/plot_train_MEDIAN%20(TRAIN).png"></p> 
-          <p><img src="plots/plot_train_SMALLEST%20(TRAIN).png"></p> 
-         </div> 
-         <div id="boxplots_test" class="scatterplots"> 
-          <p><img src="plots/plot_test_ADD_INTEGER_AND_FLOAT%20(TEST).png"></p> 
-          <p><img src="plots/plot_test_SMALL_OR_LARGE%20(TEST).png"></p> 
-          <p><img src="plots/plot_test_COMPARE_STRING_LENGTHS%20(TEST).png"></p> 
-          <p><img src="plots/plot_test_GRADE%20(TEST).png"></p> 
-          <p><img src="plots/plot_test_MEDIAN%20(TEST).png"></p> 
-          <p><img src="plots/plot_test_SMALLEST%20(TEST).png"></p> 
-         </div> 
-         <div id="raw_dataset" class="table"> 
-          <p><a href="plots/gp.csv" id="team6_15_8">GP results</a></p> 
-          <p><a href="plots/uct.csv" id="team6_15_8">UCT results</a></p> 
-          <p><a href="plots/statistics.csv" id="team6_15_8">Statistics</a></p> 
-         </div> 
-         <div id="best_programs" class="scatterplots"> 
-          <p><img src="plots/program1.png"></p> 
-          <p><img src="plots/program2.png"></p> 
-          <p><img src="plots/program3.png"></p> 
-          <p><img src="plots/program4.png"></p> 
-          <p><img src="plots/program5.png"></p> 
-          <p><img src="plots/program6.png"></p> 
+        <div id="RQ5_Time" class="formula"> 
+         <h2>Time</h2> 
+         <div class="tabs"> 
+          <ul> 
+           <li><a href="#Table">A12 statistic and U-test</a></li> 
+           <li><a href="#Plot">Distribution of wef values</a></li> 
+          </ul> 
+          <div id="Table" class="scatterplots"> 
+           <p><img src="plots/RQ5/time.png"></p> 
+          </div> 
+          <div id="Plot" class="scatterplots"> 
+           <p><img src="plots/RQ5/violin.min.mixed.own.cp.Time.wef.plot.png"></p> 
+          </div> 
          </div> 
         </div> 
-       </div> 
-      </div> 
-      <br> 
-      <h3>References</h3> 
-      <p>[1] Browne, C.B., Powley, E., Whitehouse, D., Lucas, S.M., Cowling, P.I., Rohlfshagen, P., Tavener, S., Perez, D., Samothrakis, S., Colton, S.: A survey of monte carlo tree search methods. IEEE Transactions on Computational Intelligence and AI in Games 4(1), 1–43 (2012)</p> 
-      <p>[2] Kocsis, L., Szepesvári, C.: Bandit based monte-carlo planning. In: Machine Learning: ECML 2006, pp. 282–293. Springer (2006)</p> 
-      <p>[3] Auer, P.: Using confidence bounds for exploitation-exploration trade-offs. The Journal of Machine Learning Research 3, 397–422 (2003)</p> 
-      <p>[4] Silver, D., Huang, A., Maddison, C.J., Guez, A., Sifre, L., Van Den Driessche, G., Schrittwieser, J., Antonoglou, I., Panneershelvam, V., Lanctot, M., et al.: Mastering the game of go with deep neural networks and tree search. Nature 529(7587), 484–489 (2016)</p> 
-      <p>[5] Winands, M.H., Björnsson, Y., Saito, J.T.: Monte-carlo tree search solver. In: International Conference on Computers and Games. pp. 25–36. Springer (2008)</p> 
-      <p>[6] Ciancarini, P., Favini, G.P.: Monte carlo tree search in kriegspiel. Artificial Intelligence 174(11), 670–684 (2010)</p> 
-      <p>[7] Cazenave, T.: Nested monte-carlo search. In: IJCAI. vol. 9, pp. 456–461 (2009)</p> 
-      <p>[8] Helmuth, T.: General Program Synthesis from Examples Using Genetic Programming with Parent Selection Based on Random Lexicographic Orderings of Test Cases. Ph.D. thesis, University of Massachuses-Amherst (2015)</p> 
-      <p>[9] Helmuth, T., Spector, L.: General program synthesis benchmark suite. In: Proceedings of the 2015 Annual Conference on Genetic and Evolutionary Computation. pp. 1039–1046. GECCO ’15, ACM, New York, NY, USA (2015)</p> 
-      <p>[10] Arcuri, A., Yao, X.: Coevolving programs and unit tests from their specification. In: Proceedings of the twenty-second IEEE/ACM international conference on Automated software engineering. pp. 397–400. ACM (2007)</p> 
-      <p>[11] Arcuri, A., Yao, X.: Co-evolutionary automatic programming for software development. Information Sciences 259, 412–432 (2014)</p> 
-      <p>[12] Forrest, S., Nguyen, T., Weimer, W., Le Goues, C.: A genetic programming approach to automated software repair. In: Proceedings of the 11th Annual Conference on Genetic and Evolutionary Computation. pp. 947–954 (2009)</p> 
-      <p>[13] White, David R., Shin Yoo, Jeremy Singer: The Programming Game: Evaluating MCTS as an Alternative to GP for Symbolic Regression. In: Proceedings of the Companion Publication of the 2015 Annual Conference on Genetic and Evolutionary Computation. ACM (2015)</p> 
+        <div id="RQ5_Closure" class="formula"> 
+         <h2>Closure</h2> 
+         <div class="tabs"> 
+          <ul> 
+           <li><a href="#Table">A12 statistic and U-test</a></li> 
+           <li><a href="#Plot">Distribution of wef values</a></li> 
+          </ul> 
+          <div id="Table" class="scatterplots"> 
+           <p><img src="plots/RQ5/closure.png"></p> 
+          </div> 
+          <div id="Plot" class="scatterplots"> 
+           <p><img src="plots/RQ5/violin.min.mixed.own.cp.Closure.wef.plot.png"></p> 
+          </div> 
+         </div> 
+        </div> 
+        <div id="RQ5_Chart" class="formula"> 
+         <h2>Chart</h2> 
+         <div class="tabs"> 
+          <ul> 
+           <li><a href="#Table">A12 statistic and U-test</a></li> 
+           <li><a href="#Plot">Distribution of wef values</a></li> 
+          </ul> 
+          <div id="Table" class="scatterplots"> 
+           <p><img src="plots/RQ5/chart.png"></p> 
+          </div> 
+          <div id="Plot" class="scatterplots"> 
+           <p><img src="plots/RQ5/violin.min.mixed.own.cp.Chart.wef.plot.png"></p> 
+          </div> 
+         </div> 
+        </div> 
+        <div id="RQ5_Mockito" class="formula"> 
+         <h2>Mockito</h2> 
+         <div class="tabs"> 
+          <ul> 
+           <li><a href="#Table">A12 statistic and U-test</a></li> 
+           <li><a href="#Plot">Distribution of wef values</a></li> 
+          </ul> 
+          <div id="Table" class="scatterplots"> 
+           <p><img src="plots/RQ5/mockito.png"></p> 
+          </div> 
+          <div id="Plot" class="scatterplots"> 
+           <p><img src="plots/RQ5/violin.min.mixed.own.cp.Mockito.wef.plot.png"></p> 
+          </div> 
+         </div> 
+        </div> 
+        <!-- END OF RQ5 --> 
+        <!-- RQ6 --> 
+        <div id="RQ6_Lang" class="formula"> 
+         <h2>Lang</h2> 
+         <div class="tabs"> 
+          <ul> 
+           <li><a href="#Table">Table of acc@n, wef, and MAP</a></li> 
+           <li><a href="#Plot">Distribution of wef values</a></li> 
+          </ul> 
+          <div id="Table" class="scatterplots"> 
+           <p><img src="plots/RQ6/lang.png"></p> 
+          </div> 
+          <div id="Plot" class="scatterplots"> 
+           <p><img src="plots/RQ6/Lang.box.png"></p> 
+          </div> 
+         </div> 
+        </div> 
+        <div id="RQ6_Math" class="formula"> 
+         <h2>Math</h2> 
+         <div class="tabs"> 
+          <ul> 
+           <li><a href="#Table">Table of acc@n, wef, and MAP</a></li> 
+           <li><a href="#Plot">Distribution of wef values</a></li> 
+          </ul> 
+          <div id="Table" class="scatterplots"> 
+           <p><img src="plots/RQ6/math.png"></p> 
+          </div> 
+          <div id="Plot" class="scatterplots"> 
+           <p><img src="plots/RQ6/Math.box.png"></p> 
+          </div> 
+         </div> 
+        </div> 
+        <div id="RQ6_Time" class="formula"> 
+         <h2>Time</h2> 
+         <div class="tabs"> 
+          <ul> 
+           <li><a href="#Table">Table of acc@n, wef, and MAP</a></li> 
+           <li><a href="#Plot">Distribution of wef values</a></li> 
+          </ul> 
+          <div id="Table" class="scatterplots"> 
+           <p><img src="plots/RQ6/time.png"></p> 
+          </div> 
+          <div id="Plot" class="scatterplots"> 
+           <p><img src="plots/RQ6/Time.box.png"></p> 
+          </div> 
+         </div> 
+        </div> 
+        <div id="RQ6_Closure" class="formula"> 
+         <h2>Closure</h2> 
+         <div class="tabs"> 
+          <ul> 
+           <li><a href="#Table">Table of acc@n, wef, and MAP</a></li> 
+           <li><a href="#Plot">Distribution of wef values</a></li> 
+          </ul> 
+          <div id="Table" class="scatterplots"> 
+           <p><img src="plots/RQ6/closure.png"></p> 
+          </div> 
+          <div id="Plot" class="scatterplots"> 
+           <p><img src="plots/RQ6/Closure.box.png"></p> 
+          </div> 
+         </div> 
+        </div> 
+        <div id="RQ6_Chart" class="formula"> 
+         <h2>Chart</h2> 
+         <div class="tabs"> 
+          <ul> 
+           <li><a href="#Table">Table of acc@n, wef, and MAP</a></li> 
+           <li><a href="#Plot">Distribution of wef values</a></li> 
+          </ul> 
+          <div id="Table" class="scatterplots"> 
+           <p><img src="plots/RQ6/chart.png"></p> 
+          </div> 
+          <div id="Plot" class="scatterplots"> 
+           <p><img src="plots/RQ6/Chart.box.png"></p> 
+          </div> 
+         </div> 
+        </div> 
+        <div id="RQ6_Mockito" class="formula"> 
+         <h2>Mockito</h2> 
+         <div class="tabs"> 
+          <ul> 
+           <li><a href="#Table">Table of acc@n, wef, and MAP</a></li> 
+           <li><a href="#Plot">Distribution of wef values</a></li> 
+          </ul> 
+          <div id="Table" class="scatterplots"> 
+           <p><img src="plots/RQ6/mockito.png"></p> 
+          </div> 
+          <div id="Plot" class="scatterplots"> 
+           <p><img src="plots/RQ6/Mockito.box.png"></p> 
+          </div> 
+         </div> 
+        </div> 
+        <!-- END OF RQ6 --> 
+        <!-- RQ7 --> 
+        <div id="RQ7_Tables" class="formula"> 
+         <!--<h2>RQ5</h2>--> 
+         <!--		<ul>
+			<li><a href="#Combined"></a>Results of six projects</li>
+		</ul>
+		<div id="Combined" class="scatterplots">
+			<p><img src="plots/RQ7/Combined.permu.png"/></p>
+		</div>--> 
+         <div class="tabs"> 
+          <ul> 
+           <li><a href="#RQ7_Feature_importance">Feature Importance Values</a></li> 
+           <li><a href="#RQ7_Permutation">The impact of random permutation of a feature</a></li> 
+          </ul> 
+          <div id="RQ7_Feature_importance" class="scatterplots"> 
+           <p><img src="plots/RQ7/F_Imporance.png"></p> 
+          </div> 
+          <div id="RQ7_Permutation" class="scatterplots"> 
+           <p><img src="plots/RQ7/Permu.png"></p> 
+          </div> 
+         </div> 
+        </div> 
+        <!-- END OF RQ7 --> 
+       </div> </li>
      </div> 
     </article> 
    </div> 

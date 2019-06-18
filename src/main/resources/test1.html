@@ -1,210 +1,211 @@
-<!doctype html>
-<html>
- <head> 
-  <meta charset="UTF-8"> 
-  <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"> 
-  <link rel="icon" href="./img/icon.png"> 
-  <title>Melodize - Home</title> 
-  <link href="scripts/jquery/css/ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet"> 
-  <link href="css/general.css" rel="stylesheet"> 
-  <link href="css/home.css" rel="stylesheet"> 
-  <link href="css/songInfo.css" rel="stylesheet"> 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> 
-  <link href="https://fonts.googleapis.com/css?family=Amita" rel="stylesheet"> 
-  <link href="https://fonts.googleapis.com/css?family=Boogaloo" rel="stylesheet"> 
-  <link href="https://fonts.googleapis.com/css?family=Caveat" rel="stylesheet"> 
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> 
- </head> 
- <body> 
-  <ul class="nav-ul"> 
-   <li class="nav-li">
-    <div onclick="window.location='./index.html';">
-     Melodize
-    </div></li> 
-   <li class="nav-li"><a id="loginTab">Sign In</a></li> 
-   <li class="nav-li"><a id="profileTab" href="./profile.html" style="display: none">Profile</a></li> 
-   <li class="nav-li"><a href="./gallery.html">Gallery</a></li> 
-   <li class="nav-li"><a href="./index.html">Home</a></li> 
-  </ul> 
-  <div class="animate-bottom" style="font-size: 20px; text-align: center; padding: 14px"> 
-   <div style="padding: 14px"> 
-    <div class="container section-home"> 
-     <h1 style="font-size: 80px; font-family:'Caveat';">Welcome to Melodize</h1> 
-     <div>
-       Listening to your favourite tunes has become easier than ever thanks to the variety of streaming platforms available today. However, it is not so easy for the public to contribute to the music composition process due to the public’s lack of expertise in the field and easily available tools; as a result, music composition remains to be a task exclusive to music artists. We want to change that dynamic. We want to make music composition a task available to anyone. 
-     </div> 
-    </div> 
-   </div> 
-   <div class="col-sm-12 section-home"> 
-    <div class="col-sm-6"> 
-     <h1 style="font-size: 50px; font-family:'Caveat';">Get the ball rolling</h1>
-     <br> By submitting lyrics to your song
-     <br>
-     <br> Describe the mood, tone, and theme of your song
-     <br> Watch the progress of the composition in real time
-     <br>
-     <br> 
-     <button class="green-btn" id="requesterBtn">SUBMIT LYRICS</button> 
-    </div> 
-    <div class="col-sm-6"> 
-     <img class="screenShot" src="./img/sc2.png"> 
-    </div> 
-   </div> 
-   <div class="col-sm-12 section-home"> 
-    <div class="col-sm-6"> 
-     <img class="screenShot" src="./img/sc1.png"> 
-    </div> 
-    <div class="col-sm-6"> 
-     <h1 style="font-size: 50px; font-family:'Caveat';">Express your ideas</h1>
-     <br> On an already submitted lyric
-     <br>
-     <br> Suggest notes that you think suites the song
-     <br> Vote on your favorite passages
-     <br>
-     <br> 
-     <button class="green-btn" id="workerBtn">START COMPOSING</button> 
-    </div> 
-   </div> 
-   <div class="col-sm-12 section-home"> 
-    <div class="col-sm-10 col-sm-offset-1"> 
-     <h1 style="font-size: 50px; font-family:'Caveat';">Live Demo</h1>
-     <br> 
-     <div class="screenShot video-container"> 
-      <iframe src="https://www.youtube.com/embed/nNwPpxmL_Ww" frameborder="0" allowfullscreen></iframe> 
-     </div> 
-    </div> 
-   </div> 
-   <div class="col-sm-12 section-home" style="background-color: #c1d9ff"> 
-    <div class="col-sm-12"> 
-     <h1>Learn more about us</h1> What can I do here?
-     <br> How does this platform work?
-     <br> How do I contribute?
-     <br> How do I give you my feedbacks?
-     <br>
-     <br> 
-     <button class="blue-btn" id="learnBtn">LEARN MORE</button> 
-    </div> 
-   </div> 
-   <!--
-      <div class="col-sm-12 section-home">
-        <div class="col-sm-6">
-          <h1>Express yourself</h1><br>
-          By creating an account<br><br>
-          You can submit your lyrics, comment others<br>
-          Change profile picture to show who you are<br><br>
-          <button class="green-btn" id="signUpBtn">SIGN UP</button>
-        </div>
-        <div class="col-sm-6">
-          <img class="screenShot" src="./img/sc6.png">
-        </div>        
-      </div>
-
-      <div class="col-sm-12 section-home">
-        <div class="col-sm-6">
-          <img class="screenShot" src="./img/sc7.png">
-        </div>
-        <div class="col-sm-6">
-          <h1>Check completions</h1><br>
-          On the hall of fame<br><br>
-          Leave a comment on these materpieces<br>
-          Try to change some notes to suit your taste<br><br>
-          <button class="green-btn" id="galleryBtn">CHECK GALLERY</button>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-sm-10 col-sm-offset-1 songList-home">
-          <div class="list-tag"><statnum id="totalSongs">0</statnum> SONGS</div>
-          <div class="sort-tag">
-            Sort by:
-            <select id="sortingSelect">
-              <option value=2>participants (dec)</option>
-              <option value=3>participants (inc)</option>
-              <option value=1>title (dec)</option>
-              <option value=0>title (inc)</option>
-            </select>
-          </div>
-          <div id="songList" class="song-list"></div><br>
-          <center><div id="songList-showMore" class="showMore"><i class="material-icons">&#xE313;</i> Show More</div></center>
-          <center><button class="green-btn" id="listBtn" style="font-size: 24px">START COMPOSING</button></center>
-        </div>
-      </div>
-
-      <div class="col-sm-12 section-home" id="learnStart">
-        <h1 class="section-tag">Tasks</h1>
-        <div class="col-sm-6" style="display: inline-block;">
-          <img class="section-image" src="./img/sc3.png">
-        </div>
-        <div class="section-content">
-          The three tasks our platform supports are,<br><br>
-          1. Submission of lyrics, which will be the base of melody compositions<br>
-          2. Composing melody to submitted lyrics<br>
-          3. Freedom to experiment with melody composition without lyrics as a base<br>
-        </div>
-      </div>
-
-      <div class="col-sm-12 section-home">
-        <h1 class="section-tag">Aggregation</h1>
-        <div class="col-sm-6" style="display: inline-block;">
-          <img class="section-image" src="./img/sc4.png">
-        </div>
-        <div class="section-content">
-          How we aggregate  each and every one of your input is crucial to our process as it directly affects the coherency and flow of our songs. We take each of your segment inputs and pool them together first. Then, we choose the most popular note for each syllable and integrate it into the song.<br><br>
-
-          While doing so, we wanted our composition process to be interactive so that you can take inspiration from others and provide inspiration to others. By ticking the "see what others have done" button, you will be able to see the distribution of popular notes that have been voted so far. Of course, if you want to be fully independent in your composition, feel free to tick out the box and explore on your own.
-        </div>
-      </div>
-
-      <div class="col-sm-12 section-home">
-        <h1 class="section-tag">Quality Control</h1>
-        <div class="col-sm-6" style="display: inline-block;">
-          <img class="section-image" src="./img/sc1.png">
-        </div>
-        <div class="section-content">
-          Tasks 1 and 2 needs quality control while task 3 does not. For the first task, adjusting the number of inputs we collect per segment will allow adequent balance between time efficiency, and reducing the influence of damaging inputs. For the second task, flagging features will allow users to flag inappropriate lyric submissions, which will be reviewed manually.
-        </div>
-      </div>
-
-      <div class="col-sm-12 section-home">
-        <h1 class="section-tag">Result</h1>
-        <div class="col-sm-6" style="display: inline-block;">
-          <img class="section-image" src="./img/sc5.png">
-        </div>
-        <div class="section-content">
-          The result should be a whole coherent song. By which I mean a sequence of notes that match with the syllables of the lyrics. We do not provide a feature that converts these notes into vocals. The most popular and or recently finished songs can be viewed in the gallery tab. One can also experiment on completed songs from the gallery tab; changes made in this manner will not be saved in the official release of the song.
-        </div>
-      </div>
---> 
-  </div> 
-  <div id="loginModal" class="modal"> 
-   <div class="modal-content" style="width: 340px; height: 500px"> 
-    <span class="close">×</span> 
-    <div class="login-div" style="font-family: 'Amita'; font-size: 24px; padding: 40px">
-     Welcome to Melodize
-    </div> 
-    <div class="login-div">
-     <input class="login-input" type="text" id="id" placeholder="ID">
-    </div> 
-    <div class="login-div">
-     <input class="login-input" type="password" id="pw" placeholder="Password">
-    </div> 
-    <div class="login-div" style="padding: 2px; color: red; display: none" id="warning_msg">
-     Wrong ID or Password
-    </div> 
-    <div class="login-div">
-     <button class="btn btn-default login-input" id="loginBtn">Sign in</button>
-    </div> 
-    <div class="login-div" style="padding: 2px">
-     Don't have an account? 
-     <a href="./signup.html" id="team6_1_0">Sign up here</a>
-    </div> 
-   </div> 
-  </div> 
-  <script src="scripts/jquery/js/jquery-1.9.0.min.js"></script> 
-  <script src="scripts/jquery/js/jquery-ui-1.10.0.custom.min.js"></script> 
-  <script src="scripts/jquery/js/jquery-plugin.js"></script> 
-  <script src="https://www.gstatic.com/firebasejs/3.6.2/firebase.js"></script> 
-  <script src="scripts/login.js"></script> 
-  <script src="scripts/home.js"></script>   
- </body>
-</html>
+<?xml version="1.0" encoding="UTF-8"?> 
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"> 
+ <channel> 
+  <title>COINSE</title> 
+  <description>
+   COINSE Lab,&lt;br/&gt; &lt;a href='http://cs.kaist.ac.kr'&gt;School of Computing&lt;/a&gt;,&lt;br/&gt; &lt;a href='http://www.kaist.ac.kr'&gt;Korea Advanced Institute of Science and Technology&lt;/a&gt;,&lt;br/&gt; 291 Daehak Ro, Yuseong Gu,&lt;br/&gt; Daejeon, 34141,&lt;br/&gt; Republic of Korea
+  </description> 
+  <link>
+   https://coinse.kaist.ac.kr/
+  </link> 
+  <atom:link href="https://coinse.kaist.ac.kr/feed.xml" rel="self" type="application/rss+xml" id="team6_1_0" /> 
+  <pubDate>
+   Tue, 18 Jun 2019 16:43:54 +0900
+  </pubDate> 
+  <lastBuildDate>
+   Tue, 18 Jun 2019 16:43:54 +0900
+  </lastBuildDate> 
+  <generator>
+   Jekyll v3.5.0
+  </generator> 
+  <item> 
+   <title>Human competitiveness of GP</title> 
+   <description>
+    &lt;p&gt;A paper that had been under review for some time has been finally accepted by the ACM Transactions on Software Engineering and Methodology (TOSEM):&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Human Competitiveness of Genetic Programming in SBFL: Theoretical and Empirical Analysis&lt;/strong&gt; by Shin Yoo, Xiaoyuan Xie, Fei-Ching Kuo, Tsong-Yue Chen, and Mark Harman&lt;/p&gt; &lt;p&gt;The paper presents a theoretical proof that, under a consistent tie breaker for the ranking, no SBFL formula can be better than or equivalent to all other formulas against all possible faults and programs. In other words, the greatest formula does not exist. What we currently have is an expanding set of &lt;em&gt;maximal&lt;/em&gt; formulas: they are better than other formulas for some faults, but can be worse then other formulas for other faults.&lt;/p&gt; &lt;p&gt;The paper also contains an empirical study, because, whether a maximal formula is really useful is a question that can be only answered empirically. It depends on the frequency of occurrence of a particular type of faults for which a formula is maximal.&lt;/p&gt; &lt;p&gt;The human competitiveness of GP follows from the fact that GP successfully generated a maximal formula, which also happens to be very effective against a large portion of studied faults. Casually speaking, GP formulas are maximal for the &lt;em&gt;right&lt;/em&gt; reason.&lt;/p&gt; &lt;p&gt;For me, this is an exciting news: the collaboration with my co-authors have been very productive, and I think we achieved an important milestone in both SBSE and SBFL research. COINSE is committed to pushing fault localisation techniques further. Stay tuned!&lt;/p&gt; 
+   </description> 
+   <pubDate>
+    Thu, 30 Mar 2017 09:00:00 +0900
+   </pubDate> 
+   <link>
+    https://coinse.kaist.ac.kr/coinse,/publication,/tosem/2017/03/30/TOSEM-GP-Human-Competitiveness.html
+   </link> 
+   <guid isPermaLink="true">
+    https://coinse.kaist.ac.kr/coinse,/publication,/tosem/2017/03/30/TOSEM-GP-Human-Competitiveness.html
+   </guid> 
+   <category>
+    coinse,
+   </category> 
+   <category>
+    publication,
+   </category> 
+   <category>
+    tosem
+   </category> 
+  </item> 
+  <item> 
+   <title>GECCO 2017</title> 
+   <description>
+    &lt;p&gt;The product of an undergraduate research internship during the winter by Dahyun Kang has been accepted at &lt;a href="http://gecco-2017.sigevo.org"&gt;GECCO 2017&lt;/a&gt; SBSE Track. The paper looks at the usefulness of using a ternary conditional operator for GP-based composition of ranking models for fault localisation. Congratulations! :)&lt;/p&gt; 
+   </description> 
+   <pubDate>
+    Tue, 21 Mar 2017 10:35:00 +0900
+   </pubDate> 
+   <link>
+    https://coinse.kaist.ac.kr/coinse,/publication,/gecco/2017/03/21/GECCO-2017.html
+   </link> 
+   <guid isPermaLink="true">
+    https://coinse.kaist.ac.kr/coinse,/publication,/gecco/2017/03/21/GECCO-2017.html
+   </guid> 
+   <category>
+    coinse,
+   </category> 
+   <category>
+    publication,
+   </category> 
+   <category>
+    gecco
+   </category> 
+  </item> 
+  <item> 
+   <title>URP Grand Prix</title> 
+   <description>
+    &lt;p&gt;&lt;img src="https://coinse.kaist.ac.kr/assets/images/blog/2016-08-30-jinsuk-urp-prize.JPG" alt="Award Ceremony" /&gt;&lt;/p&gt; &lt;p&gt;Remember the &lt;a href="http://coinse.kaist.ac.kr/coinse/2015/12/15/first-urp.html"&gt;first URP&lt;/a&gt; by Jinsuk Lim, which led to one of the &lt;a href="http://coinse.kaist.ac.kr/coinse/2016/06/19/first-papers.html"&gt;first batch&lt;/a&gt; of student papers from COINSE? Today, KAIST held the 2016 Winter/Spring URP workshop, which allowed 53 participating projects to present their work. I’m very pleased to report that, with an excellent presentation, Jinsuk won one of the three Best Project Awards. Well done indeed!&lt;/p&gt; 
+   </description> 
+   <pubDate>
+    Tue, 30 Aug 2016 17:35:00 +0900
+   </pubDate> 
+   <link>
+    https://coinse.kaist.ac.kr/coinse,/student/2016/08/30/URP-grand-prix.html
+   </link> 
+   <guid isPermaLink="true">
+    https://coinse.kaist.ac.kr/coinse,/student/2016/08/30/URP-grand-prix.html
+   </guid> 
+   <category>
+    coinse,
+   </category> 
+   <category>
+    student
+   </category> 
+  </item> 
+  <item> 
+   <title>First batch of papers from COINSE</title> 
+   <description>
+    &lt;p&gt;&lt;a href="http://ssbse.org"&gt;SSBSE&lt;/a&gt; is an annual international symposium for people who work in the field of search-based software engineering. In addition to the graduate student track, it maintains a track called “SBSE Challenge Track”. The idea is that organisers will announce a few real world open source applications, and participants can do whatever SBSE type things(?) to them and report the findings, which does not have to be novel technical contribution. The track rather aims to show that these techniques are applicable to real systems, and to expand the authorship in the field.&lt;/p&gt; &lt;p&gt;As a group barely a year old and with a small number of students, COINSE made a two submissions this year to SSBSE and I am glad to report that both got accepted. I know, they are not full-blown research papers, but on the other hand I do believe that the firsthand experience of the entire research cycle (idea, design, imlementation, experimentation, write-up, getting accepted, and presentation) will be a valuable one for the students. So I am proud of the results :)&lt;/p&gt; &lt;p&gt;The accepted papers are:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;&lt;strong&gt;Amortised Deep Parameter Optimisation of GPGPU Work Group Size for OpenCV&lt;/strong&gt; by Jeongju Sohn, Seongmin Lee, and Shin Yoo (Challenge Track): We have applied amortised optimisation to OpenCV’s GPGPU layer, and optmise the work group size unbeknownst to the user. Consequently, the GPU version of the template matching will be increasingly faster as the user continues to use the framework.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;&lt;strong&gt;Field Report: Applying Monte Carlo Tree Search for Program Synthesis&lt;/strong&gt; by Jinsuk Lim and Shin Yoo (Graduate Student Track): This is the result of &lt;em&gt;Undergraduate&lt;/em&gt; Research Project work done by Jinsuk, and the notificaion is just in time for the good news to be included in the URP report. We convert generic program synthesis (i.e. automatic programming from specifications and/or examples) to single player combinatorial gaming, and apply Monte Carlo Tree Search to it.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Well done, guys!&lt;/p&gt; 
+   </description> 
+   <pubDate>
+    Sun, 19 Jun 2016 20:35:00 +0900
+   </pubDate> 
+   <link>
+    https://coinse.kaist.ac.kr/coinse,/publication,/ssbse/2016/06/19/first-papers.html
+   </link> 
+   <guid isPermaLink="true">
+    https://coinse.kaist.ac.kr/coinse,/publication,/ssbse/2016/06/19/first-papers.html
+   </guid> 
+   <category>
+    coinse,
+   </category> 
+   <category>
+    publication,
+   </category> 
+   <category>
+    ssbse
+   </category> 
+  </item> 
+  <item> 
+   <title>Observational Slicing based on Visual Semantics</title> 
+   <description>
+    &lt;p&gt;&lt;a href="http://crest.cs.ucl.ac.uk/resources/orbs/"&gt;Observational slicing&lt;/a&gt; is an interesting take on program slicing that has been conceived in CREST, UCL. Right after the first paper on program code has been published, I have been pursuing a non-conventional form of slicing on Picture Description Languages. Dave Binkley and Roger Eastman from Loyola University Baltimore joined forces with me, and we had reported our initial findings at &lt;a href="http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6975651&amp;amp;tag=1"&gt;SCAM 2014&lt;/a&gt;. I am happy to announce that the &lt;a href="http://www.sciencedirect.com/science/article/pii/S0164121216300255"&gt;journal version&lt;/a&gt; of the paper has now been accepted by JSS. We extended our initial study with custom-made template matching algorithm, and evaluated our technique on the combination of HTML5, CSS, and Javascript as well.&lt;/p&gt; 
+   </description> 
+   <pubDate>
+    Mon, 09 May 2016 11:45:00 +0900
+   </pubDate> 
+   <link>
+    https://coinse.kaist.ac.kr/coinse,/publication,/jss/2016/05/09/VORBS-JSS.html
+   </link> 
+   <guid isPermaLink="true">
+    https://coinse.kaist.ac.kr/coinse,/publication,/jss/2016/05/09/VORBS-JSS.html
+   </guid> 
+   <category>
+    coinse,
+   </category> 
+   <category>
+    publication,
+   </category> 
+   <category>
+    jss
+   </category> 
+  </item> 
+  <item> 
+   <title>Diversity Aware Mutation Adequacy Criterion</title> 
+   <description>
+    &lt;p&gt;This is a slightly old news, but I co-authored a paper that was recently accepted at &lt;a href="https://sites.google.com/site/mutation2016/"&gt;Mutation 2016&lt;/a&gt; workshop. The first author, Donghwan Shin (a PhD candidate at &lt;a href="http://se.kaist.ac.kr"&gt;KAIST SE Lab&lt;/a&gt;), came up with this very neat idea of distinguishing mutants based on the unique sets of test cases that kill them, and subsequently defined a new mutation adequacy criterion that incorporates the diversity of the test cases. Donghwan also has another paper in the main ICST 2016 track, which actually provides the theoretical ground for this new criterion. Congratulations!!!&lt;/p&gt; 
+   </description> 
+   <pubDate>
+    Fri, 11 Mar 2016 17:45:00 +0900
+   </pubDate> 
+   <link>
+    https://coinse.kaist.ac.kr/coinse/2016/03/11/Mutation-paper.html
+   </link> 
+   <guid isPermaLink="true">
+    https://coinse.kaist.ac.kr/coinse/2016/03/11/Mutation-paper.html
+   </guid> 
+   <category>
+    coinse
+   </category> 
+  </item> 
+  <item> 
+   <title>KAIST MenuBot</title> 
+   <description>
+    &lt;p&gt;The very first project COINSE opens up is… something those who live on Slack channels in KAIST will hopefully welcome. &lt;a href="https://bitbucket.org/coinselab/menubot"&gt;Menubot&lt;/a&gt; crawls daily menus from various KAIST cafeterias and serves them up in your Slack channel. You can decide before you leave your desk :) The bot is forked from &lt;a href="https://github.com/haandol/hongmoa"&gt;Hongmoa&lt;/a&gt; and based on Python slackclient. See the &lt;a href="https://bitbucket.org/coinselab/menubot"&gt;menubot repository&lt;/a&gt; for more details. Bon appétit!&lt;/p&gt; 
+   </description> 
+   <pubDate>
+    Mon, 11 Jan 2016 16:45:00 +0900
+   </pubDate> 
+   <link>
+    https://coinse.kaist.ac.kr/coinse/2016/01/11/KAIST-menubot.html
+   </link> 
+   <guid isPermaLink="true">
+    https://coinse.kaist.ac.kr/coinse/2016/01/11/KAIST-menubot.html
+   </guid> 
+   <category>
+    coinse
+   </category> 
+  </item> 
+  <item> 
+   <title>ICST Paper on Test Set Diameter</title> 
+   <description>
+    &lt;p&gt;A good tiding near Christmas… ICST 2016 notifications arrived this morning, and it was a good news. The information theory crew - &lt;a href="http://www.robertfeldt.net"&gt;Robert Feldt&lt;/a&gt;, &lt;a href="http://www.simonpoulding.net"&gt;Simon Poulding&lt;/a&gt;, and &lt;a href="http://www0.cs.ucl.ac.uk/staff/D.Clark/"&gt;David Clark&lt;/a&gt;, and I - have been working on a black-box test case selection technique based on &lt;a href="https://en.wikipedia.org/wiki/Normalized_compression_distance"&gt;Normalised Compression Distance&lt;/a&gt;, and the paper was accepted by &lt;a href="https://www.cs.uic.edu/~icst2016/"&gt;ICST 2016&lt;/a&gt;. You can see the &lt;a href="http://arxiv.org/abs/1506.03482"&gt;arXiv preprint&lt;/a&gt; while we prepare the camera ready :)&lt;/p&gt; 
+   </description> 
+   <pubDate>
+    Tue, 22 Dec 2015 10:44:00 +0900
+   </pubDate> 
+   <link>
+    https://coinse.kaist.ac.kr/coinse/2015/12/22/ICST-paper-on-Test-Set-Diameter.html
+   </link> 
+   <guid isPermaLink="true">
+    https://coinse.kaist.ac.kr/coinse/2015/12/22/ICST-paper-on-Test-Set-Diameter.html
+   </guid> 
+   <category>
+    coinse
+   </category> 
+  </item> 
+  <item> 
+   <title>First URP (Undergraduate Research Participation) Project</title> 
+   <description>
+    &lt;p&gt;One of the many nice programmes run by KAIST is the &lt;a href="http://kchannel.kaist.ac.kr/CH751-000"&gt;URP: Undergraduate Research Participation&lt;/a&gt;. Under URP, undergraudate students can spend from 6 months up to 1 year in research labs (normally populated with graduate students) to persue a specific research agenda.&lt;/p&gt; &lt;p&gt;I’m happy to report that COINSE has its first URP proposal approved. Jinsuk Lim, a double major in math and CS, will be joining the lab to further evaluate the idea of using Monte Carlo Tree Search for stochastic program synthesis, following the work David White and I did for &lt;a href="http://dl.acm.org/ft_gateway.cfm?ftid=1604575&amp;amp;id=2764655"&gt;GECCO 2015&lt;/a&gt;. Well done, Jinsuk :)&lt;/p&gt; 
+   </description> 
+   <pubDate>
+    Tue, 15 Dec 2015 13:27:00 +0900
+   </pubDate> 
+   <link>
+    https://coinse.kaist.ac.kr/coinse/2015/12/15/first-urp.html
+   </link> 
+   <guid isPermaLink="true">
+    https://coinse.kaist.ac.kr/coinse/2015/12/15/first-urp.html
+   </guid> 
+   <category>
+    coinse
+   </category> 
+  </item> 
+ </channel> 
+</rss>

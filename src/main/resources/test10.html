@@ -1,103 +1,218 @@
 <!doctype html>
 <html>
  <head> 
-  <meta charset="UTF-8"> 
-  <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"> 
-  <link rel="icon" href="./img/icon.png"> 
-  <title>Melodize - About</title> 
-  <link href="scripts/jquery/css/ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet"> 
-  <link href="css/general.css" rel="stylesheet"> 
-  <link href="css/home.css" rel="stylesheet"> 
-  <link href="css/songInfo.css" rel="stylesheet"> 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> 
-  <link href="https://fonts.googleapis.com/css?family=Amita" rel="stylesheet"> 
-  <link href="https://fonts.googleapis.com/css?family=Boogaloo" rel="stylesheet"> 
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> 
+  <meta charset="utf-8"> 
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+  <meta http-equiv="CACHE-CONTROL" content="NO-CACHE"> 
+  <meta name="keywords" content="coinse, sbse, shin yoo"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1"> 
+  <title>COINSE</title> 
+  <meta name="description" content="COINSE Lab,<br/> <a href='http://cs.kaist.ac.kr'>School of Computing</a>,<br/> <a href='http://www.kaist.ac.kr'>Korea Advanced Institute of Science and Technology</a>,<br/> 291 Daehak Ro, Yuseong Gu,<br/> Daejeon, 34141,<br/> Republic of Korea"> 
+  <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"> 
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"> 
+  <link rel="stylesheet" href="/css/bootstrap-grid.css"> 
+  <link rel="stylesheet" href="/css/jquery.lightbox-0.5.css"> 
+  <link rel="stylesheet" href="/css/colorbox.css"> 
+  <link rel="stylesheet" href="/css/main.css"> 
+  <link rel="canonical" href="https://coinse.kaist.ac.kr/members/jinhan/" id="team6_10_0"> 
+  <link rel="alternate" type="application/rss+xml" title="COINSE" href="https://coinse.kaist.ac.kr/feed.xml" id="team6_10_1"> 
+  <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> 
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script> 
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script> 
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.colorbox/1.6.3/jquery.colorbox-min.js"></script> 
+  <script type="text/javascript" src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script> 
+  <!-- Google Analytics --> 
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-29350760-3', 'auto');
+    ga('send', 'pageview');
+
+  </script> 
+  <script>
+  $(document).ready(function() {
+    $(".bibtex").click(function(event) {
+        var bibtex = $("#raw-" + event.target.id);
+        bibtex.toggleClass("visible");
+    });
+  });
+  </script> 
+  <!-- load JavaScrips specifically required by Project pages!!! --> 
+  <script src="/assets/js/tab.js"></script> 
+  <link rel="stylesheet" href="/css/tabbed.css"> 
  </head> 
  <body> 
-  <ul class="nav-ul"> 
-   <li class="nav-li">
-    <div onclick="window.location='./index.html';">
-     Melodize
-    </div></li> 
-   <li class="nav-li"><a id="loginTab">Sign In</a></li> 
-   <li class="nav-li"><a id="profileTab" href="./profile.html" style="display: none">Profile</a></li> 
-   <li class="nav-li"><a href="./gallery.html" id="team6_10_0">Gallery</a></li> 
-   <li class="nav-li"><a href="./index.html" id="team6_10_1">Home</a></li> 
-  </ul> 
-  <div class="animate-bottom" style="font-size: 20px; text-align: center; padding: 14px"> 
-   <div class="col-sm-12 section-home"> 
-    <h1 class="section-tag">Tasks</h1> 
-    <div class="col-sm-6" style="display: inline-block;"> 
-     <img class="section-image" src="./img/sc3.png"> 
+  <header class="site-header"> 
+   <div class="wrapper"> 
+    <div class="site-title-panel"> 
+     <a class="site-title" href="/" id="team6_10_2">COINSE</a> 
     </div> 
-    <div class="section-content">
-      Our platform aims to support all in all 3 tasks:
-     <br>
-     <br> 1. Submission of lyrics, where you can submit lyrics to receive a complementing melody for it. Just click on ‘submit lyrics’ button and write your lyrics as well as the general direction you want the song to take!
-     <br> 2. Compose melody to submitted lyrics. Now that there are lyrics, we need to acquire a melody! Using crowdsourcing, we seek to gather input from variety of people and join their suggestions together to compose ‘the melody’ for the lyrics submitted.
-     <br> 3. Lastly, we want you to have fun freely experimenting with notes and melody composition, not just doing it according to the lyrics!
-     <br> 
-    </div> 
+    <nav class="site-nav"> 
+     <a href="#" class="menu-icon" id="team6_10_3"> 
+      <svg viewbox="0 0 18 15"> 
+       <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z" /> 
+       <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z" /> 
+       <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z" /> 
+      </svg> </a> 
+     <div class="trigger"> 
+      <a class="page-link" href="/research" id="team6_10_4">Research</a> 
+      <a class="page-link" href="/members" id="team6_10_5">Members</a> 
+      <a class="page-link" href="/publications" id="team6_10_6">Publications</a> 
+      <a class="page-link" href="/projects" id="team6_10_7">Projects</a> 
+      <a class="page-link" href="/teaching" id="team6_10_8">Teaching</a> 
+      <!-- <a class="page-link" href="/blog">Blog</a> --> 
+      <!-- <a class="page-link" href="/contact">Contact</a> --> 
+     </div> 
+    </nav> 
    </div> 
-   <div class="col-sm-12 section-home"> 
-    <h1 class="section-tag">Aggregation</h1> 
-    <div class="col-sm-6" style="display: inline-block;"> 
-     <img class="section-image" src="./img/sc4.png"> 
+  </header> 
+  <div class="page-content"> 
+   <!-- <div class="parallax">
+        <div class="bg_foo">
+          <h2></h2>
+        </div>
+      </div> --> 
+   <div class="wrapper"> 
+    <style type="text/css">
+  @import url(https://fonts.googleapis.com/css?family=Inconsolata);
+  .wrapper {
+    color: #24292e;    
+  }   
+  .conf li {
+    margin-bottom: 12px;
+  }
+  .tag {
+    display: inline-block;
+    margin: 0 5px;    
+    padding: 1px 6px;
+    border-radius: 3px;
+    font-size: 9px;
+    color: white;    
+  }  
+  .full {
+    background-color: #0366d6;
+  }
+
+  .short {
+    background-color: #fda600;
+  }
+
+  .workshop {
+    background-color: #fda600;
+  }
+
+  .paper-title {
+    font-size: 14px;
+  }
+  .gray {
+    font-size: 12px;
+    /* color: #586069; */
+    color: black;
+    margin-bottom: 10px;
+  }
+  .inconsolata {
+    font-family: Inconsolata, monospace;
+  }
+  .page-content a {
+    -webkit-transition: text-shadow 0.2s ease-in-out;
+    -moz-transition: text-shadow 0.2s ease-in-out;
+    -ms-transition: text-shadow 0.2s ease-in-out;
+    -o-transition: text-shadow 0.2s ease-in-out;
+    transition: text-shadow 0.2s ease-in-out;
+    transition-duration: 0.1s;
+    color: #0366d6;
+	  text-decoration: none;
+  }
+  .page-content a:hover {
+    color: #0366d6;
+    text-shadow: 3px 4px 0px #ffd700;
+    text-decoration: none;
+  }
+  .empty {
+    margin-top: 11px;
+  }
+</style> 
+    <h1 id="jinhan-kim">Jinhan Kim</h1> 
+    <div class="inconsolata">
+      Contact Address: 
+     <br> &gt; School of Computing
+     <br> &gt; Korea Advanced Institute of Science and Technology
+     <br> &gt; 291 Daehak Ro, Yuseong Gu
+     <br> &gt; Daejeon 34141
+     <br> &gt; Republic of Korea
+     <br> Office: E3-1, 2417 
+     <br> e-mail: 
+     <a href="mailto:jinhankim@kaist.ac.kr">jinhankim at kaist.ac.kr</a> 
+     <br> [
+     <a class="inconsolata" href="https://www.linkedin.com/in/py0ro/" target="_blank">LinkedIn</a>] [
+     <a class="inconsolata" href="https://www.slideshare.net/jinhanKim7" target="_blank">SlideShare</a>] [
+     <a class="inconsolata" href="https://my.flightradar24.com/dulgy" target="_blank"><i class="fa fa-plane" aria-hidden="true"></i></a>] 
     </div> 
-    <div class="section-content">
-      Aggregation is the most important part of our platform. Once we have the data from tens of people, we need a way to acquire the final product. We decided to, as mentioned above, open a small section of the song at a time to be composed. After enough users have participated, we take the highest chosen notes as the melody, and go on to the next section.This is because we wanted you to have freedom and a feeling that you are ‘composing’, while maintaining a coherent flow of sound. By limiting the section we take input for, we hope to see a common pattern that represent the sound of the crowd.
-     <br> While doing so, we wanted our composition process to be interactive so that you can take inspiration from others and provide inspiration to others. By ticking the "see what others have done" button, you will be able to see the distribution of popular notes that have been voted so far. Of course, if you want to be fully independent in your composition, feel free to tick out the box and explore on your own. 
-    </div> 
-   </div> 
-   <div class="col-sm-12 section-home"> 
-    <h1 class="section-tag">Quality Control</h1> 
-    <div class="col-sm-6" style="display: inline-block;"> 
-     <img class="section-image" src="./img/sc8.png"> 
-    </div> 
-    <div class="section-content">
-      Now the third task is not something that requires quality control. Lyrics and melody composition, however, requires proper control if we are to get a good result. For the lyric submission, inappropriate words can be flagged, which would result in manual review of the lyrics, and removal if deemed necessary. Imposing quality control on composing is a bit more complicated; after all, music is very subjective. We thought we would try to acquire the sound of the crowd from the inputs of various users by taking the average of the user input small segment of the song at a time: simply put, users will work at a small part of the lyrics at one time, and we think by controlling the length of the segment and time, we will be able to reduce ‘trolling’ inputs. More details of this are available below at Aggregation. 
-    </div> 
-   </div> 
-   <div class="col-sm-12 section-home"> 
-    <h1 class="section-tag">Result</h1> 
-    <div class="col-sm-6" style="display: inline-block;"> 
-     <img class="section-image" src="./img/sc5.png"> 
-    </div> 
-    <div class="section-content">
-      The result should be a whole coherent song. By which I mean a sequence of notes that match with the syllables of the lyrics. We do not provide a feature that converts these notes into vocals. The most popular and or recently finished songs can be viewed in the gallery tab. One can also experiment on completed songs from the gallery tab; changes made in this manner will not be saved in the official release of the song. 
-    </div> 
+    <div class="empty"></div> 
+    <h2 id="education">Education</h2> 
+    <ul> 
+     <li>Ph.D., Computer Science, KAIST, Mar. 2017 - Present</li> 
+     <li>B.Sc., Computer Science, KAIST, Feb. 2012 - Feb. 2017</li> 
+    </ul> 
+    <h2 id="experience">Experience</h2> 
+    <ul> 
+     <li>Frontend Engineer, <a href="https://tanker.fund/" target="_blank">Tanker Fund Corp</a>, Seoul, Apr. 2016 - Feb. 2019</li> 
+     <li>Frontend Engineer, <a href="https://elice.io/" target="_blank">Elice Corp</a>, Daejeon, Sep. 2015 - Jun. 2016</li> 
+     <li>Research Intern, <a href="http://uilab.kr/" target="_blank">Users &amp; Information Lab</a>, KAIST, Sep. 2015 - Dec. 2015</li> 
+     <li>Research Intern, <a href="http://nclab.kaist.ac.kr" target="_blank">NC Lab</a>, KAIST, Mar. 2015 - Aug. 2015</li> 
+    </ul> 
+    <h2 id="research-interest">Research Interest</h2> 
+    <ul> 
+     <li>Software Engineering ⚑</li> 
+     <li>Human-Computer Interaction</li> 
+    </ul> 
+    <h2 id="publication">Publication</h2> 
+    <p>See my profile at <a class="" target="_blank" href="https://scholar.google.co.kr/citations?user=XL_ZwBAAAAAJ">Google Scholar</a></p> 
+    <h3 id="international-conference">International Conference</h3> 
+    <ul class="conf"> 
+     <li> <span class="paper-title">Guiding Deep Learning System Testing using Surprise Adequacy</span><span class="tag full">Full</span><br> <span class="gray"> <b>Jinhan Kim</b>, Robert Feldt, and Shin Yoo<br> 41st International Conference on Software Engineering (ICSE 2019) [<a class="inconsolata" target="_blank" href="https://arxiv.org/pdf/1808.08444.pdf">pre-print</a>] [<a class="inconsolata" target="_blank" href="https://2019.icse-conferences.org/event/icse-2019-technical-papers-guiding-deep-learning-system-testing-using-surprise-adequacy">conf.researchr</a>] [<a class="inconsolata" target="_blank" href="https://github.com/coinse/sadl">artifact</a>] </span> </li> 
+     <li> <span class="paper-title">Learning Without Peeking: Secure Multi-Party Computation Genetic Programming</span><span class="tag full">Full</span><br> <span class="gray"> <b>Jinhan Kim</b>, Michael G. Epitropakis, and Shin Yoo<br> 10th International Symposium on Search Based Software Engineering (SSBSE 2018) [<a class="inconsolata" target="_blank" href="https://link.springer.com/chapter/10.1007/978-3-319-99241-9_13">springer</a>] </span> </li> 
+     <li> <span class="paper-title">Elicast: Embedding Interactive Exercises in Instructional Programming Screencasts</span><span class="tag full">Full</span><br> <span class="gray"> Jungkook Park, Yeong Hoon Park, <b>Jinhan Kim</b>, Jeongmin Cha, Suin Kim, and Alice Oh<br> Fifth ACM Conference on Learning@Scale (L@S 2018) [<a class="inconsolata" target="_blank" href="https://dl.acm.org/citation.cfm?id=3231657">acm dl</a>] [<a class="inconsolata" target="_blank" href="https://github.com/elicast-research/elicast">artifact</a>] </span> </li> 
+     <li> <span class="paper-title">Comparing Line and AST Granularity Level for Program Repair using PyGGI</span><span class="tag workshop">Workshop</span><br> <span class="gray"> Gabin An, <b>Jinhan Kim</b>, and Shin Yoo<br> 40th International Conference on Software Engineering (GI@ICSE 2018) [<a class="inconsolata" target="_blank" href="https://dl.acm.org/citation.cfm?id=3194814">acm dl</a>] [<a class="inconsolata" target="_blank" href="https://github.com/coinse/pyggi">artifact</a>] </span> </li> 
+     <li> <span class="paper-title">GPGPGPU: Evaluation of Parallelisation of Genetic Programming using GPGPU</span><span class="tag short">Short</span><br> <span class="gray"> <b>Jinhan Kim</b>, Junhwi Kim, and Shin Yoo<br> 9th International Symposium on Search Based Software Engineering (SSBSE 2017) [<a class="inconsolata" target="_blank" href="https://link.springer.com/chapter/10.1007/978-3-319-66299-2_11">springer</a>] </span> </li> 
+     <li> <span class="paper-title">BeUpright: Posture Correction Using Relational Norm Intervention</span><span class="tag full">Full</span><br> <span class="gray"> Jaemyung Shin, Bumsoo Kang, Taiwoo Park, Jina Huh, <b>Jinhan Kim</b>, and Junehwa Song<br> 34th Annual ACM Conference on Human Factors in Computing Systems (CHI 2016) [<a class="inconsolata" target="_blank" href="http://dl.acm.org/citation.cfm?id=2858561">acm dl</a>] </span> </li> 
+    </ul> 
    </div> 
   </div> 
-  <div id="loginModal" class="modal"> 
-   <div class="modal-content" style="width: 340px; height: 500px"> 
-    <span class="close">×</span> 
-    <div class="login-div" style="font-family: 'Amita'; font-size: 24px; padding: 40px">
-     Welcome to Melodize
-    </div> 
-    <div class="login-div">
-     <input class="login-input" type="text" id="id" placeholder="ID">
-    </div> 
-    <div class="login-div">
-     <input class="login-input" type="password" id="pw" placeholder="Password">
-    </div> 
-    <div class="login-div" style="padding: 2px; color: red; display: none" id="warning_msg">
-     Wrong ID or Password
-    </div> 
-    <div class="login-div">
-     <button class="btn btn-default login-input" id="loginBtn">Sign in</button>
-    </div> 
-    <div class="login-div" style="padding: 2px">
-     Don't have an account? 
-     <a href="./signup.html">Sign up here</a>
+  <footer class="site-footer"> 
+   <div class="wrapper"> 
+    <!-- <h2 class="footer-heading">COINSE</h2> --> 
+    <div class="footer-col-wrapper"> 
+     <div class="footer-col footer-col-1"> 
+      <p>COINSE Lab,<br> <a href="http://cs.kaist.ac.kr">School of Computing</a>,<br> <a href="http://www.kaist.ac.kr">Korea Advanced Institute of Science and Technology</a>,<br> 291 Daehak Ro, Yuseong Gu,<br> Daejeon, 34141,<br> Republic of Korea</p> 
+     </div> 
+     <div class="footer-col footer-col-2"> 
+      <ul class="contact-list"> 
+       <li>COINSE</li> 
+       <li><a href="mailto:shin.yoo [at] kaist.ac.kr">shin.yoo [at] kaist.ac.kr</a></li> 
+      </ul> Powered by 
+      <a href="http://nginx.org">NGINX</a> and 
+      <a href="http://www.jekyllrb.com">Jekyll</a>. 
+     </div> 
+     <div class="footer-col footer-col-3"> 
+      <ul class="social-media-list"> 
+       <li> <a href="https://github.com/coinse"><span class="icon icon--github">
+          <svg viewbox="0 0 16 16">
+           <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z" />
+          </svg> </span><span class="username">coinse</span></a> </li> 
+       <li> <a href="https://bitbucket.org/teamcoinse"><span class="icon icon--github"><i class="fa fa-bitbucket fa-2x"></i></span><span class="username">teamcoinse</span></a> </li> 
+       <li> <a href="https://twitter.com/coinselab"><span class="icon icon--twitter">
+          <svg viewbox="0 0 16 16">
+           <path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z" />
+          </svg> </span><span class="username">coinselab</span></a> </li> 
+       <li> </li>
+      </ul> 
+     </div> 
     </div> 
    </div> 
-  </div> 
-  <script src="scripts/jquery/js/jquery-1.9.0.min.js"></script> 
-  <script src="scripts/jquery/js/jquery-ui-1.10.0.custom.min.js"></script> 
-  <script src="scripts/jquery/js/jquery-plugin.js"></script> 
-  <script src="https://www.gstatic.com/firebasejs/3.6.2/firebase.js"></script> 
-  <script src="scripts/login.js"></script> 
-  <script src="scripts/home.js"></script>  
+  </footer>   
  </body>
 </html>

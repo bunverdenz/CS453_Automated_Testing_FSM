@@ -101,12 +101,12 @@ public class Team6 {
          webClient.getOptions().setJavaScriptEnabled(true);
          String url = home.getDoc(); 
          
-         
+         System.out.println("HERE1");
          
          Node.printgraphstore(home);
-         
+         System.out.println("HERE2");
          Node.listPrintGraph(home);
-         
+         System.out.println("HERE3");
          Node.graphreset(home);
          HtmlPage page = webClient.getPage(root);
          if(auth) {
@@ -116,21 +116,21 @@ public class Team6 {
          ArrayList<String> path = new ArrayList<String>();
          Node.graphtraverse(home, home, page, path);
          webClient.close();
-         
+         System.out.println("HERE4");
          Node.prereset(home);
          Node.graphreset(home);
          Node.printgraphafterstore(home);
-         
+         System.out.println("HERE5");
          Node.prereset(home);
          Node.graphreset(home);
          
-         
+         System.out.println("HERE6");
          PrintWriter pw2 = new PrintWriter(resource_folder_path + "fsmPathDrawText.txt");
   	     pw2.close();
   	     pw2 = new PrintWriter(resource_folder_path + "fsmPathDrawText.txt");
   	     
   	     
-  	     
+  	   System.out.println("HERE7");
   	     
          int everyother = 0;
          ArrayList<ArrayList<ArrayList<String>>> population = GA_Search.ga_search(home);
@@ -326,6 +326,7 @@ public class Team6 {
                  }catch(Exception x) {
                    try {
                     int dir = 0;
+                    if(alink.contains("http") || alink.contains("css") || alink.contains("www.") || alink.contains(".org") || alink.contains(".com") || alink.contains(".net") || alink.contains(".jpg") || alink.contains(".png")) continue;
                      if(alink.length() > 1 && alink.charAt(0) == '.') {
                         while(alink.length() > 1 && alink.charAt(0) == '.') {
                            alink = alink.substring(1);
@@ -351,7 +352,6 @@ public class Team6 {
                         continue;
                      }
                      trylink = trylink + alink;
-                     System.out.println("try: " + trylink);
                      doc2 = Jsoup.connect(trylink).get();
                      out = new Node(doc2.title(), trylink);
                    }catch(Exception y) {
@@ -480,10 +480,35 @@ public class Team6 {
                     out = new Node(doc2.title(), link);
                  }catch(Exception x) {
                    try {
-                      String trylink = home.getDoc() + alink;
-                      System.out.println(trylink);
-                      doc2 = Jsoup.connect(trylink).get();
-                      out = new Node(doc2.title(), trylink);
+                	   int dir = 0;
+                	   if(alink.contains("http") || alink.contains("css") || alink.contains("www.") || alink.contains(".org") || alink.contains(".com") || alink.contains(".net") || alink.contains(".jpg") || alink.contains(".png")) continue;
+                       if(alink.length() > 1 && alink.charAt(0) == '.') {
+                          while(alink.length() > 1 && alink.charAt(0) == '.') {
+                             alink = alink.substring(1);
+                             dir++;
+                          }
+                       }
+                       if(alink.length() > 1 && alink.charAt(0) == '/') {
+                          alink = alink.substring(1);
+                       }
+                       String docurl = home.getDoc();
+                       String[] dirs = docurl.split("/");
+                       int ind = 0;
+                       String trylink = "";
+                       for(String s : dirs) {
+                          trylink += s + "/";
+                          ind++;
+                          if(ind == dirs.length - dir + 1) {
+                             break;
+                          }
+                          
+                       }
+                       if(trylink.contains(alink)) {
+                          continue;
+                       }
+                       trylink = trylink + alink;
+                       doc2 = Jsoup.connect(trylink).get();
+                       out = new Node(doc2.title(), trylink);
                    }catch(Exception y) {
                       continue;
                    }    
@@ -612,6 +637,7 @@ public class Team6 {
                     }catch(Exception x) {
                       try {
                         int dir = 0;
+                        if(alink.contains("http") || alink.contains("css") || alink.contains("www.") || alink.contains(".org") || alink.contains(".com") || alink.contains(".net") || alink.contains(".jpg") || alink.contains(".png")) continue;
                           if(alink.length() > 1 && alink.charAt(0) == '.') {
                              while(alink.length() > 1 && alink.charAt(0) == '.') {
                                 alink = alink.substring(1);
@@ -637,7 +663,6 @@ public class Team6 {
                              continue;
                           }
                           trylink = trylink + alink;
-                          System.out.println("try: " + trylink);
                           doc2 = Jsoup.connect(trylink).get();
                           out = new Node(doc2.title(), trylink);
                       }catch(Exception y) {
@@ -888,7 +913,6 @@ public class Team6 {
                            continue;
                         }
                         trylink = trylink + alink;
-                        System.out.println("try: " + trylink);
                         doc2 = Jsoup.connect(trylink).get();
                         out = new Node(doc2.title(), trylink);
                      }catch(Exception y) {
@@ -1053,7 +1077,8 @@ public class Team6 {
                        out = new Node(doc2.title(), link);
                     }catch(Exception x) {
                       try {
-                        int dir = 0;
+                    	  int dir = 0;
+                    	  if(alink.contains("http") || alink.contains("css") || alink.contains("www.") || alink.contains(".org") || alink.contains(".com") || alink.contains(".net") || alink.contains(".jpg") || alink.contains(".png")) continue;
                           if(alink.length() > 1 && alink.charAt(0) == '.') {
                              while(alink.length() > 1 && alink.charAt(0) == '.') {
                                 alink = alink.substring(1);
@@ -1079,7 +1104,6 @@ public class Team6 {
                              continue;
                           }
                           trylink = trylink + alink;
-                          System.out.println("try: " + trylink);
                           doc2 = Jsoup.connect(trylink).get();
                           out = new Node(doc2.title(), trylink);
                       }catch(Exception y) {

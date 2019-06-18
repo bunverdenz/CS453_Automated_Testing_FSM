@@ -1,162 +1,319 @@
 <!doctype html>
 <html>
  <head> 
-  <meta charset="UTF-8"> 
-  <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"> 
-  <link rel="icon" href="./img/icon.png"> 
-  <title>Melodize - Song List</title> 
-  <link href="scripts/jquery/css/ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet"> 
-  <link href="css/general.css" rel="stylesheet"> 
-  <link href="css/songInfo.css" rel="stylesheet"> 
-  <link href="css/comment.css" rel="stylesheet"> 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> 
-  <link href="https://fonts.googleapis.com/css?family=Amita" rel="stylesheet"> 
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> 
+  <meta charset="utf-8"> 
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+  <meta http-equiv="CACHE-CONTROL" content="NO-CACHE"> 
+  <meta name="keywords" content="coinse, sbse, shin yoo"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1"> 
+  <title>CS453 Automated Software Testing, Spring 2019</title> 
+  <meta name="description" content="COINSE Lab,<br/> <a href='http://cs.kaist.ac.kr'>School of Computing</a>,<br/> <a href='http://www.kaist.ac.kr'>Korea Advanced Institute of Science and Technology</a>,<br/> 291 Daehak Ro, Yuseong Gu,<br/> Daejeon, 34141,<br/> Republic of Korea"> 
+  <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"> 
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"> 
+  <link rel="stylesheet" href="/css/bootstrap-grid.css"> 
+  <link rel="stylesheet" href="/css/jquery.lightbox-0.5.css"> 
+  <link rel="stylesheet" href="/css/colorbox.css"> 
+  <link rel="stylesheet" href="/css/main.css"> 
+  <link rel="canonical" href="https://coinse.kaist.ac.kr/teaching/2019/cs453/" id="team6_9_0"> 
+  <link rel="alternate" type="application/rss+xml" title="COINSE" href="https://coinse.kaist.ac.kr/feed.xml" id="team6_9_1"> 
+  <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> 
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script> 
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script> 
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.colorbox/1.6.3/jquery.colorbox-min.js"></script> 
+  <script type="text/javascript" src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script> 
+  <!-- Google Analytics --> 
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-29350760-3', 'auto');
+    ga('send', 'pageview');
+
+  </script> 
+  <script>
+  $(document).ready(function() {
+    $(".bibtex").click(function(event) {
+        var bibtex = $("#raw-" + event.target.id);
+        bibtex.toggleClass("visible");
+    });
+  });
+  </script> 
+  <!-- load JavaScrips specifically required by Project pages!!! --> 
+  <script src="/assets/js/tab.js"></script> 
+  <link rel="stylesheet" href="/css/tabbed.css"> 
  </head> 
  <body> 
-  <ul class="nav-ul"> 
-   <li class="nav-li">
-    <div onclick="window.location='./index.html';">
-     Melodize
-    </div></li> 
-   <li class="nav-li"><a id="loginTab">Sign In</a></li> 
-   <li class="nav-li"><a id="profileTab" href="./profile.html" style="display: none">Profile</a></li> 
-   <li class="nav-li"><a href="./gallery.html">Gallery</a></li> 
-   <li class="nav-li"><a href="./index.html">Home</a></li> 
-  </ul> 
-  <div id="loader"></div> 
-  <img id="background" class="album-back" src="./img/empty.png" onerror="this.src = './img/index.png'"> 
-  <div id="mainDiv" style="display: none;" class="animate-bottom"> 
-   <div class="col-md-8"> 
-    <div class="col-md-6"> 
-     <div class="info-col"> 
-      <div class="song-box"> 
-       <img id="albumCover" class="album-cover" onerror="this.src = './img/default-cover-art.png'" src="./img/default-cover-art.png"> 
-       <div id="titleInfo" class="song-name">
-        Title
-       </div> 
-       <div id="descriptionInfo">
-        Description
-       </div> 
-       <div class="song-subbox"> 
-        <div id="instrumentInfo">
-         Instrument: 
-        </div> 
-        <div id="preferenceInfo">
-         Mood: 
-        </div> 
-        <div id="participantsInfo">
-         No. of participants: 
-        </div> 
-        <div id="requesterInfo">
-         Requester: 
-        </div> 
-       </div> 
-       <div class="song-subbox"> 
-        <button id="playSong" class="btn btn-default" disabled>►</button> 
-        <button id="stopSong" class="btn btn-default">◾</button> 
-        <div style="display: inline;" id="songLength">
-         (0 sec)
-        </div> 
-       </div> 
-      </div> 
-     </div> 
+  <header class="site-header"> 
+   <div class="wrapper"> 
+    <div class="site-title-panel"> 
+     <a class="site-title" href="/" id="team6_9_2">COINSE</a> 
     </div> 
-    <div class="col-md-6"> 
-     <div class="info-col"> 
-      <div class="list-tag">
-       LYRICS
-      </div> 
-      <div id="lyricBox" class="lyric-box"></div>
-      <br> 
-      <center>
-       <button style="width: 100%" class="btn btn-success" id="joinBtn">COMPOSE MELODY</button>
-      </center> 
+    <nav class="site-nav"> 
+     <a href="#" class="menu-icon" id="team6_9_3"> 
+      <svg viewbox="0 0 18 15"> 
+       <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z" /> 
+       <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z" /> 
+       <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z" /> 
+      </svg> </a> 
+     <div class="trigger"> 
+      <a class="page-link" href="/research" id="team6_9_4">Research</a> 
+      <a class="page-link" href="/members" id="team6_9_5">Members</a> 
+      <a class="page-link" href="/publications" id="team6_9_6">Publications</a> 
+      <a class="page-link" href="/projects" id="team6_9_7">Projects</a> 
+      <a class="page-link" href="/teaching" id="team6_9_8">Teaching</a> 
+      <!-- <a class="page-link" href="/blog">Blog</a> --> 
+      <!-- <a class="page-link" href="/contact">Contact</a> --> 
      </div> 
-    </div> 
-    <div class="col-md-12"> 
-     <div class="comment-section"> 
-      <div class="comment-tag">
-       <statnum id="commentCount">
-        0
-       </statnum> Comments
-      </div> 
-      <textarea class="form-control" id="commentContent" placeholder="add a comment"></textarea> 
-      <div style="text-align: right">
-       <button class="blue-btn" id="addComment">Comment</button>
-      </div> 
-      <div id="comments"></div> 
-      <div id="showMore" class="showMore">
-       <i class="material-icons"></i> Show More
-      </div> 
-     </div> 
-    </div> 
+    </nav> 
    </div> 
-   <div class="col-md-4"> 
-    <div class="list-tag">
-     <statnum id="totalSongs">
-      0
-     </statnum> OTHER SONGS
-    </div> 
-    <div class="sort-tag">
-      Sort by: 
-     <select id="sortingSelect"> <option value="2">participants (dec)</option> <option value="3">participants (inc)</option> <option value="1">title (dec)</option> <option value="0">title (inc)</option> <option value="4">completion (dec)</option> <option value="5">completion (inc)</option> </select> 
-    </div> 
-    <div id="songList" class="song-list"></div>
-    <br> 
-    <center>
-     <div id="songList-showMore" class="showMore">
-      <i class="material-icons"></i> Show More
-     </div>
-    </center> 
+  </header> 
+  <div class="page-content"> 
+   <!-- <div class="parallax">
+        <div class="bg_foo">
+          <h2>CS453 Automated Software Testing, Spring 2019</h2>
+        </div>
+      </div> --> 
+   <div class="wrapper"> 
+    <article class="post"> 
+     <header class="post-header"> 
+      <h2>CS453 Automated Software Testing, Spring 2019</h2> 
+     </header> 
+     <div class="page-content"> 
+      <div class="tab"> 
+       <button class="tablinks" onclick="openTab(event, 'Syllabus')" id="defaultOpen">Syllabus</button> 
+       <button class="tablinks" onclick="openTab(event, 'Schedule')">Schedule</button> 
+       <button class="tablinks" onclick="openTab(event, 'Assignments')">Assignments</button> 
+       <button class="tablinks" onclick="openTab(event, 'Projects')">Projects</button> 
+       <button class="tablinks" onclick="openTab(event, 'Reading List')">Reading List</button> 
+      </div> 
+      <!-- Tab content --> 
+      <div id="Syllabus" class="tabcontent"> 
+       <h3 id="lectures">Lectures</h3> 
+       <p>Time: 1:00-2:15, Tuesdays and Thursdays Location: E11, Room 401</p> 
+       <h3 id="lecturer">Lecturer</h3> 
+       <p>Shin Yoo <a href="mailto:shin.yoo@kaist.ac.kr">shin.yoo@kaist.ac.kr</a> Office: E3-1 Room 2405</p> 
+       <h3 id="communication">Communication</h3> 
+       <p>All class announcements, as well as Q&amp;A, will take place using a dedicated Slack workspace. <strong>You are required to join <a href="cs453-2019.slack.com">cs453-2019.slack.com</a></strong> if you want to continue this course. It is strongly recommended that you install either a desktop or a mobile client, to get notifications. <strong>Email the lecturer or one of the TAs to get the invitation link, if you do not have one.</strong></p> 
+       <h3 id="syllabus">Syllabus</h3> 
+       <p>This course is concerned with a broad range of software testing techniques, with a heavy emphasis on automation, tools, and frameworks, as well as the research outputs behind them. The topic will include, but are not limited to: black box testing/combinatorial testing, random testing, concepts of coverage, structural testing, mutation testing, regression testing, testability transformation, automated debugging, etc.</p> 
+       <h3 id="prerequisite">Prerequisite</h3> 
+       <ul> 
+        <li><strong>Strong programming skills</strong>: you are required to actively contribute to group and individual project, which involves serious implementation. There will be also a number of hands-on sessions where we will program together during the class.</li> 
+        <li>Unix/Linux-savvy: you should be familiar with the usual build tools and Unix/Linux command line environments.</li> 
+        <li>Git-aware: you will be required to submit a github repository as part of your project deliverable.</li> 
+        <li>Ideally, CS350 Introduction to Software Engineering.</li> 
+        <li>Also, ideally, a laptop you can bring to the classroom. <strong>If this becomes a problem, let me know</strong>.</li> 
+       </ul> 
+       <h3 id="evaluation">Evaluation</h3> 
+       <ul> 
+        <li>Coursework: 30%</li> 
+        <li>Midterm Exam: 30%</li> 
+        <li>Project: 30%</li> 
+        <li>Class Participation: 10%</li> 
+       </ul> 
+       <h3 id="teaching-assistant">Teaching Assistant</h3> 
+       <ul> 
+        <li><a href="https://coinse.kaist.ac.kr/members/jinhan/" id="team6_9_9">Jinhan Kim</a> <a href="mailto:jinhankim@kaist.ac.kr">jinhankim@kaist.ac.kr</a></li> 
+        <li><a href="https://coinse.kaist.ac.kr/members/seongmin/" id="team6_9_10">Seongmin Lee</a> <a href="mailto:bohrok@kaist.ac.kr">bohrok@kaist.ac.kr</a></li> 
+       </ul> 
+       <h3 id="references">References</h3> 
+       <p>We do not have a <em>textbook</em> per se, and the course will be based on slides and other reading material that are deemed appropriate. However, if you want to get broader sense for some of the topics dealt by this course, I recommend the following books and publications.</p> 
+       <ul> 
+        <li>Paul Ammann and Jeff Offutt. Introduction to Software Testing (2nd Ed.)</li> 
+        <li>Andreas Zeller. Why Programs Fail (2nd Ed.)</li> 
+        <li>Y. Jia and M. Harman. <a href="http://ieeexplore.ieee.org/document/5487526/">An analysis and survey of the development of mutation testing</a>. IEEE transactions on software engineering, 37(5):649–678.</li> 
+        <li>P. McMinn. <a href="http://onlinelibrary.wiley.com/doi/10.1002/stvr.294/abstract">Search-based software test data generation: A survey</a>. Software Testing, Verification and Reliability, 14(2):105–156, June 2004.</li> 
+       </ul> 
+      </div> 
+      <div id="Schedule" class="tabcontent"> 
+       <h3 id="lecture-schedule">Lecture Schedule</h3> 
+       <p>I have a few trips I am obliged to make in Spring 2019:</p> 
+       <ul> 
+        <li><a href="http://icst2019.xjtu.edu.cn">IEEE International Conference on Software Testing, Verification and Validation (ICST 2019)</a> (22-27 April), for which I am the Steering Committee Chair.</li> 
+        <li><a href="https://conf.researchr.org/home/icse-2019">ACM International Conference on Software Engineering (ICSE 2019)</a> (25-31 May), for which our group is presenting a paper. I am also part of the organisation team for <a href="https://conf.researchr.org/home/icse-2020">ICSE 2020</a>, which is in Seoul.</li> 
+        <li>I am committed as an external reviewer for a PhD defence in University of Oslo, Norway, on 2nd April.</li> 
+       </ul> 
+       <p>We will do our best to minimise the disruption to the learning experience. The following schedule are tentative, and may change.</p> 
+       <ul> 
+        <li>26 Feb: <a href="/assets/files/teaching/2019/cs453/cs453slide00.pdf" id="team6_9_11">Introduction</a> &amp; <a href="/assets/files/teaching/2019/cs453/cs453slide01.pdf" id="team6_9_11">Testing Fundamentals</a></li> 
+        <li>28 Feb: <a href="/assets/files/teaching/2019/cs453/cs453slide02.pdf" id="team6_9_11">Black Box Testing &amp; Combinatorial Interaction Testing</a></li> 
+        <li>05 Mar: <a href="/assets/files/teaching/2019/cs453/cs453slide03.pdf" id="team6_9_11">Testing Finite State Machines</a></li> 
+        <li>07 Mar: <a href="/assets/files/teaching/2019/cs453/cs453slide04.pdf" id="team6_9_11">Control and Data Flow</a></li> 
+        <li>12 Mar: <a href="/assets/files/teaching/2019/cs453/cs453slide05.pdf" id="team6_9_11">Random and Adaptive Random Testing</a> 
+         <ul> 
+          <li><a href="https://randoop.github.io/randoop/">Randoop</a>: a random unit test generation tool for Java</li> 
+          <li><a href="https://github.com/HypothesisWorks/hypothesis-python">Hypothesis</a></li> 
+         </ul> </li> 
+        <li>14 Mar: <a href="/assets/files/teaching/2019/cs453/cs453slide06.pdf" id="team6_9_11">Search Based Test Data Generation</a> 
+         <ul> 
+          <li><a href="http://www.evosuite.org">EvoSuite</a>: a Search Based Test Data Generation tool for Java</li> 
+          <li><a href="http://avmframework.org">AVMFramework</a>: a reference implementation of Alternating Variable Method</li> 
+         </ul> </li> 
+        <li>19 Mar: <a href="/assets/files/teaching/2019/cs453/cs453slide07.pdf" id="team6_9_11">Mutation Testing</a> 
+         <ul> 
+          <li><a href="http://pitest.org">PIT</a>: a practical mutation testing tool for Java</li> 
+         </ul> </li> 
+        <li>21 Mar: Mutation Testing Hands-on with Code Defender</li> 
+        <li>26 Mar: <a href="/assets/files/teaching/2019/cs453/cs453slide08.pdf" id="team6_9_11">Regression Testing</a></li> 
+        <li>28 Mar: <a href="/assets/files/teaching/2019/cs453/cs453slide09.pdf" id="team6_9_11">Fault Localisation</a></li> 
+        <li>02 Apr: <em>No Lecture (Lecturer Away for a PhD Defense)</em></li> 
+        <li>04 Apr: <em>No Lecture (Lecturer Away for a PhD Defense)</em></li> 
+        <li>09 Apr: <a href="/assets/files/teaching/2019/cs453/cs453slide10.pdf" id="team6_9_11">Untestable Programs and Metamorphic Testing</a></li> 
+        <li>12 Apr: <a href="/assets/files/teaching/2019/cs453/cs453slide11.pdf" id="team6_9_11">Testing Deep Neural Networks</a></li> 
+        <li>16 Apr: <strong>Mid-term Exam: E11 Room 401 1:00-3:00PM</strong></li> 
+        <li>23 Apr: <em>No Lecture (<a href="http://icst2019.xjtu.edu.cn">ICST 2019</a>)</em></li> 
+        <li>25 Apr: <em>No Lecture (<a href="http://icst2019.xjtu.edu.cn">ICST 2019</a>)</em></li> 
+        <li>30 Apr: Group Project Proposal</li> 
+        <li>02 May: Random Testing &amp; Delta Debugging Hands-on 
+         <ul> 
+          <li><a href="https://github.com/randoop/randoop">Randoop</a> and <a href="https://randoop.github.io/randoop/manual/">its manual</a></li> 
+         </ul> </li> 
+        <li>07 May: Web Testing Automation Hands-on 
+         <ul> 
+          <li><a href="https://www.seleniumhq.org">Selenium</a> and <a href="https://github.com/mozilla/geckodriver/releases">Firefox Driver</a></li> 
+          <li><a href="http://teamcapybara.github.io/capybara/">Capybara</a>, <a href="https://github.com/teampoltergeist/poltergeist">Poltergeist</a> and <a href="http://phantomjs.org">PhantomJS</a></li> 
+          <li><a href="http://sikulix.com">SikuliX</a></li> 
+         </ul> </li> 
+        <li>09 May: Paper Reading 
+         <ul> 
+          <li>Team 9: <a href="https://arxiv.org/abs/1808.08444">Guiding deep learning system testing using surprise adequacy</a></li> 
+          <li>Team 1: <a href="http://moon.nju.edu.cn/people/xiaoxingma/pubs/2019-ICSE-TGu-APE.pdf">Practical GUI Testing of Android Applications via Model Abstraction and Refinement</a></li> 
+         </ul> </li> 
+        <li>14 May: Paper Reading 
+         <ul> 
+          <li>Team 3: <a href="http://www.jonbell.net/icse18-deflaker.pdf">DeFlaker: Automatically Detecting Flaky Tests</a></li> 
+          <li>Team 10: <a href="https://dl.acm.org/citation.cfm?doid=3236024.3236058">Which generated test failures are fault revealing? Prioritizing failures based on inferred precondition violations using PAF</a></li> 
+         </ul> </li> 
+        <li>16 May: Paper Reading 
+         <ul> 
+          <li>Team 6: <a href="http://orbilu.uni.lu/handle/10993/33866">An Investigation of Compression Techniques to Speed up Mutation Testing</a></li> 
+          <li>Team 7: <a href="https://dl.acm.org/citation.cfm?id=3180213">Redefining prioritization: Continuous prioritization for continuous integration</a></li> 
+         </ul> </li> 
+        <li>21 May: Paper Reading - Team 2, 4 
+         <ul> 
+          <li>Team 2: <a href="https://dl.acm.org/citation.cfm?id=1273475">A theoretical and empirical analysis of evolutionary testing and hill climbing for structural test data generation</a></li> 
+          <li>Team 4: <a href="https://dl.acm.org/citation.cfm?id=3213869">Automatically translating bug reports into test cases for mobile apps</a></li> 
+         </ul> </li> 
+        <li>23 May: Paper Reading - Team 5, 8 
+         <ul> 
+          <li>Team 5: <a href="https://users.encs.concordia.ca/~pcr/paper/Amar2019ICSE-draft.pdf">Mining Historical Test Logs to Predict Bugs and Localize Faults in the Test Logs</a></li> 
+          <li>Team 8: <a href="http://www.cs.columbia.edu/~junfeng/papers/deepxplore-sosp17.pdf">DeepXplore: Automated whitebox testing of deep learning systems</a></li> 
+         </ul> </li> 
+        <li>28 May: <em>No Lecture (<a href="https://conf.researchr.org/home/icse-2019">ICSE 2019</a>)</em></li> 
+        <li>30 May: <em>No Lecture (<a href="https://conf.researchr.org/home/icse-2019">ICSE 2019</a>)</em></li> 
+        <li>04 Jun: <strong>Project Presentation</strong></li> 
+        <li>06 Jun: <strong>No Lecture (Memorial Day)</strong></li> 
+       </ul> 
+      </div> 
+      <div id="Assignments" class="tabcontent"> 
+       <h3 id="assignments">Assignments</h3> 
+       <ul> 
+        <li> <p><strong>Coursework #1</strong>: <a href="/assets/files/teaching/2019/cs453/cw1.pdf" id="team6_9_11">What does a fault look like, and what can we do about them automatically?</a> Due by 23:59, 12 March 2019 - Submit via KLMS</p> </li> 
+        <li> <p><strong>Coursework #2</strong>: <a href="/assets/files/teaching/2019/cs453/cw2.pdf" id="team6_9_11">Practical Mutation Testing</a> Due by 23:59 2nd April 2019 - Submit via KLMS</p> </li> 
+        <li> <p><strong>Coursework #3</strong>: <a href="/assets/files/teaching/2019/cs453/cw3.pdf" id="team6_9_11">Search Based Test Data Generation</a> Due by 23:59, 14 May 2019 - Submit via KLMS</p> </li> 
+       </ul> 
+      </div> 
+      <div id="Projects" class="tabcontent"> 
+       <h3 id="project-aim">Project Aim</h3> 
+       <p>All teams should develop and/or implement an automated softeware testing technique based on an idea discussed during the course. I would encourage teams to pursue a novel idea, but a faithful reproduction of a state-of-the-art technique with solid evaluation would also do. If you are uncertain about your team’s idea, I will be happy to discuss it.</p> 
+       <h3 id="proposal">Proposal</h3> 
+       <p>All teams will give a short, max 8 minute presentation on 30th April to explain their project topics. I expect <strong>three things to be described clearly</strong> in the talk:</p> 
+       <ul> 
+        <li>A testing problem the team aims to solve</li> 
+        <li>The technique the team is proposing</li> 
+        <li>A way of evaluation to show the proposed technique works and is competent</li> 
+       </ul> 
+       <h3 id="paper-presentation">Paper Presentation</h3> 
+       <p>All teams also should prepare a 30 minute presentation about a paper. <strong>Choose the paper your group wants to present, from the Reading List on this page, and let the lecturer/TAs know by 23rd April 2019</strong>.</p> 
+       <h3 id="team-project-deliverables">Team Project Deliverables</h3> 
+       <p>Each team should submit the following:</p> 
+       <ul> 
+        <li>the team report</li> 
+        <li>the implementation: a public repository link in the report (e.g. github or bitbucket repo)</li> 
+       </ul> 
+       <p>The team report should include:</p> 
+       <ul> 
+        <li>a precise description of the problem you attempted to solve</li> 
+        <li>a clear description of how you tried to solve the problem</li> 
+        <li>a result of experimental comparison of before and after: in other words, what benefits did your solution bring?</li> 
+       </ul> 
+       <p>Additionally, each individual member should submit a separate individual report via KLMS:</p> 
+       <ul> 
+        <li>details of what you have contributed to the project</li> 
+        <li>peer assessment of your team members (yourself not included)</li> 
+       </ul> 
+       <p>Final presentation date for groups will be announced later, as we may need more than a single session for this.</p> 
+       <h3 id="teams">Teams</h3> 
+       <ul> 
+        <li>Team 1: Azret Kenzhaliev, Azamat Smagulov, Anuar Talipov, Shynar Torekhan</li> 
+        <li>Team 2: Diba Vosta, Truc Anh Nguyen Phan, Yunju Park</li> 
+        <li>Team 3: Ohjun Kwon, Jongguk Jeon, Seungjun Jeong</li> 
+        <li>Team 4: Junghwan Park, Hyunki Kim, Doyeon Kim</li> 
+        <li>Team 5: Chaehun Park, Seungwon Yoon, HyungRok Ham</li> 
+        <li>Team 6: Woojin Lee, Peerapon Akkapusit, Chae-Ryn Chang</li> 
+        <li>Team 7: Seunghyun Hwang, Juyeon Yoon, Suchan Park</li> 
+        <li>Team 8: Sujin Jang, Sungmin Kang, Jaehwang Jung, Seungho Choi</li> 
+        <li>Team 9: Seunghun Shin, Geon Heo, Woohyun Sung, Hansol Seo</li> 
+        <li>Team 10: Sungweon Jeon, Sungha Eom, Sanguk Park, Robert Sand</li> 
+       </ul> 
+      </div> 
+      <div id="Reading List" class="tabcontent"> 
+       <h3 id="paper-list">Paper List</h3> 
+       <ul> 
+        <li> <p>J. Liang, S. Elbaum, and G. Rothermel. <a href="https://dl.acm.org/citation.cfm?id=3180213">Redefining prioritization: Continuous prioritization for continuous integration</a>. In Proceedings of the 40th International Conference on Software Engineering, ICSE ’18, pages 688–698, New York, NY, USA, 2018. ACM.</p> </li> 
+        <li> <p>M. Harman and P. McMinn. <a href="https://dl.acm.org/citation.cfm?id=1273475">A theoretical and empirical analysis of evolutionary testing and hill climbing for structural test data generation</a>. In Proceedings of the International Symposium on Software Testing and Analysis (ISSTA 2007), pages pp. 73–83. ACM Press, July 2007.</p> </li> 
+        <li> <p>K. Pei, Y. Cao, J. Yang, and S. Jana. <a href="http://www.cs.columbia.edu/~junfeng/papers/deepxplore-sosp17.pdf">DeepXplore: Automated whitebox testing of deep learning systems</a>. In Proceedings of the 26th Symposium on Operating Systems Principles, SOSP ’17, pages 1–18, New York, NY, USA, 2017. ACM.</p> </li> 
+        <li> <p>Q. Zhu, A, Panichella, and A. Zaidman. <a href="http://orbilu.uni.lu/handle/10993/33866">An Investigation of Compression Techniques to Speed up Mutation Testing</a>. In 2018 IEEE International Conference on Software Testinv, Validation, and Verification (ICST 2018), to appear.</p> </li> 
+        <li> <p>J. Bell, O. Legunsen, M. Hilton, L. Eloussi, T. Yung, D. Marinov. <a href="http://www.jonbell.net/icse18-deflaker.pdf">DeFlaker: Automatically Detecting Flaky Tests</a>. In 2018 International Conference on Software Engineering (ICSE 2018)</p> </li> 
+        <li> <p>A. Amar and P. Rigby, <a href="https://users.encs.concordia.ca/~pcr/paper/Amar2019ICSE-draft.pdf">Mining Historical Test Logs to Predict Bugs and Localize Faults in the Test Logs</a>. In 2019 International Conference on Software Engineering (ICSE 2019), to appear.</p> </li> 
+        <li> <p>T. Gu, C. Sun, X. Ma, C. Cao, C. Xu, Y. Yang, Q. Zhang, J. Lu, and Z. Su, <a href="http://moon.nju.edu.cn/people/xiaoxingma/pubs/2019-ICSE-TGu-APE.pdf">Practical GUI Testing of Android Applications via Model Abstraction and Refinement</a>. In 2019 International Conference on Software Engineering (ICSE 2019), to appear.</p> </li> 
+        <li> <p>M. Fazzini, M. Prammer, M. d’Amorim, and A. Orso. <a href="https://dl.acm.org/citation.cfm?id=3213869">Automatically translating bug reports into test cases for mobile apps</a>. In Proceedings of the 27th ACM SIGSOFT International Symposium on Software Testing and Analysis, ISSTA 2018, pages 141–152, New York, NY, USA, 2018. ACM.</p> </li> 
+        <li> <p>M. M. Almasi, H. Hemmati, G. Fraser, P. McMinn, and J. Benefelds. <a href="https://dl.acm.org/citation.cfm?id=3213861">Search-based detection of deviation failures in the migration of legacy spreadsheet applications</a>. In Proceedings of the 27th ACM SIGSOFT International Symposium on Software Testing and Analysis, ISSTA 2018, pages 266–275, 2018. ACM.</p> </li> 
+        <li> <p>M. Kim, S.-C. Cheung, and S. Kim. <a href="https://dl.acm.org/citation.cfm?doid=3236024.3236058">Which generated test failures are fault revealing? Prioritizing failures based on inferred precondition violations using PAF</a>. In Proceedings of the 2018 26th ACM Joint Meeting on European Software Engineering Conference and Symposium on the Foundations of Software Engineering, ESEC/FSE 2018, pages 679–690, New York, NY, USA, 2018. ACM.</p> </li> 
+        <li> <p>J. Kim, R. Feldt, and S. Yoo. <a href="https://arxiv.org/abs/1808.08444">Guiding deep learning system testing using surprise adequacy</a>. In Proceedings of the 41th International Conference on Software Engineering, ICSE 2019, 2019.</p> </li> 
+       </ul> 
+      </div> 
+      <script>
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script> 
+     </div> 
+    </article> 
    </div> 
   </div> 
-  <div id="loginModal" class="modal"> 
-   <div class="modal-content" style="width: 340px; height: 500px"> 
-    <span class="close">×</span> 
-    <div class="login-div" style="font-family: 'Amita'; font-size: 24px; padding: 40px">
-     Welcome to Melodize
-    </div> 
-    <div class="login-div">
-     <input class="login-input" type="text" id="id" placeholder="ID">
-    </div> 
-    <div class="login-div">
-     <input class="login-input" type="password" id="pw" placeholder="Password">
-    </div> 
-    <div class="login-div" style="padding: 2px; color: red; display: none" id="warning_msg">
-     Wrong ID or Password
-    </div> 
-    <div class="login-div">
-     <button class="btn btn-default login-input" id="loginBtn">Sign in</button>
-    </div> 
-    <div class="login-div" style="padding: 2px">
-     Don't have an account? 
-     <a href="./signup.html">Sign up here</a>
-    </div> 
-   </div> 
-  </div> 
-  <div id="passwordModal" class="modal"> 
-   <div class="modal-content" style="width: 340px; height: 200px"> 
-    <span class="close" id="close">×</span>
-    <br> 
-    <div class="login-div">
-     <input class="login-input" type="password" id="privatePw" placeholder="Password">
-    </div> 
-    <div class="login-div" id="warning_msg" style="padding: 2px; color: red; display: none">
-     Wrong Password
-    </div> 
-    <div class="login-div">
-     <button class="btn btn-default login-input" id="passwordBtn">Join</button>
+  <footer class="site-footer"> 
+   <div class="wrapper"> 
+    <!-- <h2 class="footer-heading">COINSE</h2> --> 
+    <div class="footer-col-wrapper"> 
+     <div class="footer-col footer-col-1"> 
+      <p>COINSE Lab,<br> <a href="http://cs.kaist.ac.kr">School of Computing</a>,<br> <a href="http://www.kaist.ac.kr">Korea Advanced Institute of Science and Technology</a>,<br> 291 Daehak Ro, Yuseong Gu,<br> Daejeon, 34141,<br> Republic of Korea</p> 
+     </div> 
+     <div class="footer-col footer-col-2"> 
+      <ul class="contact-list"> 
+       <li>COINSE</li> 
+       <li><a href="mailto:shin.yoo [at] kaist.ac.kr">shin.yoo [at] kaist.ac.kr</a></li> 
+      </ul> Powered by 
+      <a href="http://nginx.org">NGINX</a> and 
+      <a href="http://www.jekyllrb.com">Jekyll</a>. 
+     </div> 
+     <div class="footer-col footer-col-3"> 
+      <ul class="social-media-list"> 
+       <li> <a href="https://github.com/coinse"><span class="icon icon--github">
+          <svg viewbox="0 0 16 16">
+           <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z" />
+          </svg> </span><span class="username">coinse</span></a> </li> 
+       <li> <a href="https://bitbucket.org/teamcoinse"><span class="icon icon--github"><i class="fa fa-bitbucket fa-2x"></i></span><span class="username">teamcoinse</span></a> </li> 
+       <li> <a href="https://twitter.com/coinselab"><span class="icon icon--twitter">
+          <svg viewbox="0 0 16 16">
+           <path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z" />
+          </svg> </span><span class="username">coinselab</span></a> </li> 
+       <li> </li>
+      </ul> 
+     </div> 
     </div> 
    </div> 
-  </div> 
-  <script src="scripts/jquery/js/jquery-1.9.0.min.js"></script> 
-  <script src="scripts/jquery/js/jquery-ui-1.10.0.custom.min.js"></script> 
-  <script src="scripts/jquery/js/jquery-plugin.js"></script> 
-  <script src="https://www.gstatic.com/firebasejs/3.6.2/firebase.js"></script> 
-  <script src="scripts/login.js"></script> 
-  <script src="scripts/sound.js"></script> 
-  <script src="scripts/comment.js"></script> 
-  <script src="scripts/songInfo.js"></script>  
+  </footer>   
  </body>
 </html>

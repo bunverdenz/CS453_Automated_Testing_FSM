@@ -275,7 +275,7 @@ public class Node{
           if(href.contains(roothref)) {
              return true;
           }
-          result = false;
+          return false;
           }else if(slash >= 0 && slash < 2) {
            return true;
         }else if(href.contains("html")) {
@@ -286,7 +286,6 @@ public class Node{
         
        try {
            int dir = 0;
-           System.out.println(nodehref);
              if(href.length() > 1 && href.charAt(0) == '.') {
                 while(href.length() > 1 && href.charAt(0) == '.') {
                    href = href.substring(1);
@@ -304,8 +303,6 @@ public class Node{
                 trylink += s + "/";
                 ind++;
                 if(ind == dirs.length - dir + 1) {
-                   System.out.println(dir);
-                   System.out.println(trylink);
                    break;
                 }
              }
@@ -313,7 +310,6 @@ public class Node{
                 return false;
              }
              trylink = trylink + href;
-             System.out.println("try: " + trylink);
              Document doc2 = Jsoup.connect(trylink).get();
              return true;
        }catch(Exception y) {

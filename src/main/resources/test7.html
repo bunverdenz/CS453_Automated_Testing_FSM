@@ -1,162 +1,320 @@
 <!doctype html>
 <html>
  <head> 
-  <meta charset="UTF-8"> 
-  <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"> 
-  <link rel="icon" href="./img/icon.png"> 
-  <title>Melodize - Composing</title> 
-  <link href="scripts/jquery/css/ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet"> 
-  <link href="css/general.css" rel="stylesheet"> 
-  <link href="css/compose.css" rel="stylesheet"> 
-  <link href="css/tutorial.css" rel="stylesheet"> 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> 
-  <link href="https://fonts.googleapis.com/css?family=Amita" rel="stylesheet"> 
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> 
+  <meta charset="utf-8"> 
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+  <meta http-equiv="CACHE-CONTROL" content="NO-CACHE"> 
+  <meta name="keywords" content="coinse, sbse, shin yoo"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1"> 
+  <title>CS454 AI Based Software Engineering (Autumn 2019)</title> 
+  <meta name="description" content="COINSE Lab,<br/> <a href='http://cs.kaist.ac.kr'>School of Computing</a>,<br/> <a href='http://www.kaist.ac.kr'>Korea Advanced Institute of Science and Technology</a>,<br/> 291 Daehak Ro, Yuseong Gu,<br/> Daejeon, 34141,<br/> Republic of Korea"> 
+  <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"> 
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"> 
+  <link rel="stylesheet" href="/css/bootstrap-grid.css"> 
+  <link rel="stylesheet" href="/css/jquery.lightbox-0.5.css"> 
+  <link rel="stylesheet" href="/css/colorbox.css"> 
+  <link rel="stylesheet" href="/css/main.css"> 
+  <link rel="canonical" href="https://coinse.kaist.ac.kr/teaching/2019/cs454/" id="team6_7_0"> 
+  <link rel="alternate" type="application/rss+xml" title="COINSE" href="https://coinse.kaist.ac.kr/feed.xml" id="team6_7_1"> 
+  <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> 
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script> 
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script> 
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.colorbox/1.6.3/jquery.colorbox-min.js"></script> 
+  <script type="text/javascript" src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script> 
+  <!-- Google Analytics --> 
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-29350760-3', 'auto');
+    ga('send', 'pageview');
+
+  </script> 
+  <script>
+  $(document).ready(function() {
+    $(".bibtex").click(function(event) {
+        var bibtex = $("#raw-" + event.target.id);
+        bibtex.toggleClass("visible");
+    });
+  });
+  </script> 
+  <!-- load JavaScrips specifically required by Project pages!!! --> 
+  <script src="/assets/js/tab.js"></script> 
+  <link rel="stylesheet" href="/css/tabbed.css"> 
  </head> 
  <body> 
-  <ul class="nav-ul"> 
-   <li class="nav-li">
-    <div onclick="window.location='./index.html';">
-     Melodize
-    </div></li> 
-   <li class="nav-li"><a id="loginTab">Sign In</a></li> 
-   <li class="nav-li"><a id="profileTab" href="./profile.html" style="display: none">Profile</a></li> 
-   <li class="nav-li"><a href="./gallery.html" id="team6_7_0">Gallery</a></li> 
-   <li class="nav-li"><a href="./index.html" id="team6_7_1">Home</a></li> 
-  </ul> 
-  <div id="loader"></div> 
-  <img id="infoBoard" src="./img/empty.png" class="album-back" onerror="this.src = './img/index.png'"> 
-  <div id="mainDiv" style="display: none" class="animate-bottom container"> 
-   <div class="row" style="padding-bottom: 14px; padding-top: 14px;"> 
-    <div class="col-sm-3" style="text-align: center"> 
-     <img id="composeAlbum" class="album-pic" onerror="this.src = './img/default-cover-art.png'" src="./img/default-cover-art.png"> 
+  <header class="site-header"> 
+   <div class="wrapper"> 
+    <div class="site-title-panel"> 
+     <a class="site-title" href="/" id="team6_7_2">COINSE</a> 
     </div> 
-    <div class="col-sm-5"> 
-     <div id="composeTitle" class="compose-title">
-      Title
+    <nav class="site-nav"> 
+     <a href="#" class="menu-icon" id="team6_7_3"> 
+      <svg viewbox="0 0 18 15"> 
+       <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z" /> 
+       <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z" /> 
+       <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z" /> 
+      </svg> </a> 
+     <div class="trigger"> 
+      <a class="page-link" href="/research" id="team6_7_4">Research</a> 
+      <a class="page-link" href="/members" id="team6_7_5">Members</a> 
+      <a class="page-link" href="/publications" id="team6_7_6">Publications</a> 
+      <a class="page-link" href="/projects" id="team6_7_7">Projects</a> 
+      <a class="page-link" href="/teaching" id="team6_7_8">Teaching</a> 
+      <!-- <a class="page-link" href="/blog">Blog</a> --> 
+      <!-- <a class="page-link" href="/contact">Contact</a> --> 
      </div> 
-     <div id="composePreference" class="compose-mood">
-      <b>Mood:</b>
-     </div> 
-     <div id="composeDescription" class="compose-subbox compose-desc">
-      <b>Description</b>
-     </div> 
-    </div> 
-    <div class="col-sm-4"> 
-     <div class="compose-subbox"> 
-      <table class="compose-tr compose-info"> 
-       <tbody>
-        <tr class="compose-tr"> 
-         <td class="compose-td"><i class="material-icons">group</i>
-          <statnum id="composeParticipants">
-           0
-          </statnum><br>
-          <div>
-           Participants
-          </div></td> 
-         <td class="compose-td"><i class="material-icons">audiotrack</i>
-          <statnum id="composeNotes">
-           0
-          </statnum><br>
-          <div>
-           Total Notes
-          </div></td> 
-         <td class="compose-td"><i class="material-icons">account_circle</i>
-          <statnum id="composeRequester">
-           0
-          </statnum><br>
-          <div>
-           Requester
-          </div></td> 
-        </tr> 
-       </tbody>
-      </table> 
-     </div> 
-     <div class="compose-subbox" style="text-align: center;"> 
-      <button id="rangeBtn" class="btn btn-default">Range</button> 
-      <button id="playSong" class="btn btn-default" disabled>►</button> 
-      <button id="stopSong" class="btn btn-default">◾</button> 
-     </div> 
-     <div class="compose-subbox" style="text-align: center;"> 
-      <button id="tutorial" class="btn btn-default">Tutorial</button> 
-      <button id="distributionBtn" class="btn btn-default">Distribution</button> 
-      <button id="submitBtn" class="btn btn-success">Submit</button> 
-      <div class="login-div" style="padding: 2px; color: red; display: none" id="note_fill_all">
-       Please fill all the notes in the red box
+    </nav> 
+   </div> 
+  </header> 
+  <div class="page-content"> 
+   <!-- <div class="parallax">
+        <div class="bg_foo">
+          <h2>CS454 AI Based Software Engineering (Autumn 2019)</h2>
+        </div>
+      </div> --> 
+   <div class="wrapper"> 
+    <article class="post"> 
+     <header class="post-header"> 
+      <h2>CS454 AI Based Software Engineering (Autumn 2019)</h2> 
+     </header> 
+     <div class="page-content"> 
+      <div class="tab"> 
+       <button class="tablinks" onclick="openTab(event, 'Syllabus')" id="defaultOpen">Syllabus</button> 
+       <button class="tablinks" onclick="openTab(event, 'Schedule')">Schedule</button> 
+       <button class="tablinks" onclick="openTab(event, 'Assignments')">Assignments</button> 
+       <button class="tablinks" onclick="openTab(event, 'Projects')">Projects</button> 
+       <button class="tablinks" onclick="openTab(event, 'Reading List')">Reading List</button> 
       </div> 
+      <!-- Tab content --> 
+      <div id="Syllabus" class="tabcontent"> 
+       <h3 id="syllabus">Syllabus</h3> 
+       <p>This class covers metaheuristic optimisation algorithms and their application to software engineering problems. The goal of the class is twofold: the first objective is to understand major classes of metaheuristic algorithms, including local search algorithms and population based optimisation (such as genetic algorithm and particle swarm optimisation). The second objective is to study the application of these algorithms to software engineering problems. For this, the class will introduce the fundamental concepts in so called Search Based Software Engineering, and then study various application cases across the software development lifecycle (requirements, design, planning, testing, maintenance, etc). The desired learning outcome is to be able to use metaheuristic optimisation to automate, and/or gain insights into, software engineering tasks.</p> 
+       <p>The first half of the course will be a series of lectures on metaheuristic algoithms. The second half will be a series of case studies based on paper presentations, given by students, about important and/or recent papers in the field of Search Based Software Engineering.</p> 
+       <h3 id="required-skills">Required Skills</h3> 
+       <p>The course assumes that students have the following skills. <strong>Unless you satisfy the following, you may encounter significant difficulties during courseworks and projects</strong>:</p> 
+       <ul> 
+        <li><strong>Strong programming skills</strong>: you are required to develop an <strong>individual</strong> course project. There will be also a number of hands-on sessions where we will program together during the class.</li> 
+        <li>Unix/Linux-savvy: you should be familiar with the usual build tools and Unix/Linux command line environments.</li> 
+        <li>Git-aware: you will be required to submit a github repository as part of your project deliverables.</li> 
+        <li>(Optional but strongly recommended) LaTeX</li> 
+       </ul> 
+       <p>Out of these, I would understand if you have to learn how to use git during this course. But programming proficiency and *nix literacy are essential from the beginning.</p> 
+       <h3 id="evaluation">Evaluation</h3> 
+       <p>This may change.</p> 
+       <ul> 
+        <li>Coursework: 20%</li> 
+        <li>Project: 40%</li> 
+        <li>Midterm Exam: 30%</li> 
+        <li>Class Participation: 10%</li> 
+       </ul> 
+       <h3 id="teaching-assistant">Teaching Assistant</h3> 
+       <ul> 
+        <li>To be announced</li> 
+       </ul> 
+      </div> 
+      <div id="Schedule" class="tabcontent"> 
+       <h3 id="lectures">Lectures</h3> 
+       <p>The schedule below is <strong>tentative</strong> for now and may change, given that we do not know the exact class size yet.</p> 
+       <ul> 
+        <li>09/03: <a href="/assets/files/teaching/2019/cs454/cs454-slide01.pdf" id="team6_7_9">Introduction 1/2</a></li> 
+        <li>09/05: <a href="/assets/files/teaching/2019/cs454/cs454-slide02.pdf" id="team6_7_9">Introduction 2/2</a></li> 
+        <li>09/10: <a href="/assets/files/teaching/2019/cs454/cs454-slide03.pdf" id="team6_7_9">Fitness Landscape</a>, <a href="/assets/files/teaching/2019/cs454/cs454-slide04.pdf" id="team6_7_9">Random and Local Search Algorithms</a></li> 
+        <li>09/12: <strong>No Lecture: Chuseok Holiday</strong></li> 
+        <li>09/17: <a href="/assets/files/teaching/2019/cs454/cs454-slide05.pdf" id="team6_7_9">Evolutionary Computation 1/2</a> 
+         <ul> 
+          <li><a href="/assets/files/teaching/2019/cs454/cs454-slide07.pdf" id="team6_7_9">TSP Example</a></li> 
+         </ul> </li> 
+        <li>09/19: <a href="/assets/files/teaching/2019/cs454/cs454-slide06.pdf" id="team6_7_9">Evolutionary Computation 2/2</a> 
+         <ul> 
+          <li><a href="http://rednuht.org/genetic_walkers/">Genetic Algorithm Walkers</a></li> 
+          <li><a href="http://rednuht.org/genetic_cars_2/">Genetic Algorithm 2D Car Thingy</a></li> 
+         </ul> </li> 
+        <li>09/24: <a href="/assets/files/teaching/2019/cs454/cs454-slide08.pdf" id="team6_7_9">Genetic Programming</a></li> 
+        <li>09/26: <a href="/assets/files/teaching/2019/cs454/cs454-slide10.pdf" id="team6_7_9">Multi-objective Optimisation</a></li> 
+        <li>10/01: <a href="/assets/files/teaching/2019/cs454/cs454-slide11.pdf" id="team6_7_9">MOEA Evaluation Metrics</a>, <a href="/assets/files/teaching/2019/cs454/cs454-slide12.pdf" id="team6_7_9">Normalisation</a>,</li> 
+        <li>10/03: <strong>No Lecture: National Foundation Day</strong></li> 
+        <li>10/08: <a href="/assets/files/teaching/2019/cs454/cs454-slide09.pdf" id="team6_7_9">Bio-inspired Algorithms</a>, <a href="/assets/files/teaching/2019/cs454/cs454-slide13.pdf" id="team6_7_9">SBSE Overview</a></li> 
+        <li>10/10: <a href="/assets/files/teaching/2019/cs454/cs454-slide14.pdf" id="team6_7_9">Advanced Algorithms and Optimisation Tips</a></li> 
+        <li>10/15: <a href="/assets/files/teaching/2019/cs454/cs454-slide15.pdf" id="team6_7_9">Theory - Elementary Landscape Analysis</a>, <a href="/assets/files/teaching/2019/cs454/cs454-slide16.pdf" id="team6_7_9">No Free Lunch Theorem</a></li> 
+        <li>10/17: <a href="/assets/files/teaching/2019/cs454/cs454-slide17.pdf" id="team6_7_9">General Machine Learning for SE</a></li> 
+        <li>10/22: <em>No Lecture: Midterm Week</em></li> 
+        <li>10/24: <em>No Lecture: Midterm Week</em></li> 
+        <li>10/29:</li> 
+        <li>10/31:</li> 
+        <li>11/05:</li> 
+        <li>11/07:</li> 
+        <li>11/12:</li> 
+        <li>11/14:</li> 
+        <li>11/19:</li> 
+        <li>11/21:</li> 
+        <li>11/26:</li> 
+        <li>11/28:</li> 
+        <li>12/03:</li> 
+        <li>12/05:</li> 
+        <li>12/10: Project Presentation</li> 
+        <li>12/12: Project Presentation</li> 
+        <li>12/17: <em>No Lecture: Midterm Week</em></li> 
+        <li>12/19: <em>No Lecture: Midterm Week</em>s</li> 
+       </ul> 
+      </div> 
+      <div id="Assignments" class="tabcontent"> 
+       <p>To be announced.</p> 
+       <!-- ### Assignment #1: Getting to know the subject
+
+Choose a paper from the reading list. Write an essay containing the following points:
+
+- What is the software engineering problem authors are trying to solve?
+- What are the technical contributions of the paper?
+- Why do you like this work, or are interested in this work?
+
+Please submit a PDF file containing your essay. Submission should be made via [KLMS](http://klms.kaist.ac.kr/mod/assign/view.php?id=261489). It is due on 23:59, Tuesday 4th September. **Late submission is not allowed for this coursework**.
+
+### Assignment #2: Travelling Salesman Problem
+
+Your goal is to implement a solver for the [Travelling Salesman Problem](https://en.wikipedia.org/wiki/Travelling_salesman_problem). This is a well known NP-complete problem with lots of practical applications. Please refer to the [coursework document](/assets/files/teaching/2018/cs454/coursework2.pdf) for more details. It is due by 23:59:59 on 20th September 2018. 
+
+There is a live competition leaderboard too. Solve the rl11849.tsp problem instance and upload your solution to the [leaderboard](https://coinse.kaist.ac.kr/leaderboard/5/) (you need to sign up and create an account). Leaderboard participation is not mandatory for this course, and your coursework grade is independent from your ranking. However, just for fun, there will be a prize for the winner.
+
+### Assignment #3: Critical Essay
+
+During the paper seminar weeks, everyone should submit an essay about the paper he or she is reading as the discussion leader team member. For example, everyone in Team 7 should submit an essay about the paper Team 1 chose and presented. The *minimum* expected length is a single A4 page: write what you think is a coherent and convincing critique.
+
+The deadline for each team will be exactly seven days after the presentation of the paper they are writing about. There will be a submission site at KLMS, whose deadline will be set to the very last one: we will check the initial submission time for those who have early deadlines. The usualy late submission penalty applies. --> 
+      </div> 
+      <div id="Projects" class="tabcontent"> 
+       <p>To be announced.</p> 
+       <!-- ## Group Project Outline
+
+The course project requires you to identify and formulate an SBSE problem and solve it using a metaheuristic approach. Please see the [document](/assets/files/teaching/2018/cs454/cs454-project-2018.pdf). Groups should prepare two talks:
+
+* Project Idea Pitch: give a 10 minute presentation about what your group plans to do. This will happen on 23th and 25th October. 
+
+* Project Final Presentation: present the results you obtained within 15 minutes. We are going to use the 27th November and 4th, 6th Deembe slots.
+
+Details about the deliverables are specified in the project documentation. Submission deadline is the end of 18th December 2018.
+
+### Paper Reading
+
+The paper reading seminars in November are led by groups. At each lecture, two groups will present one paper each, using 30 minutes. Another two groups will have read the paper, and lead the questions and discussions after the talk.
+
+You are free to choose any reasonably recent publication (within the last 5 years) that is clearly related to SBSE. Naturally, you may want to read something related to your group's project, which is encouraged.
+
+### Milestone Check
+
+On 13th November, we will do a quick project milestone check. Each team has five minutes, explaining where the project currently is, and what the expected challenge aheads are. The aim of this session is two-folds:
+
+- To ensure that projects move along
+- For me to understand what the difficulties are, and to step in appropriately for the success of the project
+
+### Final Presentation
+
+Due to inevitable school-wide schedule on 28-29 November, one of the final presentation slot is rather early. I invite four teams to volunteer for this slot :) If you want to get early feedback, and wrap up the remaining project before the final submission deadline, this is a good chance: write to me or TA.
+
+### Previous Projects
+
+These are made available only as a reference. You cannot propose identical projects. Two of them are in Korean, because the policy was different then: apologies for those who do not read/speak Korean.
+
+- [Search-based Javascript Modelling for Static Analysis (from 2016, Korean)](/assets/files/teaching/2018/cs454/cs454-previous-project-2016-group3.pdf)
+- [GUI Test Suite Generation using Ant Colony Optimization with EFG Traversal Criterion (from 2017, Korean)](/assets/files/teaching/2018/cs454/cs454-previous-project-2017-group2.pdf)
+- [Improving Test Data Generation for Java Programs using Search-based Approach and d-criterion (from 2016)](/assets/files/teaching/2018/cs454/cs454-previous-project-2016-group6.pdf)
+- [Sample Efficient Hyperparameter Optimization (from 2017)](/assets/files/teaching/2018/cs454/cs454-previous-project-2017-group1.pdf) --> 
+      </div> 
+      <div id="Reading List" class="tabcontent"> 
+       <h3 id="reading-list">Reading List</h3> 
+       <p>Here are some papers on various SBSE topics to pick from in order to prepare for the first paper presentation of your group. You can also consult the <a href="http://crestweb.cs.ucl.ac.uk/resources/sbse_repository/repository.html">SBSE Repository</a>.</p> 
+       <h4 id="requirements">Requirements</h4> 
+       <ul> 
+        <li> <p>Y. Zhang, M. Harman, and S. A. Mansouri. The Multi-Objective Next Release Problem. In GECCO ’07: Proceedings of the 2007 Genetic and Evolutionary Computation Conference, pages 1129–1136. ACM Press, 2007.</p> </li> 
+        <li> <p>Y.Xue and Y.-F. Li. Multi-objective Integer Programming Approaches for Solving Optimal Feature Selection Problem: A new perspective on Multi-objective Optimization Problems in SBSE. In Proceedings of the 40th International Conference on Software Engineering, ICSE ’18, pages 1231–1242, New York, NY, USA, 2018. ACM.</p> </li> 
+       </ul> 
+       <h4 id="project-management">Project Management</h4> 
+       <ul> 
+        <li> <p>G. Antoniol, M. D. Penta, and M. Harman. Search-based Techniques Applied to Optimization of Project Planning for a Massive Maintenance Project. In Proceedings of the 21st IEEE International Conference on Software Maintenance (ICSM ’05), pages 240–249, Los Alamitos, California, USA, 25-30 September 2005. IEEE Computer Society.</p> </li> 
+        <li> <p>F. Ferrucci, M. Harman, J. Ren, and F. Sarro. Not going to take this anymore: Multi-objective overtime planning for software engineering projects. In Proceedings of the 2013 International Conference on Software Engineering, ICSE ’13, pages 462–471, Piscataway, NJ, USA, 2013. IEEE Press.</p> </li> 
+       </ul> 
+       <h4 id="modularisation">Modularisation</h4> 
+       <ul> 
+        <li> <p>B. S. Mitchell and S. Mancoridis. On the automatic modularization of software systems using the bunch tool. IEEE Transactions on Software Engineering, 32(3):193–208, 2006.</p> </li> 
+        <li> <p>K. Praditwong, M. Harman, and X. Yao. Software module clustering as a multi-objective search problem. IEEE Transactions on Software Engineering, 37(2):264–282, March-April 2010.</p> </li> 
+       </ul> 
+       <h4 id="test-data-generation">Test Data Generation</h4> 
+       <ul> 
+        <li> <p>G. Fraser and A. Arcuri. Whole test suite generation. Software Engineering, IEEE Transactions on, 39(2):276–291, Feb 2013.</p> </li> 
+        <li> <p>R. B. Abdessalem, S. Nejati, L. C. Briand, and T. Stifter. Testing vision-based control systems using learnable evolutionary algorithms. In Proceedings of the 40th International Conference on Software Engineering, ICSE ’18, pages 1016–1026, New York, NY, USA, 2018. ACM.</p> </li> 
+        <li> <p>J. Castelein, M. Aniche, M. Soltani, A. Panichella, and A. van Deursen. Search-based test data generation for sql queries. In Proceedings of the 40th International Conference on Software Engineering, ICSE ’18, pages 1230–1230, New York, NY, USA, 2018. ACM.</p> </li> 
+       </ul> 
+       <h4 id="automated-patching">Automated Patching</h4> 
+       <ul> 
+        <li> <p>W. Weimer, T. Nguyen, C. L. Goues, and S. Forrest. Automatically finding patches using genetic programming. In Proceedings of the 31st IEEE International Conference on Software Engineering (ICSE ’09), pages 364–374, Vancouver, Canada, 16-24 May 2009. IEEE.</p> </li> 
+        <li> <p>M. Wen, J. Chen, R. Wu, D. Hao, and S.-C. Cheung. Context-aware patch generation for better au- tomated program repair. In Proceedings of the 40th International Conference on Software Engineering, ICSE ’18, pages 1–11, New York, NY, USA, 2018. ACM.</p> </li> 
+       </ul> 
+       <h4 id="regression-testing">Regression Testing</h4> 
+       <ul> 
+        <li> <p>S. Yoo and M. Harman. Pareto efficient multi-objective test case selection. In Proceedings of International Symposium on Software Testing and Analysis, pages 140–150. ACM Press, July 2007.</p> </li> 
+        <li> <p>M. G. Epitropakis, S. Yoo, M. Harman, and E. K. Burke. Empirical evaluation of pareto efficient multi- objective regression test case prioritisation. In Proceedings of the 2015 International Symposium on Software Testing and Analysis, ISSTA 2015, pages 234–245, New York, NY, USA, 2015. ACM.</p> </li> 
+       </ul> 
+       <h4 id="refactoring">Refactoring</h4> 
+       <ul> 
+        <li>M. O’Cinnéide, L. Tratt, M. Harman, S. Counsell, and I. Hemati Moghadam. Experimental assessment of software metrics using automated refactoring. In Proceedings of the ACM-IEEE international symposium on Empirical software engineering and measurement, ESEM ’12, pages 49–58, New York, NY, USA, 2012. ACM.</li> 
+       </ul> 
+       <h4 id="genetic-improvement">Genetic Improvement</h4> 
+       <ul> 
+        <li> <p>D. White, A. Arcuri, and J. Clark. Evolutionary improvement of programs. IEEE Transactions on Evolutionary Computation, 15(4):515 –538, August 2011.</p> </li> 
+        <li> <p>W. Langdon and M. Harman. Optimizing existing software with genetic programming. Transactions on Evolutionary Computation, 19(1):118–135, 2015.</p> </li> 
+        <li> <p>B. R. Bruce. Energy optimisation via genetic improvement: A SBSE technique for a new era in software development. In Proceedings of the Companion Publication of the 2015 Annual Conference on Genetic and Evolutionary Computation, GECCO Companion ’15, pages 819–820, New York, NY, USA, 2015. ACM.</p> </li> 
+       </ul> 
+       <h4 id="deep-parameter-optimisation">Deep Parameter Optimisation</h4> 
+       <ul> 
+        <li>F. Wu, W. Weimer, M. Harman, Y. Jia, and J. Krinke. Deep parameter optimisation. In Proceedings of the 2015 Annual Conference on Genetic and Evolutionary Computation, GECCO 2015, pages 1375–1382, 2015.</li> 
+       </ul> 
+       <h4 id="fault-localisation">Fault Localisation</h4> 
+       <ul> 
+        <li> <p>S. Yoo. Evolving human competitive spectra-based fault localisation techniques. In G. Fraser and J. Teixeira de Souza, editors, Search Based Software Engineering, volume 7515 of Lecture Notes in Computer Science, pages 244–258. Springer Berlin Heidelberg, 2012.</p> </li> 
+        <li> <p>J. Sohn and S. Yoo. Fluccs: Using code and change metrics to improve fault localisation. In Proceedings of the International Symposium on Software Testing and Analysis, ISSTA 2017, pages 273–283, 2017.</p> </li> 
+       </ul> 
+      </div> 
+      <script>
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script> 
+     </div> 
+    </article> 
+   </div> 
+  </div> 
+  <footer class="site-footer"> 
+   <div class="wrapper"> 
+    <!-- <h2 class="footer-heading">COINSE</h2> --> 
+    <div class="footer-col-wrapper"> 
+     <div class="footer-col footer-col-1"> 
+      <p>COINSE Lab,<br> <a href="http://cs.kaist.ac.kr">School of Computing</a>,<br> <a href="http://www.kaist.ac.kr">Korea Advanced Institute of Science and Technology</a>,<br> 291 Daehak Ro, Yuseong Gu,<br> Daejeon, 34141,<br> Republic of Korea</p> 
+     </div> 
+     <div class="footer-col footer-col-2"> 
+      <ul class="contact-list"> 
+       <li>COINSE</li> 
+       <li><a href="mailto:shin.yoo [at] kaist.ac.kr">shin.yoo [at] kaist.ac.kr</a></li> 
+      </ul> Powered by 
+      <a href="http://nginx.org">NGINX</a> and 
+      <a href="http://www.jekyllrb.com">Jekyll</a>. 
+     </div> 
+     <div class="footer-col footer-col-3"> 
+      <ul class="social-media-list"> 
+       <li> <a href="https://github.com/coinse"><span class="icon icon--github">
+          <svg viewbox="0 0 16 16">
+           <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z" />
+          </svg> </span><span class="username">coinse</span></a> </li> 
+       <li> <a href="https://bitbucket.org/teamcoinse"><span class="icon icon--github"><i class="fa fa-bitbucket fa-2x"></i></span><span class="username">teamcoinse</span></a> </li> 
+       <li> <a href="https://twitter.com/coinselab"><span class="icon icon--twitter">
+          <svg viewbox="0 0 16 16">
+           <path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z" />
+          </svg> </span><span class="username">coinselab</span></a> </li> 
+       <li> </li>
+      </ul> 
      </div> 
     </div> 
    </div> 
-   <div id="outer_score" class="row" style="padding-bottom: 14px"> 
-    <canvas id="myCanvas" class="myCanvas" style="display: none;"></canvas> 
-    <div class="popup" id="sliderPopup"> 
-     <span class="popuptext">Click the position to start play.</span> 
-    </div> 
-    <div id="score" class="score"> 
-     <div id="completedPart" class="complete-score"></div> 
-     <div id="workingPart" class="working-score"></div> 
-     <div id="futurePart" class="complete-score"></div> 
-    </div> 
-   </div> 
-  </div> 
-  <div id="loginModal" class="modal"> 
-   <div class="modal-content" style="width: 340px; height: 500px"> 
-    <span class="close">×</span> 
-    <div class="login-div" style="font-family: 'Amita'; font-size: 24px; padding: 40px">
-     Welcome to Melodize
-    </div> 
-    <div class="login-div">
-     <input class="login-input" type="text" id="id" placeholder="ID">
-    </div> 
-    <div class="login-div">
-     <input class="login-input" type="password" id="pw" placeholder="Password">
-    </div> 
-    <div class="login-div" style="padding: 2px; color: red; display: none" id="warning_msg">
-     Wrong ID or Password
-    </div> 
-    <div class="login-div">
-     <button class="btn btn-default login-input" id="loginBtn">Sign in</button>
-    </div> 
-    <div class="login-div" style="padding: 2px">
-     Don't have an account? 
-     <a href="./signup.html">Sign up here</a>
-    </div> 
-   </div> 
-  </div> 
-  <div class="popup" id="f0"> 
-   <span class="popuptext">Welcome to the tutorial. Click to continue.</span> 
-  </div> 
-  <div class="popup" id="f1"> 
-   <span class="popuptext">You will be composing a section of a song according to its lyrics.</span> 
-  </div> 
-  <div class="popup" id="f2"> 
-   <span class="popuptext">This is the previously completed section. </span> 
-  </div> 
-  <div class="popup" id="f3"> 
-   <span class="popuptext">And this is the section you will compose! </span> 
-  </div> 
-  <div class="popup" id="f4"> 
-   <span class="popuptext">First, we must get a feel for the song. Try listening to the completed section of the song using the play button. </span> 
-  </div> 
-  <div class="popup" id="f5"> 
-   <span class="popuptext">Nice! Keep in mind that you can also use the range button to specify how much of the previous section you want to listen to. </span> 
-  </div> 
-  <div class="popup" id="f6"> 
-   <span class="popuptext">Let's start composing! Choose 8 notes that you think will sound great.</span> 
-  </div> 
-  <div class="popup" id="f7"> 
-   <span class="popuptext">Not sure about what to choose? No worries! Click the button to see popular notes chosen by others composing the same segment.</span> 
-  </div> 
-  <div class="popup" id="f8"> 
-   <span class="popuptext">Once you think you are done, press submit!</span> 
-  </div> 
-  <script src="scripts/jquery/js/jquery-1.9.0.min.js"></script> 
-  <script src="scripts/jquery/js/jquery-ui-1.10.0.custom.min.js"></script> 
-  <script src="https://www.gstatic.com/firebasejs/3.6.2/firebase.js"></script> 
-  <script src="scripts/login.js"></script> 
-  <script src="scripts/sound.js"></script> 
-  <script src="scripts/slider.js"></script> 
-  <script src="scripts/compose.js"></script> 
-  <script src="scripts/tutorial.js"></script>   
+  </footer>   
  </body>
 </html>
