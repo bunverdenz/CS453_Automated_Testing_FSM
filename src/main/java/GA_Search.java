@@ -161,7 +161,7 @@ public class GA_Search {
                         GA_Search.allEdges.get(1).add(edgesout.get(0)[0]);
                     }
                     checkNoRecur = false;
-                    recur(n,tempEdge, i + 1);
+                    recur(n,tempEdge, limit + 1);
                 }
 
             }
